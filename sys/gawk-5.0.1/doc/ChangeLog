@@ -1,0 +1,84 @@
+2019-06-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* 5.0.1: Release tar ball made.
+
+2019-06-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in (Plain Getline): Improve the program and show
+	sample input and output. Thanks to Mark Krauze <daburashka@ya.ru>
+	for some of the changes.
+	Unrelated: Set the update month.
+	* awkcard.in: Bump version in download info.
+
+2019-06-11         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in (Regexp Operator Details): Add a paragraph
+	describing how unmatched left and right parentheses work.
+	Thanks to Neil Ormos <ormos-gnulists17@ormos.org>
+	for pointing out the need.
+
+2019-06-05         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in (Type Functions): Clarify isarray() and
+	typeof() behavior. Thanks to  Mark Krauze <daburashka@ya.ru>,
+	for pointing out the issues.
+
+2019-05-22         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawk.1, gawktexi.in: Document --lint=no-ext.
+
+2019-05-06         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in: Fix some typos.  Thanks to Mark Krauze
+	<daburashka@ya.ru>, for pointing them out.
+	(Options): Document new feature in --sandbox, that you can't
+	add files that weren't there to start with.
+
+2019-05-05         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in (Additional Configuration Options): Document that
+	--disable-extensions also disables the extensions! Thanks to
+	Mark Krauze <daburashka@ya.ru>, for pointing it out.
+
+2019-04-28         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in (Options): Fix a copy/paste error. Thanks to
+	Mark Krauze <daburashka@ya.ru>, for pointing it out.
+
+2019-04-22         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in (Undocumented): Fix a typo. Thanks to Antonio Columbo
+	for pointing it out.
+
+2019-04-21         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in (Limitations): Provide brief instructions
+	on how to use use a temporary file in a script with
+	the debugger.  Thanks to Holger Klene <h.klene@gmx.de>
+	for the discussion.
+	(Multiple Lines): Note that POSIX seems to require \n as
+	separator for all values of FS, but that in reality it
+	doesn't apply to regexps; this is a POSIX bug.
+	(Options): Document clearly that if no -f or -e, anything
+	after the program text is placed into ARGV and not
+	parsed for options. Thanks to Neil Ormos <ormos-gnulists17@ormos.org>
+	for the tip.
+	(Other Versions): Add a link to Mircea Neacsu's embeddable
+	awk interpreter.
+
+2019-04-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in (Undocumented): Note an undocumented feature.
+	* Makefile.am (EXTRA_DIST): Add ChangeLog.1 to the list. Ooops.
+
+2019-04-14         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* gawktexi.in (Case-sensitivity): Document that single-byte
+	locales ignore case based on the current locale and not
+	always Latin-1.
+
+2019-04-12         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ChangeLog.1: Rotated ChangeLog into this file.
+	* ChangeLog: Created anew for gawk 5.0.0 and on.
+	* 5.0.0: Release tar ball made.

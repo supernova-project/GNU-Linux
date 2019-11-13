@@ -1,0 +1,17 @@
+2019-06-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* 5.0.1: Release tar ball made.
+
+2019-05-22         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* cdefs.h, dfa.h, dfa.c, verify.h: Sync from GNULIB.
+
+2019-04-23         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* regcomp.c, regex_internal.h: Sync from GNULIB.
+
+2019-04-12         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ChangeLog.0: Rotated ChangeLog into this file.
+	* ChangeLog: Created anew for gawk 5.0.0 and on.
+	* 5.0.0: Release tar ball made.

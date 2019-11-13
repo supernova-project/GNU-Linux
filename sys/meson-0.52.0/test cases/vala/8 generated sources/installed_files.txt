@@ -1,0 +1,3 @@
+usr/bin/generatedtestparent?exe
+usr/bin/generatedtest?exe
+usr/bin/onlygentest?exe

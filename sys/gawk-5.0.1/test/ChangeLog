@@ -1,0 +1,40 @@
+2019-06-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* 5.0.1: Release tar ball made.
+
+2019-05-22         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* badargs.ok: Updated after code changes.
+
+2019-05-07         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* Gentests: Finish handlinig NEED_SANDBOX.
+
+2019-05-06         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* Makefile.am (EXTRA_DIST): New test: sandbox1.
+	(NEED_SANDBOX): New list of tests.
+	* Gentests: Handle NEED_SANDBOX.
+	* sandbox1.awk, sandbox1.ok: New files.
+
+2019-02-22         Andrew J. Schorr     <aschorr@telemetry-investments.com>
+
+	* Makefile.am (EXTRA_DIST): New test: assignnumfield2.
+	* assignnumfield2.awk, assignnumfield2.ok: New files.
+
+2019-04-21         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* Makefile.am (EXTRA_DIST): New test: fscaret.
+	* fscaret.awk, fscaret.in, fscaret.ok: New files.
+
+2019-04-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* Makefile.am (EXTRA_DIST): Add ChangeLog.1 to the list. Ooops.
+	(synerr3): New test.
+	* synerr3.awk, synerr3.ok: New files.
+
+2019-04-12         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ChangeLog.1: Rotated ChangeLog into this file.
+	* ChangeLog: Created anew for gawk 5.0.0 and on.
+	* 5.0.0: Release tar ball made.

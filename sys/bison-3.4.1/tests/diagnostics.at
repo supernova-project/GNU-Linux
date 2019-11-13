@@ -1,0 +1,244 @@
+# Checking diagnotics.                               -*- Autotest -*-
+
+# Copyright (C) 2019 Free Software Foundation, Inc.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+AT_BANNER([[Diagnostics.]])
+
+
+# AT_TEST($1: TITLE, $2: GRAMMAR, $3: EXIT-STATUS, $4: OUTPUT-WITH-STYLE)
+# -----------------------------------------------------------------------
+# Run Bison on GRAMMAR with debugging style enabled, and expect
+# OUTPUT-WITH-STYLE as diagnostics.
+m4_pushdef([AT_TEST],
+[
+AT_SETUP([$1])
+AT_KEYWORDS([diagnostics])
+
+# We need UTF-8 support for correct screen-width computation of UTF-8
+# characters.  Skip the test if not available.
+AT_SKIP_IF([! locale -a | grep '^en_US.UTF-8$'])
+
+AT_BISON_OPTION_PUSHDEFS
+
+AT_DATA_GRAMMAR([[input.y]], [$2])
+
+AT_DATA([experr.orig], [$4])
+
+# When no style, same messages, but without style.
+AT_CHECK([perl -p -e 's{</?\w+>}{}g' <experr.orig >experr])
+# Cannot use AT_BISON_CHECK easily as we need to change the
+# environment.
+# FIXME: Enhance AT_BISON_CHECK.
+AT_CHECK([LC_ALL=en_US.UTF-8 bison -fcaret -Wall input.y], [$3], [], [experr])
+
+AT_CHECK([cp experr.orig experr])
+AT_CHECK([LC_ALL=en_US.UTF-8 bison -fcaret --color=debug -Wall input.y], [$3], [], [experr])
+
+AT_BISON_OPTION_POPDEFS
+
+AT_CLEANUP
+])
+
+
+## ---------- ##
+## Warnings.  ##
+## ---------- ##
+
+AT_TEST([[Warnings]],
+[[%token FOO FOO FOO
+%token FOO  FOO  FOO
+%%
+exp: %empty;
+]],
+[0],
+[[input.y:9.12-14: <warning>warning:</warning> symbol FOO redeclared [<warning>-Wother</warning>]
+    9 | %token FOO <warning>FOO</warning> FOO
+      |            <warning>^~~</warning>
+input.y:9.16-18: <warning>warning:</warning> symbol FOO redeclared [<warning>-Wother</warning>]
+    9 | %token FOO FOO <warning>FOO</warning>
+      |                <warning>^~~</warning>
+input.y:10.8-10: <warning>warning:</warning> symbol FOO redeclared [<warning>-Wother</warning>]
+   10 | %token <warning>FOO</warning>  FOO  FOO
+      |        <warning>^~~</warning>
+input.y:10.13-15: <warning>warning:</warning> symbol FOO redeclared [<warning>-Wother</warning>]
+   10 | %token FOO  <warning>FOO</warning>  FOO
+      |             <warning>^~~</warning>
+input.y:10.18-20: <warning>warning:</warning> symbol FOO redeclared [<warning>-Wother</warning>]
+   10 | %token FOO  FOO  <warning>FOO</warning>
+      |                  <warning>^~~</warning>
+]])
+
+
+## ------------------------ ##
+## Single point locations.  ##
+## ------------------------ ##
+
+# Single point locations (equal boundaries) are troublesome: it's easy
+# to mess up the opening/closing of style.  They come from the parser,
+# rules with empty rhs.  Their position is therefore debatable
+# (between the previous token and the next one).
+
+AT_TEST([[Single point locations]],
+[[%%
+exp: a b c d e
+a: {}
+b:{
+};
+c:
+d
+:
+e:
+]],
+[0],
+[[input.y:11.4-5: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   11 | a: <warning>{}</warning>
+      |    <warning>^~</warning>
+input.y:12.3-13.1: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   12 | b:<warning>{</warning>
+      |   <warning>^</warning>
+input.y:14.3: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   14 | c:
+      |   <warning>^</warning>
+input.y:16.2: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   16 | :
+      |  <warning>^</warning>
+input.y:17.3: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   17 | e:
+      |   <warning>^</warning>
+input.y: <warning>warning:</warning> fix-its can be applied.  Rerun with option '--update'. [<warning>-Wother</warning>]
+]])
+
+
+## -------------------------------------- ##
+## Tabulations and multibyte characters.  ##
+## -------------------------------------- ##
+
+# Make sure we treat tabulations as eight spaces, and that multibyte
+# characters have correct width.
+
+AT_TEST([[Tabulations and multibyte characters]],
+[[%%
+exp: a b c d e f g h
+a: {		}
+b: {            }
+c: {------------}
+d: {éééééééééééé}
+e: {∇⃗×𝐸⃗ = -∂𝐵⃗/∂t}
+f: {	42	}
+g: {	"฿¥$€₦"	}
+h: {	🐃	}
+]],
+[0],
+[[input.y:11.4-17: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   11 | a: <warning>{		}</warning>
+      |    <warning>^~~~~~~~~~~~~~</warning>
+input.y:12.4-17: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   12 | b: <warning>{            }</warning>
+      |    <warning>^~~~~~~~~~~~~~</warning>
+input.y:13.4-17: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   13 | c: <warning>{------------}</warning>
+      |    <warning>^~~~~~~~~~~~~~</warning>
+input.y:14.4-17: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   14 | d: <warning>{éééééééééééé}</warning>
+      |    <warning>^~~~~~~~~~~~~~</warning>
+input.y:15.4-17: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   15 | e: <warning>{∇⃗×𝐸⃗ = -∂𝐵⃗/∂t}</warning>
+      |    <warning>^~~~~~~~~~~~~~</warning>
+input.y:16.4-17: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   16 | f: <warning>{	42	}</warning>
+      |    <warning>^~~~~~~~~~~~~~</warning>
+input.y:17.4-17: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   17 | g: <warning>{	"฿¥$€₦"	}</warning>
+      |    <warning>^~~~~~~~~~~~~~</warning>
+input.y:18.4-17: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   18 | h: <warning>{	🐃	}</warning>
+      |    <warning>^~~~~~~~~~~~~~</warning>
+input.y: <warning>warning:</warning> fix-its can be applied.  Rerun with option '--update'. [<warning>-Wother</warning>]
+]])
+
+
+## --------------- ##
+## Special files.  ##
+## --------------- ##
+
+# Don't try to quote special files.
+# http://lists.gnu.org/archive/html/bug-bison/2019-04/msg00000.html
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=90034
+
+AT_TEST([[Special files]],
+[[%%
+exp: a b
+a: {}
+#line 1 "/dev/stdout"
+b: {}
+]],
+[0],
+[[input.y:11.4-5: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+   11 | a: <warning>{}</warning>
+      |    <warning>^~</warning>
+/dev/stdout:1.4-5: <warning>warning:</warning> empty rule without %empty [<warning>-Wempty-rule</warning>]
+/dev/stdout: <warning>warning:</warning> fix-its can be applied.  Rerun with option '--update'. [<warning>-Wother</warning>]
+]])
+
+
+## ------------------- ##
+## Locations from M4.  ##
+## ------------------- ##
+
+# Locations coming from m4 need the byte-column for diagnostics.
+
+AT_TEST([[Locations from M4]],
+[[%define api.prefix {foo}
+%define api.prefix {bar}
+%%
+exp:;
+]],
+[1],
+[[input.y:10.1-24: <error>error:</error> %define variable 'api.prefix' redefined
+   10 | <error>%define api.prefix {bar}</error>
+      | <error>^~~~~~~~~~~~~~~~~~~~~~~~</error>
+input.y:9.1-24:      previous definition
+    9 | <note>%define api.prefix {foo}</note>
+      | <note>^~~~~~~~~~~~~~~~~~~~~~~~</note>
+input.y: <warning>warning:</warning> fix-its can be applied.  Rerun with option '--update'. [<warning>-Wother</warning>]
+]])
+
+
+## ---------------------------------------------- ##
+## Tabulations and multibyte characters from M4.  ##
+## ---------------------------------------------- ##
+
+# Locations coming from m4 need the byte-column for diagnostics.
+
+AT_TEST([[Tabulations and multibyte characters from M4]],
+[[%define api.prefix		{sun}
+%define api.prefix		{🌞}
+%%
+exp:;
+]],
+[1],
+[[input.y:10.1-35: <error>error:</error> %define variable 'api.prefix' redefined
+   10 | <error>%define api.prefix		{🌞}</error>
+      | <error>^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</error>
+input.y:9.1-37:      previous definition
+    9 | <note>%define api.prefix		{sun}</note>
+      | <note>^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</note>
+input.y: <warning>warning:</warning> fix-its can be applied.  Rerun with option '--update'. [<warning>-Wother</warning>]
+]])
+
+
+
+m4_popdef([AT_TEST])

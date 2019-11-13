@@ -1,0 +1,97 @@
+2019-06-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* 5.0.1: Release tar ball made.
+
+2019-06-06         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* main.c (usage): Update comment for translators.
+
+2019-06-02         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* awkgram.c, command.c: Update to Bison 3.4.
+	* NEWS: Updated.
+
+2019-05-22         Arnold D. Robbins     <arnold@skeeve.com>
+
+	Add --lint=no-ext. Suggest by Mark Krauze <daburashka@ya.ru>.
+
+	* NEWS: Updated.
+	* awk.h (DO_LINT_EXTENSIONS): New enum.
+	(do_lint_extensions): New macro.
+	* awkgram.y (yylex, snode): Use do_lint_extensions instead of
+	do_lint where appropriate.
+	* builtin.c (do_length): Ditto.
+	* eval.c (set_IGNORECASE, set_BINMODE): Ditto.
+	(set_LINT): Revise logic.
+	* field.c (do_split, set_FIELDWIDTHS, chose_fs_function, set_FPAT):
+	Ditto.
+	* io.c (set_RS): Ditto.
+	* main.c (usage): Updated.
+	(parse_args): Revise the code to handle --lint=no-ext.
+
+2019-05-10         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* NEWS: Updated.
+
+2019-05-06         Arnold D. Robbins     <arnold@skeeve.com>
+
+	In sandbox mode, disallow assigning filenames that weren't
+	there initially. Thanks to Nolan Woods <nolan_w@sfu.ca> for
+	pointing out the gap.
+
+	* awk.h (init_argv_array): Add declaration.
+	* cint_array.c (argv_store): New vtable for ARGV.
+	(argv_shadow_array): New file static variable
+	(argv_store, init_argv_array): New functions.
+	* main.c (init_args): If in sandbox mode, build shadow array of
+	initial argv values. Call init_argv_array.
+
+2019-05-05         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ext.c (load_ext): Fix the message in the version for when
+	extensions are not available.
+
+2019-04-24         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* msg.c (msg): Use %ld for the line number value. Thanks to
+	Michal Jaegermann for the report.
+
+2019-04-23         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* config.sub: Updated from GNULIB.
+
+2019-02-21         Andrew J. Schorr      <aschorr@telemetry-investments.com>
+
+	* interpert.h (Op_store_field): Move call to force_string to
+	here from unfield.  Speeds up work with fields that are numeric
+	only. Thanks to Tom Gray <tom_gray@keysight.com> for the report.
+
+2019-04-21         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* POSIX.STD: Updated.
+	* field.c (get_field): If NF == -1, check parse high water to
+	set in_middle correctly. Thanks to <oguzismailuysal@gmail.com>
+	for the report.
+
+2019-04-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* msg.c (msg): Add an undocumented feature. "Use the Source, Luke."
+	* Makefile.am (EXTRA_DIST): Add ChangeLog.1 to the list. Ooops.
+	* CheckList: Updated.
+
+	Fix core dump reported by Steve Kemp <steve@steve.org.uk>:
+
+	* awk.h (errcount): Declare.
+	* awkgram.y (errcount): No longer static.
+	* command.y (dbg_errcount): Renamed from errcount.j
+	* main.c (catchsig, catchsegv): If errcount > 0, just exit,
+	don't abort.  
+
+2019-04-12         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* configure.ac: Update version to 5.0.0.
+	* configure: Regenerated.
+	* ChangeLog.1: Rotated ChangeLog into this file.
+	* ChangeLog: Created anew for gawk 5.0.0 and on.
+	* README: Bump version to 5.0.0.
+	* 5.0.0: Release tar ball made.

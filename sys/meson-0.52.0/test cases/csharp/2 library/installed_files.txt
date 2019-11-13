@@ -1,0 +1,5 @@
+usr/bin/prog.exe
+?msvc:usr/bin/prog.pdb
+?msvc:usr/bin/helper.dll
+?msvc:usr/bin/helper.pdb
+?gcc:usr/lib/helper.dll
