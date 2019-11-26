@@ -1,0 +1,22 @@
+These library source files have various authors but are all covered by
+either the GNU General Public License or the GNU Lesser General Public
+License, and are freely distributable under their terms and conditions.
+
+See the files ../docs/COPYING and ../docs/COPYING.LIB for relevant
+information.
+
+appendstr.c			author - Markus Armbruster
+cleanup.*			author - Markus Armbruster, Colin Watson
+debug.c				author - Colin Watson
+decompress.*			author - Colin Watson
+encodings.*			author - Colin Watson
+glcontainers.*			author - Colin Watson
+linelength.*			author - Martin Schulze, Jon Tombs, Colin Watson
+orderfiles.*			author - Colin Watson
+pathsearch.*			author - Colin Watson
+sandbox.*			author - Colin Watson
+security.*			author - John W. Eaton, Wilf., Colin Watson
+tempfile.c			author - Colin Watson
+util.c				author - John W. Eaton, Wilf., Colin Watson
+wordfnmatch.*			author - Colin Watson
+xregcomp.*			author - Colin Watson

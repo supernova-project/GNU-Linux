@@ -1,0 +1,3943 @@
+# Pesan bahasa indonesia untuk man-db-manpages
+# Copyright (C) 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the man-db package.
+# Arif E. Nugroho <arif_endro@yahoo.com>, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: man-db-manpages 2.6.6-pre2\n"
+"POT-Creation-Date: 2018-01-22 10:13+0000\n"
+"PO-Revision-Date: 2014-08-10 09:25+0700\n"
+"Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
+"Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: TH
+#: ../../man/man1/apropos.man1:12 ../../man/man1/lexgrog.man1:9
+#: ../../man/man1/man.man1:15 ../../man/man1/manconv.man1:9
+#: ../../man/man1/manpath.man1:12 ../../man/man1/whatis.man1:12
+#: ../../man/man1/zsoelim.man1:12 ../../man/man8/accessdb.man8:12
+#: ../../man/man8/catman.man8:12 ../../man/man8/mandb.man8:13
+#, no-wrap
+msgid "Manual pager utils"
+msgstr "Penggunaan halaman buku panduan"
+
+#. type: SH
+#: ../../man/man1/apropos.man1:13 ../../man/man1/lexgrog.man1:10
+#: ../../man/man1/man.man1:16 ../../man/man1/manconv.man1:10
+#: ../../man/man1/manpath.man1:13 ../../man/man1/whatis.man1:13
+#: ../../man/man1/zsoelim.man1:13 ../../man/man5/manpath.man5:14
+#: ../../man/man8/accessdb.man8:13 ../../man/man8/catman.man8:13
+#: ../../man/man8/mandb.man8:14
+#, no-wrap
+msgid "NAME"
+msgstr "NAMA"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:15
+msgid "%apropos% - search the manual page names and descriptions"
+msgstr "%apropos% - cari halaman buku panduan dari nama dan deskripsinya"
+
+#. type: SH
+#: ../../man/man1/apropos.man1:15 ../../man/man1/lexgrog.man1:12
+#: ../../man/man1/man.man1:18 ../../man/man1/manconv.man1:12
+#: ../../man/man1/manpath.man1:15 ../../man/man1/whatis.man1:15
+#: ../../man/man1/zsoelim.man1:15 ../../man/man8/accessdb.man8:16
+#: ../../man/man8/catman.man8:15 ../../man/man8/mandb.man8:16
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr "RINGKASAN"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:32
+msgid ""
+"B<%apropos%> [\\|B<-dalv?V>\\|] [\\|B<-e>\\||\\|B<-w>\\||\\|B<-r>\\|] [\\|B<-"
+"s> I<list>\\|] [\\|B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<path>"
+"\\|] [\\|B<-L> I<locale>\\|] [\\|B<-C> I<file>\\|] I<keyword> \\&.\\|.\\|."
+msgstr ""
+"B<%apropos%> [\\|B<-dalhvV>\\|] [\\|B<-e>\\||\\|B<-w>\\||\\|B<-r>\\|] [\\|B<-"
+"s> I<bagian>\\|] [\\|B<-m> I<sistem>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> "
+"I<jalur>\\|] [\\|B<-L> I<lokal>\\|] [\\|B<-C> I<berkas>\\|] I<kata kunci> "
+"\\&.\\|.\\|."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:32 ../../man/man1/lexgrog.man1:20
+#: ../../man/man1/man.man1:150 ../../man/man1/manconv.man1:20
+#: ../../man/man1/manpath.man1:22 ../../man/man1/whatis.man1:32
+#: ../../man/man1/zsoelim.man1:20 ../../man/man5/manpath.man5:16
+#: ../../man/man8/accessdb.man8:20 ../../man/man8/catman.man8:24
+#: ../../man/man8/mandb.man8:29
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "DESKRIPSI"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:37
+msgid ""
+"Each manual page has a short description available within it.  B<%apropos%> "
+"searches the descriptions for instances of I<keyword>."
+msgstr ""
+"Setiap halaman buku panduan memiliki sebuah deskripsi singkat didalamnya. B<"
+"%apropos%> mencari deskripsi untuk setiap hal dari I<kata kunci>."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:50
+msgid ""
+"I<keyword> is usually a regular expression, as if (B<-r>)  was used, or may "
+"contain wildcards (B<-w>), or match the exact keyword (B<-e>).  Using these "
+"options, it may be necessary to quote the I<keyword> or escape (\\e) the "
+"special characters to stop the shell from interpreting them."
+msgstr ""
+"I<kata kunci> biasanya sebuah ekspresi umum, sama seperti (B<-r>) yang telah "
+"digunakan, atau mungkin berisi karakter bebas (B<-w>), atau yang cocok "
+"dengan kata kunci (B<-e>). Menggunakan pilihan ini, mungkin diperlukan untuk "
+"memperjelas I<kata kunci> atau karakter spesial untuk keluar (\\e) untuk "
+"menghentikan shell menginterpretasikannya."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:53
+msgid ""
+"The standard matching rules allow matches to be made against the page name "
+"and word boundaries in the description."
+msgstr ""
+"Aturan baku pencocokan mengijinkan pencocokan dibuat terhadap nama halaman "
+"dan batas kata dalam deskripsi."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:61
+msgid ""
+"The database searched by B<%apropos%> is updated by the B<%mandb%> program.  "
+"Depending on your installation, this may be run by a periodic cron job, or "
+"may need to be run manually after new manual pages have been installed."
+msgstr ""
+"Basis data dicari dengan B<%apropos%> diperbarui oleh aplikasi B<%mandb%>. "
+"Tergantung di instalasi anda, ini mungkin akan dijalankan secara berkala "
+"oleh pekerjaan cron, atau mungkin bisa dijalankan secara manual setelah "
+"halaman buku panduan telah terpasang."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:61 ../../man/man1/lexgrog.man1:45
+#: ../../man/man1/man.man1:558 ../../man/man1/manconv.man1:50
+#: ../../man/man1/manpath.man1:37 ../../man/man1/whatis.man1:71
+#: ../../man/man1/zsoelim.man1:55 ../../man/man8/accessdb.man8:29
+#: ../../man/man8/catman.man8:55 ../../man/man8/mandb.man8:80
+#, no-wrap
+msgid "OPTIONS"
+msgstr "PILIHAN"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:65 ../../man/man1/lexgrog.man1:49
+#: ../../man/man1/man.man1:572 ../../man/man1/manconv.man1:66
+#: ../../man/man1/manpath.man1:44 ../../man/man1/whatis.man1:75
+#: ../../man/man8/accessdb.man8:33 ../../man/man8/catman.man8:59
+#: ../../man/man8/mandb.man8:84
+msgid "Print debugging information."
+msgstr "Tampilkan informasi penelusuran."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:68 ../../man/man1/whatis.man1:78
+msgid "Print verbose warning messages."
+msgstr "Tampilkan pesan peringatan bertele-tele."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:76
+msgid ""
+"Interpret each keyword as a regular expression.  This is the default "
+"behaviour.  Each keyword will be matched against the page names and the "
+"descriptions independently.  It can match any part of either.  The match is "
+"not limited to word boundaries."
+msgstr ""
+"Interpretasikan setiap kata kunci sebagai sebuah ekspresi umum. Ini adalah "
+"perilaku baku. Setiap kata kunci akan dicocokan terhadap nama dan deskripsi "
+"halaman secara bebas.  Ini dapat cocok dengan bagian apapun juga. Pencocokan "
+"tidak terbatas ke batasan kata."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:88
+msgid ""
+"Interpret each keyword as a pattern containing shell style wildcards.  Each "
+"keyword will be matched against the page names and the descriptions "
+"independently.  If B<--exact> is also used, a match will only be found if an "
+"expanded keyword matches an entire description or page name.  Otherwise the "
+"keyword is also allowed to match on word boundaries in the description."
+msgstr ""
+"Interpretasikan setiap kata kunci sebagai sebuah pola berisi gaya shell "
+"karakter bebas. Setiap kata kunci akan dicocokan terhadap nama dan deskripsi "
+"halaman secara bebas. Jika B<--exact> juga digunakan, sebuah pasangan hanya "
+"akan ditemukan jika sebuah kata kunci yang diekspan cocok ke seluruh "
+"deskripsi atau nama halaman. Jika tidak kata kunci juga diijinkan untuk "
+"dicocokan di batas kata dalam deskripsi."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:92
+msgid ""
+"Each keyword will be exactly matched against the page names and the "
+"descriptions."
+msgstr ""
+"Setiap kata kunci akan secara tepat dicocokan terhadap nama dan deskripsi "
+"halaman."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:96
+msgid ""
+"Only display items that match all the supplied keywords.  The default is to "
+"display items that match any keyword."
+msgstr ""
+"Hanya tampilkan item yang cocok dengan seluruh kata kunci yang diberikan. "
+"Secara baku adalah menampilkan item yang cocok dengan kata kunci apapun."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:103 ../../man/man1/whatis.man1:107
+msgid ""
+"Do not trim output to the terminal width.  Normally, output will be "
+"truncated to the terminal width to avoid ugly results from poorly-written "
+"B<NAME> sections."
+msgstr ""
+"Jangan trim keluaran ke lebar terminal. Secara normal, keluaran akan "
+"dipotong ke lebar terminal untuk menghindari hasil aneh dari bagian B<NAMA> "
+"yang ditulis tidak sempurna."
+
+#. type: TP
+#: ../../man/man1/apropos.man1:103 ../../man/man1/whatis.man1:107
+#, no-wrap
+msgid "B<-s> I<list>, B<--sections> I<list>, B<--section> I<list>"
+msgstr "B<-s> I<daftar>, B<--sections> I<daftar>, B<--sections=> I<daftar>"
+
+#
+#.  Due to the rather silly limit of 6 args per request in some `native'
+#.  *roff compilers, we have do the following to get the two-line
+#.  hanging tag on one line. .PP to begin a new paragraph, then the
+#.  tag, then .RS (start relative indent), the text, finally .RE
+#.  (end relative indent).
+#. type: Plain text
+#: ../../man/man1/apropos.man1:123 ../../man/man1/whatis.man1:127
+msgid ""
+"Search only the given manual sections.  I<list> is a colon- or comma-"
+"separated list of sections.  If an entry in I<list> is a simple section, for "
+"example \"3\", then the displayed list of descriptions will include pages in "
+"sections \"3\", \"3perl\", \"3x\", and so on; while if an entry in I<list> "
+"has an extension, for example \"3perl\", then the list will only include "
+"pages in that exact part of the manual section."
+msgstr ""
+"Hanya cari di bagian buku panduan yang diberikan. Jika I<bagian> adalah "
+"sebuah bagian sederhana, sebagai contoh \"3\", maka tampilkan daftar dari "
+"deskripsi akan memasukan halaman dalam bagian \"3\", \"3perl\", \"3x\", dan "
+"selanjutnya; jika I<bagian> memiliki sebuah ekstensi, sebagai contoh \"3perl"
+"\", maka daftar hanya akan memasukan halaman dalam bagian tepat dari bagian "
+"buku panduan."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:129 ../../man/man1/man.man1:701
+#: ../../man/man1/manpath.man1:66 ../../man/man1/whatis.man1:133
+msgid ""
+"B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|, B<--systems=>I<system>\\|[\\|,.\\|."
+"\\|.\\|]"
+msgstr ""
+"B<-m> I<sistem>\\|[\\|,.\\|.\\|.\\|]\\|, B<--systems=>I<sistem>\\|[\\|,.\\|."
+"\\|.\\|]"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:135
+msgid ""
+"If this system has access to other operating system's manual page "
+"descriptions, they can be searched using this option.  To search NewOS's "
+"manual page descriptions, use the option B<-m> B<NewOS>."
+msgstr ""
+"Jika sistem ini memiliki akses ke deskripsi halaman buku panduan sistem "
+"operasi lain, mereka dapat dicari dengan pilihan ini. Untuk mencari "
+"deskripsi halaman buku panduan OS-Baru, gunakan pilihan B<-m> B<OS-Baru>."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:147
+msgid ""
+"The I<system> specified can be a combination of comma-delimited operating "
+"system names.  To include a search of the native operating system's "
+"B<whatis> descriptions, include the system name B<man> in the argument "
+"string.  This option will override the $B<SYSTEM> environment variable."
+msgstr ""
+"I<sistem> yang dispesifikasikan dapat berupa sebuah kombinasi dari nama "
+"sistem operasi dipisahkan oleh koma. Untuk memasukan sebuah pencarian dari "
+"deskripsi sistem operasi asal B<whatis>, masukan nama sistem B<man> dalam "
+"argumen string. Pilihan ini akan mengesampingkan variabel lingkungan "
+"$B<SYSTEM>."
+
+#. type: TP
+#: ../../man/man1/apropos.man1:148 ../../man/man1/man.man1:720
+#: ../../man/man1/whatis.man1:152 ../../man/man8/catman.man8:59
+#, no-wrap
+msgid "B<-M\\ >I<path>,\\ B<--manpath=>I<path>"
+msgstr "B<-M\\ >I<jalur>,\\ B<--manpath=>I<jalur>"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:162 ../../man/man1/whatis.man1:166
+msgid ""
+"Specify an alternate set of colon-delimited manual page hierarchies to "
+"search.  By default, B<%program%> uses the $B<MANPATH> environment variable, "
+"unless it is empty or unset, in which case it will determine an appropriate "
+"manpath based on your $B<PATH> environment variable.  This option overrides "
+"the contents of $B<MANPATH>."
+msgstr ""
+"Spesifikasikan sebuah alternatif set dari struktur halaman buku panduan "
+"dipisahkan oleh kolon ke pencarian. Secara Baku, B<%program%> menggunakan "
+"variabel lingkungan $B<MANPATH>, kecuali itu kosong atau tidak diset, dalam "
+"beberapa kasus itu akan menentukan sebuah jalur man yang sesuai di variabel "
+"lingkungan anda $B<PATH>. Pilihan ini mengesampingkan isi dari $B<MANPATH>."
+
+#. type: TP
+#: ../../man/man1/apropos.man1:162 ../../man/man1/man.man1:671
+#: ../../man/man1/whatis.man1:166
+#, no-wrap
+msgid "B<-L\\ >I<locale>,\\ B<--locale=>I<locale>"
+msgstr "B<-L\\ >I<lokal>,\\ B<--locale=>I<lokal>"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:179 ../../man/man1/man.man1:695
+#: ../../man/man1/whatis.man1:183
+msgid ""
+"B<%program%> will normally determine your current locale by a call to the C "
+"function B<setlocale>(3)  which interrogates various environment variables, "
+"possibly including $B<LC_MESSAGES> and $B<LANG>.  To temporarily override "
+"the determined value, use this option to supply a I<locale> string directly "
+"to B<%program%>.  Note that it will not take effect until the search for "
+"pages actually begins.  Output such as the help message will always be "
+"displayed in the initially determined locale."
+msgstr ""
+"B<%program%> akan secara normal menentukan lokal anda sekarang dengan sebuah "
+"panggilan ke fungsi B<setlocale>(3) yang menanyakan berbagai variabel "
+"lingkungan, kemungkinan termasuk $B<LC_MESSAGES> dan $B<LANG>. Untuk memaksa "
+"sementara ke nilai yang telah ditentukan, gunakan pilihan ini untuk "
+"mensuplai sebuah string I<lokal> secara langsung ke B<%program%>. Catat "
+"bahwa itu tidak akan berpengaruh sampai pencarian untuk halaman benar benar "
+"dimulai. Pesan bantuan akan selalu ditampilkan dalam lokal yang ditentukan "
+"diawal."
+
+#. type: TP
+#: ../../man/man1/apropos.man1:179 ../../man/man1/man.man1:565
+#: ../../man/man1/manpath.man1:85 ../../man/man1/whatis.man1:183
+#: ../../man/man8/catman.man8:64 ../../man/man8/mandb.man8:131
+#, no-wrap
+msgid "B<-C\\ >I<file>,\\ B<--config-file=>I<file>"
+msgstr "B<-C\\ >I<berkas>,\\ B<--config-file=>I<berkas>"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:183 ../../man/man1/man.man1:569
+#: ../../man/man1/manpath.man1:89 ../../man/man1/whatis.man1:187
+#: ../../man/man8/catman.man8:68 ../../man/man8/mandb.man8:135
+msgid ""
+"Use this user configuration file rather than the default of I<~/.manpath>."
+msgstr "Gunakan berkas konfigurasi pengguna ini daripada I<~/.manpath>."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:186 ../../man/man1/lexgrog.man1:89
+#: ../../man/man1/man.man1:1179 ../../man/man1/manconv.man1:69
+#: ../../man/man1/manpath.man1:92 ../../man/man1/whatis.man1:190
+#: ../../man/man1/zsoelim.man1:67 ../../man/man8/accessdb.man8:36
+#: ../../man/man8/catman.man8:71
+msgid "Print a help message and exit."
+msgstr "Tampilkan sebuah pesan bantuan dan keluar."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:189 ../../man/man1/lexgrog.man1:92
+#: ../../man/man1/man.man1:1182 ../../man/man1/manpath.man1:95
+#: ../../man/man1/whatis.man1:193 ../../man/man8/accessdb.man8:39
+#: ../../man/man8/catman.man8:74 ../../man/man8/mandb.man8:141
+msgid "Print a short usage message and exit."
+msgstr "Tampilkan sebuah pesan bantuan dan keluar."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:192 ../../man/man1/lexgrog.man1:95
+#: ../../man/man1/man.man1:1185 ../../man/man1/manconv.man1:72
+#: ../../man/man1/manpath.man1:98 ../../man/man1/whatis.man1:196
+#: ../../man/man1/zsoelim.man1:70 ../../man/man8/accessdb.man8:42
+#: ../../man/man8/catman.man8:77
+msgid "Display version information."
+msgstr "Tampilkan informasi versi."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:192 ../../man/man1/lexgrog.man1:95
+#: ../../man/man1/man.man1:1185 ../../man/man1/whatis.man1:196
+#: ../../man/man8/mandb.man8:144
+#, no-wrap
+msgid "EXIT STATUS"
+msgstr "STATUS KELUAR"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:196 ../../man/man1/lexgrog.man1:99
+#: ../../man/man1/man.man1:1189 ../../man/man1/whatis.man1:200
+#: ../../man/man8/mandb.man8:148
+msgid "Successful program execution."
+msgstr "Eksekusi aplikasi sukses."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:199 ../../man/man1/man.man1:1192
+#: ../../man/man1/whatis.man1:203
+msgid "Usage, syntax or configuration file error."
+msgstr "Penggunaan, sintaks atau berkas konfigurasi error."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:202 ../../man/man1/man.man1:1195
+#: ../../man/man1/whatis.man1:206 ../../man/man8/mandb.man8:154
+msgid "Operational error."
+msgstr "Operasional error."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:205 ../../man/man1/whatis.man1:209
+msgid "Nothing was found that matched the criteria specified."
+msgstr ""
+"Tidak ditemukan apapun yang cocok dengan kriteria yang dispesifikasikan."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:205 ../../man/man1/man.man1:1201
+#: ../../man/man1/manpath.man1:98 ../../man/man1/whatis.man1:209
+#: ../../man/man8/catman.man8:77
+#, no-wrap
+msgid "ENVIRONMENT"
+msgstr "LINGKUNGAN"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:214 ../../man/man1/man.man1:1302
+#: ../../man/man1/manpath.man1:124 ../../man/man1/whatis.man1:218
+msgid ""
+"If $B<SYSTEM> is set, it will have the same effect as if it had been "
+"specified as the argument to the B<-m> option."
+msgstr ""
+"Jika $B<SYSTEM> telah diset, ini akan memiliki efek sama seperti jika ini "
+"telah dispesifikasikan sebagai argumen ke pilihan B<-m>."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:220 ../../man/man1/whatis.man1:224
+#: ../../man/man8/catman.man8:94
+msgid ""
+"If $B<MANPATH> is set, its value is interpreted as the colon-delimited "
+"manual page hierarchy search path to use."
+msgstr ""
+"Jika $B<MANPATH> telah diset, nilainya diinterpretasikan sebagai struktur "
+"jalur pencarian halaman buku panduan dipisahkan dengan kolon untuk digunakan."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:232 ../../man/man1/whatis.man1:236
+#, fuzzy
+#| msgid ""
+#| "If $B<MANWIDTH> is set, its value is used as the terminal width (see the "
+#| "B<--long> option).  If it is not set, the terminal width will be "
+#| "calculated using an B<ioctl>(2)  if available, the value of $B<COLUMNS>, "
+#| "or falling back to 80 characters if all else fails."
+msgid ""
+"If $B<MANWIDTH> is set, its value is used as the terminal width (see the B<--"
+"long> option).  If it is not set, the terminal width will be calculated "
+"using the value of $B<COLUMNS>, an B<ioctl>(2)  if available, or falling "
+"back to 80 characters if all else fails."
+msgstr ""
+"Jika $B<MANWIDTH> di set, nilainya digunakan sebagai lebar terminal (lihat "
+"pilihan B<--long>). Jika itu tidak diset, lebar terminal dihitung "
+"menggunakan B<ioctl>(2) jika tersedia, nilai dari $B<COLUMNS>, atau kembali "
+"ke 80 karakter jika yang lain gagal."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:241
+msgid ""
+"If $B<POSIXLY_CORRECT> is set, even to a null value, the default B<%apropos"
+"%> search will be as an extended regex (B<-r>).  Nowadays, this is the "
+"default behaviour anyway."
+msgstr ""
+"Jika $B<POSIXLY_CORRECT> diset, meskipun ke sebuah nilai null, pencarian "
+"baku B<%apropos%> akan berupa sebuah ekstensi regex (B<-r>). Saat ini, ini "
+"adalah perilaku baku."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:241 ../../man/man1/man.man1:1367
+#: ../../man/man1/manpath.man1:124 ../../man/man1/whatis.man1:236
+#: ../../man/man8/catman.man8:94 ../../man/man8/mandb.man8:191
+#, no-wrap
+msgid "FILES"
+msgstr "BERKAS"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:247 ../../man/man1/man.man1:1379
+#: ../../man/man1/whatis.man1:242 ../../man/man8/catman.man8:103
+#: ../../man/man8/mandb.man8:207
+msgid "A traditional global I<index> database cache."
+msgstr "Sebuah persediaan basis data I<indeks> menyeluruh tradisional."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:253 ../../man/man1/man.man1:1385
+#: ../../man/man1/whatis.man1:248 ../../man/man8/mandb.man8:200
+msgid "An FHS compliant global I<index> database cache."
+msgstr "Sebuah persediaan basis data I<indeks> menyeluruh sesuai dengan FHS."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:258 ../../man/man1/whatis.man1:253
+msgid "A traditional B<whatis> text database."
+msgstr "Sebuah basis data teks B<whatis> tradisional."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:258 ../../man/man1/lexgrog.man1:197
+#: ../../man/man1/man.man1:1385 ../../man/man1/manconv.man1:72
+#: ../../man/man1/manpath.man1:128 ../../man/man1/whatis.man1:253
+#: ../../man/man1/zsoelim.man1:70 ../../man/man8/catman.man8:109
+#: ../../man/man8/mandb.man8:213
+#, no-wrap
+msgid "SEE ALSO"
+msgstr "LIHAT JUGA"
+
+#. type: SH
+#: ../../man/man1/apropos.man1:262 ../../man/man1/lexgrog.man1:207
+#: ../../man/man1/manconv.man1:75 ../../man/man1/manpath.man1:132
+#: ../../man/man1/whatis.man1:257 ../../man/man1/zsoelim.man1:75
+#: ../../man/man8/accessdb.man8:42 ../../man/man8/catman.man8:113
+#: ../../man/man8/mandb.man8:223
+#, no-wrap
+msgid "AUTHOR"
+msgstr "PENGARANG"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:12
+msgid "lexgrog - parse header information in man pages"
+msgstr "lexgrog - ambil kepala informasi dalam halaman buku panduan"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:20
+msgid ""
+"B<lexgrog> [\\|B<-m>\\||\\|B<-c>\\|] [\\|B<-dfw?V>\\|] [\\|B<-E> I<encoding>"
+"\\|] I<file> \\&.\\|.\\|."
+msgstr ""
+"B<lexgrog> [\\|B<-m>\\||\\|B<-c>\\|] [\\|B<-fhw?V>\\|] [\\|B<-E> "
+"I<pengkodean>\\|] I<berkas> \\&.\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:36
+msgid ""
+"B<lexgrog> is an implementation of the traditional \\(lqgroff guess\\(rq "
+"utility in B<lex>.  It reads the list of files on its command line as either "
+"man page source files or preformatted \\(lqcat\\(rq pages, and displays "
+"their name and description as used by B<apropos> and B<whatis>, the list of "
+"preprocessing filters required by the man page before it is passed to "
+"B<nroff> or B<troff>, or both."
+msgstr ""
+"B<lexgrog> adalah sebuah implementasi dari aplikasi tradisional \\(lqgroff "
+"guess\\(rq dalam B<lex>. Ini membaca daftar dari berkas dalam baris perintah "
+"baik berkas sumber halaman buku panduan  atau preformatted \\(lqcat\\(rq "
+"pages, dan menampilkan nama dan deskripsinya seperti yang digunakan oleh "
+"B<apropos> dan B<whatis>, daftar dari saringan pemrosesan dibutuhkan oleh "
+"halaman buku panduan sebelum ini dilewatkan ke B<nroff> atau B<troff>, atau "
+"keduanya."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:45
+msgid ""
+"If its input is badly formatted, B<lexgrog> will print \\(lqparse failed"
+"\\(rq; this may be useful for external programs that need to check man pages "
+"for correctness.  If one of B<lexgrog>'s input files is \\(lq-\\(rq, it will "
+"read from standard input; if any input file is compressed, a decompressed "
+"version will be read automatically."
+msgstr ""
+"Jika masukannya terformat buruk, B<lexgrog> akan menampilkan \\(lqparse "
+"failed\\(rq; ini mungkin berguna untuk program eksternal yang butuh "
+"pemeriksaan halaman buku panduan untuk pembenaran. Jika satu dari B<lexgrog> "
+"berkas masukan adalah \\(lq-\\(rq, ini akan dibaca dari standar masukan; "
+"jika berkas masukan apapun dikompress, sebuah versi tidak terkompress akan "
+"dibaca secara otomatis."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:57
+msgid ""
+"Parse input as man page source files.  This is the default if neither B<--"
+"man> nor B<--cat> is given."
+msgstr ""
+"Ambil masukan sebagai berkas sumber halaman buku panduan. Ini baku jika baik "
+"B<--man> ataupun B<--cat> tidak diberikan."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:64
+msgid ""
+"Parse input as preformatted man pages (\\(lqcat pages\\(rq).  B<--man> and "
+"B<--cat> may not be given simultaneously."
+msgstr ""
+"Ambil masukan sebagai halaman buku panduan terformat (\\(lqcat halaman"
+"\\(rq). B<--man> dan B<--cat> mungkin tidak diberikan secara bersamaan."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:75
+msgid ""
+"Display the name and description from the man page's header, as used by "
+"B<apropos> and B<whatis>.  This is the default if neither B<--whatis> nor "
+"B<--filters> is given."
+msgstr ""
+"Tampilkan nama dan deskripsi dari kepala halaman buku panduan, seperti "
+"digunakan oleh B<apropos> dan B<whatis>. Ini adalah baku jika bukan B<--"
+"whatis> ataupun B<--filters> diberikan."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:82
+msgid ""
+"Display the list of filters needed to preprocess the man page before "
+"formatting with B<nroff> or B<troff>."
+msgstr ""
+"Tampilkan daftar dari penyaring yang dibutuhkan untuk preproses halaman buku "
+"panduan sebelum memformatnya dengan B<nroff> atau B<troff>."
+
+#. type: TP
+#: ../../man/man1/lexgrog.man1:82
+#, no-wrap
+msgid "B<-E> I<encoding>, B<--encoding> I<encoding>"
+msgstr "B<-E> I<pengkodean>, B<--encoding> I<pengkodean>"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:86
+msgid "Override the guessed character set for the page to I<encoding>."
+msgstr "Override set karakter yang diterka untuk halaman ke I<pengkodean>."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:102
+msgid "Usage error."
+msgstr "Penggunaan error."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:106
+msgid "B<lexgrog> failed to parse one or more of its input files."
+msgstr "B<lexgrog> gagal untuk mengambil satu atau lebih dari berkas masukan."
+
+#. type: SH
+#: ../../man/man1/lexgrog.man1:106 ../../man/man1/man.man1:280
+#, no-wrap
+msgid "EXAMPLES"
+msgstr "CONTOH"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:116
+#, no-wrap
+msgid ""
+"  $ lexgrog man.1\n"
+"  man.1: \"man - an interface to the on-line reference manuals\"\n"
+"  $ lexgrog -fw man.1\n"
+"  man.1 (t): \"man - an interface to the on-line reference manuals\"\n"
+"  $ lexgrog -c whatis.cat1 \n"
+"  whatis.cat1: \"whatis - display manual page descriptions\"\n"
+"  $ lexgrog broken.1\n"
+"  broken.1: parse failed\n"
+msgstr ""
+"  $ lexgrog man.1\n"
+"  man.1: \"man - sebuah antar-muka ke referensi buku panduan on-line\"\n"
+"  $ lexgrog -fw man.1\n"
+"  man.1 (t): \"man - sebuah antar-muka ke referensi buku panduan on-line\"\n"
+"  $ lexgrog -c whatis.cat1 \n"
+"  whatis.cat1: \"whatis - menampilkan deskripsi halaman buku panduan\"\n"
+"  $ lexgrog broken.1\n"
+"  broken.1: gagal mengambil\n"
+
+#. type: SH
+#: ../../man/man1/lexgrog.man1:117
+#, no-wrap
+msgid "WHATIS PARSING"
+msgstr "PENGAMBILAN WHATIS"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:128
+msgid ""
+"B<%mandb%> (which uses the same code as B<lexgrog>)  parses the B<NAME> "
+"section at the top of each manual page looking for names and descriptions of "
+"the features documented in each.  While the parser is quite tolerant, as it "
+"has to cope with a number of different forms that have historically been "
+"used, it may sometimes fail to extract the required information."
+msgstr ""
+"B<%mandb%> (yang menggunakan kode sama seperti B<lexgrog>) mengambil B<NAMA> "
+"bagian di puncak dari setiap halaman buku panduan mencari untuk nama dan "
+"deskripsi dari features yang didokumentasikan. Walaupun pengambil cukup "
+"bertoleransi, karena ini harus melingkupi dengan berbagai bentuk yang "
+"berbeda yang  telah digunakan, ini mungkin kadang kadang gagal untuk "
+"mengekstrak informasi yang dibutuhkan."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:134
+msgid ""
+"When using the traditional I<man> macro set, a correct B<NAME> section looks "
+"something like this:"
+msgstr ""
+"Ketika menggunakan tradisional set makro I<man>, sebuah bagian B<NAMA> benar "
+"tampak seperti ini:"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:140
+#, no-wrap
+msgid ""
+"CW<\\&.SH NAME\n"
+"foo \\e- program to do something>\n"
+msgstr ""
+"CW<\\&.SH NAMA\n"
+"foo \\e- aplikasi untuk melakukan sesuatu>\n"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:148
+msgid ""
+"Some manual pagers require the \\(oq\\e-\\(cq to be exactly as shown; B<"
+"%mandb%> is more tolerant, but for compatibility with other systems it is "
+"nevertheless a good idea to retain the backslash."
+msgstr ""
+"Beberapa halaman buku panduan membutuhkan \\(oq\\e-\\(cq sama seperti yang "
+"terlihat; B<%mandb%> yang lebih bertoleransi, tetapi untuk kompabilitas "
+"dengan sistem lain ini mungkin sebuah ide bagus untuk menjaga backslash."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:158
+msgid ""
+"On the left-hand side, there may be several names, separated by commas.  "
+"Names containing whitespace will be ignored to avoid pathological behaviour "
+"on certain ill-formed B<NAME> sections.  The text on the right-hand side is "
+"free-form, and may be spread over multiple lines.  If several features with "
+"different descriptions are being documented in the same manual page, the "
+"following form is therefore used:"
+msgstr ""
+"Di sisi kiri, mungkin ada beberapa nama, dipisahkan dengan koma. Nama berisi "
+"ruang kosong akan diabaikan untuk menghindari perilaku pathologikal di "
+"beberapa bagian B<NAMA> yang terbentuk buruk. Di sisi kanan mempunyai bentuk "
+"bebas, dan mungkin dipisahkan oleh beberapa baris. Jika beberapa fitur "
+"dengan beberapa deskripsi telah didokumentasikan dalam halaman buku panduan "
+"yang sama, bentuk berikut sebaiknya digunakan: "
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:166
+#, no-wrap
+msgid ""
+"CW<\\&.SH NAME\n"
+"foo, bar \\e- programs to do something\n"
+"\\&.br\n"
+"baz \\e- program to do nothing>\n"
+msgstr ""
+"CW<\\&.SH NAMA\n"
+"foo, bar \\e- aplikasi untuk melakukan sesuatu\n"
+"\\&.br\n"
+"baz \\e- aplikasi tidak melakukan apapun>\n"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:172
+msgid ""
+"(A macro which starts a new paragraph, like CW<.PP>, may be used instead of "
+"the break macro CW<.br>.)"
+msgstr ""
+"(Sebuah makro yang memulai sebuah paragraph baru, seperti CW<.PP>, dapat "
+"digunakan daripada makro break CW<.br>.)"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:178
+msgid ""
+"When using the BSD-derived I<mdoc> macro set, a correct B<NAME> section "
+"looks something like this:"
+msgstr ""
+"Ketika menggunakan set makro turunan BSD I<mdoc>, sebuah bagian B<NAMA> yang "
+"benar terlihat seperti ini:"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:185
+#, no-wrap
+msgid ""
+"CW<\\&.Sh NAME\n"
+"\\&.Nm foo\n"
+"\\&.Nd program to do something>\n"
+msgstr ""
+"CW<\\&.Sh NAMA\n"
+"\\&.Nm foo\n"
+"\\&.Nd aplikasi untuk melakukan sesuatu>\n"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:197
+msgid ""
+"There are several common reasons why whatis parsing fails.  Sometimes "
+"authors of manual pages replace \\(oq.SH NAME\\(cq with \\(oq.SH MYPROGRAM"
+"\\(cq, and then B<%mandb%> cannot find the section from which to extract the "
+"information it needs.  Sometimes authors include a NAME section, but place "
+"free-form text there rather than \\(oqname \\e- description\\(cq.  However, "
+"any syntax resembling the above should be accepted."
+msgstr ""
+"Ada beberapa sebab umum kenapa pengambilan whatis gagal. Kadang kadang "
+"pengarang dari halaman buku panduan mengganti \\(oq.SH NAMA\\(cq dengan "
+"\\(oq.SH APLIKASIKU\\(cq, dan kemudian B<%mandb%> tidak dapat menemukan "
+"bagian dari itu untuk mengekstrak informasi yang dibutuhkan. Kadang kala "
+"pengarang memasukan sebuah bagian NAMA, tetapi menempatkan teks bebas disana "
+"daripada \\(oqnama \\e- deskripsi\\(cq. Intinya, sintaks apapun yang "
+"menyerupai diatas seharusnya diterima."
+
+#. type: SH
+#: ../../man/man1/lexgrog.man1:202
+#, no-wrap
+msgid "NOTES"
+msgstr "CATATAN"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:207
+msgid ""
+"B<lexgrog> attempts to parse files containing .so requests, but will only be "
+"able to do so correctly if the files are properly installed in a manual page "
+"hierarchy."
+msgstr ""
+"B<lexgrog> mencoba mengambil berkas berisi .so yang diminta, tetapi hanya "
+"dapat melakukan itu dengan benar jika berkas secara benar terpasang di "
+"susunan halaman buku panduan."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:211
+msgid "The code used by B<lexgrog> to scan man pages was written by:"
+msgstr ""
+"Kode digunakan oleh B<lexgrog> untuk memindai halaman buku panduan ditulis "
+"oleh:"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:219
+msgid ""
+"Colin Watson wrote the current incarnation of the command-line front-end, as "
+"well as this man page."
+msgstr ""
+"Colin Watson menulis implementasi antar-muka dari baris perintah sekarang, "
+"dan juga halaman buku panduan ini."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:18
+msgid "%man% - an interface to the on-line reference manuals"
+msgstr "%man% - sebuah antar-muka ke referensi buku panduan online"
+
+#.  The general command line
+#.  The apropos command line
+#. type: Plain text
+#: ../../man/man1/man.man1:67
+#, fuzzy
+#| msgid ""
+#| "B<%man%> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--"
+#| "warnings>\\|[\\|=I<warnings>\\|]\\|] [\\|B<-R> I<encoding>\\|] [\\|B<-L> "
+#| "I<locale>\\|] [\\|B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> "
+#| "I<path>\\|] [\\|B<-S> I<list>\\|] [\\|B<-e> I<extension>\\|] [\\|B<-i>\\||"
+#| "\\|B<-I>\\|] [\\|B<--regex>\\||\\|B<--wildcard>\\|] [\\|B<--names-only>"
+#| "\\|] [\\|B<-a>\\|] [\\|B<-u>\\|] [\\|B<--no-subpages>\\|] [\\|B<-P> "
+#| "I<pager>\\|] [\\|B<-r> I<prompt>\\|] [\\|B<-7>\\|] [\\|B<-E> I<encoding>"
+#| "\\|] [\\|B<--no-hyphenation>\\|] [\\|B<--no-justification>\\|] [\\|B<-p> "
+#| "I<string>\\|] [\\|B<-t>\\|] [\\|B<-T>\\|[\\|I<device>\\|]\\|] [\\|B<-H>\\|"
+#| "[\\|I<browser>\\|]\\|] [\\|B<-X>\\|[\\|I<dpi>\\|]\\|] [\\|B<-Z>\\|] [\\|"
+#| "[\\|I<section>\\|] I<page>\\ .\\|.\\|.\\|]\\ .\\|.\\|."
+msgid ""
+"B<%man%> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--warnings>"
+"\\|[\\|=I<warnings>\\|]\\|] [\\|B<-R> I<encoding>\\|] [\\|B<-L> I<locale>"
+"\\|] [\\|B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<path>\\|] [\\|"
+"B<-S> I<list>\\|] [\\|B<-e> I<extension>\\|] [\\|B<-i>\\||\\|B<-I>\\|] [\\|"
+"B<--regex>\\||\\|B<--wildcard>\\|] [\\|B<--names-only>\\|] [\\|B<-a>\\|] [\\|"
+"B<-u>\\|] [\\|B<--no-subpages>\\|] [\\|B<-P> I<pager>\\|] [\\|B<-r> I<prompt>"
+"\\|] [\\|B<-7>\\|] [\\|B<-E> I<encoding>\\|] [\\|B<--no-hyphenation>\\|] [\\|"
+"B<--no-justification>\\|] [\\|B<-p> I<string>\\|] [\\|B<-t>\\|] [\\|B<-T>\\|"
+"[\\|I<device>\\|]\\|] [\\|B<-H>\\|[\\|I<browser>\\|]\\|] [\\|B<-X>\\|[\\|"
+"I<dpi>\\|]\\|] [\\|B<-Z>\\|] [\\|[\\|I<section>\\|] I<page>[.\\|I<section>"
+"\\|]\\ \\|.\\|.\\|.\\|]\\ .\\|.\\|.\\&"
+msgstr ""
+"B<%man%> [\\|B<-C> I<berkas>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--"
+"warnings>\\|[\\|=I<peringatan>\\|]\\|] [\\|B<-R> I<pengkodean>\\|] [\\|B<-L> "
+"I<lokal>\\|] [\\|B<-m> I<sistem>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<jalur>"
+"\\|] [\\|B<-S> I<daftar>\\|] [\\|B<-e> I<ekstensi>\\|] [\\|B<-i>\\||\\|B<-I>"
+"\\|] [\\|B<--regex>\\||\\|B<--wildcard>\\|] [\\|B<--names-only>\\|] [\\|B<-a>"
+"\\|] [\\|B<-u>\\|] [\\|B<--no-subpages>\\|][\\|B<-P> I<pager>\\|] [\\|B<-r> "
+"I<prompt>\\|] [\\|B<-7>\\|] [\\|B<-E> I<pengkodean>\\|] [\\|B<--no-"
+"hyphenation>\\|] [\\|B<-p> I<string>\\|] [\\|B<-t>\\|] [\\|B<-T>\\|[\\|"
+"I<perangkat>\\|]\\|] [\\|B<-H>\\|[\\|I<browser>\\|]\\|] [\\|B<-X>\\|[\\|"
+"I<dpi>\\|]\\|] [\\|B<-Z>\\|] [\\|[\\|I<bagian>\\|] I<halaman>\\ .\\|.\\|."
+"\\|]\\ .\\|.\\|."
+
+#.  The --global-apropos command line
+#. type: Plain text
+#: ../../man/man1/man.man1:75
+#, fuzzy
+#| msgid "B<%man%> B<-k> [\\|I<apropos> I<options>\\|] I<regexp> \\&.\\|.\\|."
+msgid "B<%man%> B<-k> [\\|I<apropos> I<options>\\|] I<regexp> \\&.\\|.\\|.\\&"
+msgstr "B<%man%> B<-k> [\\|I<apropos> I<pilihan>\\|] I<regexp> \\&.\\|.\\|."
+
+#.  The whatis command line
+#. type: Plain text
+#: ../../man/man1/man.man1:86
+#, fuzzy
+#| msgid ""
+#| "B<%man%> B<-K> [\\|B<-w>\\||\\|B<-W>\\|] [\\|B<-S> I<list>\\|] [\\|B<-i>"
+#| "\\||\\|B<-I>\\|] [\\|B<--regex>\\|] [\\|I<section>\\|] I<term>\\ .\\|.\\|."
+msgid ""
+"B<%man%> B<-K> [\\|B<-w>\\||\\|B<-W>\\|] [\\|B<-S> I<list>\\|] [\\|B<-i>\\||"
+"\\|B<-I>\\|] [\\|B<--regex>\\|] [\\|I<section>\\|] I<term>\\ .\\|.\\|.\\&"
+msgstr ""
+"B<%man%> B<-K> [\\|B<-w>\\||\\|B<-W>\\|] [\\|B<-S> I<daftar>\\|] [\\|B<-i>"
+"\\||\\|B<-I>\\|] [\\|B<--regex>\\|] [\\|I<bagian>\\|] I<term>\\.\\|.\\|."
+
+#.  The --local command line
+#. type: Plain text
+#: ../../man/man1/man.man1:94
+#, fuzzy
+#| msgid "B<%man%> B<-f> [\\|I<whatis> I<options>\\|] I<page> \\&.\\|.\\|."
+msgid "B<%man%> B<-f> [\\|I<whatis> I<options>\\|] I<page> \\&.\\|.\\|.\\&"
+msgstr "B<%man%> B<-f> [\\|I<whatis> I<pilihan>\\|] I<halaman> \\&.\\|.\\|."
+
+#.  The --where/--where-cat command line
+#. type: Plain text
+#: ../../man/man1/man.man1:127
+#, fuzzy
+#| msgid ""
+#| "B<%man%> B<-l> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--"
+#| "warnings>\\|[\\|=I<warnings>\\|]\\|] [\\|B<-R> I<encoding>\\|] [\\|B<-L> "
+#| "I<locale>\\|] [\\|B<-P> I<pager>\\|] [\\|B<-r> I<prompt>\\|] [\\|B<-7>"
+#| "\\|] [\\|B<-E> I<encoding>\\|] [\\|B<-p> I<string>\\|] [\\|B<-t>\\|] [\\|"
+#| "B<-T>\\|[\\|I<device>\\|]\\|] [\\|B<-H>\\|[\\|I<browser>\\|]\\|] [\\|B<-X>"
+#| "\\|[\\|I<dpi>\\|]\\|] [\\|B<-Z>\\|] I<file> \\&.\\|.\\|."
+msgid ""
+"B<%man%> B<-l> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--"
+"warnings>\\|[\\|=I<warnings>\\|]\\|] [\\|B<-R> I<encoding>\\|] [\\|B<-L> "
+"I<locale>\\|] [\\|B<-P> I<pager>\\|] [\\|B<-r> I<prompt>\\|] [\\|B<-7>\\|] "
+"[\\|B<-E> I<encoding>\\|] [\\|B<-p> I<string>\\|] [\\|B<-t>\\|] [\\|B<-T>\\|"
+"[\\|I<device>\\|]\\|] [\\|B<-H>\\|[\\|I<browser>\\|]\\|] [\\|B<-X>\\|[\\|"
+"I<dpi>\\|]\\|] [\\|B<-Z>\\|] I<file> \\&.\\|.\\|.\\&"
+msgstr ""
+"B<%man%> B<-l> [\\|B<-C> I<berkas>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--"
+"warnings>\\|[\\|=I<peringatan>\\|]\\|] [\\|B<-R> I<pengkodean>\\|] [\\|B<-L> "
+"I<lokal>\\|] [\\|B<-P> I<pager>\\|] [\\|B<-r> I<prompt>\\|] [\\|B<-7>\\|] "
+"[\\|B<-E> I<pengkodean>\\|] [\\|B<-p> I<string>\\|] [\\|B<-t>\\|] [\\|B<-T>"
+"\\|[\\|I<perangkat>\\|]\\|] [\\|B<-H>\\|[\\|I<browser>\\|]\\|] [\\|B<-X>\\|"
+"[\\|I<dpi>\\|]\\|] [\\|B<-Z>\\|] I<berkas> \\&.\\|.\\|."
+
+#.  The --catman command line
+#. type: Plain text
+#: ../../man/man1/man.man1:137
+#, fuzzy
+#| msgid ""
+#| "B<%man%> B<-w>\\||\\|B<-W> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>"
+#| "\\|] I<page> \\&.\\|.\\|."
+msgid ""
+"B<%man%> B<-w>\\||\\|B<-W> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] "
+"I<page> \\&.\\|.\\|.\\&"
+msgstr ""
+"B<%man%> B<-w>\\||\\|B<-W> [\\|B<-C> I<berkas>\\|] [\\|B<-d>\\|] [\\|B<-D>"
+"\\|] I<halaman> \\&.\\|.\\|."
+
+#.  --help and --version
+#. type: Plain text
+#: ../../man/man1/man.man1:147
+#, fuzzy
+#| msgid ""
+#| "B<%man%> B<-c> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] I<page> "
+#| "\\&.\\|.\\|."
+msgid ""
+"B<%man%> B<-c> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] I<page> \\&."
+"\\|.\\|.\\&"
+msgstr ""
+"B<%man%> B<-c> [\\|B<-C> I<berkas>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] "
+"I<halaman> \\&.\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:150
+msgid "B<%man%> [\\|B<-?V>\\|]"
+msgstr "B<%man%> [\\|B<-?hV>\\|]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:181
+#, fuzzy
+#| msgid ""
+#| "B<%man%> is the system's manual pager. Each I<page> argument given to B<"
+#| "%man%> is normally the name of a program, utility or function.  The "
+#| "I<manual page> associated with each of these arguments is then found and "
+#| "displayed. A I<section>, if provided, will direct B<%man%> to look only "
+#| "in that I<section> of the manual.  The default action is to search in all "
+#| "of the available I<sections> following a pre-defined order (\"%sections%"
+#| "\" by default, unless overridden by the B<SECTION> directive in I<"
+#| "%manpath_config_file%>), and to show only the first I<page> found, even "
+#| "if I<page> exists in several I<sections>."
+msgid ""
+"B<%man%> is the system's manual pager.  Each I<page> argument given to B<%man"
+"%> is normally the name of a program, utility or function.  The I<manual "
+"page> associated with each of these arguments is then found and displayed.  "
+"A I<section>, if provided, will direct B<%man%> to look only in that "
+"I<section> of the manual.  The default action is to search in all of the "
+"available I<sections> following a pre-defined order (\"%sections%\" by "
+"default, unless overridden by the B<SECTION> directive in I<"
+"%manpath_config_file%>), and to show only the first I<page> found, even if "
+"I<page> exists in several I<sections>."
+msgstr ""
+"B<%man%> adalah sistem halaman buku panduan. Setiap argumen I<halaman> "
+"diberikan ke B<%man%> adalah normalnya nama dari sebuah aplikasi, utility "
+"atau fungsi. I<halaman buku panduan> yang berasosiasi dengan setiap dari "
+"argumen ini kemudian ditemukan dan ditampilkan. Sebuah I<bagian>, jika "
+"disediakan, akan mendireksi B<%man%> untuk hanya melihat dalam I<bagian> "
+"dari buku panduan. Aksi baku adalah untuk mencari dalam semua I<bagian> yang "
+"tersedia, mengikuti sebuah urutan yang telah didefinisikan dan hanya "
+"memperlihatkan I<halaman> pertama yang ditemukan, bahkan jika I<halaman> "
+"telah ada dalam beberapa I<bagian>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:185
+msgid ""
+"The table below shows the I<section> numbers of the manual followed by the "
+"types of pages they contain."
+msgstr ""
+"Tabel dibawah memperlihatkan I<bagian> jumlah dari buku panduan diikuti oleh "
+"tipe dari halaman yang mereka isi."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:191
+#, no-wrap
+msgid "Executable programs or shell commands"
+msgstr "Aplikasi dapat dijalankan atau perintah shell"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:194
+#, no-wrap
+msgid "System calls (functions provided by the kernel)"
+msgstr "Panggilan sistem (fungsi yang disediakan oleh kernel)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:197
+#, no-wrap
+msgid "Library calls (functions within program libraries)"
+msgstr "Panggilan perpustakaan (fungsi yang ada dalam perpustakaan aplikasi)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:200
+#, fuzzy, no-wrap
+#| msgid "Special files (usually found in I</dev>)"
+msgid "Special files (usually found in I</dev\\/>)"
+msgstr "Berkas spesial (biasanya ditemukan dalam I</dev>"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:203
+#, no-wrap
+msgid "File formats and conventions eg I</etc/passwd>"
+msgstr "Format berkas dan konvensi contoh: I</etc/passwd>"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:206
+#, no-wrap
+msgid "Games"
+msgstr "Permainan"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:210
+#, fuzzy, no-wrap
+#| msgid ""
+#| "Miscellaneous (including macro packages and conventions),\n"
+#| "e.g. B<man>(7), B<groff>(7)"
+msgid ""
+"Miscellaneous (including macro packages and conventions),\n"
+"e.g.\\& B<man>(7), B<groff>(7)"
+msgstr ""
+"Miscellaneous (termasuk paket makro dan konvensi),\n"
+"e.g. B<man>(7), B<groff>(7)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:213
+#, no-wrap
+msgid "System administration commands (usually only for root)"
+msgstr "Perintah administrasi sistem (biasanya hanya untuk root)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:216
+#, no-wrap
+msgid "Kernel routines [\\|Non standard\\|]"
+msgstr "Rutinitas kernel [\\|Bukan standar\\|]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:222
+msgid "A manual I<page> consists of several sections."
+msgstr "Sebuah I<halaman> buku panduan terdiri dari beberapa bagian."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:242
+msgid ""
+"Conventional section names include B<NAME>, B<SYNOPSIS>, B<CONFIGURATION>, "
+"B<DESCRIPTION>, B<OPTIONS>, B<EXIT\\ STATUS>, B<RETURN\\ VALUE>, B<ERRORS>, "
+"B<ENVIRONMENT>, B<FILES>, B<VERSIONS>, B<CONFORMING\\ TO>, B<NOTES>, "
+"B<BUGS>, B<EXAMPLE>, B<AUTHORS>, and B<SEE\\ ALSO>."
+msgstr ""
+"Nama konvensional termasuk B<NAMA>, B<RINGKASAN>, B<KONFIGURASI>, "
+"B<DESKRIPSI>, B<PILIHAN>, B<STATUS\\ KELUAR>, B<NILAI\\ KEMBALI>, B<ERRORS>, "
+"B<LINGKUNGAN>, B<BERKAS>, B<VERSI>, B<KONFORM\\ KE>, B<CATATAN>, B<BUGS>, "
+"B<CONTOH>, B<PENGARANG>, dan B<LIHAT\\ JUGA>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:246
+msgid ""
+"The following conventions apply to the B<SYNOPSIS> section and can be used "
+"as a guide in other sections."
+msgstr ""
+"Konvensi berikut juga berlaku ke bagian B<RINGKASAN> dan dapat digunakan "
+"sebagai panduan dalam daerah lain."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:250
+#, no-wrap
+msgid "B<bold text>"
+msgstr "B<bold text>"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:252
+#, no-wrap
+msgid "type exactly as shown."
+msgstr "ketik tepat seperti yang terlihat."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:253
+#, no-wrap
+msgid "I<italic text>"
+msgstr "I<italic text>"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:255
+#, no-wrap
+msgid "replace with appropriate argument."
+msgstr "ganti dengan argumen yang sesuai."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:256
+#, no-wrap
+msgid "[\\|B<-abc>\\|]"
+msgstr "[\\|B<-abc>\\|]"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:258
+#, no-wrap
+msgid "any or all arguments within [ ] are optional."
+msgstr "apapun atau seluruh argumen didalam [ ] adalah opsional."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:259
+#, no-wrap
+msgid "B<-a\\|>|\\|B<-b>"
+msgstr "B<-a\\|>|\\|B<-b>"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:261
+#, no-wrap
+msgid "options delimited by | cannot be used together."
+msgstr "pilihan dipisahkan oleh | tidak dapat digunakan bersama."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:262
+#, no-wrap
+msgid "I<argument> .\\|.\\|."
+msgstr "I<argument> .\\|.\\|"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:264
+#, no-wrap
+msgid "I<argument> is repeatable."
+msgstr "I<argumen> adalah dapat diulang."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:265
+#, no-wrap
+msgid "[\\|I<expression>\\|] .\\|.\\|."
+msgstr "[\\|I<expression>\\|] .\\|.\\|."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:267
+#, no-wrap
+msgid "entire I<expression>\\ within [ ] is repeatable."
+msgstr "seluruh I<ekspresi>\\ didalam [ ] adalah dapat diulang."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:273
+msgid ""
+"Exact rendering may vary depending on the output device.  For instance, man "
+"will usually not be able to render italics when running in a terminal, and "
+"will typically use underlined or coloured text instead."
+msgstr ""
+"Merender secara tepat mungkin akan berbeda tergantung dari perangkat "
+"keluaran. Sebagai contoh, man biasanya tidak dapat merender italics ketika "
+"berjalan dalam sebuah terminal, dan biasanya menggunakan garis bawah atau "
+"teks berwarna."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:280
+msgid ""
+"The command or function illustration is a pattern that should match all "
+"possible invocations.  In some cases it is advisable to illustrate several "
+"exclusive invocations as is shown in the B<SYNOPSIS> section of this manual "
+"page."
+msgstr ""
+"Perintah atau ilustrasi fungsi adalah sebuah pola yang seharusnya cocok "
+"dengan seluruh kemungkinan pemanggilan. Dalam beberapa kasus ini dapat "
+"disarankan untuk mengilustrasikan beberapa pemanggilan eksklusif seperti "
+"terlihat dalam bagian B<RINGKASAN> dari halaman buku panduan ini."
+
+#. type: TP
+#: ../../man/man1/man.man1:281
+#, no-wrap
+msgid "B<%man%>I<\\ ls>"
+msgstr "B<%man%>I<\\ ls>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:287
+msgid "Display the manual page for the I<item> (program)  I<ls>."
+msgstr "Tampilkan halaman buku panduan untuk (aplikasi) I<item> I<ls>."
+
+#. type: TP
+#: ../../man/man1/man.man1:287
+#, fuzzy, no-wrap
+#| msgid "B<%man%\\ -f>I<\\ smail>"
+msgid "B<%man% >I<man>.I<7>"
+msgstr "B<%man%\\ -f>I<\\ smail>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:292
+#, fuzzy
+#| msgid "Display the manual page for the I<item> (program)  I<ls>."
+msgid "Display the manual page for macro package I<man> from section I<7>."
+msgstr "Tampilkan halaman buku panduan untuk (aplikasi) I<item> I<ls>."
+
+#. type: TP
+#: ../../man/man1/man.man1:292
+#, no-wrap
+msgid "B<%man%\\ -a>I<\\ intro>"
+msgstr "B<%man%\\ -a>I<\\ intro>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:298
+msgid ""
+"Display, in succession, all of the available I<intro> manual pages contained "
+"within the manual.  It is possible to quit between successive displays or "
+"skip any of them."
+msgstr ""
+"Tampilkan, dalam suksesi, seluruh dari I<intro> halaman buku panduan yang "
+"tersedia yang berada dalam buku panduan. Jika  memungkinkan berhenti "
+"diantara penampilan atau lewati beberapa dari itu."
+
+#. type: TP
+#: ../../man/man1/man.man1:298
+#, no-wrap
+msgid "B<%man% -t >I<alias >|I< lpr -Pps>"
+msgstr "B<%man% -t >I<alias >|I< lpr -Pps>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:315
+msgid ""
+"Format the manual page referenced by `I<alias>', usually a shell manual "
+"page, into the default B<troff> or B<groff> format and pipe it to the "
+"printer named I<ps>.  The default output for B<groff> is usually "
+"PostScript.  B<%man% --help> should advise as to which processor is bound to "
+"the B<-t> option."
+msgstr ""
+"Format halaman buku panduan direferensikan oleh `I<alias>', biasanya sebuah "
+"halaman buku panduan shell, kedalam format baku B<troff> atau B<groff> dan "
+"pipe itu ke pencetak bernama I<ps>. Keluaran baku untuk B<groff> biasanya "
+"PostScript. B<%man% --help> seharusnya disarankan prosesor mana yang terikat "
+"ke pilihan B<-t>."
+
+#. type: TP
+#: ../../man/man1/man.man1:315
+#, fuzzy, no-wrap
+#| msgid "B<%man%\\ -l\\ -T>I<dvi\\ ./foo.1x.gz>B<\\ E<gt>\\ >I<./foo.1x.dvi>"
+msgid "B<%man% -l -T>I<dvi ./foo.1x.gz>B< E<gt> >I<./foo.1x.dvi>"
+msgstr "B<%man%\\ -l\\ -T>I<dvi\\ ./foo.1x.gz>B<\\ E<gt>\\ >I<./foo.1x.dvi>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:331
+msgid ""
+"This command will decompress and format the nroff source manual page I<./"
+"foo.1x.gz> into a B<device independent (dvi)> file.  The redirection is "
+"necessary as the B<-T> flag causes output to be directed to B<stdout> with "
+"no pager.  The output could be viewed with a program such as B<xdvi> or "
+"further processed into PostScript using a program such as B<dvips.>"
+msgstr ""
+"Perintah ini akan mendekompres dan format sumber halaman buku panduan nroff "
+"I<./foo.1x.gz> kedalam sebuah B<perangkat independent (dvi)> berkas. "
+"Redireksi diperlukan karena B<-T> flag menyebabkan keluaran untuk diarahkan "
+"ke B<stdout> dengan tidak ada pager. Keluaran akan dilihat dengan sebuah "
+"aplikasi seperti B<xdvi> atau pemrosesan lebih lanjut kedalam PostScript "
+"menggunakan sebuah aplikasi seperti B<dvips.>"
+
+#. type: TP
+#: ../../man/man1/man.man1:331
+#, no-wrap
+msgid "B<%man%\\ -k>I<\\ printf>"
+msgstr "B<%man%\\ -k>I<\\ printf>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:339
+msgid ""
+"Search the short descriptions and manual page names for the keyword "
+"I<printf> as regular expression.  Print out any matches.  Equivalent to B<"
+"%apropos%>I<\\ printf>B<.>"
+msgstr ""
+"Cari deskripsi singkat dan nama halaman buku panduan untuk kata kunci "
+"I<printf> seperti ekspresi umum. Cetak semua kecocokan. Sama dengan B<"
+"%apropos%>I<\\ printf>B<.>"
+
+#. type: TP
+#: ../../man/man1/man.man1:339
+#, no-wrap
+msgid "B<%man%\\ -f>I<\\ smail>"
+msgstr "B<%man%\\ -f>I<\\ smail>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:346
+msgid ""
+"Lookup the manual pages referenced by I<smail> and print out the short "
+"descriptions of any found.  Equivalent to B<%whatis%>I<\\ smail>B<.>"
+msgstr ""
+"Cari halaman buku panduan direferensikan oleh I<smail> dan tampilkan "
+"deskripsi singkat dari apapun yang ditemukan. Sama dengan B<%whatis%>I<\\ "
+"smail>B<.>"
+
+#. type: SH
+#: ../../man/man1/man.man1:346
+#, no-wrap
+msgid "OVERVIEW"
+msgstr "OVERVIEW"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:352
+msgid ""
+"Many options are available to B<%man%> in order to give as much flexibility "
+"as possible to the user.  Changes can be made to the search path, section "
+"order, output processor, and other behaviours and operations detailed below."
+msgstr ""
+"Banyak pilihan tersedia ke B<%man> dengan tujuan untuk memberikan lebih "
+"banyak fleksibilitas sebanyak mungkin ke pengguna. Perubahan dapat dibuat di "
+"jalur pencarian, bagian pengurutan, prosesor keluaran, dan perilaku lain dan "
+"operasi detail dibawah."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:374
+msgid ""
+"If set, various environment variables are interrogated to determine the "
+"operation of B<%man%>.  It is possible to set the `catch all' variable "
+"$B<MANOPT> to any string in command line format with the exception that any "
+"spaces used as part of an option's argument must be escaped (preceded by a "
+"backslash).  B<%man%> will parse $B<MANOPT> prior to parsing its own command "
+"line.  Those options requiring an argument will be overridden by the same "
+"options found on the command line.  To reset all of the options set in "
+"$B<MANOPT>, B<-D> can be specified as the initial command line option.  This "
+"will allow %man% to `forget' about the options specified in $B<MANOPT> "
+"although they must still have been valid."
+msgstr ""
+"Jika diset, berbagai variabel lingkungan diinterogerasi untuk menentukan "
+"operasi dari B<%man%>. Ini memungkinkan untuk menset variabel `catch all' "
+"$B<MANOPT> ke string apapun dalam format baris perintah dengan eksepsi bahwa "
+"spasi apapun yang digunakan sebagai bagian dari sebuah pilihan argumen harus "
+"diberi karakter untuk keluar (diawali oleh sebuah backslash). B<%man%> akan "
+"mengambil $B<MANOPT>sebelum parsing baris perintahnya sendiri. Pilihan ini "
+"membutuhkan sebuah argumen yang akan dikesampingkan dengan pilihan yang sama "
+"yang ditemukan di baris perintah. Untuk mereset seluruh set pilihan dalam "
+"$B<MANOPT>, B<-D> dapat dispesifikasikan sebagai pilihan baris perintah "
+"inisial. Ini akan mengijinkan %man% untuk `forget' mengenai pilihan yang "
+"dispesifikasikan dalam $B<MANOPT> walaupun mereka tetap harus valid."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:395
+msgid ""
+"The manual pager utilities packaged as B<man-db> make extensive use of "
+"B<index> database caches.  These caches contain information such as where "
+"each manual page can be found on the filesystem and what its I<whatis> "
+"(short one line description of the man page) contains, and allow B<%man%> to "
+"run faster than if it had to search the filesystem each time to find the "
+"appropriate manual page.  If requested using the B<-u> option, B<man> will "
+"ensure that the caches remain consistent, which can obviate the need to "
+"manually run software to update traditional I<whatis> text databases."
+msgstr ""
+"Penggunaan halaman buku panduan dipaket sebagai B<man-db> membuat penggunaan "
+"ekstensif dari persediaan basis data B<index>. Persediaan ini berisi "
+"informasi seperti dimana setiap halaman buku panduan dapat ditemukan di "
+"sistem berkas dan apakah ini I<whatis> (deskripsi satu baris pendek dari "
+"halaman buku panduan) isi, dan mengijinkan B<man> untuk berjalan lebih cepat "
+"daripada jika ini harus mencaris sistem berkas setiap waktu untuk menemukan "
+"halaman buku panduan yang sesuai. Jika diminta menggunakan pilihan B<-u>, "
+"B<man> akan memastikan persediaan tetap konsisten, yang dapat meniadakan "
+"kebutuhan untuk menjalankan aplikasi secara manual buku panduan untuk "
+"memperbarui basis data teks I<whatis> tradisional."
+
+#. `User' manual page hierarchies will have
+#. .B index
+#. caches created `on the fly'.
+#. type: Plain text
+#: ../../man/man1/man.man1:417
+msgid ""
+"If B<%man%> cannot find a B<%mandb%> initiated B<index> database for a "
+"particular manual page hierarchy, it will still search for the requested "
+"manual pages, although file globbing will be necessary to search within that "
+"hierarchy.  If B<%whatis%> or B<%apropos%> fails to find an B<index> it will "
+"try to extract information from a traditional I<whatis> database instead."
+msgstr ""
+"Jika B<%man%> tidak dapat menemukan sebuah B<%mandb> diinisiasikan B<index> "
+"basis data untuk sebuah struktur halaman buku panduan tertentuk, ini akan "
+"tetap mencari untuk halaman buku panduan yang diminta, walaupun berkas "
+"globbing akan tetap dibutuhkan untuk mencari didalam struktur. Jika B<%whatis"
+"%> atau B<%apropos%> gagal untuk menemukan sebuah B<index> ini akan mencoba "
+"untuk mengekstrak informasi dari sebuah basis data tradisional I<whatis>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:437
+msgid ""
+"These utilities support compressed source nroff files having, by default, "
+"the extensions of B<.Z>, B<.z> and B<.gz>.  It is possible to deal with any "
+"compression extension, but this information must be known at compile time.  "
+"Also, by default, any cat pages produced are compressed using B<gzip>.  Each "
+"`global' manual page hierarchy such as I</usr/share/man> or I</usr/X11R6/"
+"man> may have any directory as its cat page hierarchy.  Traditionally the "
+"cat pages are stored under the same hierarchy as the man pages, but for "
+"reasons such as those specified in the B<File Hierarchy Standard (FHS)>, it "
+"may be better to store them elsewhere.  For details on how to do this, "
+"please read B<manpath>(5).  For details on why to do this, read the standard."
+msgstr ""
+"Utiliti ini mendukung kompressed berkas sumber nroff, secara baku, ekstensi "
+"dari B<.Z>, B<.z> dan B<.gz>. Ini memungkinkan untuk menghadapi dengan "
+"ekstensi kompresi apapun, tetapi informasi ini harus diketahui di waktu "
+"penyusunan. Juga, secara baku, halaman cat apapun dihasilkan adalah "
+"dikompress menggunakan B<gzip>. Setiap `global' halaman buku panduan "
+"hierarchy seperti I</usr/share/man> atau I</usr/X11R6/man> mungkin memiliki "
+"direktori apapun seperti struktur halaman cat nya. Secara tradisional "
+"halaman cat disimpan dibawah struktur yang sama seperti halaman buku "
+"panduan, tetapi untuk beberapa alasan seperti yang dispesifikasikan dalam "
+"B<Struktur Berkas Standar (FHS)>, ini mungkin lebih baik menyimpannya "
+"ditempat lain. Untuk lebih detailnya bagaimana melakukan ini, mohon baca "
+"B<manpath>(5). Untuk lebih detailnya kenapa melakukan hal ini, baca standar."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:450
+msgid ""
+"International support is available with this package.  Native language "
+"manual pages are accessible (if available on your system)  via use of "
+"I<locale> functions.  To activate such support, it is necessary to set "
+"either $B<LC_MESSAGES>, $B<LANG> or another system dependent environment "
+"variable to your language locale, usually specified in the B<POSIX 1003.1> "
+"based format:"
+msgstr ""
+"Dukungan internasional tersedia dalam paket ini. Bahasa lokal halaman buku "
+"panduan dapat diakses (jika tersedia melalui sistem anda) melalui penggunaan "
+"dari fungsi I<locale>. Untuk mengaktifkan dukungan seperti itu, ini "
+"diperlukan untuk menset baik $B<LC_MESSAGES>, $B<LANG> atau variabel sistem "
+"yang tergantung lainnya ke lokal bahasa anda, biasanya dispesifikasikan "
+"dalam dasar format B<POSIX 1003.1>:"
+
+#
+#.  Need a \c to make sure we don't get a space where we don't want one
+#. type: Plain text
+#: ../../man/man1/man.man1:461
+msgid ""
+"E<lt>I<language>E<gt>[\\|B<_>E<lt>I<territory>E<gt>\\|[\\|B<."
+">E<lt>I<character-set>E<gt>\\|[\\|B<,>E<lt>I<version>E<gt>\\|]\\|]\\|]"
+msgstr ""
+"E<lt>I<language>E<gt>[\\|B<_>E<lt>I<territory>E<gt>\\|[\\|B<.>E<lt>I<set "
+"karakter>E<gt>\\|[\\|B<,>E<lt>I<versi>E<gt>\\|]\\|]\\|]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:466
+msgid ""
+"If the desired page is available in your I<locale>, it will be displayed in "
+"lieu of the standard (usually American English) page."
+msgstr ""
+"Jika halaman yang diiginkan tersedia dalam I<local> anda, ini akan "
+"ditampilkan seketika dari halaman (biasanya Bahasa Inggris Amerika) standar."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:473
+msgid ""
+"Support for international message catalogues is also featured in this "
+"package and can be activated in the same way, again if available.  If you "
+"find that the manual pages and message catalogues supplied with this package "
+"are not available in your native language and you would like to supply them, "
+"please contact the maintainer who will be coordinating such activity."
+msgstr ""
+"Dukungan untuk pesan internasional katalog juga difeature dalam paket ini "
+"dan dapat diaktivasikan dalam cara sama, kembali jika tersedia. Anda "
+"menemukan halaman buku panduan dan pesan katalog diberikan dengan paket ini "
+"tidak tersedia dalam bahasa lokal dan anda ingin mensuplinya, hubungi "
+"maintainer yang akan mengkoordinasi aktivitas seperti itu."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:476
+msgid ""
+"For information regarding other features and extensions available with this "
+"manual pager, please read the documents supplied with the package."
+msgstr ""
+"Untuk informasi mengenai featur lain dan ekstensi yang tersedia dengan "
+"halaman buku panduan, mohon baca dokumen diberikan dengan paket."
+
+#. type: SH
+#: ../../man/man1/man.man1:476
+#, no-wrap
+msgid "DEFAULTS"
+msgstr "BAKU"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:496
+msgid ""
+"B<%man%> will search for the desired manual pages within the I<index> "
+"database caches. If the B<-u> option is given, a cache consistency check is "
+"performed to ensure the databases accurately reflect the filesystem.  If "
+"this option is always given, it is not generally necessary to run B<%mandb%> "
+"after the caches are initially created, unless a cache becomes corrupt.  "
+"However, the cache consistency check can be slow on systems with many manual "
+"pages installed, so it is not performed by default, and system "
+"administrators may wish to run B<%mandb%> every week or so to keep the "
+"database caches fresh.  To forestall problems caused by outdated caches, B<"
+"%man%> will fall back to file globbing if a cache lookup fails, just as it "
+"would if no cache was present."
+msgstr ""
+"B<%man%> akan mencari untuk halaman buku panduan yang diinginkan didalam "
+"persediaan basis data I<index>. Jika pilihan B<-u> diberikan, sebuah "
+"pemeriksaan konsistensi persediaan dilakukan untuk memastikan basis data "
+"secara akurat merefleksi sistem berkas. Jika pilihan ini selalu diberikan, "
+"iti tidak secara umum diperlukan untuk menjalankan B<%mandb%>  setelah "
+"persediaan dibuat pada awalnya, kecuali sebuah persediaan menjadi "
+"terkorupsi. Akan tetapi, pemeriksaan konsistensi persediaan dapat menjadi "
+"lambat di sistem dengan banyak halaman buku panduan terpasang, jadi ini "
+"tidak dilakukan secara baku, dan sistem administrator mungkin akan "
+"menjalankan B<%mandb%> setiap minggu atau seperti itu untuk menjaga "
+"persediaan basis data segar. Untuk mencegah masalah yang disebabkan oleh "
+"persediaan yang sudah tertinggal, B<%man%> akan kembali ke berkas globbing "
+"jika sebuah pencarian persediaan gagal, hanya seperti itu jika tidak ada "
+"persediaan yang ada."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:508
+msgid ""
+"Once a manual page has been located, a check is performed to find out if a "
+"relative preformatted `cat' file already exists and is newer than the nroff "
+"file.  If it does and is, this preformatted file is (usually) decompressed "
+"and then displayed, via use of a pager.  The pager can be specified in a "
+"number of ways, or else will fall back to a default is used (see option B<-"
+"P> for details).  If no cat is found or is older than the nroff file, the "
+"nroff is filtered through various programs and is shown immediately."
+msgstr ""
+"Sekali sebuah halaman buku panduan telah dilokasikan, sebuah pemeriksaan "
+"dilakukan untuk mencari tahu jika sebuah berkas `cat' relatif preformatted "
+"telah ada dan lebih baru dari berkas nroff. Jika ini dilakukan dan benar, "
+"berkas preformatted ini (biasanya) didekompress dan kemudian ditampilkan, "
+"dengan menggunakan  sebuah pager. Pager dapat dispesifikasikan dalam "
+"beberapa cara, atau yang akan kembali ke baku jika digunakan (lihat pilihan "
+"B<-P> untuk details). Jika tidak ada cat ditemukan atau lebih lama dari "
+"berkas nroff, nroff difilter melalui berbagai aplikasi dan ini diperlihatkan "
+"secara langsung."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:513
+msgid ""
+"If a cat file can be produced (a relative cat directory exists and has "
+"appropriate permissions), B<%man%> will compress and store the cat file in "
+"the background."
+msgstr ""
+"Jika sebuah berkas cat dapat dihasilkan (sebuag direktori cat relatif ada "
+"dan memiliki ijin yang sesuai), B<%man%> akan kompres dan simpan berkas cat "
+"dalam background."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:525
+#, fuzzy
+#| msgid ""
+#| "The filters are deciphered by a number of means. Firstly, the command "
+#| "line option B<-p> or the environment variable $B<MANROFFSEQ> is "
+#| "interrogated. If B<-p> was not used and the environment variable was not "
+#| "set, the initial line of the nroff file is parsed for a preprocessor "
+#| "string.  To contain a valid preprocessor string, the first line must "
+#| "resemble"
+msgid ""
+"The filters are deciphered by a number of means.  Firstly, the command line "
+"option B<-p> or the environment variable $B<MANROFFSEQ> is interrogated.  If "
+"B<-p> was not used and the environment variable was not set, the initial "
+"line of the nroff file is parsed for a preprocessor string.  To contain a "
+"valid preprocessor string, the first line must resemble"
+msgstr ""
+"Filter didechipered oleh sebuah angka dari rata rata. Pertama tama, pilihan "
+"baris perintah B<-p> atau variabel lingkungan $B<MANROFFSEQ> "
+"diinterogasikan. jika B<-p> belum digunakan dan variabel lingkungan tidak "
+"diset, baris inisial dari berkas nroff diambil untuk sebuah string "
+"preprosesor. Untuk mengisi sebuah preprosesor string, baris pertama harus "
+"merepresentasikan"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:528
+msgid "B<'\\e\"> E<lt>B<string>E<gt>"
+msgstr "B<'\\e\"> E<lt>B<string>E<gt>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:534
+msgid ""
+"where B<string> can be any combination of letters described by option B<-p> "
+"below."
+msgstr ""
+"dimana B<string> dapat berupa kombinasi apapun dari kata dideskripsikan oleh "
+"pilihan B<-p> dibawah."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:537
+msgid ""
+"If none of the above methods provide any filter information, a default set "
+"is used."
+msgstr ""
+"Jika tidak ada dari metode diatas menyediakan informasi penyaring apapun, "
+"sebuah set baku digunakan."
+
+#.  ********************************************************************
+#. type: Plain text
+#: ../../man/man1/man.man1:558
+msgid ""
+"A formatting pipeline is formed from the filters and the primary formatter "
+"(B<nroff> or [B<tg>]B<roff> with B<-t>)  and executed.  Alternatively, if an "
+"executable program I<mandb_nfmt> (or I<mandb_tfmt> with B<-t>)  exists in "
+"the man tree root, it is executed instead.  It gets passed the manual source "
+"file, the preprocessor string, and optionally the device specified with B<-"
+"T> or B<-E> as arguments."
+msgstr ""
+"Sebuah formating pipeli dibentuk dari filter dan penformat utama (B<nroff> "
+"atau [B<tg>]B<roff> dengan B<-t>) dan dijalankan. Secara alternatif, jika "
+"sebuah aplikasi executable I<mandb_nfmt> (atau I<mandb_tfmt> dengan B<-t>) "
+"ada dalam akar pohon man, ini lebih baik dijalankan. Ini dilewatkan ke "
+"berkas sumber buku panduan, string preprosesor, dan secara opsional "
+"perangkat yang dispesifikasikan dengan B<-T> atau B<-E> sebagai arguments."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:564
+msgid ""
+"Non argument options that are duplicated either on the command line, in "
+"$B<MANOPT>, or both, are not harmful.  For options that require an argument, "
+"each duplication will override the previous argument value."
+msgstr ""
+"Tidak ada pilihan argumen yang merupakan duplikasi baik di baris perintah, "
+"dalam $B<MANOPT>, atau baik, yang berbahaya. Untuk pilihan yang membutuhkan "
+"sebuah argumen, setiap penggandaan akan mengesampingkan nilai dari argumen "
+"sebelumnya."
+
+#. type: SS
+#: ../../man/man1/man.man1:564
+#, no-wrap
+msgid "General options"
+msgstr "Pilihan umum"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:582
+msgid ""
+"This option is normally issued as the very first option and resets B<%man"
+"%'s> behaviour to its default.  Its use is to reset those options that may "
+"have been set in $B<MANOPT>.  Any options that follow B<-D> will have their "
+"usual effect."
+msgstr ""
+"Pilihan ini secara normal diisukan sebagai pilihan paling pertama dan "
+"mereset B<%man%> perilaku ke bakunya. Ini digunakan untuk mereset pilihan "
+"tersebut yang mungkin telah diset dalam $B<MANOPT>. Pilihan apapun yang "
+"mengikuti B<-D> akan memiliki efek biasanya"
+
+#. type: TP
+#: ../../man/man1/man.man1:582
+#, fuzzy, no-wrap
+#| msgid "B<--warnings>[=I<warnings>]"
+msgid "B<--warnings>[=I<warnings\\/>]"
+msgstr "B<--warnigs>[=I<warnings>]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:594
+msgid ""
+"Enable warnings from I<groff>.  This may be used to perform sanity checks on "
+"the source text of manual pages.  I<warnings> is a comma-separated list of "
+"warning names; if it is not supplied, the default is \"mac\".  See the "
+"\\(lqWarnings\\(rq node in B<info groff> for a list of available warning "
+"names."
+msgstr ""
+"Aktifkan peringatan dari I<groff>. Ini mungkin digunakan untuk menjalankan "
+"pemeriksaan kesadaran dalam sumber teks dari halaman buku panduan. "
+"I<peringatan> adalah daftar dipisahkan dengan koma dari nama peringatan; "
+"jika tidak disupli, baku adalah \"mac\"."
+
+#. type: SS
+#: ../../man/man1/man.man1:594
+#, no-wrap
+msgid "Main modes of operation"
+msgstr "Mode operasi utama"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:603
+#, fuzzy
+#| msgid ""
+#| "Equivalent to B<%whatis%>.  Display a short description from the manual "
+#| "page, if available. See B<%whatis%>(1)  for details."
+msgid ""
+"Equivalent to B<%whatis%>.  Display a short description from the manual "
+"page, if available.  See B<%whatis%>(1)  for details."
+msgstr ""
+"Sama dengan B<%whatis%>. Tampilkan sebuah deskripsi singkat dari halaman "
+"buku panduan, jika tersedia. Lihat B<%whatis%>(1) untuk details."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:612
+msgid ""
+"Equivalent to B<%apropos%>.  Search the short manual page descriptions for "
+"keywords and display any matches.  See B<%apropos%>(1)  for details."
+msgstr ""
+"Sama dengan B<%apropos%>. Cari deskripsi halaman buku panduan pendek untuk "
+"kata kunci dan tampilkan kecocokan apapun. Lihat B<%apropos%>(1) untuk "
+"lengkapnya."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:622
+msgid ""
+"Search for text in all manual pages.  This is a brute-force search, and is "
+"likely to take some time; if you can, you should specify a section to reduce "
+"the number of pages that need to be searched.  Search terms may be simple "
+"strings (the default), or regular expressions if the B<--regex> option is "
+"used."
+msgstr ""
+"Cari teks dalam seluruh halaman manual. Ini adalah pencarian secara paksa, "
+"dan biasanya memerlukan waktu cukup lama; jika anda dapat, anda seharusnya "
+"menspesifikasikan sebuah bagian untuk mengurangi jumlah dari halam yang akan "
+"dicari. Kata pencarian mungkin dapat berupa kata sederhana (baku), atau "
+"ekspresi umum jika opsi B<--regex> digunakan."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:628
+msgid ""
+"Note that this searches the I<sources> of the manual pages, not the rendered "
+"text, and so may include false positives due to things like comments in "
+"source files.  Searching the rendered text would be much slower."
+msgstr ""
+
+#.  Compressed nroff source files with a supported compression
+#.  extension will be decompressed by man prior to being displaying via the
+#.  usual filters.
+#. type: Plain text
+#: ../../man/man1/man.man1:644
+msgid ""
+"Activate `local' mode.  Format and display local manual files instead of "
+"searching through the system's manual collection.  Each manual page argument "
+"will be interpreted as an nroff source file in the correct format.  No cat "
+"file is produced.  If '-' is listed as one of the arguments, input will be "
+"taken from stdin.  When this option is not used, and man fails to find the "
+"page required, before displaying the error message, it attempts to act as if "
+"this option was supplied, using the name as a filename and looking for an "
+"exact match."
+msgstr ""
+"Aktivasikan mode `lokal'. Format dan tampilkan berkas buku panduan lokal "
+"daripada mencari melalui koleksi sistem buku panduan. Setiap argumen halaman "
+"buku panduan akan diinterpretasikan sebuah sebuah berkas sumber nroff dalam "
+"format yang benar. Tidak ada berkas cat dihasilkan. Jika `-' ini didaftar "
+"sebagai salah satu dari argumen, masukan akan diambil dari stdin. Ketika "
+"pilihan ini tidak digunakan, dan man gagal untuk menemukan halaman yang "
+"dibutuhkan, sebelum menampilkan pesan error, ini mencoba untuk berlaku "
+"seperti jika pilihan ini telah diberikan menggunakan nama sebagai sebuah "
+"nama berkas dan mencari untuk sebuah pencocokan tepat."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:648
+msgid ""
+"Don't actually display the manual pages, but do print the location(s) of the "
+"source nroff files that would be formatted."
+msgstr ""
+"Jangan secara aktual menampilkan halaman buku panduan, tetapi lakukan "
+"pencetakan lokasi dari berkas sumber nroff yang akan diformat."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:653
+msgid ""
+"Don't actually display the manual pages, but do print the location(s) of the "
+"cat files that would be displayed.  If -w and -W are both specified, print "
+"both separated by a space."
+msgstr ""
+"Jangan secara aktual menampilkan halaman buku panduan, tetapi lakukan "
+"pencetakan lokasi dari berkas cat yang akan ditampilkan. Jika -w dan -W "
+"keduanya dispesifikasikan, cetak keduanya dipisahkan oleh sebuah spasi."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:658
+msgid ""
+"This option is not for general use and should only be used by the B<%catman"
+"%> program."
+msgstr ""
+"Pilihan in tidak untuk penggunaan umum dan seharusnya hanya digunakan oleh "
+"aplikasi B<%catman%>."
+
+#. type: TP
+#: ../../man/man1/man.man1:658
+#, no-wrap
+msgid "B<-R\\ >I<encoding>,\\ B<--recode>=I<encoding>"
+msgstr "B<-R\\ >I<pengkodean>,\\ B<--recode>=I<pengkodean>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:670
+msgid ""
+"Instead of formatting the manual page in the usual way, output its source "
+"converted to the specified I<encoding>.  If you already know the encoding of "
+"the source file, you can also use B<%manconv%>(1)  directly.  However, this "
+"option allows you to convert several manual pages to a single encoding "
+"without having to explicitly state the encoding of each, provided that they "
+"were already installed in a structure similar to a manual page hierarchy."
+msgstr ""
+"Daripada memformat halaman buku panduan dalam cara biasa, keluarkan "
+"sumbernya yang akand diubah ke I<pengkodean> yang telah dispesifikasikan. "
+"Jika anda telah tahu pengkodean dari berkas sumber, anda juga dapat "
+"menggunakan B<%manconv%>(1) secara langsung. Akan tetapi, pilihan ini "
+"mengijinkan anda untuk mengubah beberapa halaman buku panduan ke sebuah "
+"pengkodean tunggal tanpa harus menyatakan secara eksplisit keadaan dari "
+"setiap pengkodean, dengan kondisi bahwa mereka telah terpasang dalam sebuah "
+"struktur yang sama ke sebuah struktur halaman buku panduan."
+
+#. type: SS
+#: ../../man/man1/man.man1:670
+#, no-wrap
+msgid "Finding manual pages"
+msgstr "Mencari halaman buku panduan"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:708
+msgid ""
+"If this system has access to other operating system's manual pages, they can "
+"be accessed using this option.  To search for a manual page from NewOS's "
+"manual page collection, use the option B<-m> B<NewOS>."
+msgstr ""
+"Jika sistem ini memiliki akses ke halaman buku panduan sistem operasi lain, "
+"mereka dapat diakses menggunakan pilihan ini. Untuk mencari sebuah halaman "
+"buku panduan dari koleksi halaman buku panduan OS-Baru, gunakan pilihan B<-"
+"m> B<OS-Baru>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:719
+msgid ""
+"The I<system> specified can be a combination of comma delimited operating "
+"system names.  To include a search of the native operating system's manual "
+"pages, include the system name B<man> in the argument string.  This option "
+"will override the $B<SYSTEM> environment variable."
+msgstr ""
+"I<sistem> yang dispesifikasikan dapat berupa sebuah kombinasi dari nama "
+"sistem operasi dipisahkan oleh koma. Untuk memasukan sebuah pencarian dari "
+"halaman buku panduan sistem operasi lkal, masukan nama sistem B<man> dalam "
+"string argumen. Pilihan ini akan mengesampingkan variabel lingkungan "
+"$B<SYSTEM>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:733
+msgid ""
+"Specify an alternate manpath to use.  By default, B<%man%> uses B<%manpath%> "
+"derived code to determine the path to search.  This option overrides the "
+"$B<MANPATH> environment variable and causes option B<-m> to be ignored."
+msgstr ""
+"Spesifikasikan sebuah jalur man alternatif untuk digunakan. Secara baku, B<"
+"%man%> menggunakan B<%manpath%> kode turunan untuk menentukan jalur "
+"pencarian. Pilihan ini mengesampingkan variabel lingkungan $B<MANPATH> dan "
+"dapat menyebabkan pilihan B<-m> untuk diabaikan."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:740
+msgid ""
+"A path specified as a manpath must be the root of a manual page hierarchy "
+"structured into sections as described in the man-db manual (under \"The "
+"manual page system\").  To view manual pages outside such hierarchies, see "
+"the B<-l> option."
+msgstr ""
+"Sebuah jalur dispesifikasikan sebagai sebuah jalur buku panduan harus berupa "
+"akar dari struktur halaman buku panduan terstruktur dalam daerah seperti "
+"dijelaskan dalam buku panduan man-db (dibawah \"Halaman buku panduan sistem"
+"\"). Untuk melihat halaman buku panduan diluar dari struktur seperti itu, "
+"lihat pilihan B<-l>."
+
+#. type: TP
+#: ../../man/man1/man.man1:740
+#, no-wrap
+msgid "B<-S\\ >I<list>,\\ B<-s\\ >I<list>,\\ B<--sections=>I<list>"
+msgstr "B<-S\\ >I<daftar>,\\ B<-s\\ >I<daftar>,\\ B<--sections=>I<daftar>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:750
+msgid ""
+"List is a colon- or comma-separated list of `order specific' manual sections "
+"to search.  This option overrides the $B<MANSECT> environment variable.  "
+"(The B<-s> spelling is for compatibility with System V.)"
+msgstr ""
+"Daftar adalah sebuah kolon- atau daftar dipisahkan oleh koma dari daerah "
+"buku panduan `order specific' untuk mencari. Pilihan ini mengesampingkan "
+"variabel lingkungan $B<MANSECT> (Penyebutan B<-s> adalah untuk kompabilitas "
+"dengan Sistem V.)"
+
+#. type: TP
+#: ../../man/man1/man.man1:750
+#, no-wrap
+msgid "B<-e\\ >I<sub-extension>,\\ B<--extension=>I<sub-extension>"
+msgstr "B<-e\\ >I<sub-ekstensi>,\\ B<--extension=>I<sub-extension>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:784
+msgid ""
+"Some systems incorporate large packages of manual pages, such as those that "
+"accompany the B<Tcl> package, into the main manual page hierarchy.  To get "
+"around the problem of having two manual pages with the same name such as "
+"B<exit>(3), the B<Tcl> pages were usually all assigned to section B<l>.  As "
+"this is unfortunate, it is now possible to put the pages in the correct "
+"section, and to assign a specific `extension' to them, in this case, "
+"B<exit>(3tcl).  Under normal operation, B<%man%> will display B<exit>(3)  in "
+"preference to B<exit>(3tcl).  To negotiate this situation and to avoid "
+"having to know which section the page you require resides in, it is now "
+"possible to give B<%man%> a I<sub-extension> string indicating which package "
+"the page must belong to.  Using the above example, supplying the option B<-e"
+"\\ tcl> to B<%man%> will restrict the search to pages having an extension of "
+"B<*tcl>."
+msgstr ""
+"Beberapa sistem menggunakan paket besar dari halaman buku panduan, seperti "
+"yang menyertai paket B<Tcl>, kedalam hierarki halaman buku panduan utama. "
+"Untuk menyelesaikan masalah dari memiliki dua halaman buku panduan dengan "
+"nama sama seperti B<exit>(3), halaman B<Tcl> biasanya semuanya dilengkapi "
+"dengan bagian B<l>. Seperti ini disayangkan, ini sekarang memungkinkan untuk "
+"menempatkan halaman dalam bagian yang benar, dan menempatkan spesifik "
+"`ekstensi' ke halaman tersebut, dalam kasus ini, B<exit>(3tcl). Dalam "
+"operasi normal, B<%man%> akan menampilkan B<exit>(3) dalam kesukaan ke "
+"B<exit>(3tcl). Untuk menegosiasikan situasi ini dan menghindari harus "
+"mengetahui halaman bagian mana yang membutuhkan tempat dimana, sekarang "
+"memungkinkan untuk memberikan B<%man%> sebuah I<sub-extension> string "
+"menandakan paket mana halaman tersebut harus berada. Menggunakan contoh "
+"diatas, diberikan pilihan B<-e\\ tcl> ke B<%man%> akan membatasi pencarian "
+"halaman memiliki sebuah ekstensi dari B<*tcl>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:788
+msgid "Ignore case when searching for manual pages.  This is the default."
+msgstr ""
+"Abaikan besar huruf ketika mencari untuk halaman buku panduan. Ini adalah "
+"baku."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:791
+msgid "Search for manual pages case-sensitively."
+msgstr "Cari untuk halaman buku panduan dengan mempertimbangkan besar huruf."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:801
+msgid ""
+"Show all pages with any part of either their names or their descriptions "
+"matching each I<page> argument as a regular expression, as with "
+"B<apropos>(1).  Since there is usually no reasonable way to pick a \"best\" "
+"page when searching for a regular expression, this option implies B<-a>."
+msgstr ""
+"Tampilkan seluruh halaman dengan bagian apapun baik namanya atau "
+"deskripsinya yang cocok dengan setiap argumen I<halaman> sebagai sebuah "
+"ekspresi umum, sama seperti dengan B<apropos>(1). Karena disana biasanya "
+"tidak ada cara yang masuk akal untuk memilih sebuah halaman \"terbaik\" "
+"ketika mencari untuk sebuah ekspresi umum, pilihan ini mengimplikasi B<-a>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:816
+msgid ""
+"Show all pages with any part of either their names or their descriptions "
+"matching each I<page> argument using shell-style wildcards, as with "
+"B<apropos>(1)  B<--wildcard>.  The I<page> argument must match the entire "
+"name or description, or match on word boundaries in the description.  Since "
+"there is usually no reasonable way to pick a \"best\" page when searching "
+"for a wildcard, this option implies B<-a>."
+msgstr ""
+"Tampilkan seluruh halaman dengan bagian apapun baik dari namanya atau "
+"deskripsinya yang cocok untuk setiap argumen I<halaman> menggunakan karakter "
+"bebas gaya shell, sama seperti B<apropos>(1) B<--wildcard>. Argumen "
+"I<halaman> harus cocok dengan seluruh nama dan deskripsi, atau cocok di "
+"batas kata dalam deskripsi. Karena disana biasanya tidak ada cara yang masuk "
+"akal untuk mengambil sebuah halaman \"terbaik\" ketika mencari untuk sebuah "
+"karakter bebas, pilihan ini mengimplikasikan -B<-a>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:825
+msgid ""
+"If the B<--regex> or B<--wildcard> option is used, match only page names, "
+"not page descriptions, as with B<whatis>(1).  Otherwise, no effect."
+msgstr ""
+"Jika pilihan B<--regex> atau B<--wildcard> digunakan, hanya cocok nama "
+"halaman, bukan deskripsi halaman, sama dengan B<whatis>(1). Jika tidak, "
+"tidak ada efek."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:833
+msgid ""
+"By default, B<%man%> will exit after displaying the most suitable manual "
+"page it finds.  Using this option forces B<%man%> to display all the manual "
+"pages with names that match the search criteria."
+msgstr ""
+"Secara baku, B<%man%> akan keluar setelah menampilkan halaman buku panduan "
+"paling sesuai dari yang ditemukan. Menggunakan pilihan ini memaksa B<%man%> "
+"untuk menampilkan seluruh halaman buku panduan dengan nama yang cocok dengan "
+"kriteria pencarian."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:842
+msgid ""
+"This option causes B<%man%> to perform an `inode level' consistency check on "
+"its database caches to ensure that they are an accurate representation of "
+"the filesystem.  It will only have a useful effect if B<%man%> is installed "
+"with the setuid bit set."
+msgstr ""
+"Pilihan ini menyebabkan B<%man%> untuk melakukan sebuah pemeriksaan "
+"konsistensi `tingkat inode' di persediaan basis datanya untuk memastikan "
+"bahwa mereka adalah representasi akurat dari sistem berkas. Ini hanya akan "
+"memiliki efek berguna jika B<%man%> dipasang dengan setuid bit diset."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:854
+msgid ""
+"By default, B<%man%> will try to interpret pairs of manual page names given "
+"on the command line as equivalent to a single manual page name containing a "
+"hyphen or an underscore.  This supports the common pattern of programs that "
+"implement a number of subcommands, allowing them to provide manual pages for "
+"each that can be accessed using similar syntax as would be used to invoke "
+"the subcommands themselves.  For example:"
+msgstr ""
+"Secara baku, B<%man%> akan mencoba menginterpretasikan pasangan dari nama "
+"halaman manual yang diberikan di baris perintah sama dengan sebuah halaman "
+"manual tunggal berisi sebuah hyphen. Ini didukung dengan pola sama dari "
+"aplikasi yang mengimplementasikan jumlah dari perintah bawah, mengijinkannya "
+"untuk menyediakan halaman manual yang dapat diakses menggunakan sintaks "
+"serupa seperti yang digunakan untuk menjalankan perintah bawah itu sendiri. "
+"Sebagai contoh:"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:863
+msgid "To disable this behaviour, use the B<--no-subpages> option."
+msgstr "Untuk menonaktifkan perilaku ini, gunakan pilihan B<--no-subpages>."
+
+#. type: SS
+#: ../../man/man1/man.man1:870
+#, no-wrap
+msgid "Controlling formatted output"
+msgstr "Mengotronl keluaran terformat"
+
+#. type: TP
+#: ../../man/man1/man.man1:871
+#, no-wrap
+msgid "B<-P\\ >I<pager>,\\ B<--pager=>I<pager>"
+msgstr "B<-P\\ >I<pager>,\\ B<--pager=>I<pager>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:892
+#, fuzzy
+#| msgid ""
+#| "Specify which output pager to use.  By default, B<%man%> uses B<%pager"
+#| "%>.  This option overrides the $B<MANPAGER> environment variable, which "
+#| "in turn overrides the $B<PAGER> environment variable.  It is not used in "
+#| "conjunction with B<-f> or B<-k>."
+msgid ""
+"Specify which output pager to use.  By default, B<%man%> uses B<%pager%>, "
+"falling back to B<%cat%> if B<%pager%> is not found or is not executable.  "
+"This option overrides the $B<MANPAGER> environment variable, which in turn "
+"overrides the $B<PAGER> environment variable.  It is not used in conjunction "
+"with B<-f> or B<-k>."
+msgstr ""
+"Spesifikasikan pager keluaran mana yang akan digunakan, Secara baku, B<%man"
+"%> menggunakan B<%pager%>. Pilihan ini mengesampingkan variabel lingkungan "
+"$B<MANPAGER>, yang jadinya mengesampingkan variabel lingkungan $B<PAGER>. "
+"Ini tidak digunakan dengan konjungsi dengan B<-f> atau B<-k>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:898 ../../man/man1/man.man1:1259
+msgid ""
+"The value may be a simple command name or a command with arguments, and may "
+"use shell quoting (backslashes, single quotes, or double quotes).  It may "
+"not use pipes to connect multiple commands; if you need that, use a wrapper "
+"script, which may take the file to display either as an argument or on "
+"standard input."
+msgstr ""
+"The value may be a simple command name or a command with arguments, and may "
+"use shell quoting (backslashes, single quotes, or double quotes).  It may "
+"not use pipes to connect multiple commands; if you need that, use a wrapper "
+"script, which may take the file to display either as an argument or on "
+"standard input."
+
+#. type: TP
+#: ../../man/man1/man.man1:898
+#, no-wrap
+msgid "B<-r\\ >I<prompt>,\\ B<--prompt=>I<prompt>"
+msgstr "B<-r\\ >I<prompt>,\\ B<--prompt=>I<prompt>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:906
+msgid ""
+"If a recent version of B<less> is used as the pager, B<%man%> will attempt "
+"to set its prompt and some sensible options.  The default prompt looks like"
+msgstr ""
+"Jika sebuah versi baru dari B<less> digunakan sebagai sebuah pager, B<%man%> "
+"akan mencoba untuk menset promptnya dan beberapa pilihan. Prompt baku akan "
+"tampak "
+
+#. type: Plain text
+#: ../../man/man1/man.man1:910
+msgid "B<\\ Manual page>I<\\ name>B<(>I<sec>B<)>B<\\ line>I<\\ x>"
+msgstr "B<\\ Halaman buku panduan>I<\\ nama>B<(>I<sec>B<)>B<\\ baris>I<\\ x>"
+
+#. The default options are
+#. .BR \-six8 .
+#. The actual default will depend on your chosen
+#. .BR locale .
+#. type: Plain text
+#: ../../man/man1/man.man1:925
+msgid ""
+"where I<name> denotes the manual page name, I<sec> denotes the section it "
+"was found under and I<x> the current line number.  This is achieved by using "
+"the $B<LESS> environment variable."
+msgstr ""
+"dimana I<nama> menyatakan nama halaman buku panduan, I<sec> menyatakan "
+"bagian itu yang ditemukan dibawah dan I<x> nomor baris sekarang. Ini dicapai "
+"dengan menggunakan variabel lingkungan $B<LESS>."
+
+#. You may need to do this if your
+#. version of
+#. .B less
+#. rejects the default options or if you prefer a different prompt.
+#. type: Plain text
+#: ../../man/man1/man.man1:938
+msgid ""
+"Supplying B<-r> with a string will override this default.  The string may "
+"contain the text B<$MAN_PN> which will be expanded to the name of the "
+"current manual page and its section name surrounded by `(' and `)'.  The "
+"string used to produce the default could be expressed as"
+msgstr ""
+"Memberikan B<-r> dengan sebuah string akan mengesampingkan perilaku baku "
+"ini. String mungkin berisi teks B<$MAN_PN> yang akan diekspan ke nama dari "
+"halama buku panduan sekarang dan nama bagiannya yang dilingkupi oleh `(' dan "
+"`)'. String digunakan untuk menghasilkan baku dapat diekspresikan sebagai"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:940
+msgid "B<\\e\\ Manual\\e\\ page\\e\\ \\e$MAN_PN\\e\\ ?ltline\\e\\ %lt?L/%L.:>"
+msgstr "B<\\e\\ Manual\\e\\ page\\e\\ \\e$MAN_PN\\e\\ ?ltline\\e\\ %lt?L/%L.:>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:942
+msgid "B<byte\\e\\ %bB?s/%s..?\\e\\ (END):?pB\\e\\ %pB\\e\\e%..>"
+msgstr "B<byte\\e\\ %bB?s/%s..?\\e\\ (AKHIR):?pB\\e\\ %pB\\e\\e%..>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:944
+msgid "B<(press h for help or q to quit)>"
+msgstr "B<(press h for help or q to quit)>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:959
+msgid ""
+"It is broken into three lines here for the sake of readability only.  For "
+"its meaning see the B<less>(1)  manual page.  The prompt string is first "
+"evaluated by the shell.  All double quotes, back-quotes and backslashes in "
+"the prompt must be escaped by a preceding backslash.  The prompt string may "
+"end in an escaped $ which may be followed by further options for less.  By "
+"default B<%man%> sets the B<-ix8> options."
+msgstr ""
+"Ini terpecah kedalam dua baris disini untuk memudahkan pembacaan saja. Untuk "
+"artinya lihat halaman buku panduan B<less>(1). Prompt string pertama "
+"dievaluasi oleh shell. Semua double quotes, back-quotes dan backslashes "
+"dalam prompt harus diberi karakter untuk keluar dengan sebuah awalan "
+"backslash. Prompt string mungkin berakhir dalam sebuah karakter untuk keluar "
+"$ yang mungkin diikuti oleh pilihan selanjutnya untuk less. Secara baku B<"
+"%man%> menset pilihan B<-ix8>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:964
+msgid ""
+"The $B<MANLESS> environment variable described below may be used to set a "
+"default prompt string if none is supplied on the command line."
+msgstr ""
+"The $B<MANLESS> environment variable described below may be used to set a "
+"default prompt string if none is supplied on the command line."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:990
+msgid ""
+"When viewing a pure I<ascii>(7)  manual page on a 7 bit terminal or terminal "
+"emulator, some characters may not display correctly when using the "
+"I<latin1>(7)  device description with B<GNU> B<nroff>.  This option allows "
+"pure I<ascii> manual pages to be displayed in I<ascii> with the I<latin1> "
+"device.  It will not translate any I<latin1> text.  The following table "
+"shows the translations performed: some parts of it may only be displayed "
+"properly when using B<GNU> B<nroff>'s I<latin1>(7)  device."
+msgstr ""
+"Ketika melihat sebuah halaman buku panduan murni I<ascii>(7) dalam sebuah "
+"terminal 7 bit atau terminal emulator, beberapa karakter mungkin tidak "
+"tampil secara benar ketika menggunakan I<latin1>(7) perangkat deskripsi "
+"dengan B<GNU> B<nroff>. Pilihan ini mengijinkan halaman buku panduan murni "
+"I<ascii> ditampilkan dalam I<ascii> dengan perangkat I<latin1>. Ini tidak "
+"akan menerjemahkan teks I<latin1> apapun. Tabel berikut menampilkan "
+"penerjemahan yang dilakukan: beberapa bagian dari itu mungkin hanya "
+"ditampilkan secara benar ketika menggunakan perangkat B<GNU> B<nroff> "
+"I<latin1>(7)."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:999
+#, no-wrap
+msgid "Description"
+msgstr "Description"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:999
+#, no-wrap
+msgid "Octal"
+msgstr "Octal"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:1003
+#, no-wrap
+msgid "continuation hyphen"
+msgstr "kelanjutan hyphen"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:1006
+#, no-wrap
+msgid "bullet (middle dot)"
+msgstr "bullet (tengah titik)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:1009
+#, no-wrap
+msgid "acute accent"
+msgstr "acute accent"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:1012
+#, no-wrap
+msgid "multiplication sign"
+msgstr "perkalian tanda"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1034
+msgid ""
+"If the I<latin1> column displays correctly, your terminal may be set up for "
+"I<latin1> characters and this option is not necessary.  If the I<latin1> and "
+"I<ascii> columns are identical, you are reading this page using this option "
+"or B<%man%> did not format this page using the I<latin1> device "
+"description.  If the I<latin1> column is missing or corrupt, you may need to "
+"view manual pages with this option."
+msgstr ""
+"jika kolom I<latin1> tampil secara benar, terminal anda mungkin "
+"dikonfigurasi untuk karakter I<latin1> dan pilihan ini tidak diperlukan. "
+"Jika I<latin1> dan I<ascii> kolom identik, anda membaca halaman ini "
+"menggunakan pilihan ini atau B<%man%> tidak memformat halaman ini "
+"menggunakan deskripsi perangkat I<latin1>. Jika I<latin1> kolom hilang atau "
+"terkorupsi, anda mungkin butuh untuk melihat halaman buku panduan dengan "
+"pilihan ini."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1045
+msgid ""
+"This option is ignored when using options B<-t>, B<-H>, B<-T>, or B<-Z> and "
+"may be useless for B<nroff> other than B<GNU's>."
+msgstr ""
+"Pilihan ini diabaikan ketika menggunakan pilihan B<-t>, B<-H>, B<-T>, atau "
+"B<-Z> dan mungkin tidak berguna untuk B<nroff> selain dari B<GNU's>."
+
+#. type: TP
+#: ../../man/man1/man.man1:1045
+#, no-wrap
+msgid "B<-E\\ >I<encoding>,\\ B<--encoding>=I<encoding>"
+msgstr "B<-E\\ >I<pengkodean>,\\ B<--encoding>=I<pengkodean>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1056
+msgid ""
+"Generate output for a character encoding other than the default.  For "
+"backward compatibility, I<encoding> may be an B<nroff> device such as "
+"B<ascii>, B<latin1>, or B<utf8> as well as a true character encoding such as "
+"B<UTF-8>."
+msgstr ""
+"Hasilkan keluaran untuk sebuah pengkodean karakter selain dari baku. Untuk "
+"kompabilitas kebelakang, I<pengkodean> mungkin sebuah perangkat B<nroff> "
+"seperti B<ascii>, B<latin1>, atau B<utf8> baik juga sebuah pengkodean "
+"karakter benar seperti B<UTF-8>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1065
+msgid ""
+"Normally, B<nroff> will automatically hyphenate text at line breaks even in "
+"words that do not contain hyphens, if it is necessary to do so to lay out "
+"words on a line without excessive spacing.  This option disables automatic "
+"hyphenation, so words will only be hyphenated if they already contain "
+"hyphens."
+msgstr ""
+"Secara normal, B<nroff> akan secara otomatis hyphenate teks di potongan "
+"baris baik dalam kata yang tidak berisi hyphen, jika tidak dibutuhkan jadi "
+"untuk meletakan kata disebuah baris tanpa ruang yang berlebihan. Pilihan ini "
+"menonaktifkan otomatis hyphenation, jadi kata hanya dihyphenated jika mereka "
+"telah berisi hyphens."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1074
+msgid ""
+"If you are writing a manual page and simply want to prevent B<nroff> from "
+"hyphenating a word at an inappropriate point, do not use this option, but "
+"consult the B<nroff> documentation instead; for instance, you can put \"\\e%"
+"\" inside a word to indicate that it may be hyphenated at that point, or put "
+"\"\\e%\" at the start of a word to prevent it from being hyphenated."
+msgstr ""
+"Jika anda menulis sebuah halaman buku panduan dan hanya ingin menjaga "
+"B<nroff> dari hyphenating sebuah kata di titik yang tidak sesuai, jangan "
+"gunakan pilihan ini, tetapi lebih baik konsultasikan ke dokumentasi "
+"B<nroff>; sebagai contoh, anda dapat meletakan \"\\e%\" didalam sebuah kata "
+"untuk mengindikasikan bahwa itu mungkin dihyphenasi di titik itu, atau "
+"meletakan \"\\e%\" diawal dari sebuah kata untuk menjaga itu dari hyphenasi."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1081
+msgid ""
+"Normally, B<nroff> will automatically justify text to both margins.  This "
+"option disables full justification, leaving justified only to the left "
+"margin, sometimes called \"ragged-right\" text."
+msgstr ""
+"Normally, B<nroff> will automatically justify text to both margins.  This "
+"option disables full justification, leaving justified only to the left "
+"margin, sometimes called \"ragged-right\" text."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1088
+msgid ""
+"If you are writing a manual page and simply want to prevent B<nroff> from "
+"justifying certain paragraphs, do not use this option, but consult the "
+"B<nroff> documentation instead; for instance, you can use the \".na\", \".nf"
+"\", \".fi\", and \".ad\" requests to temporarily disable adjusting and "
+"filling."
+msgstr ""
+"Jika anda menulis sebuah halaman buku panduan dan hanya ingin menjaga "
+"B<nroff> dari hyphenating sebuah kata di titik yang tidak sesuai, jangan "
+"gunakan pilihan ini, tetapi lebih baik konsultasikan ke dokumentasi "
+"B<nroff>; sebagai contoh, anda dapat meletakan \"\\e%\" didalam sebuah kata "
+"untuk mengindikasikan bahwa itu mungkin dihyphenasi di titik itu, atau "
+"meletakan \"\\e%\" diawal dari sebuah kata untuk menjaga itu dari hyphenasi."
+
+#. type: TP
+#: ../../man/man1/man.man1:1088
+#, no-wrap
+msgid "B<-p\\ >I<string>,\\ B<--preprocessor=>I<string>"
+msgstr "B<-p\\ >I<string>,\\ B<--preprocessor=>I<string>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1107
+msgid ""
+"Specify the sequence of preprocessors to run before B<nroff> or B<troff>/"
+"B<groff>.  Not all installations will have a full set of preprocessors.  "
+"Some of the preprocessors and the letters used to designate them are: B<eqn> "
+"(B<e>), B<grap> (B<g>), B<pic> (B<p>), B<tbl> (B<t>), B<vgrind> (B<v>), "
+"B<refer> (B<r>).  This option overrides the $B<MANROFFSEQ> environment "
+"variable.  B<%zsoelim%> is always run as the very first preprocessor."
+msgstr ""
+"Spesifikasikan urutan dari preprosesor untuk dijalankan sebelum B<nroff> "
+"atau B<troff>/B<groff>. Tidak seluruh instalasi akan memiliki full set dari "
+"preprosesor. Beberapa preprosesor dan huruf digunakan untuk menggunakannya "
+"adalah: B<eqn> (B<e>), B<grap> (B<g>), B<pic> (B<p>), B<tbl> (B<t>), "
+"B<vgrind> (B<v>), B<refer> (B<r>). Pilihan ini mengesampingkan variabel "
+"lingkungan $B<MANROFFSEQ>. B<%zsoelim%> selalu berjalan sebagai preproses "
+"pertaman."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1117
+msgid ""
+"Use I<%troff%> to format the manual page to stdout.  This option is not "
+"required in conjunction with B<-H>, B<-T>, or B<-Z>."
+msgstr ""
+"Gunakan I<%troff%> untuk memformat halaman buku panduan ke stdout. Pilihan "
+"ini tidak dibutuhkan dalam konjungsi dengan B<-H>, B<-T>, atau B<-Z>."
+
+#. type: TP
+#: ../../man/man1/man.man1:1117
+#, fuzzy, no-wrap
+#| msgid "B<-T>[I<device>], B<--troff-device>[=I<device>]"
+msgid "B<-T>[I<device\\/>], B<--troff-device>[=I<device\\/>]"
+msgstr "B<-T>[I<perangkat>], B<-troff-device>[=I<perangkat>]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1129
+msgid ""
+"This option is used to change B<groff> (or possibly B<troff's>)  output to "
+"be suitable for a device other than the default.  It implies B<-t>.  "
+"Examples (provided with Groff-1.17) include B<dvi>, B<latin1>, B<ps>, "
+"B<utf8>, B<X75> and B<X100>."
+msgstr ""
+"Pilihan ini digunakan untuk mengubah B<groff> (atau mungkin B<troff>) "
+"keluaran ke sebuah perangkat selain dari baku yang lebih sesuai. Ini "
+"mengimplikasikan B<-t>. Contoh (disediakan Groff-1.17) termasuk B<dvi>, "
+"B<latin1>, B<ps>, B<utf8>, B<X75> dan B<X100>."
+
+#. type: TP
+#: ../../man/man1/man.man1:1129
+#, fuzzy, no-wrap
+#| msgid "B<-H>[I<browser>], B<--html>[=I<browser>]"
+msgid "B<-H>[I<browser\\/>], B<--html>[=I<browser\\/>]"
+msgstr "B<-H>[I<browser>], B<--html>[=I<browser>]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1145
+msgid ""
+"This option will cause B<groff> to produce HTML output, and will display "
+"that output in a web browser.  The choice of browser is determined by the "
+"optional I<browser> argument if one is provided, by the $B<BROWSER> "
+"environment variable, or by a compile-time default if that is unset (usually "
+"B<lynx>).  This option implies B<-t>, and will only work with B<GNU> "
+"B<troff>."
+msgstr ""
+"Pilihan ini akan menyebabkan B<groff> untuk menghasilkan keluaran HTML, dan "
+"akan menampilkan keluaran disebuah web browser. Pilihan dari browser "
+"ditentukan oleh opsional argumen I<broser> jika disediakan, oleh variabel "
+"lingkungan $B<BROWSER>, atau diwaktu kompilasi baku jika itu tidak diset "
+"(biasanya B<lynx>). Pilihan ini mengindikasikan B<-t>, dan hanya akan "
+"bekerja dengan B<GNU> B<troff>."
+
+#. type: TP
+#: ../../man/man1/man.man1:1145
+#, fuzzy, no-wrap
+#| msgid "B<-X>[I<dpi>], B<--gxditview>[=I<dpi>]"
+msgid "B<-X>[I<dpi\\/>], B<--gxditview>[=I<dpi\\/>]"
+msgstr "B<-X>[I<dpi>], B<-gxditview>[=I<dpi>]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1159
+msgid ""
+"This option displays the output of B<groff> in a graphical window using the "
+"B<gxditview> program.  The I<dpi> (dots per inch) may be 75, 75-12, 100, or "
+"100-12, defaulting to 75; the -12 variants use a 12-point base font.  This "
+"option implies B<-T> with the X75, X75-12, X100, or X100-12 device "
+"respectively."
+msgstr ""
+"Pilihan ini menampilkan keluaran dari B<groff> dalam sebuah jendela graphis "
+"menggunakan aplikasi B<gxditview>. I<dpi> (titik per inchi) mungkin berupa "
+"75, 75-12, 100, atau 100-12, baku ke 75; -12 variant menggunakan sebuah font "
+"dasar 12-titik. Pilihan ini mengimplikasikan B<-T> dengan X75, X75-12, X100 "
+"atau X100-12 perangkat."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1175
+msgid ""
+"B<groff> will run B<troff> and then use an appropriate post-processor to "
+"produce output suitable for the chosen device.  If I<%troff%> is B<groff>, "
+"this option is passed to B<groff> and will suppress the use of a post-"
+"processor.  It implies B<-t>."
+msgstr ""
+"B<groff> akan menjalankan B<troff> dan kemudian menggunakan sebuah post "
+"prosesor yang sesuai untuk menghasilkan perangkat yang dipilih. Jika I<%troff"
+"%> adalah B<groff>, pilihan ini akan dilewatkan ke B<groff> dan akan menekan "
+"penggunaan dari sebuah post-prosesor. Ini mengimplikasikan B<-t>."
+
+#. type: SS
+#: ../../man/man1/man.man1:1175
+#, no-wrap
+msgid "Getting help"
+msgstr "Mendapatkan bantuan"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1198
+msgid "A child process returned a non-zero exit status."
+msgstr "Sebuah proses anak mengembalikan sebuah status kembali tidak nol."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1201
+msgid ""
+"At least one of the pages/files/keywords didn't exist or wasn't matched."
+msgstr ""
+"Paling tidak satu dari halaman/berkas/kata kunci tidak ada atau tidak cocok."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1208
+msgid ""
+"If $B<MANPATH> is set, its value is used as the path to search for manual "
+"pages."
+msgstr ""
+"Jika $B<MANPATH> diset, nilainya digunakan sebagai jalur pencarian untuk "
+"halaman buku panduan."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1219
+msgid ""
+"The contents of $B<MANROFFOPT> are added to the command line every time "
+"B<man> invokes the formatter (B<nroff>, B<troff>, or B<groff>)."
+msgstr ""
+"Isi dari $B<MANROFFOPT> ditambahkan ke baris perintah setiap saat B<man> "
+"memanggil pemformat (B<nroff>, B<troff>, atau B<groff>)."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1226
+msgid ""
+"If $B<MANROFFSEQ> is set, its value is used to determine the set of "
+"preprocessors to pass each manual page through.  The default preprocessor "
+"list is system dependent."
+msgstr ""
+"Jika $B<MANROFFSEQ> diset, nilainya digunakan untuk menetukan set dari "
+"preprosesor untuk dilewatkan ke setiap halaman buku panduan. Daftar baku "
+"preprosesor adalah tergantung dari sistem."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1236 ../../man/man8/catman.man8:88
+msgid ""
+"If $B<MANSECT> is set, its value is a colon-delimited list of sections and "
+"it is used to determine which manual sections to search and in what order.  "
+"The default is \"%sections%\", unless overridden by the B<SECTION> directive "
+"in I<%manpath_config_file%>."
+msgstr ""
+"Jika $B<MANSECT> diset, nilainya adalah sebuah daftar dipisahkan oleh kolon "
+"dari bagian dan ini digunakan untuk menentukan bagian buku panduan mana "
+"untuk dicari dan dalam urutan apa."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1253
+#, fuzzy
+#| msgid ""
+#| "If $B<MANPAGER> or $B<PAGER> is set ($B<MANPAGER> is used in preference), "
+#| "its value is used as the name of the program used to display the manual "
+#| "page.  By default, B<%pager%> is used."
+msgid ""
+"If $B<MANPAGER> or $B<PAGER> is set ($B<MANPAGER> is used in preference), "
+"its value is used as the name of the program used to display the manual "
+"page.  By default, B<%pager%> is used, falling back to B<%cat%> if B<%pager"
+"%> is not found or is not executable."
+msgstr ""
+"jika $B<MANPAGER> atau $B<PAGER> diset ($B<MANPAGER> digunakan dalam "
+"kesukaan), nilainya digunakan sebagai nama dari aplikasi yang digunakan "
+"untuk menampilkan halaman buku panduan. Secara baku, B<%pager%> digunakan."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1278
+msgid ""
+"If $B<MANLESS> is set, its value will be used as the default prompt string "
+"for the B<less> pager, as if it had been passed using the B<-r> option (so "
+"any occurrences of the text B<$MAN_PN> will be expanded in the same way).  "
+"For example, if you want to set the prompt string unconditionally to \\(lqmy "
+"prompt string\\(rq, set $B<MANLESS> to \\(oqB<-Psmy\\ prompt\\ string>"
+"\\(cq.  Using the B<-r> option overrides this environment variable."
+msgstr ""
+"Jika $B<MANLESS> diset, B<%man%> tidak akan melakukan pemrosesan biasa untuk "
+"mengkonfigurasi prompt string untuk pager B<less>. Sebaliknya, nilai dari "
+"$B<MANLESS> akan disalinkan satu persatu kedalam $B<LESS>. Sebagai contoh, "
+"jika anda ingin menset prompt string secara tidak kondisional ke \\(lqmy "
+"prompt string\\(rq, set $B<MANLESS> ke \\(oqB<-Psmy\\ prompt\\ string>\\(cq."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1294
+msgid ""
+"If $B<BROWSER> is set, its value is a colon-delimited list of commands, each "
+"of which in turn is used to try to start a web browser for B<man> B<--"
+"html>.  In each command, I<%s> is replaced by a filename containing the HTML "
+"output from B<groff>, I<%%> is replaced by a single percent sign (%), and I<"
+"%c> is replaced by a colon (:)."
+msgstr ""
+"Jika $B<BROWSER> diset, nilai itu adalah daftar dipisahkan kolon dari "
+"perintah, setiap perintah itu digunakan untuk mencoba menjalankan sebuah web "
+"browser untuk B<man> B<--html>. Dalam setiap perintah, I<%s> digantikan oleh "
+"sebuah nama berkas berisi keluaran HTML dari B<groff>, I<%%> digantikan oleh "
+"sebuah tanda persen tunggal (%) dan I<%c> digantikan oleh sebuah kolon (:)."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1317
+#, fuzzy
+#| msgid ""
+#| "If $B<MANOPT> is set, it will be parsed prior to B<%man%'s> command line "
+#| "and is expected to be in a similar format.  As all of the other B<%man%> "
+#| "specific environment variables can be expressed as command line options, "
+#| "and are thus candidates for being included in $B<MANOPT> it is expected "
+#| "that they will become obsolete.  N.B. All spaces that should be "
+#| "interpreted as part of an option's argument must be escaped."
+msgid ""
+"If $B<MANOPT> is set, it will be parsed prior to B<%man%'s> command line and "
+"is expected to be in a similar format.  As all of the other B<%man%> "
+"specific environment variables can be expressed as command line options, and "
+"are thus candidates for being included in $B<MANOPT> it is expected that "
+"they will become obsolete.  N.B.  All spaces that should be interpreted as "
+"part of an option's argument must be escaped."
+msgstr ""
+"Jika $B<MANOPT> diset, ini akan diambil sebelum ke baris perintah B<%man%'s> "
+"dan diduga dalam format serupa. Seperti dari yang lain B<%man%> variabel "
+"lingkungan spesifik dapat diekspresikan sebagai pilihan baris perintah, dan "
+"juga kandidat untuk dimasukan dalam $B<MANOPT> ini diduga bahwa mereka akan "
+"menjadi obsolete. N.B. Seluruh spasi yang seharusnya diinterpretasikan "
+"sebagai bagian dari sebuah argumen pilihan harus diberi karakter untuk "
+"keluar."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1331
+#, fuzzy
+#| msgid ""
+#| "If $B<MANWIDTH> is set, its value is used as the line length for which "
+#| "manual pages should be formatted.  If it is not set, manual pages will be "
+#| "formatted with a line length appropriate to the current terminal (using "
+#| "an B<ioctl>(2)  if available, the value of $B<COLUMNS>, or falling back "
+#| "to 80 characters if neither is available).  Cat pages will only be saved "
+#| "when the default formatting can be used, that is when the terminal line "
+#| "length is between 66 and 80 characters."
+msgid ""
+"If $B<MANWIDTH> is set, its value is used as the line length for which "
+"manual pages should be formatted.  If it is not set, manual pages will be "
+"formatted with a line length appropriate to the current terminal (using the "
+"value of $B<COLUMNS>, an B<ioctl>(2)  if available, or falling back to 80 "
+"characters if neither is available).  Cat pages will only be saved when the "
+"default formatting can be used, that is when the terminal line length is "
+"between 66 and 80 characters."
+msgstr ""
+"Jika $B<MANWIDTH> diset, nilainya digunakan sebagai panjang baris yang mana "
+"halaman buku panduan seharusnya diformat. Jika ini tidak diset, halaman buku "
+"panduan akan diformat dengan sebuah panjang baris sesuai dengan terminal "
+"sekarang (menggunakan sebuah B<ioctl>(2) jika tersedia, nilai dari "
+"$B<COLUMNS>, atau kembali ke 80 karakter jika tidak tersedia). Halaman cat "
+"hanya akan disimpat ketika format baku dapat digunakan, yaitu ketika panjang "
+"baris terminal berada diantara 66 dan 80 karakter."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1342
+msgid ""
+"Normally, when output is not being directed to a terminal (such as to a file "
+"or a pipe), formatting characters are discarded to make it easier to read "
+"the result without special tools.  However, if $B<MAN_KEEP_FORMATTING> is "
+"set to any non-empty value, these formatting characters are retained.  This "
+"may be useful for wrappers around B<%man%> that can interpret formatting "
+"characters."
+msgstr ""
+"Biasanya, ketika keluaran tidak sedang diarahkan ke sebuah terminal (seperti "
+"ke sebuah berkas atau sebuah pipe), pemformatan karakter diabaikan untuk "
+"mempermudah pembacaan tanpa perangkat spesial. Akan tetapi, jika "
+"$B<MAN_KEEP_FORMATTING> diset ke nilai tidak kosong apapun, pemformatan "
+"karakter ini dijaga. Ini mungkin berguna untuk memperbaiki B<%man%> yang "
+"dapat diinterpretasikan pemformatan karakter."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1355
+msgid ""
+"Normally, when output is being directed to a terminal (usually to a pager), "
+"any error output from the command used to produce formatted versions of "
+"manual pages is discarded to avoid interfering with the pager's display.  "
+"Programs such as B<groff> often produce relatively minor error messages "
+"about typographical problems such as poor alignment, which are unsightly and "
+"generally confusing when displayed along with the manual page.  However, "
+"some users want to see them anyway, so, if $B<MAN_KEEP_STDERR> is set to any "
+"non-empty value, error output will be displayed as usual."
+msgstr ""
+"Secara normal, ketika keluaran telah diarahkan ke sebuah terminal (biasanya "
+"sebuah pager), keluaran error apapun dari perintah digunakan untuk "
+"menghasilkan versi tercetak dari halaman buku panduan diabaikan untuk "
+"menghindari interferensi dari penampilan pager. Aplikasi seperti B<groff> "
+"sering menghasilkan pesan error minor mengenai masalah typographical seperti "
+"kesalahan alignmen, yang tidak terlihat dan secara umum membingungkan ketika "
+"ditampilkan dengan halaman buku panduan. Akan tetapi, beberapa pengguna "
+"tetap ingin melihat itu, jadi, jika $B<MAN_KEEP_STDERR> diset untuk nilai "
+"apapun yang tidak kosong, keluaran error akan ditampilkan seperti biasa."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1367
+msgid ""
+"Depending on system and implementation, either or both of $B<LANG> and "
+"$B<LC_MESSAGES> will be interrogated for the current message locale.  B<%man"
+"%> will display its messages in that locale (if available).  See "
+"B<setlocale>(3)  for precise details."
+msgstr ""
+"Tergantung dari sistem dan implementasi, baik atau kedua dari $B<LANG> dan "
+"$B<LC_MESSAGESS> akan diintergasi untuk pesan lokal sekarang. B<%man%> akan "
+"menampilkan pesannya dalam lokal tersebut (jika tersedia). Lihat "
+"B<setlocale>(3) untuk detail lebih tepatnya."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1371 ../../man/man1/manpath.man1:128
+#: ../../man/man8/catman.man8:98 ../../man/man8/mandb.man8:195
+msgid "man-db configuration file."
+msgstr "berkas konfigurasi man-db."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1374
+msgid "A global manual page hierarchy."
+msgstr "Sebuah hierarki halaman buku panduan global."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1403
+msgid "the man-db package manual, B<FSSTND>"
+msgstr "the man-db package manual, B<FSSTND>"
+
+#. type: SH
+#: ../../man/man1/man.man1:1403
+#, no-wrap
+msgid "HISTORY"
+msgstr "SEJARAH"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1405
+#, fuzzy
+#| msgid ""
+#| "1990, 1991 - Originally written by John W. Eaton (jwe@che.utexas.edu)."
+msgid ""
+"1990, 1991 \\(en Originally written by John W.\\& Eaton (jwe@che.utexas.edu)."
+msgstr "1990, 1991 - Awalnya ditulis oleh John W. Eaton (jwe@che.utexas.edu)."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1408
+msgid ""
+"Dec 23 1992: Rik Faith (faith@cs.unc.edu) applied bug fixes supplied by "
+"Willem Kasdorp (wkasdo@nikhefk.nikef.nl)."
+msgstr ""
+"Dec 23 1992: Rik Faith (faith@cs.unc.edu) perbaikan bug diberikan oleh "
+"Willem Kasdorp (wkasdo@nikhefk.nikef.nl)."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1412
+#, fuzzy
+#| msgid ""
+#| "30th April 1994 - 23rd February 2000: Wilf. (G.Wilford@ee.surrey.ac.uk)  "
+#| "has been developing and maintaining this package with the help of a few "
+#| "dedicated people."
+msgid ""
+"30th April 1994 \\(en 23rd February 2000: Wilf. (G.Wilford@ee.surrey.ac.uk)  "
+"has been developing and maintaining this package with the help of a few "
+"dedicated people."
+msgstr ""
+"30th April 1994 - 23rd February 2000: Wilf. (G.Wilford@ee.surrey.ac.uk) "
+"telah mengembangkan dan memelihara paket ini dengan bantuan dari beberapa "
+"orang berdedikasi."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1416
+#, fuzzy
+#| msgid ""
+#| "30th October 1996 - 30th March 2001: Fabrizio Polacco "
+#| "E<lt>fpolacco@debian.orgE<gt> maintained and enhanced this package for "
+#| "the Debian project, with the help of all the community."
+msgid ""
+"30th October 1996 \\(en 30th March 2001: Fabrizio Polacco "
+"E<lt>fpolacco@debian.orgE<gt> maintained and enhanced this package for the "
+"Debian project, with the help of all the community."
+msgstr ""
+"30th Oktober 1996 - 30 Maret 2001: Fabrizio Polacco E<lt>fpolacco@debian."
+"orgE<gt> memelihara dan meningkatkan paket ini untuk project Debian, dengan "
+"bantuan dari seluruh komunitas."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1418
+#, fuzzy
+#| msgid ""
+#| "31st March 2001 - present day: Colin Watson E<lt>cjwatson@debian.orgE<gt> "
+#| "is now developing and maintaining man-db."
+msgid ""
+"31st March 2001 \\(en present day: Colin Watson E<lt>cjwatson@debian."
+"orgE<gt> is now developing and maintaining man-db."
+msgstr ""
+"31 Maret 2001 - sekarang: Colin Watson E<lt>cjwatson@debian.orgE<gt> saat "
+"ini mengembangkan dan memeliharan man-db."
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:12
+msgid "%manconv% - convert manual page from one encoding to another"
+msgstr ""
+"%manconv% - mengubah halaman buku panduan dari satu pengkodean ke yang lain"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:20
+msgid ""
+"B<%manconv%> B<-f> I<from-code>\\|[:I<from-code>\\|.\\|.\\|.] B<-t> I<to-"
+"code> [\\|B<-dqhV>\\|] [\\|I<filename>\\|]"
+msgstr ""
+"B<%manconv%> B<-f> I<dari-kode>\\|[:I<dari-kode>\\|.\\|.\\|.] B<-t> I<ke-"
+"kode> [\\|B<-dqhV>\\|] [\\|I<nama berkas>\\|]"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:30
+msgid ""
+"B<%manconv%> converts a manual page from one encoding to another, like "
+"B<iconv>.  Unlike B<iconv>, it can try multiple possible input encodings in "
+"sequence.  This is useful for manual pages installed in directories without "
+"an explicit encoding declaration, since they may be in UTF-8 or in a legacy "
+"character set."
+msgstr ""
+"B<%manconv%> mengubah sebuah halaman buku panduan dari satu pengkodean ke "
+"yang lain, seperti B<iconv>. Tidak seperti B<iconv>, ini dapat mencoba "
+"beberapa kemungkinan pengkodean masukan dalam urutan. Ini berguna untuk "
+"halaman buku panduan terpasang dalam direktori tanpa sebuah deklarasi "
+"pengkodean eksplisit, karena mereka mungkin berada dalam UTF-8 atau dalam "
+"sebuah set karakter legacy."
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:36
+msgid ""
+"If an encoding declaration is found on the first line of the manual page, "
+"that declaration overrides any input encodings specified on B<%manconv%>'s "
+"command line.  Encoding declarations have the following form:"
+msgstr ""
+"Jika sebuah deklarasi pengkodean ditemukan dalam baris pertama dari halaman "
+"buku panduan deklarasi itu memaksa pengkodean masukan apapun "
+"dispesifikasikan di baris perintah B<%manconv%>. Deklarasi pengkodean "
+"memiliki bentuk berikut:"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:44
+msgid "or (if manual page preprocessors are also to be declared):"
+msgstr "atau (jika preprosesor halaman buku panduan juga dideklarasikan):"
+
+#. type: TP
+#: ../../man/man1/manconv.man1:51
+#, no-wrap
+msgid "B<-f> I<encodings>, B<--from-code> I<encodings>"
+msgstr "B<-f> I<pengkodean>, B<--from-code> I<pengkodean>"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:56
+msgid ""
+"Try each of I<encodings> (a colon-separated list) in sequence as the input "
+"encoding."
+msgstr ""
+"Coba setiap dari I<pengkodean> (sebuah daftar dipisahkan kolon) dalam urutan "
+"pengkodean masukan."
+
+#. type: TP
+#: ../../man/man1/manconv.man1:56
+#, no-wrap
+msgid "B<-t> I<encoding>, B<--to-code> I<encoding>"
+msgstr "B<-t> I<pengkodean>, B<--to-code> I<pengkodean>"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:60
+msgid "Convert the manual page to I<encoding>."
+msgstr "Ubah halaman buku panduan ke I<pengkodean>."
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:63
+msgid "Do not issue error messages when the page cannot be converted."
+msgstr "Jangan isukan pesan error ketika halaman tidak dapat diubah."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:15
+msgid "%manpath% - determine search path for manual pages"
+msgstr "%manpath% - menentukan jalur pencarian untuk halaman buku panduan"
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:22
+msgid ""
+"B<%manpath%> [\\|B<-qgdc?V>\\|] [\\|B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|] "
+"[\\|B<-C> I<file>\\|]"
+msgstr ""
+"B<%manpath%> [\\|B<-qgdc?hV>\\|] [\\|B<-m> I<sistem>\\|[\\|,.\\|.\\|."
+"\\|]\\|] [\\|B<-C> I<berkas>\\|]"
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:32
+msgid ""
+"If $B<MANPATH> is set, B<%manpath%> will simply display its contents and "
+"issue a warning.  If not, B<%manpath%> will determine a suitable manual page "
+"hierarchy search path and display the results."
+msgstr ""
+"Jika $B<MANPATH> diset, B<%manpath%> akan secara sederhana menampilkan "
+"isinya dan mengisukan peringatan. Jika tidak, B<%manpath%> akan menentukan "
+"sebuah hierarki jalur pencarian halaman buku panduan yang sesuai dan "
+"menampilkan hasilnya."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:37
+msgid ""
+"The colon-delimited path is determined using information gained from the man-"
+"db configuration file - (I<%manpath_config_file%>)  and the user's "
+"environment."
+msgstr ""
+"Jalur dipisahkan kolon ditentukan menggunakan informasi diperoleh dari "
+"berkas konfigurasi man-db - (I<%manpath_config_file%>) dan lingkungan "
+"pengguna."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:41
+msgid "Do not issue warnings."
+msgstr "Jangan isukan peringatan."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:49
+msgid ""
+"Produce a catpath as opposed to a manpath.  Once the manpath is determined, "
+"each path element is converted to its relative catpath."
+msgstr ""
+"Hasilkan sebuah jalur cat daripada ke sebuah jalur man. Sekali jalur man "
+"ditentukan, setiap elemen jalur diubah ke relatif jalur cat."
+
+#
+#.  Due to the rather silly limit of 6 args per request in some `native'
+#.  *roff compilers, we have do the following to get the two-line
+#.  hanging tag on one line. .PP to begin a new paragraph, then the
+#.  tag, then .RS (start relative indent), the text, finally .RE
+#.  (end relative indent).
+#. type: Plain text
+#: ../../man/man1/manpath.man1:60
+msgid ""
+"Produce a manpath consisting of all paths named as `global' within the man-"
+"db configuration file."
+msgstr ""
+"Hasilkan sebuah jalur path terdiri dari seluruh jalur bernama sebagai "
+"`global' didalam berkas konfigurasi man-db."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:73
+msgid ""
+"If this system has access to other operating system's manual hierarchies, "
+"this option can be used to include them in the output of B<%manpath%>.  To "
+"include NewOS's manual page hierarchies use the option B<-m> B<NewOS>."
+msgstr ""
+"Jika sistem ini memiliki akses ke hierarki sistem buku panduan sistem "
+"operasi lain, pilihan ini dapat digunakan untuk memasukannya dalam keluaran "
+"dari B<%manpath%>. Untuk memasukan hierarki halaman buku panduan OS baru "
+"gunakan pilihan B<-m> B<OS baru>."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:84
+msgid ""
+"The I<system> specified can be a combination of comma delimited operating "
+"system names.  To include the native operating system's manual page "
+"hierarchies, the system name B<man> must be included in the argument "
+"string.  This option will override the $B<SYSTEM> environment variable."
+msgstr ""
+"I<sistem> spesifikasi dapat berupa sebuah kombinasi dari nama sistem operasi "
+"dipisahkan koma. Untuk memasukan hierarki halaman buku panduan sistem "
+"operasi native, nama sistem B<man> harus dimasukan dalam argumen string. "
+"Pilihan ini akan mengesampingkan variabel lingkungan $B<SYSTEM>."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:116
+msgid ""
+"If $B<MANPATH> is set, B<%manpath%> displays its value rather than "
+"determining it on the fly.  If $B<MANPATH> is prefixed by a colon, then the "
+"value of the variable is appended to the list determined from the content of "
+"the configuration files.  If the colon comes at the end of the value in the "
+"variable, then the determined list is appended to the content of the "
+"variable.  If the value of the variable contains a double colon (B<::>), "
+"then the determined list is inserted in the middle of the value, between the "
+"two colons."
+msgstr ""
+"Jika $B<MANPATH> diset, B<%manpath%> menampilkan nilainya daripada "
+"menentukannya diwaktu jalan. Jika $B<MANPATH> diawali oleh sebuah kolon, "
+"maka nilai dari variabel ditambahkan ke daftar ditentukan dari isi dari "
+"berkas konfigurasi. Jika kolon datang di akhir dari nilai dalam variabel, "
+"maka daftar ditentukan ditambahkan ke isi dari variabel. Jika nilai dari "
+"variabel berisi kolon ganda (B<::>), maka daftar yang ditentukan dimasukan "
+"ditengah dari nilai, diantara dua kolon."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:15
+msgid "%whatis% - display one-line manual page descriptions"
+msgstr "%whatis% - menampilkan deskripsi halaman buku panduan"
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:32
+msgid ""
+"B<%whatis%> [\\|B<-dlv?V>\\|] [\\|B<-r>\\||\\|B<-w>\\|] [\\|B<-s> I<list>"
+"\\|] [\\|B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<path>\\|] [\\|"
+"B<-L> I<locale>\\|] [\\|B<-C> I<file>\\|] I<name> \\&.\\|.\\|."
+msgstr ""
+"B<%whatis%> [\\|B<-dlhvV>\\|] [\\|B<-r>\\||\\|B<-w>\\|] [\\|B<-s> I<bagian>"
+"\\|] [\\|B<-m> I<sistem>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<jalur>\\|] [\\|"
+"B<-L> I<lokal>\\|] [\\|B<-C> I<berkas>\\|] I<nama> \\&.\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:39
+msgid ""
+"Each manual page has a short description available within it.  B<%whatis%> "
+"searches the manual page names and displays the manual page descriptions of "
+"any I<name> matched."
+msgstr ""
+"Setiap halaman buku panduan memiliki sebuah deskripsi singkat tersedia "
+"didalamnya. B<%whatis%> mencari nama halaman buku panduan dan menampilkan "
+"deskripsi halaman buku panduan dari I<nama> apapun yang cocok."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:49
+msgid ""
+"I<name> may contain wildcards (B<-w>)  or be a regular expression (B<-r>).  "
+"Using these options, it may be necessary to quote the I<name> or escape "
+"(\\e) the special characters to stop the shell from interpreting them."
+msgstr ""
+"I<nama> mungkin berisi karakter bebas (B<-w>) atau berupa sebuah ekpresi "
+"umum (B<-r>). Menggunakan pilihan ini, mungkin diperlukan untuk quote "
+"I<nama> atau escape (\\e) karakter spesial untuk menghentikan shell dari "
+"mengintepretasikannya."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:61
+msgid ""
+"B<index> databases are used during the search, and are updated by the B<"
+"%mandb%> program.  Depending on your installation, this may be run by a "
+"periodic cron job, or may need to be run manually after new manual pages "
+"have been installed.  To produce an old style text B<whatis> database from "
+"the relative B<index> database, issue the command:"
+msgstr ""
+"B<indeks> basis data digunakan selama pencarian, dan perbarui oleh aplikasi "
+"B<%mandb%>. Tergantung dari pemasangan anda, ini mungkin dijalankan oleh "
+"sebuah pekerjaan periodik cron, atau mungkin butuh dijalankan secara buku "
+"panduan setelah halaman buku panduan baru telah terpasang. Untuk "
+"menghasilkan teks gaya lama B<whatis> basis data dari relatif B<index> basis "
+"data, berikan perintah:"
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:66
+msgid "B<%whatis% -M> I<manpath> B<-w '*' | sort E<gt>> I<manpath/whatis>"
+msgstr "B<%whatis% -M> I<jalur man> B<-w '*' | sort E<gt>> I<jalur man/whatis>"
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:71
+msgid "where I<manpath> is a manual page hierarchy such as I</usr/man>."
+msgstr ""
+"dimana I<jalur man> adalah sebuah hierarki halaman buku panduan seperti I</"
+"usr/man>."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:89
+msgid ""
+"Interpret each I<name> as a regular expression.  If a I<name> matches any "
+"part of a page name, a match will be made.  This option causes B<%whatis%> "
+"to be somewhat slower due to the nature of database searches."
+msgstr ""
+"Intepretasikan setiap I<nama> sebagai sebuah ekspresi umum. Jika sebuah "
+"I<nama> cocok dengan bagian apapun dari halaman buku panduan, sebuah "
+"pencocokan akan dibuat. Pilihan ini menyebabkan B<%whatis%> mungkin lebih "
+"lambat karena cara kerja pencarian basis data."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:100
+msgid ""
+"Interpret each I<name> as a pattern containing shell style wildcards.  For a "
+"match to be made, an expanded I<name> must match the entire page name.  This "
+"option causes B<%whatis%> to be somewhat slower due to the nature of "
+"database searches."
+msgstr ""
+"Interpretasikan setiap I<nama> sebagai sebuah pola berisi shell style "
+"karakter bebas. Untuk sebuah pencocokan untuk dibuat, sebuah I<nama> "
+"terekspan harus cocok dengan seluruh nama halaman. Pilihan ini menyebabkan B<"
+"%whatis%> menjadi lebih lambat karena cara kerja dari pencarian basis data."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:140
+msgid ""
+"If this system has access to other operating system's manual page names, "
+"they can be accessed using this option.  To search NewOS's manual page "
+"names, use the option B<-m> B<NewOS>."
+msgstr ""
+"Jika sistem ini memiliki akses ke nama halaman buku panduan sistem operasi "
+"lain, mereka dapat diakses dengan menggunakan pilihan ini. Untuk mencari "
+"nama halaman buku panduan OS baru, gunakan pilihan B<-m> B<OS baru>."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:151
+msgid ""
+"The I<system> specified can be a combination of comma delimited operating "
+"system names.  To include a search of the native operating system's manual "
+"page names, include the system name B<man> in the argument string.  This "
+"option will override the $B<SYSTEM> environment variable."
+msgstr ""
+"I<sistem> spesifikasi dapat berupa sebuah kombinasi dari nama sistem operasi "
+"dipisahkan dengan koma. Untuk memasukan sebuah pencarian dari nama halaman "
+"buku panduan sistem operasi native, masukan nama sistem B<man> dalam argumen "
+"string. Pilihan ini akan mengesampingkan variabel lingkungan $B<SYSTEM>."
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:15
+msgid "%zsoelim% - satisfy .so requests in roff input"
+msgstr "%zsoelim% - memenuhi permintaan .so dalam masukan roff"
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:20
+msgid "B<%zsoelim%> [\\|B<-CVh>\\|] [\\|I<file> \\&.\\|.\\|.\\|]"
+msgstr "B<%zsoelim%> [\\|B<-CVh>\\|] [\\|I<berkas> \\&.\\|.\\|.\\|]"
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:26
+msgid ""
+"B<%zsoelim%> parses I<file> arguments, or if none are specified, its "
+"standard input for lines of the form:"
+msgstr ""
+"B<%zsoelim%> mengambil argumen I<berkas>, atau jika tidak dispesifikasikan, "
+"standar masukannya seperti baris dari bentuk dibawah:"
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:29
+msgid "B<.so> E<lt>\\|I<filename>\\|E<gt>"
+msgstr "B<.so> E<lt>\\|I<nama berkas>\\|E<gt>"
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:48
+msgid ""
+"These requests are replaced by the contents of the I<filename> specified.  "
+"If the request cannot be met, B<%zsoelim%> looks for I<filename.ext> where "
+"I<.ext> can be one of B<.gz>, B<.Z> or B<.z>.  Other extension types may be "
+"supported depending upon compile time options.  If the request can be met by "
+"a compressed file, this file is decompressed using an appropriate "
+"decompressor and its output is used to satisfy the request."
+msgstr ""
+"Permintaan ini digantikan oleh isi dari I<nama berkas> dispesifikan. Jika "
+"permintaan tidak dapat dipenuhi, B<%zsoelim%> mencari untuk I<nama berkas."
+"ext> dimana I<.ext> dapat salah satu dari B<.gz>, B<.Z> atau B<.z>. Tipe "
+"ekstensi lain mungkin didukung tergantung dari pilihan waktu kompilasi. Jika "
+"permintaan dapat dipenuhi oleh berkas terkompress, berkas ini didekompress "
+"menggunakan sebuah dekompressor yang sesuai dan keluarannya digunakan untuk "
+"memuaskan permintaan."
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:55
+msgid ""
+"Traditionally, B<soelim> programs were used to allow roff preprocessors to "
+"be able to preprocess the files referred to by the requests.  This "
+"particular version was written to circumvent problems created by support for "
+"compressed manual pages."
+msgstr ""
+"Secara tradisional, aplikasi B<soelim> digunakan untuk mengijinkan pemroses "
+"awal roff untuk dapat mengawali pemrosesan berkas yang ditunjuk oleh "
+"permintaan. Versi ini telah ditulis untuk mengatasi masalah yang ada untuk "
+"mendukung halaman buku panduan terkompres."
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:64
+msgid ""
+"This flag is available for compatibility with other B<soelim> programs.  Its "
+"use is to enable .so requests followed by something other than whitespace.  "
+"As this is already the default behaviour, it is ignored."
+msgstr ""
+"Pilihan ini tersedia untuk kompabilitas dengan aplikasi B<soelim> lain. Ini "
+"digunakan untuk mengaktifkan permintaan .so diikuti oleh sesuatu selain "
+"ruang kosong. Hal ini telah menjadi perilaku baku, ini diabaikan."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:16
+msgid "manpath - format of the %manpath_config_file% file"
+msgstr "manpath - format dari berkas %manpath_config_file%"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:21
+msgid ""
+"The manpath configuration file is used by the manual page utilities to "
+"assess users' manpaths at run time, to indicate which manual page "
+"hierarchies (manpaths) are to be treated as system hierarchies and to assign "
+"them directories to be used for storing cat files."
+msgstr ""
+"Berkas konfigurasi manpath digunakan oleh aplikasi halaman buku panduan "
+"untuk mengakses manpath pengguna pada waktu berjalan, mengindikasikan "
+"susunan halaman buku panduan mana (manpath) yang diperlukan sebagai sistem "
+"hierarki dan menempatkan direktori untuk digunakan untuk penyimpanan berkas "
+"cat."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:26
+msgid ""
+"If the environment variable $B<MANPATH> is already set, the information "
+"contained within %manpath_config_file% will not override it."
+msgstr ""
+"Jika variabel lingkungan $B<MANPATH> telah diset, informasi yang berada "
+"dalam %manpath_config_file% akan menimpanya."
+
+#. type: SH
+#: ../../man/man5/manpath.man5:26
+#, no-wrap
+msgid "FORMAT"
+msgstr "FORMAT"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:28
+msgid "The following field types are currently recognised:"
+msgstr "Tipe daerah berikut saat ini dikenal:"
+
+#. type: TP
+#: ../../man/man5/manpath.man5:28
+#, no-wrap
+msgid "B<#>I<\\ comment>"
+msgstr "B<#>I<\\ komentar>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:33
+msgid ""
+"Blank lines or those beginning with a B<#> will be treated as comments and "
+"ignored."
+msgstr ""
+"Baris kosong atau yang berawal dengan sebuah B<#> akan diperlakukan sebagai "
+"komentar dan akan diabaikan."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:33
+#, no-wrap
+msgid "B<MANDATORY_MANPATH>I<\\ manpath_element>"
+msgstr "B<MANDATORY_MANPATH>I<\\ manpath_element>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:40
+msgid ""
+"Lines of this form indicate manpaths that every automatically generated "
+"$B<MANPATH> should contain.  This will typically include I</usr/man>."
+msgstr ""
+"Baris dari bentuk ini mengindikasikan manpath yang secara otomatis "
+"seharusnya berisi $B<MANPATH>. Ini biasanya termasuk I</usr/man>."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:40
+#, no-wrap
+msgid "B<MANPATH_MAP>I<\\ path_element\\ manpath_element>"
+msgstr "B<MANPATH_MAP>I<\\ path_element\\ manpath_element>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:54
+msgid ""
+"Lines of this form set up $B<PATH> to $B<MANPATH> mappings.  For each "
+"I<path_element> found in the user's $B<PATH>, I<manpath_element> will be "
+"added to the $B<MANPATH>."
+msgstr ""
+"Baris dari konfigurasi bentuk pemetaan ini $B<PATH> ke $B<MANPATH>. Untuk "
+"setiap I<path_element> ditemukan dalam $B<PATH> pengguna, I<manpath_element> "
+"akan ditambahkan ke $B<MANPATH>."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:54
+#, no-wrap
+msgid "B<MANDB_MAP >I<manpath_element >\\|[\\| I<catpath_element> \\|]"
+msgstr "B<MANDB_MAP >I<manpath_element >\\|[\\| I<catpath_element> \\|]"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:64
+msgid ""
+"Lines of this form indicate which manpaths are to be treated as system "
+"manpaths, and optionally where their cat files should be stored.  This field "
+"type is particularly important if B<man> is a setuid program, as (when in "
+"the system configuration file %manpath_config_file% rather than the per-user "
+"configuration file .manpath)  it indicates which manual page hierarchies to "
+"access as the setuid user and which as the invoking user."
+msgstr ""
+"Baris dari bentuk ini mengindikasikan manpaths mana yang diperlakukan "
+"sebagai sistem manpath, dan secara opsional dimana berkas catnya seharusnya "
+"disimpan. Tipe bagian ini biasanya penting jika B<man> adalah aplikasi "
+"setuid, seperti (ketika dalam berkas sistem konfigurasi %manpath_config_file"
+"% daripada berkas konfiguras setiap pengguna .manpath) ini mengindikasikan "
+"ke susunan halaman buku panduan mana untuk diakses sebagai setuid pengguna "
+"dan mana yang memanggil pengguna."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:72
+msgid ""
+"The system manual page hierarchies are usually those stored under I</usr> "
+"such as I</usr/man>, I</usr/local/man> and I</usr/X11R6/man>."
+msgstr ""
+"Susunan sistem halaman buku panduan biasanya disimpan dibawah I</usr> "
+"seperti I</usr/man>, I</usr/local/man> dan I</usr/X11R6/man>."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:78
+msgid ""
+"If cat pages from a particular I<manpath_element> are not to be stored or "
+"are to be stored in the traditional location, I<catpath_element> may be "
+"omitted."
+msgstr ""
+"Jika halaman cat dari I<manpath_element> tertentu tidak disimpan atau akan "
+"disimpan dalam lokasi tradisional, I<catpath_element> mungkin diabaikan."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:87
+msgid ""
+"Traditional cat placement would be impossible for read only mounted manual "
+"page hierarchies and because of this it is possible to specify any valid "
+"directory hierarchy for their storage.  To observe the B<Linux FSSTND> the "
+"keyword `B<FSSTND> can be used in place of an actual directory."
+msgstr ""
+"Penempatan tradisional cat tidak memungkinkan untuk susunan halaman buku "
+"panduan yang dipasang baca saja dan karena ini mungkin untuk menspesifikasi "
+"susunan direktori valid apapun untuk penyimpanannya. Untuk mengamati B<Linux "
+"FSSTND> kata kunci `B<FSSTND> dapat digunakan daripada direktori aktual."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:96
+msgid ""
+"Unfortunately, it is necessary to specify B<all> system man tree paths, "
+"including alternate operating system paths such as I</usr/man/sun> and any "
+"B<NLS locale> paths such as I</usr/man/de_DE.88591>."
+msgstr ""
+"Sayangnya, ini diperlukan untuk menspesifikasikan B<seluruh> susunan jalur "
+"sistem buku panduan, termasuk jalur sistem operasi alternatif seperti I</usr/"
+"man/sun> dan B<NLS locale> jalur apapun seperti I</usr/man/de_DE.88591>."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:104
+msgid ""
+"As the information is parsed line by line in the order written, it is "
+"necessary for any manpath that is a sub-hierarchy of another hierarchy to be "
+"listed first, otherwise an incorrect match will be made.  An example is that "
+"I</usr/man/de_DE.88591> must come before I</usr/man>."
+msgstr ""
+"Karena informasi diambil baris demi baris dalam urutan penulisan, ini "
+"diperlukan untuk manpath apapun yang berupa sub-hierarki dari hierarki lain "
+"untuk ditampilkan pertama, jika tidak sebuah kesalahan pencocokan terjadi. "
+"Sebagai contoh I</usr/man/de_DE.88591> harus datang sebelum I</usr/man>."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:104
+#, no-wrap
+msgid "B<DEFINE>I<\\ key\\ value>"
+msgstr "B<DEFINISI>I<\\ nilai\\ kunci>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:114
+msgid ""
+"Lines of this form define miscellaneous configuration variables; see the "
+"default configuration file for those variables used by the manual pager "
+"utilities.  They include default paths to various programs (such as I<grep> "
+"and I<tbl>), and default sets of arguments to those programs."
+msgstr ""
+"Baris dari bentuk ini mendefinisikan variabel konfigurasi lain; lihat berkas "
+"konfigurasi baku untuk variabel tersebut digunakan oleh aplikasi halaman "
+"buku panduan. Termasuk jalur baku ke berbagai aplikasi (seperti I<grep> dan "
+"I<tbl>), dan set baku dari argumen ke aplikasi tersebut."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:114
+#, no-wrap
+msgid "B<SECTION> I<section> .\\|.\\|."
+msgstr "B<BAGIAN> I<bagian> .\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:122
+msgid ""
+"Lines of this form define the order in which manual sections should be "
+"searched.  If there are no B<SECTION> directives in the configuration file, "
+"the default is:"
+msgstr ""
+"Baris dari formulir ini mendefinisikan urutan dimana bagian buku panduan "
+"seharusnya dicari. Jika disana tidak ada arah B<BAGIAN> dalam berkas "
+"konfigurasi, yang baku adalah:"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:132
+msgid ""
+"If multiple B<SECTION> directives are given, their section lists will be "
+"concatenated."
+msgstr ""
+"Jika beberapa B<BAGIAN> direktif diberikan, daftar bagian itu akan dipotong."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:139
+msgid ""
+"If a particular extension is not in this list (say, 1mh) it will be "
+"displayed with the rest of the section it belongs to.  The effect of this is "
+"that you only need to explicitly list extensions if you want to force a "
+"particular order.  Sections with extensions should usually be adjacent to "
+"their main section (e.g. \"1 1mh 8 ...\")."
+msgstr ""
+"Jika sebuah ekstensi tertentu tidak ada dalam daftar ini (contoh, 1mh) ini "
+"akan ditampilkan dengan sisa bagian ini berada. Efek dari ini, anda hanya "
+"membutuhkan untuk secara eksplisit mendaftar ekstensi jika anda ingin "
+"memaksa urutan tertentu. Bagian dengan ekstensi seharusnya berurutan ke "
+"bagian utamanya (contoh \"1 1mh 8 ...\")."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:142
+msgid "B<SECTIONS> is accepted as an alternative name for this directive."
+msgstr "B<BAGIAN> diterima sebagai sebuah nama alternatif untuk direktif ini."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:143
+#, no-wrap
+msgid "B<MINCATWIDTH>I<\\ width>"
+msgstr "B<MINCATWIDTH>I<\\ lebar>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:149
+msgid ""
+"If the terminal width is less than I<width>, cat pages will not be created "
+"(if missing) or displayed.  The default is 80."
+msgstr ""
+"Jika lebar terminal lebih kecil dari I<lebar>, halaman cat tidak akan dibuat "
+"(jika hilang) atau ditampilkan. Baku adalah 80."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:149
+#, no-wrap
+msgid "B<MAXCATWIDTH>I<\\ width>"
+msgstr "B<MAXCATWIDTH>I<\\ lebar>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:155
+msgid ""
+"If the terminal width is greater than I<width>, cat pages will not be "
+"created (if missing) or displayed.  The default is 80."
+msgstr ""
+"Jika lebar terminal lebih besar dari I<lebar>, halaman cat tidak akan dibuat "
+"(jika hilang) atau ditampilkan. Baku adalah 80."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:155
+#, no-wrap
+msgid "B<CATWIDTH>I<\\ width>"
+msgstr "B<CATWIDTH>I<\\ lebar>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:165
+msgid ""
+"If I<width> is non-zero, cat pages will always be formatted for a terminal "
+"of the given width, regardless of the width of the terminal actually being "
+"used.  This should generally be within the range set by B<MINCATWIDTH> and "
+"B<MAXCATWIDTH>."
+msgstr ""
+"Jika I<lebar> bukan-nol, halaman buku panduan akan selalu diformat untuk "
+"sebuah terminal dari lebar yang diberikan, tidak perduli lebar dari terminal "
+"yang sedang digunakan. Ini seharusnya secara umum berada didalam jangkauan "
+"diset oleh B<MINCATWIDTH> dan B<MAXCATWIDTH>."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:170
+msgid "This flag prevents B<%man%>(1)  from creating cat pages automatically."
+msgstr ""
+"Pilihan ini menjaga B<%man%>(1)  dari membuat halaman cat secara otomatis."
+
+#. type: SH
+#: ../../man/man5/manpath.man5:170
+#, no-wrap
+msgid "BUGS"
+msgstr "BUGS"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:173
+msgid ""
+"Unless the rules above are followed and observed precisely, the manual pager "
+"utilities will not function as desired.  The rules are overly complicated."
+msgstr ""
+"Kecuali aturan diatas diikuti dan diamati secara tepat, aplikasi halaman "
+"buku panduan tidak akan berfungsi seperti yang diinginkan. Aturan yang ada "
+"sangat kompleks."
+
+#. type: Plain text
+#: ../../man/man8/accessdb.man8:16
+msgid ""
+"accessdb - dumps the content of a man-db database in a human readable format"
+msgstr ""
+"accessdb - keluarkan isi dari sebuah basis data man-db dalam format yang "
+"mudah dibaca."
+
+#. type: Plain text
+#: ../../man/man8/accessdb.man8:20
+msgid "B</usr/sbin/accessdb> [\\|B<-d?V>\\|] [I<E<lt>index-fileE<gt>>]"
+msgstr "B</usr/sbin/accessdb> [\\|B<-d?V>\\|] [I<E<lt>indeks-fileE<gt>>]"
+
+#. type: Plain text
+#: ../../man/man8/accessdb.man8:27
+msgid ""
+"B<accessdb> will output the data contained within a man-db database in a "
+"human readable form.  By default, it will dump the data from B</var/cache/"
+"man/index.E<lt>db-typeE<gt>,> where E<lt>db-typeE<gt> is dependent on the "
+"database library in use."
+msgstr ""
+"B<accessdb> akan mengeluarkan data berisi dalam sebuah basis data man-db "
+"dalam sebuah bentuk yang mudah dibaca. Secara baku, ini akan mengeluarkan "
+"data dari B</var/cache/man/index.E<lt>db-typeE<gt>,> dimana E<lt>db-"
+"typeE<gt> tergantung dari perpustakaan basis data yang digunakan."
+
+#. type: Plain text
+#: ../../man/man8/accessdb.man8:29
+msgid "Supplying an argument to accessdb will override this default."
+msgstr ""
+"Memberikan sebuah argumen ke accessdb akan mengesampingkan perilaku baku ini."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:15
+msgid "%catman% - create or update the pre-formatted manual pages"
+msgstr "%catman% - buat atau perbarui pre-formatted halaman buku panduan"
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:24
+msgid ""
+"B<%catman%> [\\|B<-d?V>\\|] [\\|B<-M> I<path>\\|] [\\|B<-C> I<file>\\|] [\\|"
+"I<section>\\|] \\&.\\|.\\|."
+msgstr ""
+"B<%catman%> [\\|B<-d?hV>\\|] [\\|B<-M> I<jalur>\\|] [\\|B<-C> I<berkas>\\|] "
+"[\\|I<bagian>\\|] \\&.\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:32
+msgid ""
+"B<%catman%> is used to create an up to date set of pre-formatted manual "
+"pages known as cat pages.  Cat pages are generally much faster to display "
+"than the original manual pages, but require extra storage space.  The "
+"decision to support cat pages is that of the local administrator, who must "
+"provide suitable directories to contain them."
+msgstr ""
+"B<%catman%> digunakan untuk membuat sebuah set terbaru dari preformat "
+"halaman buku panduan dikenal sebagai halaman cat. Halaman cat secara umum "
+"lebih cepat untuk ditampilkan daripada halaman buku panduan asli, tetapi "
+"membutuhkan ruang penyimpanan ekstra. Keputusan untuk mendukung halaman cat "
+"berada di administrator lokal, yang harus memberikan direktori yang sesuai "
+"untuk itu."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:49
+msgid ""
+"The options available to B<%catman%> are the manual page hierarchies and "
+"sections to pre-format.  The default hierarchies are those specified as "
+"system hierarchies in the man-db configuration file, and the default "
+"sections are either the colon-delimited contents of the environment variable "
+"$B<MANSECT> or the standard set compiled into B<%man%> if $B<MANSECT> is "
+"undefined.  Supplying B<%catman%> with a set of whitespace-delimited section "
+"names will override both of the above."
+msgstr ""
+"Pilihan tersedia ke B<%catman%> adalah hierarki halaman buku panduan dan "
+"bagian untuk preformat. Hierarki baku yang dispesifikasikan sebagai hierarki "
+"sistem dalam berkas konfigurasi man-db, dan bagian baku baik isi dipisahkan "
+"kolon dari variabel lingkungan $B<MANSECT> atau set standar disusun kedalam "
+"B<%man%> jika $B<MANSECT> tidak terdefinisi. Diberikan B<%catman%> dengan "
+"sebuah set dari bagian nama dipisahkan spasi akan mengesampingkan kedua "
+"diatas."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:55
+msgid ""
+"B<%catman%> makes use of the B<index> database cache associated with each "
+"hierarchy to determine which files need to be formatted."
+msgstr ""
+"B<%catman%> membuat penggunaan dari persediaan basis data B<indeks> "
+"diasosiasikan dengan setiap hierarki untuk menentukan berkas mana dibutuhkan "
+"untuk diformat."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:64
+msgid ""
+"Specify an alternate colon-delimited manual page hierarchy search path.  By "
+"default, this is all paths indicated as system hierarchies in the man-db "
+"configuration file."
+msgstr ""
+"Spesifikasikan sebuah jalur pencarian alternatif hierarki halaman buku "
+"panduan dipisahkan kolon. Secara baku, jalur semua ini mengindikasikan "
+"sebagai hierarki sistem dalam berkas konfigurasi man-db."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:109 ../../man/man8/mandb.man8:213
+msgid "An alternate or FSSTND compliant global I<index> database cache."
+msgstr ""
+"Sebuah persediaan basis data I<indeks> menyeluruh alternatif atau sesuai "
+"dengan FSSTND."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:16
+msgid "%mandb% - create or update the manual page index caches"
+msgstr "%mandb% - buat atau perbarui indeks persediaan halaman buku panduan"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:22
+msgid ""
+"B<%mandb%> [\\|B<-dqsucpt?V>\\|] [\\|B<-C> I<file>\\|] [\\|I<manpath>\\|]"
+msgstr ""
+"B<%mandb%> [\\|B<-dqsucpt?V>\\||\\|B<-h>\\||\\|B<-V>\\|] [\\|B<-C> I<berkas>"
+"\\|] [\\|I<jalurman>\\|]"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:29
+msgid ""
+"B<%mandb%> [\\|B<-dqsut>\\|] [\\|B<-C> I<file>\\|] B<-f> I<filename>\\ .\\|."
+"\\|."
+msgstr ""
+"B<%mandb%> [\\|B<-dqsut>\\|] [\\|B<-C> I<berkas>\\|] B<-f> I<nama berkas>\\ ."
+"\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:38
+msgid ""
+"B<%mandb%> is used to initialise or manually update B<index> database caches "
+"that are usually maintained by B<%man%>.  The caches contain information "
+"relevant to the current state of the manual page system and the information "
+"stored within them is used by the man-db utilities to enhance their speed "
+"and functionality."
+msgstr ""
+"B<%mandb%> digunakan untuk menginisialisasi atau secara manual memperbarui "
+"persediaan basis data B<indeks> yang biasanya dijaga oleh B<%man%>. "
+"Persediaan berisi informasi yang berhubungan ke kondisi sistem halaman buku "
+"panduan sekarang dan informasi yang disimpan didalamnya digunakan oleh man-"
+"db untuk meningkatkan kecepatan dan fungsionalitasnya."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:46
+msgid ""
+"When creating or updating an B<index>, B<%mandb%> will warn of bad ROFF .so "
+"requests, bogus manual page filenames and manual pages from which the "
+"B<whatis> cannot be parsed."
+msgstr ""
+"Ketika membuat atau memperbarui sebuah B<indeks>, B<%mandb%> akan "
+"memperingatkan dari permintaan buruk .so ROFF, nama berkas halaman buku "
+"panduan palsu dan halaman buku panduan dari B<whatis> tidak dapat diambil."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:52
+msgid ""
+"Supplying B<%mandb%> with an optional colon-delimited path will override the "
+"internal system manual page hierarchy search path, determined from "
+"information found within the man-db configuration file."
+msgstr ""
+"Memberikan B<%mandb%> dengan sebuah sebuah jalur alternatif dipisahkan "
+"dengan tanda titik dua akan memaksa jalur pencarian internal hierarki sistem "
+"halaman buku panduan, yang ditentukan dari informasi yang ditemukan dalam "
+"berkas konfigurasi man-db."
+
+#. type: SH
+#: ../../man/man8/mandb.man8:52
+#, no-wrap
+msgid "DATABASE CACHES"
+msgstr "PERSEDIAAN BASIS DATA"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:55
+msgid ""
+"B<%mandb%> can be compiled with support for any one of the following "
+"database types."
+msgstr ""
+"B<%mandb%> dapat disusun dengan dukungan untuk tipe basis data apapun "
+"seperti berikut ini."
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:59
+#, no-wrap
+msgid "Name"
+msgstr "Name"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:59
+#, no-wrap
+msgid "Type"
+msgstr "Type"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:59
+#, no-wrap
+msgid "Async"
+msgstr "Async"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:59
+#, no-wrap
+msgid "Filename"
+msgstr "Filename"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:61
+#, no-wrap
+msgid "Berkeley db"
+msgstr "Berkeley db"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:63
+#, no-wrap
+msgid "Binary tree"
+msgstr "Binary tree"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:63 ../../man/man8/mandb.man8:66
+#, no-wrap
+msgid "Yes"
+msgstr "Yes"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:63
+#, no-wrap
+msgid "I<index.bt>"
+msgstr "I<index.bt>"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:64
+#, no-wrap
+msgid "GNU gdbm"
+msgstr "GNU gdbm"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:66 ../../man/man8/mandb.man8:69
+#, no-wrap
+msgid "Hashed"
+msgstr "Hashed"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:66
+#, no-wrap
+msgid "I<index.db>"
+msgstr "I<index.db>"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:67
+#, no-wrap
+msgid "UNIX ndbm"
+msgstr "UNIX ndbm"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:69
+#, no-wrap
+msgid "No"
+msgstr "No"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:69
+#, no-wrap
+msgid "I<index.(dir|pag)>"
+msgstr "I<index.(dir|pag)>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:80
+msgid ""
+"Those database types that support asynchronous updates provide enhanced "
+"speed at the cost of possible corruption in the event of unusual "
+"termination.  In an unusual case where this has occurred, it may be "
+"necessary to rerun B<%mandb%> with the B<-c> option to re-create the "
+"databases from scratch."
+msgstr ""
+"Tipe basis data itu yang mendukung pembaruan asinkron memberikan kecepatan "
+"lebih dengan kemungkinan korupsi pada saat terjadi terminasi yang tidak "
+"biasa. Dalam kasus yang tidak biasa dimana ini telah terjadi, mungkin perlu "
+"untuk menjalankan kembali B<%mandb%> dengan pilihan B<-c> untuk membuat "
+"kembali basis data dari awal."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:87
+msgid "Produce no warnings."
+msgstr "Tidak menghasilkan peringatan."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:91
+msgid ""
+"Do not spend time looking for or adding information to the databases "
+"regarding stray cats."
+msgstr ""
+"Jangan habiskan waktu untuk mencari atau menambahkan informasi ke basis data "
+"mengenai berkas cat yang salah."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:95
+msgid ""
+"Do not spend time checking for deleted manual pages and purging them from "
+"the databases."
+msgstr ""
+"Jangan habiskan waktu untuk memeriksa halaman buku panduan yang terhapus dan "
+"hapus mereka dari basis data."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:107
+msgid ""
+"By default, B<%mandb%> will try to update any previously created databases.  "
+"If a database does not exist, it will create it.  This option forces B<%mandb"
+"%> to delete previous databases and re-create them from scratch, and implies "
+"B<--no-purge.> This may be necessary if a database becomes corrupt or if a "
+"new database storage scheme is introduced in the future."
+msgstr ""
+"Secara baku, B<%mandb%> akan mencoba memperbarui basis data yang dibuat "
+"sebelumnya. Jika sebuah basis data tidak ada, ini akan dibuat. Pilihan ini "
+"memaksa B<%mandb%> untuk menghapus basis data sebelumnya dan membuat kembali "
+"dari awal, dan mengimplikasikan B<--no-purge.> Ini mungkin diperlukan jika "
+"sebuah basis data telah terkorupsi atau jika sebuah skema penyimpanan basis "
+"data baru dikenalkan dalam masa depan."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:111
+msgid ""
+"Create user databases only, even with write permissions necessary to create "
+"system databases."
+msgstr ""
+"Buat basis data untuk pengguna saja, baik dengan ijin tulis yang dibutuhkan "
+"untuk membuat basis data sistem."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:117
+msgid ""
+"Perform correctness checks on manual pages in the hierarchy search path.  "
+"With this option, B<%mandb%> will not alter existing databases."
+msgstr ""
+"Lakukan pemeriksaan kebenaran di halaman buku panduan dalam hierarki jalur "
+"pencarian. Dengan pilihan ini, B<%mandb%> tidak akan mengubah basis data "
+"yang sudah ada."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:131
+msgid ""
+"Update only the entries for the given filename.  This option is not for "
+"general use; it is used internally by B<%man%> when it has been compiled "
+"with the B<MAN_DB_UPDATES> option and finds that a page is out of date.  It "
+"implies B<-p> and disables B<-c> and B<-s>."
+msgstr ""
+"Hanya perbarui masukan dari nama berkas yang diberikan. Pilihan ini tidak "
+"untuk penggunaan umum; ini digunakan secara internal oleh B<%man%> ketika "
+"ini telah disusun dengan B<MAN_DB_UPDATES> pilihan dan menemukan bahwa "
+"sebuah halaman telah kadaluarsa. Ini mengimplikasikan B<-p> dan "
+"menonaktifkan B<-c> dan B<-s>."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:138
+msgid "Show the usage message, then exit."
+msgstr "Tampilkan pesan penggunaan, kemudian keluar."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:144
+msgid "Show the version, then exit."
+msgstr "Tampilkan versi, kemudian keluar."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:151
+msgid "Usage, syntax, or configuration file error."
+msgstr "Penggunaan, sintaks, atau berkas konfigurasi error."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:157
+msgid "A child process failed."
+msgstr "Sebuah proses anak gagal."
+
+#. type: SH
+#: ../../man/man8/mandb.man8:157
+#, no-wrap
+msgid "DIAGNOSTICS"
+msgstr "DIAGNOSA"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:159
+msgid "The following warning messages can be emitted during database building."
+msgstr ""
+"Pesan peringatan berikut dapat dikeluarkan selama pembuatan basis data."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:159
+#, no-wrap
+msgid "B<E<lt>filenameE<gt>: whatis parse for page(sec) failed>"
+msgstr "B<E<lt>nama berkasE<gt>: whatis pengambilan untuk halaman(sec) gagal>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:170
+msgid ""
+"An attempt to extract whatis line(s) from the given E<lt>filenameE<gt> "
+"failed.  This is usually due to a poorly written manual page, but if many "
+"such messages are emitted it is likely that the system contains non-standard "
+"manual pages which are incompatible with the man-db whatis parser.  See the "
+"B<WHATIS PARSING> section in B<lexgrog>(1)  for more information."
+msgstr ""
+"Sebuah percobaan untuk mengekstrak baris whatis E<lt>dari nama berkasE<gt> "
+"yang diberikan gagal. Ini biasanya karena halaman buku panduan yang ditulis "
+"kurang lengkap, tetapi jika banyak pesan seperti itu yang dikeluarkan "
+"sepertinya sistem berisi halaman buku panduan yang tidak standar yang tidak "
+"sesuai dengan pengambil man-db whatis. Lihat bagian B<WHATIS PARSING>  dalam "
+"B<lexgrog>(1) untuk informasi lebih lanjut."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:170
+#, no-wrap
+msgid "B<E<lt>filenameE<gt>: is a dangling symlink>"
+msgstr "B<E<lt>nama berkasE<gt>: adlaah sebuah simlink dangling>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:175
+msgid ""
+"E<lt>filenameE<gt> does not exist but is referenced by a symbolic link.  "
+"Further diagnostics are usually emitted to identify the E<lt>filenameE<gt> "
+"of the offending link."
+msgstr ""
+"E<lt>nama berkasE<gt> tidak ada tetapi direferensikan oleh sebuah link "
+"simbolik. Diagnosa lebih lanjut biasanya dikeluarkan untuk "
+"mengidentifikasikan E<lt>nama berkasE<gt> dari offending link."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:175
+#, no-wrap
+msgid "B<E<lt>filenameE<gt>: bad symlink or ROFF `.so' request>"
+msgstr "B<E<lt>nama berkasE<gt>: symlink buruk atau permintaan `.so' ROFF>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:179
+msgid ""
+"E<lt>filenameE<gt> is either a symbolic link to, or contains a ROFF include "
+"request to, a non existent file."
+msgstr ""
+"E<lt>nama berkasE<gt> baik sebuak link simbolik ke, atau berisi sebuah ROFF "
+"termasuk permintaan ke, sebuah berkas yang tidak ada."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:179
+#, no-wrap
+msgid "B<E<lt>filenameE<gt>: ignoring bogus filename>"
+msgstr "B<E<lt>nama berkasE<gt>: mengabaikan nama berkas palsu>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:185
+msgid ""
+"The E<lt>filenameE<gt> may or may not be a valid manual page but its name is "
+"invalid.  This is usually due to a manual page with sectional extension "
+"E<lt>xE<gt> being put in manual page section E<lt>yE<gt>."
+msgstr ""
+"E<lt>nama berkasE<gt> mungkin atau tidak mungkin berupa sebuah halaman buku "
+"panduan normal tetapi namanya tidak valid. Ini biasanya karena sebuah "
+"halaman buku panduan dengan ekstensi bagian E<lt>xE<gt> diletakan dalam "
+"bagian halaman buku panduan E<lt>yE<gt>."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:185
+#, no-wrap
+msgid "B<E<lt>filename_maskE<gt>: competing extensions>"
+msgstr "B<E<lt>filename_maskE<gt>: ekstensi berkompetensi>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:191
+msgid ""
+"The wildcard E<lt>filename_maskE<gt> is not unique.  This is usually caused "
+"by the existence of both a compressed and uncompressed version of the same "
+"manual page.  All but the most recent are ignored."
+msgstr ""
+"Karakter bebas E<lt>filename_maskE<gt> tidak unik. Ini biasanya disebabkan "
+"oleh adanya baik versi terkompres dan tidak terkompres dari halaman buku "
+"panduan yang sama. Seluruh tetapi yang paling baru diabaikan."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:202
+msgid "Older locations for the database cache included:"
+msgstr "Lokasi lebih lama untuk persediaan basis data dimasukan:"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:223
+msgid ""
+"The B<WHATIS PARSING> section formerly in this manual page is now part of "
+"B<lexgrog>(1)."
+msgstr ""
+"B<WHATIS PARSING> bagian sebelumnya dalam halaman buku panduan ini sekarang "
+"bagian dari B<lexgrog>(1)."
+
+#~ msgid "%thapropos%"
+#~ msgstr "%thapropos%"
+
+#~ msgid "%date%"
+#~ msgstr "%date%"
+
+#~ msgid "%version%"
+#~ msgstr "%version%"
+
+#~ msgid "LEXGROG"
+#~ msgstr "LEXGROG"
+
+#~ msgid "%thman%"
+#~ msgstr "%thman%"
+
+#~ msgid "%thmanconv%"
+#~ msgstr "%thmanconv%"
+
+#~ msgid "%thmanpath%"
+#~ msgstr "%thmanpath%"
+
+#~ msgid "%thwhatis%"
+#~ msgstr "%thwhatis%"
+
+#~ msgid "%thzsoelim%"
+#~ msgstr "%thzsoelim%"
+
+#~ msgid "MANPATH"
+#~ msgstr "MANPATH"
+
+#~ msgid "%manpath_config_file%"
+#~ msgstr "%manpath_config_file%"
+
+#~ msgid "ACCESSDB"
+#~ msgstr "ACCESSDB"
+
+#~ msgid "%thcatman%"
+#~ msgstr "%thcatman%"
+
+#~ msgid "%thmandb%"
+#~ msgstr "%thmandb%"
+
+#~ msgid "B<-s> I<section>, B<--section> I<section>"
+#~ msgstr "B<-s> I<bagian>, B<--section> I<bagian>"
+
+#~ msgid "7@T{\n"
+#~ msgstr "7@T{\n"
+
+#~ msgid "e.g. B<man>(7), B<groff>(7)\n"
+#~ msgstr "e.g. B<man>(7), B<groff>(7)\n"
+
+#~ msgid "T}\n"
+#~ msgstr "T}\n"
+
+#~ msgid ""
+#~ "If you want to override B<%man%>'s prompt string processing completely, "
+#~ "use the $B<MANLESS> environment variable described below."
+#~ msgstr ""
+#~ "Jika anda ingin mengesampingkan pemrosesan prompt string B<%man%> secara "
+#~ "lengkap , gunakan variabel lingkunan $B<MANLESS> dijelaskan dibawah."
+
+#~ msgid "Description@Octal@latin1@ascii\n"
+#~ msgstr "Deskripsi@oktal@latin1@ascii\n"
+
+#~ msgid "_\n"
+#~ msgstr "_\n"
+
+#~ msgid ""
+#~ "B<%mandb%>(8), B<%manpath%>(1), B<manpath>(5), B<%apropos%>(1), B<%whatis"
+#~ "%>(1), B<%catman%>(8), B<less>(1), B<nroff>(1), B<troff>(1), B<groff>(1), "
+#~ "B<%zsoelim%>(1), B<setlocale>(3), B<man>(7), B<ascii>(7), B<latin1>(7), "
+#~ "the man-db package manual, B<FSSTND>."
+#~ msgstr ""
+#~ "B<%mandb%>(8), B<%manpath%>(1), B<manpath>(5), B<%apropos%>(1), B<%whatis"
+#~ "%>(1), B<%catman%>(8), B<less>(1), B<nroff>(1), B<troff>(1), B<groff>(1), "
+#~ "B<%zsoelim%>(1), B<setlocale>(3), B<man>(7), B<ascii>(7), B<latin1>(7), "
+#~ "paket buku panduan man-db, B<FSSTND>."
+
+#~ msgid "Name@Type@Async@Filename\n"
+#~ msgstr "Nama@Tipe@Async@Namaberkas\n"
+
+#~ msgid "Berkeley db@Binary tree@Yes@I<index.bt>\n"
+#~ msgstr "Berkeley db@Binari tree@Yes@I<index.bt>\n"

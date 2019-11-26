@@ -1,0 +1,28 @@
+#! /bin/sh
+# $1 : the source file
+# $2 : the preprocessor string
+# $3 : the output device (optional)
+
+prog=`basename $0`
+prepipe=
+postpipe=
+
+for p in `echo "$2" | sed 's/./& /g'`
+do
+  case $p in
+  e) prepipe="$prepipe | /usr/bin/neqn" ;;
+  g) echo "$prog: can't preprocess with grap" >&2 ;;
+  p) echo "$prog: can't preprocess with pic" >&2 ;;
+  t) prepipe="$prepipe | /usr/bin/tbl" ; postpipe="| /usr/bin/col" ;;
+  r) prepipe="$prepipe | /usr/bin/refer" ;;
+  v) echo "$prog: can't preprocess with vgrind" >&2 ;;
+  *) echo "$prog: unknown preprocessor \`$p'" >&2 ;;
+  esac
+done
+
+case $prog in
+  mandb_tfmt) postpipe="| /usr/bin/troff -t ${3+-T$3}" ;;
+  *) postpipe="| /usr/bin/nroff ${3+-T$3} $postpipe";;
+esac
+
+eval "cat /usr/export/exec/sun4/lib/tmac/tmac.an $1 $prepipe $postpipe"

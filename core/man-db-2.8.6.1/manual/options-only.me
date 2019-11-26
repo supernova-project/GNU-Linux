@@ -1,0 +1,13 @@
+.\" Extract just the list of options from intro.me, disabling the usual
+.\" hyphenation and adjustment. This looks better in README.
+.nh
+.de hy
+..
+.na
+.de ad
+..
+.pl 10000i
+.de bp
+..
+.nr MAN-OPTIONS-ONLY 1
+.so man_db.me

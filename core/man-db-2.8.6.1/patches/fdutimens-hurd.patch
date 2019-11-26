@@ -1,0 +1,37 @@
+commit 15ab8fc0974755c0b56554b6dc6f9dec65290b8c
+Author: Colin Watson <cjwatson@debian.org>
+Date:   Wed Sep 24 13:09:50 2014 +0100
+
+    utimens: handle lack of UTIME_* on GNU/Hurd
+    
+    The Hurd has futimens, but does not currently support
+    UTIME_NOW/UTIME_OMIT (https://bugs.debian.org/762677).  Resolve these to
+    real timestamps if necessary.
+    
+    Although the lutimens function is structured similarly, it does not need
+    the same change because the Hurd does not have utimensat, so it will
+    always fall back to other methods after calling update_timespec.
+
+diff --git a/gl/lib/utimens.c b/gl/lib/utimens.c
+index dd3ec66..2d0e9f6 100644
+--- a/gl/lib/utimens.c
++++ b/gl/lib/utimens.c
+@@ -243,6 +243,18 @@ fdutimens (int fd, char const *file, struct timespec const timespec[2])
+           adjustment_needed++;
+         }
+ # endif
++# ifdef __GNU__
++      /* Work around lack of UTIME_NOW/UTIME_OMIT support:
++         <https://bugs.debian.org/762677>.  */
++      if (adjustment_needed > 0)
++        {
++          if (fd < 0 ? stat (file, &st) : fstat (fd, &st))
++            return -1;
++          update_timespec (&st, &ts);
++          /* Note that st is good, in case futimens gives ENOSYS.  */
++          adjustment_needed = 3;
++        }
++# endif
+ # if HAVE_UTIMENSAT
+       if (fd < 0)
+         {

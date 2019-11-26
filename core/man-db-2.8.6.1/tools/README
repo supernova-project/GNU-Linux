@@ -1,0 +1,13 @@
+This directory contains an assortment of scripts:
+
+chconfig:	Converts a man-db configuration file to the FHS.
+
+checkman:	Can be run to inform of manual pages duplicated across
+		hierarchies.
+
+mandb_fmt-script: 
+		An example of a per manual page hierarchy formatter
+		script.
+
+mkcatdirs:	Can be used to create all of the required cat directories
+		after installation.

@@ -1,0 +1,55 @@
+#! /bin/sh
+
+# Ensure that we don't repeatedly rescan when a whatis entry turns into a
+# broken link.
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MANDB=mandb}
+: ${ACCESSDB=accessdb}
+
+init
+fake_config /usr/share/man
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+db_ext="$(db_ext)"
+
+NL='
+'
+
+write_page test 1 "$tmpdir/usr/share/man/man1/test.1.gz" UTF-8 gz t \
+	"test \- test page${NL}.br${NL}testlink \- link to test page"
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+cat >"$tmpdir/1.exp" <<EOF
+test -> "- 1 1 MTIME A - - gz test page"
+testlink -> "- 1 1 MTIME C test - gz "
+EOF
+accessdb_filter "$tmpdir/usr/share/man/index$db_ext" >"$tmpdir/1.out"
+expect_pass 'setup' 'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+./fspause
+echo '.so nonexistent.1' | gzip -9c >"$tmpdir/usr/share/man/man1/testlink.1.gz"
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+cat >"$tmpdir/2.exp" <<EOF
+test -> "- 1 1 MTIME A - - gz test page"
+testlink -> "- 1 1 MTIME C test - gz "
+EOF
+accessdb_filter "$tmpdir/usr/share/man/index$db_ext" >"$tmpdir/2.out"
+expect_pass 'broken whatis' 'diff -u "$tmpdir/2.exp" "$tmpdir/2.out"'
+
+./fspause
+LC_ALL=C run $MANDB -C "$tmpdir/manpath.config" -u \
+	"$tmpdir/usr/share/man" >"$tmpdir/3.out" 2>/dev/null
+cat >"$tmpdir/3.exp" <<EOF
+Purging old database entries in $abstmpdir/usr/share/man...
+Processing manual pages under $abstmpdir/usr/share/man...
+Processing manual pages under $abstmpdir/usr/share/man/cat1...
+0 man subdirectories contained newer manual pages.
+0 manual pages were added.
+0 stray cats were added.
+0 old database entries were purged.
+EOF
+expect_pass 'mandb does not rescan' 'diff -u "$tmpdir/3.exp" "$tmpdir/3.out"'
+
+finish

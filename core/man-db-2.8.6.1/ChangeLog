@@ -1,0 +1,3779 @@
+2019-08-05  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.6.1.
+
+2019-08-04  Colin Watson  <cjwatson@debian.org>
+
+	Fix missing memory copies in ult_src
+
+	Fixes Debian bug #933802.
+
+	* src/ult_src.c (ult_src): Copy strings before adding them to trace.
+
+2019-08-03  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.6.
+
+2019-08-03  Colin Watson  <cjwatson@debian.org>
+
+	Update syscall lists from systemd bca5a0eacc
+
+	* lib/sandbox.c (make_seccomp_filter): Add rseq (see
+	https://github.com/systemd/systemd/issues/12127).
+
+2019-05-02  Colin Watson  <cjwatson@debian.org>
+
+	Improve manual build portability slightly
+
+	* manual/Makefile.am ($(MANUAL).pp, .pp.dvi, .pp.ps, .pp.tdvi,
+	.tdvi.tps, .pp.cat, .pp.html): Use "mv -f" rather than just "mv", since
+	Automake seems to prefer that for its own rules.
+
+2019-05-02  Colin Watson  <cjwatson@debian.org>
+
+	Make manual build more robust against failures
+
+	Fixes Savannah bug #56254.
+
+	* manual/Makefile.am ($(MANUAL).pp, .pp.dvi, .pp.ps, .pp.tdvi,
+	.tdvi.tps, .pp.cat, .pp.html): Write output to *.new files and rename
+	into place, so that failures are properly retried in future runs.
+
+2019-03-03  Colin Watson  <cjwatson@debian.org>
+
+	Avoid configure error message if nroff is broken
+
+	* m4/man-gnu-nroff.m4 (MAN_PROG_GNU_NROFF): Adjust test arguments
+	slightly to avoid a spurious error message if nroff is sufficiently
+	broken that it doesn't produce numeric output for "\n(.g".
+
+2019-03-03  Colin Watson  <cjwatson@debian.org>
+
+	Fix warnings when configuring --without-libseccomp
+
+	* lib/sandbox.c (_sandbox_load): Mark sandbox and permissive parameters
+	unused when HAVE_LIBSECCOMP is undefined, to avoid warnings from "gcc
+	-Wunused-parameter".
+
+2019-03-03  Colin Watson  <cjwatson@debian.org>
+
+	Add configure option to disable building manual
+
+	* m4/man-arg-manual.m4: New file.
+	* configure.ac: Add MAN_ARG_MANUAL.
+	* manual/Makefile.am: Perform most rules only if BUILD_MANUAL is true.
+	* manual/intro.me (Arguments to configure): Add --disable-manual.
+	* README (Non-generic arguments to configure): Update.
+	* NEWS: Document this.
+
+2019-03-03  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Document container type changes.
+
+2019-02-05  Colin Watson  <cjwatson@debian.org>
+
+	Add some missing entries to lib/README
+
+	* lib/README: Add glcontainers.*, orderfiles.*, and sandbox.*.
+
+2019-02-05  Colin Watson  <cjwatson@debian.org>
+
+	Remove pipeline.* from lib/README
+
+	It's been a separate library since 2010.
+
+	* lib/README: Remove pipeline.*.
+
+2019-02-05  Colin Watson  <cjwatson@debian.org>
+
+	Inline lower into name_to_key
+
+	With only one remaining user, it wasn't pulling its weight.
+
+	* libdb/db_lookup.c (name_to_key): Inline the implementation of lower.
+	* lib/Makefile.am (libman_la_SOURCES): Remove lower.c and lower.h.
+	* lib/README: Remove lower.*.
+	* lib/lower.c, lib/lower.h: Remove.
+
+2019-02-05  Colin Watson  <cjwatson@debian.org>
+
+	Simplify case-insensitivity in word_fnmatch
+
+	Using FNM_CASEFOLD saves us from having to lower-case the pattern
+	manually, and it also fixes the behaviour of "apropos -w" when given a
+	non-lower-case pattern.
+
+	* lib/wordfnmatch.c (word_fnmatch): Use isalpha and FNM_CASEFOLD rather
+	than manually lower-casing string or expecting pattern to have already
+	been lower-cased.
+	* NEWS: Document this.
+
+2019-02-05  Colin Watson  <cjwatson@debian.org>
+
+	Simplify case-insensitive comparisons in whatis
+
+	We can just use strcasecmp and similar functions rather than
+	lower-casing comparands manually.
+
+	In some corner cases this may result in matches that would not
+	previously have been returned (e.g. "whatis -w" with a non-lower-case
+	pattern).
+
+	* src/whatis.c (parse_name): Use strcasecmp and FNM_CASEFOLD rather than
+	manually lower-casing dbname or expecting pages to have already been
+	lower-cased.
+	(match): Use strcasestr and isalpha rather than manually lower-casing
+	whatis or expecting page to have already been lower-cased.
+	(parse_whatis): Remove lowpages parameter; pass pages directly to match
+	instead.
+	(do_apropos): Remove lowpages; parse_name and parse_whatis no longer
+	need it.
+
+2019-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Import Gnulib's strcase module
+
+	We're already using strcasecmp and strncasecmp.
+
+	* bootstrap.conf (gnulib_modules): Add strcase.
+
+2019-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Add missing #include
+
+	* src/straycats.c: Include <stdbool.h>.
+
+2019-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Use bool for boolean command-line options
+
+	* include/manconfig.h.in (debug_level): Change type to bool.  Update all
+	definitions and users.
+	* lib/encodings.c (get_roff_encoding): Change type of "found" to bool.
+	* libdb/db_lookup.c (dblookup_all, dblookup_exact): Change "match_case"
+	parameter type to bool.  Update all callers.
+	(dblookup_pattern): Change "match_case", "pattern_regex", and
+	"try_descriptions" parameter types to bool.  Update all callers.
+	* libdb/db_storage.h (dblookup_all, dblookup_exact, dblookup_pattern):
+	Update prototypes.
+
+	* src/descriptions_store.c (store_descriptions): Change types of
+	"found_real_page" and "found_external" to bool.
+	* src/lexgrog_test.c (main): Change types of "some_failed" and "found"
+	to bool.
+	* src/man.c (parse_opt): Change types of "apropos" and "whatis" to bool.
+	(add_roff_line_length): Change "save_cat_p" parameter type to bool *.
+	Update all callers.
+	(make_browser): Change "found_percent_s" type to bool.
+	(display): Change "display_to_stdout" type to bool.
+	(try_db): Change "found_stale" type to bool.
+	(local_man_loop): Change "local_mf" type to bool.
+	(main): Change "found_subpage" type to bool.
+	* src/manp.c (read_config_file): Change "optional" parameter type to
+	bool.  Update all callers.
+	* src/manp.h (read_config_file): Update prototype.
+
+	* src/check_mandirs.c (opt_test, force_rescan): Change types to bool.
+	Update all users.
+	* src/globbing_test.c (match_case, regex_opt, wildcard): Likewise.
+	* src/lexgrog_test.c (parse_man, parse_cat, show_whatis, show_filters):
+	Likewise.
+	* src/man.c (disable_cache, troff, global_apropos, print_where,
+	print_where_cat, catman, local_man_file, findall, update, match_case,
+	regex_opt, wildcard, names_only, no_hyphenation, no_justification,
+	subpages, ascii, save_cat, ditroff, htmlout): Likewise.
+	* src/mandb.c (opt_test, force_rescan, check_for_strays, purge, user,
+	create): Likewise.
+	* src/manp.c (disable_cache): Likewise.
+	* src/manpath.c (cat, global): Likewise.
+	* src/whatis.c (am_apropos, regex_opt, exact, wildcard, require_all,
+	long_output): Likewise.
+
+2019-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Port roff_warnings to gl_list
+
+	* src/man.c (struct string_llist): Remove.
+	(parse_opt, make_roff_command): Convert roff_warnings to gl_list.
+	(main): Initialise roff_warnings.
+
+2019-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Port parse_descriptions to gl_list
+
+	* src/descriptions.c (free_descriptions): Rename to ...
+	(page_description_free): ... this.  Adjust for gl_list's expected
+	interface.
+	(parse_descriptions): Convert to gl_list.  Return a zero-length list if
+	whatis is NULL, where previously we returned NULL.
+	* src/descriptions_store.c (store_descriptions): Convert descs to
+	gl_list.
+	* src/descriptions.h (struct page_description): Remove next member.
+	(parse_descriptions, store_descriptions): Update prototypes.
+	(free_descriptions): Remove prototype.
+	* src/lexgrog_test.c (main): Convert descs to gl_list.
+	* src/straycats.c (check_for_stray): Likewise.  Remove conditional,
+	since parse_descriptions now never returns NULL.
+
+2019-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Improve sandbox_free
+
+	* lib/sandbox.c (sandbox_free): Free sandbox->permissive_ctx too.
+
+2019-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Free seccomp sandbox before normal exit
+
+	This makes valgrind slightly happier.
+
+	* src/lexgrog_test.c (main): Call seccomp_free before exiting.
+	* src/man.c (main): Likewise.
+	* src/manconv_main.c (main): Likewise.
+	* src/mandb.c (main): Likewise.
+	* src/whatis.c (main): Likewise.
+	* src/zsoelim_main.c (main): Likewise.
+
+2019-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Port dblookup to gl_list
+
+	* libdb/db_lookup.c (free_mandata_struct): Only free a single structure,
+	rather than following list pointers.
+	(split_content): Stop initialising pinfo->next.
+	(dblookup, dblookup_pattern): Convert to gl_list.  Return a zero-length
+	list to indicate no matches, where previously we returned NULL.
+	(dblookup_exact): Adjust for changes in dblookup.  This function
+	continues to return a single element rather than a list, since that's
+	all that its callers need.
+	* libdb/db_storage.h (struct mandata): Remove next member.
+	(dblookup_all, dblookup_pattern): Update prototypes.
+	* src/man.c (db_map_value_free): New function.
+	(try_db): Convert dblookup_pattern/dblookup_all cache to store gl_lists
+	or NULL.  NULL now means a database open failure and a zero-length list
+	means no matches in an existing database, rather than vice versa.
+	* src/whatis.c (do_whatis_section): Convert to gl_list.
+
+2019-02-03  Colin Watson  <cjwatson@debian.org>
+
+	Eliminate #ifdef in straycats.c
+
+	* src/straycats.c (check_for_stray): Replace hand-rolled
+	FAVOUR_STRAYCATS conditional with an equivalent compare_ids call.
+
+2019-02-03  Colin Watson  <cjwatson@debian.org>
+
+	Add helper functions for common container cases
+
+	* lib/glcontainers.c (new_string_list, new_string_map, new_string_set):
+	New functions.
+	* lib/glcontainers.h (new_string_list, new_string_map, new_string_set):
+	Add prototypes.
+
+	* lib/orderfiles.c (order_files): Use new_string_list.
+	* src/check_mandirs.c (test_manfile, add_dir_entries): Likewise.
+	* src/globbing.c (look_for_file, expand_path): Likewise.
+	* src/man.c (get_section_list): Likewise.
+	* src/manp.c (get_scetions, get_manpath_from_path, create_pathlist):
+	Likewise.
+	* src/straycats.c (check_for_stray): Likewise.
+
+	* libdb/db_gdbm.c (man_gdbm_firstkey): Use new_string_map.
+	* src/check_mandirs.c (test_manfile): Likewise.
+	* src/globbing.c (update_directory_cache): Likewise.
+	* src/man.c (try_db): Likewise.
+	* src/mandb.c (main): Likewise.
+
+	* libdb/db_btree.c (btree_findkey): Use new_string_set.
+	* src/whatis.c (main): Likewise.
+
+2019-02-03  Colin Watson  <cjwatson@debian.org>
+
+	Replace hashtable with Gnulib containers
+
+	Since we're using Gnulib's container types anyway, we might as well
+	reduce the maintenance burden of local code, especially since the result
+	tends to be more concise.
+
+	* bootstrap.conf (gnulib_modules): Add hash-map, hash-set, xmap, and
+	xset.
+	* lib/glcontainers.h (GL_MAP_FOREACH_START, GL_MAP_FOREACH_END): New
+	macros.
+
+	* lib/orderfiles.c (compare_physical_offsets, order_files): Convert
+	physical_offsets from a hashtable to a gl_map.
+	* libdb/db_btree.c (loop_check_hash): Rename to ...
+	(loop_check): ... this.
+	(btree_findkey): Convert loop_check from a hashtable to a gl_set.
+	* libdb/db_gdbm.c (parent_sortkey_hash): Rename to ...
+	(parent_keys: ... this.
+	(struct sortkey, parent_sortkey_hashtable_free): Remove.
+	(sortkey_hashtable_free): Rename to ...
+	(datum_free): ... this.  Adjust for gl_list's expected interface.
+	(sortkey_compare): Rename to ...
+	(datum_compare): ... this.  Adjust for gl_list's expected interface.
+	(datum_equals, datum_hash): New functions.
+	(man_gdbm_firstkey, man_gdbm_nextkey, man_gdbm_close): Convert
+	parent_keys from a hashtable to a gl_map, and convert its values from
+	hashtables with manual linking to gl_lists using a hash for fast lookup
+	by key.
+	* src/check_mandirs.c (whatis_hash): Rename to ...
+	(whatis_map): ... this.
+	(struct whatis_hashent): Rename to ...
+	(struct whatis): ... this.
+	(whatis_hashtable_free): Rename to ...
+	(whatis_free): ... this.  Adjust for gl_map's expected interface.
+	(test_manfile): Convert whatis_map from a hashtable to a gl_map.
+	* src/globbing.c (struct dirent_hashent): Rename to ...
+	(struct dirent_names): ... this.
+	(dirent_hashtable_free): Rename to ...
+	(dirent_names_free): ... this.  Adjust for gl_map's expected interface.
+	(dirent_hash): Rename to ...
+	(dirent_map): ... this.
+	(update_directory_cache): Convert dirent_map from a hashtable to a
+	gl_map.
+	* src/man.c (db_hash): Rename to ...
+	(db_map): ... this.
+	(db_hashtable_free): Remove.
+	(try_db, main): Convert db_map from a hashtable to a gl_map.
+	* src/mandb.c (process_manpath, tried_catdirs_free, purge_catdir,
+	purge_catdirs, main): Convert tried_catdirs from a hashtable to a
+	gl_map.
+	* src/whatis.c (display, main): Convert display_seen from a hashtable to
+	a gl_set.
+
+	* lib/Makefile.am (libman_la_SOURCES): Remove hashtable.c and
+	hashtable.h.
+	* lib/README: Remove hashtable.*.
+	* lib/hashtable.c, lib/hashtable.h: Remove.
+
+2019-02-01  Colin Watson  <cjwatson@debian.org>
+
+	Port list_extensions to gl_list
+
+	* libdb/db_lookup.c (name_ext_equals): New function.
+	(list_extensions, dblookup): Convert to gl_list.
+	* libdb/db_storage.h (struct name_ext): New structure.
+	(list_extensions): Update prototype.
+	* libdb/db_delete.c (dbdelete): Convert to gl_list.
+
+2019-01-31  Colin Watson  <cjwatson@debian.org>
+
+	Port ult_src tracing to gl_list
+
+	* src/ult_src.c (ult_trace, free_ult_trace): Remove.
+	(ult_src): Convert trace handling to gl_list.
+	* src/ult_src.h (struct ult_trace): Remove.
+	(ult_src): Update prototype.
+	(free_ult_trace): Remove.
+	* src/descriptions_store.c (store_descriptions): Convert to gl_list.
+	* src/descriptions.h (store_descriptions): Update prototype.
+	* src/check_mandirs.c (struct whatis_hashent): Change type of trace to
+	gl_list_t.
+	(whatis_hashtable_free, test_manfile): Convert to gl_list.
+
+2019-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Use bool in more places in whatis
+
+	* src/whatis.c (use_grep, do_whatis, do_apropos): Change "found"
+	parameter type to bool *.  Update all callers.
+	(any_set, all_set): Change "found_here" parameter type to bool *.
+	Update all callers.
+	(parse_name, parse_whatis): Change "found" and "found_here" parameter
+	types to bool *.  Update all callers.
+
+2019-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Port get_sections to gl_list
+
+	* src/manp.c (get_sections): Convert to gl_list.
+	* src/manp.h (get_sections): Update prototype.
+	* src/man.c (is_section, compare_candidates, do_global_apropos, man,
+	get_section_list): Convert to gl_list.
+	(compare_candidates): Sort sections missing from section_list to the
+	end.
+	(main): Free section_list.
+
+2019-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Use HTTPS URL for libpipeline
+
+	* NEWS, docs/INSTALL.quick: Update libpipeline URL to
+	https://nongnu.org/libpipeline/.
+
+2019-01-29  Colin Watson  <cjwatson@debian.org>
+
+	Port expand_path to gl_list
+
+	* src/globbing.c (expand_path): Convert to gl_list.
+	* src/globbing.h (expand_path): Update prototype.
+	* src/manp.c (def_path, add_dir_to_list, add_dir_to_path_list): Convert
+	to gl_list.
+	* src/ult_src.c (find_include): Likewise.
+
+2019-01-29  Colin Watson  <cjwatson@debian.org>
+
+	Fix failure to link libman using the Darwin linker
+
+	Thanks to George Plymale II and John Gardner.
+
+	* configure.ac: Add "-Wl,-flat_namespace,-undefined,suppress" to CFLAGS
+	on Darwin.
+	* NEWS: Document this.
+
+2019-01-29  Colin Watson  <cjwatson@debian.org>
+
+	Port order_files and look_for_file to gl_list
+
+	This gets rid of some particularly awful allocation spaghetti in
+	src/globbing.c.
+
+	* bootstrap.conf (gnulib_modules): Add rbtree-list.
+	* lib/orderfiles.c (compare_physical_offsets): Expect arguments to be
+	const char * rather than const char **.
+	(order_files): Convert to taking a gl_list_t as an input/output argument
+	rather than an array.  In the HAVE_LINUX_FIEMAP_H case, we produce a new
+	sorted list.
+	* lib/orderfiles.h (order_files): Update prototype.
+	* src/globbing.c (clear_glob): Remove.
+	(match_in_directory): Convert to gl_list.  Remove inter-call allocation
+	and cleanup machinery.
+	(look_for_file): Convert to gl_list.  Remove glob_t cleanup machinery;
+	the caller is now responsible for freeing the returned list.
+	* src/globbing.h (look_for_file): Update prototype.
+
+	* src/check_mandirs.c (add_dir_entries, count_glob_matches,
+	purge_normal): Convert to gl_list.
+	* src/straycats.c (check_for_stray): Likewise.
+
+	* src/check_mandirs.c (purge_whatis, purge_missing): Convert to gl_list.
+	Free list returned by look_for_file.
+	* src/globbing_test.c (main): Likewise.
+	* src/man.c (try_section, do_global_apropos_section): Likewise.
+	* src/zsoelim.l (zsoelim_open_file): Likewise.
+
+2019-01-29  Colin Watson  <cjwatson@debian.org>
+
+	Default to --without-systemd* on non-Linux systems
+
+	systemd is unapologetically Linux-specific, so let's not require
+	non-Linux packages to explicitly turn this off.
+
+	* m4/man-arg-systemdsystemunitdir (MAN_ARG_SYSTEMDSYSTEMUNITDIR):
+	Default to with_systemdsystemunitdir=no on non-Linux systems.
+	* m4/man-arg-systemdtmpfilesdir (MAN_ARG_SYSTEMDTMPFILESDIR): Default to
+	with_systemdtmpfilesdir=no on non-Linux systems.
+
+2019-01-27  Colin Watson  <cjwatson@debian.org>
+
+	Add --quiet to systemd mandb invocation
+
+	Fixes Debian bug #920628.
+
+	* init/systemd/man-db.service.in (ExecStart): Run mandb with --quiet.
+	* NEWS: Document this.
+
+2019-01-27  Colin Watson  <cjwatson@debian.org>
+
+	Use macros for common cases of list iteration
+
+	* lib/glcontainers.h (GL_LIST_FOREACH_START, GL_LIST_FOREACH_END): New
+	macros.
+	* src/catman.c (main): Replace manual list iteration with equivalent
+	macros.
+	* src/man.c (do_global_apropos, locate_page_in_manpath): Likewise.
+	* src/mandb.c (main): Likewise.
+	* src/manp.c (get_config, print_list, get_sections, def_path,
+	get_manpath_from_path, create_pathlist, get_mandb_manpath, get_catpath,
+	is_global_mandir): Likewise.
+	* src/whatis.c (search): Likewise.
+	* src/zsoelim.l (zsoelim_open_file): Likewise.
+
+2019-01-27  Colin Watson  <cjwatson@debian.org>
+
+	Rename gl-container-helpers to glcontainers
+
+	This is less annoying to type.
+
+	* lib/gl-container-helpers.c: Rename to ...
+	* lib/glcontainers.c: ... this.
+	* lib/gl-container-helpers.h: Rename to ...
+	* lib/glcontainers.h: ... this.
+	* lib/Makefile.am (libman_la_SOURCES): Replace gl-container-helpers.c
+	and gl-container-helpers.h with glcontainers.c and glcontainers.h.
+	* src/manp.c: Update include.
+
+2019-01-27  Colin Watson  <cjwatson@debian.org>
+
+	Move Gnulib container helpers into common code
+
+	* src/manp.c (string_equals, string_hash, string_free): Move to ...
+	* lib/gl-container-helpers.c (string_equals, string_hash, plain_free):
+	... here (new file).
+	* lib/gl-container-helpers.h: New file.
+	* lib/Makefile.am (libman_la_SOURCES): Add gl-container-helpers.c and
+	gl-container-helpers.h.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Turn config flags into an enum
+
+	* src/manp.c (enum config_flag): New enumeration.
+	(struct config_item, def_path, add_config, get_config, get_sections,
+	def_path): Use enum config_flag.
+	(describe_flag): New function.
+	(print_list): Describe flags rather than printing their integer value.
+	(add_def): Remove flag parameter; expect caller to pass the correct
+	config_def value instead.  Make thing and config_def const.
+	(add_mandb_map): Remove flag parameter; expect caller to pass the
+	correct catdir value instead.
+	(add_to_dirlist): Update calls to add_mandb_map and add_def.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Port internal configuration storage to gl_list
+
+	* bootstrap.conf (gnulib_modules): Add array-list.
+	* src/manp.c (struct list): Remove.
+	(struct config_item): New structure.
+	(config_item_free): New function.
+	(add_to_list): Rename to ...
+	(add_config): ... this.  Convert to gl_list.  Update all callers.
+	(get_from_list): Rename to ...
+	(get_config): ... this.  Convert to gl_list.  Update all callers.
+	(iterate_over_list): Remove.
+	(print_list, get_sections, free_config_file, def_path,
+	get_manpath_from_path, get_mandb_manpath, get_catpath,
+	is_global_mandir): Port config list handling to gl_list.
+	(add_to_dirlist): Rename config parameter to config_file.
+	(read_config_file): Create empty config list.  Rename previous local
+	config variable to config_file.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Use Gnulib's lchown function
+
+	Also remove lib/xchown.*; with only one call site, they don't pull their
+	weight over equivalent inline code.
+
+	* bootstrap.conf (gnulib_modules): Add lchown.
+	* configure.ac (AC_CHECK_FUNCS): Remove check for lchown.
+	* lib/Makefile.am (libman_la_SOURCES): Remove xchown.c and xchown.h.
+	* src/check_mandirs.c (chown_if_possible): Always use lchown rather than
+	chown, and inline the error check.
+
+	* po/POTFILES.in: Remove lib/xchown.c.
+	* po/man-db.pot, po/*.po: Update.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Simplify includes using Gnulib's fcntl module
+
+	* bootstrap.conf (gnulib_modules): Add fcntl.
+	* configure.ac (AC_CHECK_HEADERS): Remove check for fcntl.h.
+	* libdb/db_btree.c, libdb/db_ndbm.c, libdb/mydbm.h, src/man.c: Include
+	<fcntl.h> unconditionally.
+	* src/man.c: Remove conditional definitions of R_OK and X_OK; Gnulib's
+	<unistd.h> handles these.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Replace check_standard_fds with Gnulib's xstdopen
+
+	* bootstrap.conf (gnulib_modules): Add xstdopen.
+	* src/man.c (check_standard_fds): Remove.
+	(main): Call xstdopen rather than check_standard_fds.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Update to Gnulib 20190124
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Use bool type where appropriate
+
+	Now that we're using <stdbool.h> anyway due to gl_list (with Gnulib
+	providing <stdbool.h> if necessary), it makes sense to use it for our
+	own functions that have essentially boolean semantics.
+
+	* lib/encodings.c (compatible_encodings, is_roff_device): Return bool.
+	* lib/pathsearch.c (pathsearch, pathsearch_executable,
+	directory_on_path): Likewise.
+	* lib/sandbox.c (search_ld_preload, can_load_seccomp): Likewise.
+	* lib/security.c (running_setuid): Likewise.
+	* lib/wordfnmatch.c (word_fnmatch): Likewise.  Update all callers.
+	* src/check_mandirs.c (sanity_check_db): Likewise.
+	* src/man.c (duplicate_candidates): Likewise.
+	* src/manp.c (is_global_mandir): Likewise.  Update all callers.
+	* src/whatis.c (suitable_manpath, match): Likewise.
+	(any_set, all_set): Likewise.  Update all callers.
+
+	* lib/encodings.h (is_roff_device): Update prototype.
+	* lib/pathsearch.h (pathsearch_executable, directory_on_path): Likewise.
+	* lib/security.h (running_setuid): Likewise.
+	* lib/wordfnmatch.h (word_fnmatch): Likewise.
+	* src/manp.h (is_global_mandir): Likewise.
+
+	* src/mandb.c (mandb, process_manpath): Change global_manpath parameter
+	type to bool.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Note that some C99 runtime facilities may be used
+
+	* docs/HACKING (Facilities and portability): Note that C99 runtime
+	facilities that are provided by Gnulib are OK.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Remove arbitrary limit on manpath size
+
+	Fixes Savannah bug #50324.
+
+	* bootstrap.conf (gnulib_modules): Add hash-pjw-bare, linkedhash-list,
+	stdbool, and xlist.
+	* include/manconfig.h.in (MAXDIRS): Remove.
+
+	* src/manp.c (tmplist): Remove.
+	(string_equals, string_hash, string_free): New functions.
+	(gripe_overlong_list): Remove.
+	(insert_override_dir, get_manpath_from_path, add_expanded_dir_to_list,
+	add_dir_to_list, add_man_subdirs, add_dir_to_path_list, create_pathlist,
+	free_pathlist): Port manpath list handling to gl_list_t.
+	* src/catman.c (main): Likewise.
+	* src/man.c (do_global_apropos, local_man_loop, locate_page_in_manpath,
+	main): Likewise.
+	* src/mandb.c (main): Likewise.
+	* src/whatis.c (suitable_manpath, search, main): Likewise.
+	* src/zsoelim.l (<<EOF>>, zsoelim_parse_file, zsoelim_open_file,
+	zsoelim_stdin, zsoelim_stdin_data_new): Likewise.
+	* src/zsoelim_main.c (main): Likewise.
+
+	* src/manp.h (create_pathlist, free_pathlist): Update prototypes.
+	* src/zsoelim.h (zsoelim_open_file, zsoelim_parse_file,
+	zsoelim_stdin_data_new): Likewise.
+
+	* NEWS: Document this.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Document previous commit.
+
+2019-01-26  Colin Watson  <cjwatson@debian.org>
+
+	Automatically add more man directories to manpath
+
+	Will Starms reported that, if both ../man and ../share/man directories
+	(for example) exist relative to a directory on $PATH, then only the
+	first was considered.
+
+	* src/manp.c (has_mandir): Rename to ...
+	(add_man_subdirs): ... this.  Insert directories as they are found
+	rather than returning them, and continue even if some have been found.
+	(get_manpath_from_path): Update call to add_man_subdirs.
+
+2019-01-08  Colin Watson  <cjwatson@debian.org>
+
+	Recommend a distribution-independent bug tracker
+
+	* README: Link to https://savannah.nongnu.org/bugs/?group=man-db for bug
+	reporting.
+
+2019-01-05  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.5.
+
+2019-01-05  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Gnulib 20190105
+
+	In line with Gnulib, we now require Autoconf 2.63 and Automake 1.11.2.
+
+	* bootstrap: Sync to Gnulib d271f868a8df9bbec29049d01e056481b7a1a263.
+	* bootstrap.conf (GNULIB_REVISION): Set to
+	d271f868a8df9bbec29049d01e056481b7a1a263.
+	(buildreq): Bump required autoconf version to 2.63 and required automake
+	version to 1.11.2.
+	* configure.ac (AM_SILENT_RULES, AM_PROG_AR): Remove conditionals, which
+	were there for Automake 1.10 support.
+	(AC_PREREQ): Bump to 2.63.
+	* NEWS: Document this.
+
+2019-01-05  Colin Watson  <cjwatson@debian.org>
+
+	Use tar --sort=name if available
+
+	* m4/man-tar-sort-name.m4: New file.
+	* configure.ac: Call MAN_TAR_SORT_NAME.
+
+2019-01-05  Colin Watson  <cjwatson@debian.org>
+
+	Fix distcheck following addition of systemd timer
+
+	* Makefile.am (AM_DISTCHECK_CONFIGURE_FLAGS): Add
+	--with-systemdsystemunitdir=\$${prefix}/lib/systemd/system.
+
+2019-01-05  Colin Watson  <cjwatson@debian.org>
+
+	Fix distribution of man-db.timer
+
+	Automake's "_DATA" primary defaults to "nodist_", not "dist_".
+
+	* init/systemd/Makefile.am (systemdsystemunit_DATA): Rename to ...
+	(dist_systemdsystemunit_DATA): ... this.
+	(nodist_systemdsystemunit_DATA): Rename to ...
+	(systemdsystemunit_DATA): ... this.
+	(EXTRA_DIST): Add man-db.timer if INSTALL_SYSTEMD_TIMER is false.
+
+2019-01-05  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Work around Microsoft SCEP
+
+	This is a proprietary antivirus program and I've only been able to guess
+	at how to handle it.  Note that it is no longer supported by Microsoft
+	and so users should probably replace it with something else, but I still
+	want to minimise the number of support requests I get related to it.
+
+	* lib/sandbox.c (make_seccomp_filter): If libscep_pac.so is preloaded,
+	then allow some system calls related to sockets and System V message
+	queues.
+	* NEWS: Document this.
+
+2018-12-24  Colin Watson  <cjwatson@debian.org>
+
+	Use (void *) 0 as a variadic sentinel
+
+	NULL is formally incorrect here since the standard allows it to be an
+	integer constant expression.
+
+	* lib/decompress.c (decompress_open, decompress_fdopen): Use (void *)
+	rather than NULL as a sentinel for variadic functions.
+	* libdb/db_delete.c (dbdelete): Likewise.
+	* src/catman.c (catman, parse_for_sec, main): Likewise.
+	* src/check_mandirs.c (add_dir_entries): Likewise.
+	* src/compression.c (comp_file): Likewise.
+	* src/filenames.c (make_filename): Likewise.
+	* src/globbing.c (look_for_file): Likewise.
+	* src/lexgrog.l (find_name): Likewise.
+	* src/man.c (do_extern, run_mandb, make_roff_command, make_browser,
+	setenv_less, add_output_iconv, make_display_command, tmp_cat_filename,
+	format_display_and_save, format_display, display_catman, display,
+	local_man_loop): Likewise.
+	* src/manconv_client.c (add_manconv): Likewise.
+	* src/manconv_main.c (parse_opt): Likewise.
+	* src/manp.c (pathappend, add_nls_manpaths, add_system_manpath,
+	add_dir_to_path_list, get_catpath): Likewise.
+	* src/straycats.c (check_for_stray, open_catdir, straycats): Likewise.
+	* src/whatis.c (use_grep, display): Likewise.
+
+2018-12-06  Colin Watson  <cjwatson@debian.org>
+
+	Honour --enable-cache-owner in systemd timer
+
+	* init/systemd/Makefile.am (man-db.service): Substitute
+	@cache_top_owner@.
+	* init/systemd/man-db.service.in (ExecStart, User): Use
+	@cache_top_owner@ rather than hardcoding "man".
+
+2018-12-06  Colin Watson  <cjwatson@debian.org>
+
+	Improve systemd unit commentary
+
+	* init/systemd/man-db.service.in (ExecStart): Add comment.
+
+2018-12-06  Colin Watson  <cjwatson@debian.org>
+
+	Allow disabling installation of systemd components
+
+	* m4/man-arg-systemdtmpfilesdir.m4: Define an INSTALL_SYSTEMD_TMPFILES
+	Automake conditional (true unless --with-systemdtmpfilesdir=no).
+	* m4/man-arg-systemdsystemunitdir.m4: Define an INSTALL_SYSTEMD_TIMER
+	Automake conditional (true unless --with-systemdsystemunitdir=no).
+	* init/systemd/Makefile.am: Honour INSTALL_SYSTEMD_TMPFILES and
+	INSTALL_SYSTEMD_TIMER.
+
+2018-12-06  Colin Watson  <cjwatson@debian.org>
+
+	Ship a systemd timer for daily DB maintenance
+
+	Thanks to Christian Göttsche.  Fixes Debian bug #858022.
+
+	* m4/man-arg-systemdsystemunitdir.m4: New file.
+	* configure.ac: Accept --with-systemdsystemunitdir option.
+	* init/systemd/Makefile.am (EXTRA_DIST): Add man-db.service.in.
+	(CLEANFILES): Add man-db.service.
+	(systemdsystemunit_DATA): Install man-db.timer.
+	(nodist_systemdsystemunit_DATA): Install man-db.service.
+	(man-db.service): New rule.
+	* init/systemd/man-db.service.in, init/systemd/man-db.timer: New files.
+	* .gitignore: Add init/systemd/man-db.service.
+	* NEWS: Document this.
+
+2018-11-14  Colin Watson  <cjwatson@debian.org>
+
+	Fix incorrect error message
+
+	Reported by Julian Gilbey.  Fixes Debian bug #913721.
+
+	* src/man.c (check_standard_fds): Correct error message if stdout is not
+	open for writing (not "for reading", as previously claimed).
+
+2018-11-09  Colin Watson  <cjwatson@debian.org>
+
+	release.sh: Simplify Lex handling
+
+	release.sh had a hack to ensure that flex-generated scanners are fresh
+	in release tarballs.  This is more easily achieved by configuring with
+	--enable-maintainer-mode, which causes Automake to enable the Lex
+	rebuild rule.
+
+	* release.sh: Configure with --enable-maintainer-mode; drop conditional
+	removals of src/lexgrog.c and src/zsoelim.c.
+
+2018-11-09  Colin Watson  <cjwatson@debian.org>
+
+	lexgrog: Fix handling of \- in RHS of NAME section
+
+	Fixes Debian bug #913351.
+
+	* src/lexgrog.l (MAN_NAME): Split into MAN_NAME (left-hand side) and
+	MAN_DESC (right-hand side).  Most rules remain as before, except that \-
+	and similar are only handled specially in MAN_NAME and transition to
+	MAN_DESC, and rules that add a 0x11 marker (indicating the start of a
+	new whatis definition) transition to MAN_NAME.
+	(MAN_NAME_AT, MAN_NAME_BSX, MAN_NAME_BX, MAN_NAME_BX_RELEASE,
+	MAN_NAME_DQ, MAN_NAME_FX, MAN_NAME_NX, MAN_NAME_OX): Rename to
+	MAN_DESC_*.
+	(mdoc_text): Transition to MAN_DESC rather than MAN_NAME.
+	(newline_found): If adding 0x11, transition to MAN_NAME.
+	* src/tests/lexgrog-3: New file.
+	* src/tests/Makefile.am (ALL_TESTS): Add lexgrog-3.
+	* NEWS: Document this.
+
+2018-11-09  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Document changes since 2.8.4.
+
+2018-11-09  Colin Watson  <cjwatson@debian.org>
+
+	lexgrog: Add test for multiple whatis definitions
+
+	* src/tests/lexgrog-2: New file.
+	* src/tests/Makefile.am (ALL_TESTS): Add lexgrog-2.
+
+2018-11-09  Colin Watson  <cjwatson@debian.org>
+
+	lexgrog: Tidy up rules section
+
+	No functional change.
+
+	* src/lexgrog.l: Make more use of start condition scopes.  Reindent
+	rules somewhat to make better use of vertical space.
+
+2018-11-03  Nikola Forró  <nforro@redhat.com>
+
+	Fix several resource and memory leaks
+
+	* lib/decompress.c (decompress_zlib): Fix fd leak if gzdopen fails.
+	* lib/encodings.c (find_charset_locale): Free locale if setlocale fails.
+	* src/man.c (make_roff_command): Free fmt_prog.
+	* src/mandb.c (process_manpath): Free catpath if manpath is not a
+	directory.
+	* src/whatis.c (do_apropos): Free found_here.
+
+2018-10-27  enolp  <enolp@softastur.org>
+
+	Add Asturian translation
+
+	* po/ast.po: New from Translation Project.
+	* po/LINGUAS: Add ast.
+	* man/THANKS: Add translator credit.
+
+2018-10-27  Pedro Albuquerque  <palbuquerque73@gmail.com>
+
+	Update Portuguese manual page translation
+
+	* man/po4a/po/pt.po: Update from Translation Project.
+
+2018-10-21  Colin Watson  <cjwatson@debian.org>
+
+	Add Portuguese manual page translation
+
+	* man/po4a/po/pt.po: New from Translation Project (thanks, Pedro
+	Albuquerque).
+	* configure.ac (AC_CONFIG_FILES): Add man/pt/Makefile.
+	* man/LINGUAS.po4a: Add pt.
+	* man/Makefile.am (DIST_SUBDIRS): Add pt.
+	* man/pt/Makefile.am, man/pt/translator.add: New files.
+	* man/po4a/Makefile.am (POFILES): Add po/pt.po.
+	* man/po4a/po4a.cfg (po4a_langs): Add pt.
+	* man/THANKS: Add translator credit.
+	* .gitignore: Add man/pt/man1, man/pt/man5, and man/pt/man8.
+
+2018-10-21  Colin Watson  <cjwatson@debian.org>
+
+	Switch more language lists to one-per-line format
+
+	* man/LINGUAS.po4a: Switch to one language code per line, so that we
+	have better diffs in future.
+	* man/Makefile.am (DIST_SUBDIRS): Likewise.
+	* man/po4a/cfg (po4a_langs): Likewise.
+
+2018-10-21  Pedro Albuquerque  <palbuquerque73@gmail.com>
+
+	Add Portuguese translation
+
+	* po/pt.po: New from Translation Project.
+	* po/LINGUAS: Add pt.
+	* man/THANKS: Add translator credit.
+
+2018-10-21  Colin Watson  <cjwatson@debian.org>
+
+	Switch po/LINGUAS to one-per-line format
+
+	* po/LINGUAS: Switch to one language code per line, so that we have
+	better diffs in future.
+
+2018-10-21  Chen Qi  <Qi.Chen@windriver.com>
+
+	man-arg-config-file: fix to use config_file
+
+	* m4/man-arg-config-file.m4: Compute config_file_basename based on
+	config_file, not withval.
+
+2018-08-20  Colin Watson  <cjwatson@debian.org>
+
+	Fail to configure if flex is needed but missing
+
+	Fixes Savannah bug #54541.
+
+	* configure.ac: Issue an error if AC_PROG_LEX didn't find a lexer
+	generator and either src/lexgrog.c or src/zsoelim.c is missing (as may
+	be the case when building from a git clone rather than a released
+	tarball).
+
+2018-08-02  Colin Watson  <cjwatson@debian.org>
+
+	Fix warning from gcc -Wcast-function-type
+
+	This exposed the fact that errors from unlink in the cleanup path were
+	previously ignored.  We now issue a warning in the same way that
+	commit_tmp_cat does.
+
+	* src/man.c (cleanup_unlink): New function.
+	(open_cat_stream, close_cat_stream, display_catman): Use cleanup_unlink
+	rather than an incorrect cast of unlink.
+
+2018-08-02  Colin Watson  <cjwatson@debian.org>
+
+	Fix build with Berkeley DB
+
+	Fixes Savannah bug #54425.
+
+	* libdb/db_btree.c: Include <stdlib.h> for free.
+
+2018-07-27  Colin Watson  <cjwatson@debian.org>
+
+	Update advertised file size
+
+	* docs/man-db.lsm (Primary-site): Update file size.
+
+2018-07-27  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.4.
+
+2018-07-27  Colin Watson  <cjwatson@debian.org>
+
+	Work around Gnulib/gettext mismatch
+
+	The versions of gettext infrastructure files installed by gnulib-tool
+	don't necessarily match our configured AM_GNU_GETTEXT_VERSION, so we
+	need to fix things up in bootstrap.
+
+	* bootstrap.conf (gnulib_tool_option_extras): Set --po-base to gl/ref-po
+	rather than gnulib/po.
+	(bootstrap_post_import_hook): Merge temporary gl/ref-po directory into
+	gl/po.
+
+2018-07-27  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Gnulib 20180726
+
+	* bootstrap: Sync to Gnulib 900ca5c0b092e50f9f17329feea3fbfe2b6e2139.
+	* bootstrap.conf (GNULIB_REVISION): Set to
+	900ca5c0b092e50f9f17329feea3fbfe2b6e2139.
+
+2018-07-18  Colin Watson  <cjwatson@debian.org>
+
+	Distribute man/es/translator.add
+
+	* man/es/Makefile.am (EXTRA_DIST): Add translator.add.
+
+2018-07-16  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Improve ESET compatibility further
+
+	* lib/sandbox.c (make_seccomp_filter): If libesets_pac.so is preloaded,
+	then allow msgset (second argument 0) and msgsnd.
+	* NEWS: Document this.
+
+2018-07-15  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Allow some shared memory operations
+
+	These were previously only allowed when ESET File Security is in use,
+	but the Astrill VPN seems to require something similar, there are
+	doubtless other such preload hacks, and they're relatively harmless.
+
+	* lib/sandbox.c (make_seccomp_filter): Allow shmat (third argument
+	SHM_RDONLY), shmctl (second argument IPC_STAT), shmdt, and shmget
+	regardless of preloads.
+	* NEWS: Document this.
+
+2018-06-08  Colin Watson  <cjwatson@debian.org>
+
+	Check for external formatter in correct directory
+
+	Check for mandb_nfmt and mandb_tfmt in the manual page hierarchy as
+	documented, not in the current directory.  This was broken by the
+	working-directory-handling changes in 2.8.3.
+
+	Reported by Josh Triplett.  Fixes Debian bug #901007.
+
+	* src/man.c (NFMT_PROG, TFMT_PROG): Remove leading "./".
+	(make_roff_command): Refactor confusing #ifdef forest.  Prefix dir to
+	TFMT_PROG/NFMT_PROG rather than looking in the current directory.  Don't
+	look for an external formatter at all if dir is NULL.
+	* NEWS: Document this.
+
+2018-06-08  Colin Watson  <cjwatson@debian.org>
+
+	Define an access(2) wrapper with clearer semantics
+
+	As usual for system calls, access(2) returns zero on success.  However,
+	I generally think of it as "can we access this file in this way", where
+	boolean semantics would be more convenient, and find it too easy to
+	invert logic by accident when using the system call directly.  Define a
+	CAN_ACCESS wrapper with boolean semantics.
+
+	* include/manconfig.h.in (CAN_ACCESS): New macro.
+	* lib/tempfile.c (path_search): Use CAN_ACCESS.
+	* src/catman.c (check_access): Likewise.
+	* src/filenames.c (make_filename): Likewise.
+	* src/man.c (make_roff_command, display): Likewise.
+	* src/ult_src.c (find_include): Likewise.
+	* src/whatis.c (use_grep): Likewise.
+
+2018-06-07  Felipe Castro  <fefcas@gmail.com>
+
+	Update Esperanto translation
+
+	* po/eo.po: Update from Translation Project.
+
+2018-06-01  Francisco Javier F. Serrador  <fserrador@gmail.com>
+
+	Update Spanish manual page translation
+
+	* man/po4a/po/es.po: Update from Translation Project.
+	* man/THANKS: Update translator credit.
+
+2018-05-29  Colin Watson  <cjwatson@debian.org>
+
+	Add po4a-based Spanish manual page translation
+
+	This supersedes the previous whole-file translations, which had not been
+	properly updated in many years.
+
+	* man/po4a/po/es.po: New from Translation Project (thanks, Francisco
+	Javier Serrador).
+	* man/LINGUAS: Remove es.
+	* man/LINGUAS.po4a: Add es.
+	* man/es/Makefile.am (PO4A_LINGUA): Set to yes.
+	(man1_MANS): Add man1/lexgrog.1 and man1/manconv.1.
+	(man8_MANS): Add man8/accessdb.8.
+	* man/es/man1/apropos.man1, man/es/man1/man.man1,
+	man/es/man1/manpath.man1, man/es/man1/whatis.man1,
+	man/es/man1/zsoelim.man1, man/es/man5/manpath.man5,
+	man/es/man8/catman.man8, man/es/man8/mandb.man8: Remove.
+	* man/es/translator.add: New file.
+	* man/po4a/Makefile.am (POFILES): Add po/es.po.
+	* man/po4a/po4a.cfg (po4a_langs): Add es.
+	* man/THANKS: Update translator credit.
+	* .gitignore: Add man/es/man1, man/es/man5, and man/es/man8.
+
+2018-05-29  Colin Watson  <cjwatson@debian.org>
+
+	Remove useless if-before-free tests
+
+	* lib/hashtable.c (plain_hashtable_free): Remove; this is precisely
+	equivalent to free.
+	* lib/hashtable.h (plain_hashtable_free): Remove.
+	* lib/orderfiles.c (order_files): Use free rather than
+	plain_hashtable_free.
+	* libdb/db_btree.c (btree_findkey): Likewise.
+
+	* lib/pathsearch.c (pathsearch, directory_on_path): Remove useless
+	if-before-free.
+	* libdb/db_lookup.c (free_mandata_elements): Likewise.
+	* src/check_mandirs.c (test_manfile, count_glob_matches): Likewise.
+	* src/descriptions.c (free_descriptions): Likewise.
+	* src/lexgrog_test.c (main): Likewise.
+	* src/man.c (display_filesystem, display_database, get_section_list):
+	Likewise.
+	* src/manp.c (add_system_manpath): Likewise.
+	* src/straycats.c (check_for_stray, straycats): Likewise.
+	* src/ult_src.c (ult_src): Likewise.
+
+2018-05-29  Colin Watson  <cjwatson@debian.org>
+
+	Use Gnulib progname module
+
+	This lets us produce more accurate error messages when programs are
+	invoked with an absolute path.
+
+	* bootstrap.conf (gnulib_modules): Add progname.
+	* include/manconfig.h.in (program_name): Remove.
+	* src/accessdb.c (main): Call set_program_name rather than similar
+	hand-rolled code.
+	* src/catman.c (main): Likewise.  Don't free program_name.
+	* src/globbing_test.c (main): Likewise.
+	* src/lexgrog_test.c (main): Likewise.
+	* src/man.c (main): Likewise.  Don't free program_name.
+	* src/manconv_main.c (main): Likewise.
+	* src/mandb.c (main): Likewise.  Don't free program_name.
+	* src/manpath.c (main): Likewise.
+	* src/tests/fspause.c (main): Likewise.
+	* src/whatis.c (main): Likewise.
+	* src/zsoelim_main.c (main): Likewise.
+
+	* src/man.c (manopt_to_env): Run program_name through base_name, since
+	that's no longer necessarily done up-front.
+	* src/whatis.c (main): Run program_name through base_name before
+	comparing it to APROPOS_NAME, since that's no longer necessarily done
+	up-front.
+
+2018-05-29  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Gnulib 20180527
+
+	* bootstrap.conf (GNULIB_URL): Remove.
+	(GNULIB_REVISION): Set to 90f289f249a266b1afb9c63e182f5d979d17df5f.
+	(gnulib_modules): Replace gettext with gettext-h.
+	(gnulib_tool_option_extras): Remove --no-cache-modules (accidental
+	leftover from earlier testing).
+	(local_gl_dir): Set to 'gnulib-local' to avoid confusion with 'gl' as
+	the local output directory.  Remove 'rm -rf gl' hack, now superseded.
+	(buildreq): Bump minimum autopoint and gettext versions to 0.18.3,
+	matching previous change to configure.ac.
+	* configure.ac (AM_PROG_AR, LT_INIT): Move below gl_EARLY.
+	* patches/argp-domain.patch: Rebase.
+	* src/tests/Makefile.am (TESTS_ENVIRONMENT): Remove use of
+	@LOCALCHARSET_TESTS_ENVIRONMENT@, which is no longer needed by Gnulib.
+
+2018-05-28  Colin Watson  <cjwatson@debian.org>
+
+	Switch to bootstrap
+
+	We no longer keep autogenerated files in git.
+
+	* .gitignore: Add **/Makefile, **/Makefile.in, /ABOUT-NLS, /aclocal.m4,
+	/build-aux, /config.h.in, /configure, /gl, /gnulib,
+	docs/INSTALL.autoconf, po/Makefile.in.in, po/Makevars, po/Rules-quot,
+	po/boldquot.sed, po/en@boldquot.header, po/en@quot.header,
+	po/insert-header.sin, po/quot.sed, and po/remove-potcdate.sin.  Remove
+	docs/Makefile, gnulib/*, init/Makefile, init/systemd/Makefile,
+	lib/Makefile, libdb/Makefile, man/Makefile, man/*/Makefile,
+	manual/Makefile, po/Makefile, po/Makefile.in, src/Makefile,
+	src/tests/Makefile, and tools/Makefile.
+	* ABOUT-NLS, Makefile.in, aclocal.m4, autogen.sh, build-aux,
+	config.h.in, configure, docs/INSTALL.autoconf, docs/Makefile.in, gnulib,
+	init/Makefile.in, init/systemd/Makefile.in, lib/Makefile.in,
+	libdb/Makefile.in, man/Makefile.in, man/da/Makefile.in,
+	man/de/Makefile.in, man/es/Makefile.in, man/fr/Makefile.in,
+	man/id/Makefile.in, man/it/Makefile.in, man/ja/Makefile.in,
+	man/nl/Makefile.in, man/pl/Makefile.in, man/po4a/Makefile.in,
+	man/pt_BR/Makefile.in, man/ru/Makefile.in, man/sr/Makefile.in,
+	man/sv/Makefile.in, man/tr/Makefile.in, man/zh_CN/Makefile.in,
+	manual/Makefile.in, po/Makefile.in.in, po/Makevars, po/Rules-quot,
+	po/boldquot.sed, po/en@boldquot.header, po/en@quot.header,
+	po/insert-header.sin, po/quot.sed, po/remove-potcdate.sin,
+	src/Makefile.in, src/tests/Makefile.in, tools/Makefile.in: Remove.
+
+	* bootstrap, bootstrap.conf: New files.
+	* Makefile.am (GNULIB_PO, SUBDIRS, EXTRA_DIST, ACLOCAL_AMFLAGS): Refer
+	to gl/ rather than gnulib/ (gnulib/ now contains pristine source).
+	(EXTRA_DIST): Replace autogen.sh with bootstrap and bootstrap.conf.
+	Replace gnulib/argp-domain.patch with patches/argp-domain.patch.  Add
+	patches/fdutimens-hurd.patch.  Remove gnulib/m4/gnulib-cache.m4 and
+	gnulib/m4/gnulib-tool.m4.
+	* gnulib/argp-domain.patch: Rename to ...
+	* patches/argp-domain.patch: ... this.  Update target paths.
+	* gnulib/fdutimens-hurd.patch: Rename to ...
+	* patches/fdutimens-hurd.patch: ... this.  Update target paths.
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Upgrade to 0.18.3, for
+	compatibility with current Automake.
+	(HAVE_GNULIB_PO, AC_CONFIG_FILES): Refer to gl/ rather than gnulib/.
+	* lib/Makefile.am (libman_la_CPPFLAGS, libman_la_LIBADD): Likewise.
+	* libdb/Makefile.am (libmandb_la_CPPFLAGS): Likewise.
+	* src/Makefile.am (AM_CPPFLAGS, LIBMAN): Likewise.
+	* src/tests/Makefile.am (AM_CPPFLAGS, fspause_LDADD): Likewise.
+
+	* docs/HACKING: Describe new policy.
+	* release.sh: Call ./bootstrap rather than ./autogen.sh.
+
+2018-05-17  pan93412  <pan93412@gmail.com>
+
+	Add Traditional Chinese translation
+
+	* po/zh_TW.po: New from Translation Project.
+	* po/LINGUAS: Add zh_TW.
+	* man/THANKS: Add translator credit.
+
+2018-04-22  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Allow sched_getaffinity
+
+	This is used by xz-utils >= 5.2.3 if the --threads=0 option is in use
+	(perhaps via XZ_DEFAULTS or XZ_OPT).
+
+	Reported by Axel Rohde.
+
+	* lib/sandbox.c (make_seccomp_filter): Allow sched_getaffinity.
+	* NEWS: Document this.
+
+2018-04-06  Colin Watson  <cjwatson@debian.org>
+
+	Fix invalid man-db.conf with --disable-cache-owner
+
+	Fixes Savannah bug #53575.
+
+	* m4/man-arg-cache-owner.m4: Set and substitute cache_top_owner.
+	* init/systemd/man-db.conf.in: Substitute cache_top_owner rather than
+	man_owner.
+	* init/systemd/Makefile.am (man-db.conf): Likewise.
+	* NEWS: Document this.
+
+2018-04-06  Colin Watson  <cjwatson@debian.org>
+
+	Remove redundant debugging information
+
+	* lib/decompress.c (decompress_open): Remove filename from
+	decompress_zlib command name.  pipeline_dump already includes this
+	information from want_infile.
+
+2018-04-06  Colin Watson  <cjwatson@debian.org>
+
+	Rely on decompressors reading from stdin
+
+	This works better with downstream AppArmor confinement of decompressors.
+
+	* lib/decompress.c (decompress_open): Don't pass filename on
+	decompressor command lines.
+	* NEWS: Document this.
+
+2018-04-05  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.3.
+
+2018-04-05  Colin Watson  <cjwatson@debian.org>
+
+	Suppress spurious gettext headers in --help output
+
+	Some of man-db's commands have post-options help text but no pre-options
+	help text.  Unfortunately, the way this works in argp (separating the
+	two sections using a '\v' character) means that this results in argp
+	trying to translate the empty string, which produces gettext catalog
+	headers.  The easiest way to suppress this odd behaviour seems to be to
+	use a help filter function, so do that.
+
+	Reported by Rafael Fontenelle.
+
+	* src/accessdb.c (help_filter): Return NULL for ARGP_KEY_HELP_PRE_DOC.
+	* src/lexgrog_text.c (help_filter): New function.
+	(argp): Add help_filter.
+	* src/whatis.c (help_filter): New function.
+	(apropos_argp): Add help_filter.
+	* NEWS: Document this.
+
+2018-04-05  Colin Watson  <cjwatson@debian.org>
+
+	Fix compiler warnings on x32
+
+	tv_nsec is __syscall_slong_t == long long there, so we need a cast.
+
+	* libdb/db_lookup.c (dbprintf): Cast tv_nsec to long for %ld format.
+	* libdb/db_store.c (make_content): Likewise.
+	* src/check_mandirs.c (testmandirs, update_db): Likewise.
+	* src/man.c (maybe_update_file): Likewise.
+
+2018-04-05  Colin Watson  <cjwatson@debian.org>
+
+	Fix broken test
+
+	* src/tests/man-8: Fix expected output to account for recent change to
+	locale_macros.
+
+2018-04-05  Colin Watson  <cjwatson@debian.org>
+
+	man: Only change directory in child processes
+
+	This avoids failures due to being unable to change back to the original
+	working directory.
+
+	Fixes Debian bug #894792.
+
+	* gnulib/m4/gnulib-cache.m4 (gl_MODULES): Remove save-cwd.
+	* src/man.c (make_display_command): Remove now-unnecessary code to run
+	the pager in the original working directory.
+	(chdir_commands): New function.
+	(format_display): Change directory just for format_cmd and disp_cmd
+	rather than in-process.
+	(display): Change directory just for format_cmd rather than in-process.
+	(main): Remove now-unnecessary code to save and restore the current
+	working directory.
+	* NEWS: Document this.
+
+2018-04-04  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade config.guess/config.sub
+
+	* build-aux/config.guess: Upgrade to 2018-02-24.
+	* build-aux/config.sub: Upgrade to 2018-02-22.
+
+2018-04-01  Colin Watson  <cjwatson@debian.org>
+
+	Fix locale_macros version check for groff RCs
+
+	Thanks to Werner LEMBERG.
+
+	* src/man.c (locale_macros): Tolerate groff release candidates.
+	* NEWS: Document this.
+
+2018-03-30  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Allow sibling architectures on x86 etc.
+
+	Fixes Debian bug #891267.
+
+	* lib/sandbox.c (make_seccomp_filter): Allow sibling architectures on
+	x86/x86_64/x32.
+	* NEWS: Document this.
+
+2018-03-17  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Tighten up storage classes
+
+	* lib/sandbox.c (make_seccomp_filter, _sandbox_load): Declare as static.
+
+2018-03-17  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Allow kill and tgkill outright
+
+	This is unfortunate but unavoidable: groff uses kill to explicitly pass
+	on SIGPIPE to its child processes, and we can't do any more
+	sophisticated filtering in seccomp.
+
+	Based on a patch by Paul Wise.  Fixes Debian bug #892309.
+
+	* lib/sandbox.c (make_seccomp_filter): Allow kill and tgkill
+	unconditionally.
+	(adjust_seccomp_filter): Remove.
+	(_sandbox_load): Remove call to adjust_seccomp_filter.
+	* NEWS: Document this.
+
+2018-03-17  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Allow madvise
+
+	Reported by Tobias Klausmann.
+
+	* lib/sandbox.c (make_seccomp_filter): Allow madvise.
+	* NEWS: Document this.
+
+2018-03-02  Francisco Javier Serrador  <fserrador@gmail.com>
+
+	Update Spanish translation
+
+	* po/es.po: Update from Translation Project.
+	* man/THANKS: Add translator credit.
+
+2018-02-28  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.2.
+
+2018-02-28  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Handle qemu-user returning EFAULT
+
+	Fixes Debian bug #891109.
+
+	* lib/sandbox.c (_sandbox_load): Interpret EFAULT from seccomp_load as
+	meaning that seccomp is unavailable, since this can be returned by some
+	versions of qemu-user.
+	* NEWS: Document this.
+
+2018-02-28  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Add some more ESET affordances
+
+	* lib/sandbox.c (make_seccomp_filter): If libesets_pac.so is preloaded,
+	then allow some shared memory calls and checking for the existence of
+	other processes.
+
+2018-02-25  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Work around snoopy
+
+	Fixes Debian bug #890861.
+
+	* lib/sandbox.c (search_ld_preload): Cache /etc/ld.so.preload contents
+	between calls.
+	(make_seccomp_filter): Allow some socket-related system calls if
+	libsnoopy.so is preloaded.
+
+2018-02-25  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Generalise libesets_pac.so check slightly
+
+	* lib/sandbox.c (make_seccomp_filter): LD_PRELOAD or /etc/ld.so.preload
+	can just contain "libesets_pac.so" without an explicit path, so make the
+	search slightly more permissive.
+
+2018-02-20  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Handle /etc/ld.so.preload
+
+	At least ESET File Security may be configured using /etc/ld.so.preload
+	rather than the LD_PRELOAD environment variable, so unfortunately we
+	need to check that too.
+
+	* lib/sandbox.c (search_ld_preload): New function, handling both
+	LD_PRELOAD and /etc/ld.so.preload.
+	(can_load_seccomp, make_seccomp_filter): Use search_ld_preload.
+
+2018-02-19  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Work around ESET File Security
+
+	This is a proprietary antivirus program, so this is only a best guess
+	from strace output.  The choices are to disable the sandbox entirely or
+	to allow a few socket-related system calls if this antivirus program is
+	detected, and the latter is probably slightly better.
+
+	Reported by John Sivak.
+
+	* lib/sandbox.c (make_seccomp_filter): If LD_PRELOAD contains the
+	substring "/libesets_pac.so", then allow some socket-related system
+	calls so that the preload wrapper can talk to its daemon.
+	* NEWS: Document this.
+
+2018-02-19  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Allow ioctl(fd, TIOCGWINSZ)
+
+	Patch from the anonymous reporter of
+	https://savannah.nongnu.org/bugs/?53183 (though I think is obvious for
+	copyright purposes given knowledge of the failing system call).
+
+	Fixes Savannah bug #53183 (maybe).
+
+	* lib/sandbox.c (make_seccomp_filter): Allow ioctl(fd, TIOCGWINSZ).
+	* NEWS: Document this.
+
+2018-02-14  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Allow kill/tgkill for current process
+
+	xz is multithreaded, so the threading library may need to use tgkill to
+	pass signals between threads, for example when it receives SIGPIPE.
+
+	Fixes Savannah bug #53143.
+
+	* lib/sandbox.c (SC_ALLOW, SC_ALLOW_ARG_1, SC_ALLOW_ARG_2): Move macro
+	definitions out of make_seccomp_filter.
+	(adjust_seccomp_filter): New function.
+	(sandbox_load): Call adjust_seccomp_filter.
+	* NEWS: Document this.
+
+2018-02-09  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.1.
+
+2018-02-09  Colin Watson  <cjwatson@debian.org>
+
+	Use HTTPS URLs where possible
+
+	* Makefile.am, NEWS, README, docs/HACKING, docs/INSTALL.quick,
+	lib/sandbox.c, manual/misc.me, src/check_mandirs.c, src/man.c,
+	src/manconv.c, src/tests/man-1, src/tests/man-2, src/tests/mandb-2,
+	src/tests/mandb-4, src/tests/mandb-5, src/tests/zsoelim-1: Replace
+	http:// links with https:// equivalents.
+	* docs/HACKING: Replace git:// link with an https:// equivalent.
+
+2018-02-09  Colin Watson  <cjwatson@debian.org>
+
+	Chase some redirects
+
+	* NEWS: Link to https://bazaar.canonical.com/ rather than
+	http://bazaar-vcs.org/.
+	* man/fr/translator.add: Link to https://po4a.org/ rather than
+	http://po4a.alioth.debian.org/.
+
+2018-02-08  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Allow mremap
+
+	* lib/sandbox.c (make_seccomp_filter): Allow mremap, which may be used
+	by iconv when reading files, depending on libc configuration.
+	* NEWS: Document this.
+
+2018-02-07  Lars Wendler  <polynomial-c@gentoo.org>
+
+	Change libseccomp logic to not be automagic only
+
+	Introduce --without-libseccomp configure option so that users can
+	disable seccomp even if libseccomp is available on the system.
+
+	The default is unchanged from before this patch.  If no
+	--with(out)-libseccomp has been given on the command line, the macro
+	looks for presence of libseccomp and uses that if found.
+
+	* m4/man-libseccomp.m4: Guard pkg-config test with a command-line
+	option.
+
+2018-02-07  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Document changes since 2.8.0.
+
+2018-02-07  Colin Watson  <cjwatson@debian.org>
+
+	Reduce number of MAN_OWNER ifdefs
+
+	* lib/security.c (init_security, running_setuid): Define
+	unconditionally, with stub behaviour if MAN_OWNER is undefined.
+	* lib/security.h (get_man_owner): Only declare prototype if MAN_OWNER is
+	defined.
+	* src/check_mandirs.c (chown_if_possible) [!MAN_OWNER]: Mark path
+	argument as unused.
+	* src/lexgrog_test.c (main): Call init_security unconditionally.
+	* src/man.c (main): Likewise.
+	* src/manconv_client.c (manconv_pre_exec): Define unconditionally.
+	(add_manconv): Simplify, since running_setuid is now always defined.
+	* src/mandb.c (main): Call init_security unconditionally.  Use
+	get_man_owner rather than equivalent inline code.
+	* src/manp.c (get_def): Define unconditionally.
+	* src/manp.h (get_def): Drop macro alternative.
+
+2018-02-07  Colin Watson  <cjwatson@debian.org>
+
+	Fix manconv under seccomp when man is setuid
+
+	We must drop privileges before loading the sandbox.
+
+	Reported by Lars Wendler.
+
+	* src/manconv_client.c (manconv_pre_exec): New function.
+	(manconv_stdin): Move setuid hack to ...
+	(add_manconv): ... here, now implemented using a custom pre-exec hook.
+	We no longer have a fall-through if dropping privileges fails, since
+	that's now harder to do and wasn't really necessary in the first place.
+
+2018-02-07  Colin Watson  <cjwatson@debian.org>
+
+	Refactor do_system_drop_privs
+
+	Now that we have pipecmd_pre_exec, this can be simplified quite a bit.
+
+	* lib/security.c (drop_privs): New function.
+	(do_system_drop_privs_child, do_system_drop_privs): Remove.
+	* lib/security.h (drop_privs): Add prototype.
+	(do_system_drop_privs): Remove prototype.
+	* src/man.c (make_browser): Add drop_privs pre-exec hook to browser
+	command.
+	(format_display): Call browser using pipeline_run rather than
+	do_system_drop_privs, since it now has a pre-exec hook to drop
+	privileges.
+
+2018-02-07  Colin Watson  <cjwatson@debian.org>
+
+	Refactor sandbox attachment to be more composable
+
+	The sandbox interface now exposes the necessary load/free primitives,
+	and callers use them directly with pipecmd_pre_exec.  This allows the
+	sandbox to be composed with other pre-exec hooks.
+
+	* lib/sandbox.c (man_sandbox_op, sandbox_attach,
+	sandbox_attach_permissive): Remove.
+	(sandbox_load): Rename to ...
+	(_sandbox_load): ... this.
+	(sandbox_load, sandbox_load_permissive): New functions.
+	(sandbox_free): Expect a man_sandbox * rather than a man_sandbox_op *.
+	* lib/sandbox.h: Update prototypes.
+
+	* lib/decompress.c (decompress_open, decompress_fdopen): Update sandbox
+	attachment calls.
+	* src/lexgrog.l (find_name): Likewise.
+	* src/man.c (add_col, make_roff_command, add_output_iconv,
+	make_display_command, open_cat_stream, display_catman): Likewise.
+	* src/manconv_client.c (add_manconv): Likewise.
+	* src/straycats.c (check_for_stray): Likewise.
+	* src/whatis.c (use_grep): Likewise.
+
+2018-02-07  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Fix typo in 2.6.5 notes
+
+2018-02-05  Colin Watson  <cjwatson@debian.org>
+
+	Fix seccomp sandbox build on Linux/POWER
+
+	* lib/sandbox.c [HAVE_LIBSECCOMP]: Include <termios.h>, since some
+	architectures need this for TCGETS as well as <sys/ioctl.h>.
+
+2018-02-04  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.0.
+
+2018-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Allow ioctl (..., TCGETS, ...)
+
+	* lib/sandbox.c (make_seccomp_filter): Allow ioctl (..., TCGETS, ...) in
+	non-permissive mode (ioctl in general is already allowed in permissive
+	mode).
+
+2018-02-04  Mario Blättermann  <mario.blaettermann@gmail.com>
+
+	Update German manual page translation
+
+	* man/po4a/po/de.po: Update from Translation Project.
+
+2018-02-03  Rafael Fontenelle  <rafaelff@gnome.org>
+
+	Update Brazilian Portuguese translations
+
+	* po/pt_BR.po, man/po4a/po/pt_BR.po: Update from Translation Project.
+	* man/THANKS: Update translator email address.
+
+2018-01-27  Joe Hansen  <joedalton2@yahoo.dk>
+
+	Update Danish manual page translation
+
+	* man/po4a/po/da.po: Update from Translation Project.
+
+2018-01-25  Mario Blättermann  <mario.blaettermann@gmail.com>
+
+	Update German manual page translation
+
+	* man/po4a/po/de.po: Update from Translation Project.
+
+2018-01-23  Yuri Kozlov  <yuray@komyakino.ru>
+
+	Update Russian translations
+
+	* po/ru.po, man/po4a/po/ru.po: Update from Translation Project.
+
+2018-01-23  Boyuan Yang  <073plan@gmail.com>
+
+	Update Simplified Chinese manual page translation
+
+	* man/po4a/po/zh_CN.po: Update from Translation Project.
+
+2018-01-23  Sebastian Rasmussen  <sebras@gmail.com>
+
+	Update Swedish manual page translation
+
+	* man/po4a/po/sv.po: Update from Translation Project.
+
+2018-01-23  Rafael Fontenelle  <rffontenelle@gmail.com>
+
+	Update Brazilian Portuguese manual page translation
+
+	* man/po4a/po/pt_BR.po: Update from Translation Project.
+
+2018-01-22  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.0-pre2.
+
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update.
+
+2018-01-21  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.8.0-pre1.
+
+2018-01-16  Colin Watson  <cjwatson@debian.org>
+
+	Minor style cleanups
+
+	* src/man.c (sh_lang_first_word, main): Minor style cleanups.
+
+2018-01-16  Colin Watson  <cjwatson@debian.org>
+
+	NEWS: Document previous commit.
+
+2018-01-16  Neven Sajko  <nsajko@gmail.com>
+
+	Add fallback pager if the compile-time default is not executable
+
+	A problem with man-db's man is that in the case of the user giving no
+	configuration via conf files, argv, or environment variables; man
+	defaults to less as pager (PAGER); but less may not be present on the
+	system. Sure, other pagers may be selected in aforementioned ways, but
+	then the defaults are overridden, making that unsuitable for
+	install-time configuration.
+
+	This patch makes man check (if that becomes relevant) if PAGER is
+	executable, further defaulting to cat (which is basically ubiquitous,
+	being in original Unix, POSIX, and GNU Coreutils) if it is not. Thus
+	the poor beginner Unix users without less installed will be able to
+	get man pages.
+
+	* src/man.c (sh_lang_first_word): New function.
+	(main): Skip configured pager if it is not executable.
+	* man/man1/man.man1 (Controlling formatted output, ENVIRONMENT):
+	Document fallback to cat.
+	* man/replace.sin.in: Substitute %cat%.
+
+2018-01-16  Colin Watson  <cjwatson@debian.org>
+
+	Fix a segfault in 'man -D --help'
+
+	Reported by Jiri Kucera.
+
+	* src/man.c (init_html_pager): New function.
+	(parse_opt): Call init_html_pager rather than setting html_pager to
+	NULL.
+	(help_filter): Assert that browser is non-NULL.
+	(main): Call init_html_pager rather than doing the same thing directly.
+	* NEWS: Document this.
+
+2018-01-03  Colin Watson  <cjwatson@debian.org>
+
+	Update Simplified Chinese manual page translation
+
+	* man/po4a/po/zh_CN.po: Update from Translation Project (trivial).
+
+2018-01-03  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade config.guess/config.sub
+
+	* build-aux/config.guess: Upgrade to 2017-11-07.
+	* build-aux/config.sub: Upgrade to 2017-11-23.
+
+2018-01-03  Colin Watson  <cjwatson@debian.org>
+
+	sandbox: Cope with missing CONFIG_SECCOMP_FILTER
+
+	* lib/sandbox.c (gripe_seccomp_filter_unavailable): New function.
+	(can_load_seccomp): Return early if seccomp filtering has already been
+	detected as unavailable.
+	(sandbox_load): If seccomp_load returns an EINVAL error, assume that the
+	running kernel doesn't support seccomp filtering and emit a debugging
+	message rather than failing.
+
+2018-01-03  Colin Watson  <cjwatson@debian.org>
+
+	Allow sync_file_range2 syscall
+
+	* lib/sandbox.c (make_seccomp_filter): Add sync_file_range2.
+
+2018-01-03  Colin Watson  <cjwatson@debian.org>
+
+	Fix seccomp sandbox on Linux/ARM
+
+	* lib/sandbox.c (make_seccomp_filter): Add arm_fadvise64_64 and
+	arm_sync_file_range.
+
+2017-12-03  Colin Watson  <cjwatson@debian.org>
+
+	Use more conventional bullets in documentation
+
+	* docs/INSTALL.quick, NEWS, README: Use "*" for bullet points instead of
+	"o".
+
+2017-12-03  Colin Watson  <cjwatson@debian.org>
+
+	Confine most untrusted data handling using seccomp
+
+	Fixes Debian bug #877199.
+
+	* configure.ac: Require libpipeline >= 1.5.0.  Call MAN_LIBSECCOMP.
+	* docs/INSTALL.quick: Bump minimum libpipeline version to 1.5.0.  List
+	libseccomp as recommended.
+	* lib/Makefile.am (libman_la_CPPFLAGS): Add $(libseccomp_CFLAGS).
+	(libman_la_SOURCES): Add sandbox.c and sandbox.h.
+	(libman_la_LDFLAGS): Add $(libseccomp_LIBS).
+	* lib/sandbox.c: New file.
+	* lib/sandbox.h: New file.
+	* m4/man-libseccomp.m4: New file.
+
+	* src/man.c (set_term): Check that process ID matches original before
+	calling tcsetattr.
+	(get_term): Record original process ID to work around an arguable bug in
+	pipecmd_exec.
+
+	* src/lexgrog_test.c (main), src/man.c (main), src/manconv_main.c
+	(main), src/mandb.c (main), src/zsoelim_main.c (main): Initialise
+	sandbox.
+
+	* lib/decompress.c (decompress_open, decompress_fdopen): Attach sandbox
+	to decompression commands.
+	* src/lexgrog.l (find_name): Attach sandbox to 'col'.
+	* src/man.c (add_col): Attach sandbox to 'col'.
+	(make_roff_command): Attach sandbox to 'zsoelim' and to groff-related
+	programs.
+	(add_output_iconv): Attach sandbox to 'iconv'.
+	(make_display_command): Attach sandbox to 'tr'.
+	(open_cat_stream, display_catman): Attach sandbox to compression
+	commands.
+	* src/manconv_client.c (add_manconv): Attach sandbox to manconv_stdin.
+	* src/straycats.c (check_for_stray): Attach sandbox to 'col'.
+	* src/whatis.c (use_grep): Attach sandbox to 'grep'.
+
+	* src/accessdb.c, src/catman.c, src/globbing_test.c, src/manpath.c:
+	Define stub sandbox variable.
+
+	* docs/NEWS: Document this.
+
+2017-12-02  Colin Watson  <cjwatson@debian.org>
+
+	Document more installation requirements
+
+	* docs/INSTALL.quick: List a database library as required, and zlib as
+	recommended.
+
+2017-11-22  Colin Watson  <cjwatson@debian.org>
+
+	Remove Easter egg entirely
+
+	Six years is a reasonable shelf life for a joke, but I think its time
+	has passed now.
+
+	* src/man.c (main): Remove Easter egg.
+
+2017-11-21  Philipp Gesang  <phg@phi-gamma.net>
+
+	Add section 0 to defaults
+
+	m4/man-arg-sections.m4: Add 0 (zero) to the default list of sections as
+	advertised in ``configure --help``.
+
+	Cf. commit f3739b9bbde27c702c911ce8a511a499705a25f7
+
+2017-11-21  Colin Watson  <cjwatson@debian.org>
+
+	Stop Easter egg interfering with non-error cases
+
+	* src/man.c (main): Restrict Easter egg to the case where 'man' is run
+	without any options or arguments at all (which isn't useful for anything
+	else), not 'man -w' (which is).
+
+	https://unix.stackexchange.com/questions/405783/why-does-man-print-gimme-gimme-gimme-at-0030
+
+2017-11-21  Colin Watson  <cjwatson@debian.org>
+
+	Fix formatting error in Simplified Chinese translation
+
+	* man/po4a/po/zh_CN.po: Correct formatting of exit(3tcl) references.
+
+2017-11-16  Boyuan Yang  <073plan@gmail.com>
+
+	Update Simplified Chinese translations
+
+	* po/zh_CN.po, man/po4a/po/zh_CN.po: Update from Translation Project.
+	* man/THANKS: Add translator credit.
+
+2017-11-13  Colin Watson  <cjwatson@debian.org>
+
+	Fix docs for minimum libpipeline requirement
+
+	* docs/INSTALL.quick: Bump minimum libpipeline version to 1.4.0.
+
+2017-07-18  Colin Watson  <cjwatson@debian.org>
+
+	Fix formatting error in Turkish translation
+
+	* man/po4a/po/tr.po: Translate "\\e-" as itself rather than as "\\(e-".
+
+2017-07-16  Colin Watson  <cjwatson@debian.org>
+
+	Improve --with-systemdtmpfilesdir default
+
+	* m4/man-arg-systemdtmpfilesdir.m4: Get tmpfiles directory location from
+	pkg-config.
+	* configure.ac: Call PKG_PROG_PKG_CONFIG early to avoid problems with
+	conditional use of PKG_* macros.
+
+2017-07-11  Colin Watson  <cjwatson@debian.org>
+
+	Add Turkish manual page translation
+
+	* man/po4a/po/tr.po: New from Translation Project (thanks, Volkan Gezer
+	and Mesutcan Kurt).
+	* configure.ac (AC_CONFIG_FILES): Add man/tr/Makefile.
+	* man/LINGUAS.po4a: Add tr.
+	* man/Makefile.am (DIST_SUBDIRS): Add tr.
+	* man/tr/Makefile.am, man/tr/translator.add: New files.
+	* man/po4a/Makefile.am (POFILES): Add po/tr.po.
+	* man/po4a/po4a.cfg (po4a_langs): Add tr.
+	* man/THANKS: Add translator credit.
+	* .gitignore: Add man/tr/man1, man/tr/man5, and man/tr/man8.
+
+2017-07-10  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Document changes since 2.7.6.1.
+
+2017-07-10  Colin Watson  <cjwatson@debian.org>
+
+	gnulib: Import memmem module
+
+	Needed to make the previous commit portable.
+
+2017-07-10  Colin Watson  <cjwatson@debian.org>
+
+	Fix preprocessor handling after insertions
+
+	If man has added prefixes to a page to handle such things as disabling
+	hyphenation, then it also needs to take account of that when looking for
+	a preprocessor line at the start of the page.
+
+	Reported by Bjarni Ingi Gislason.  Fixes Debian bug #867857.
+
+	* src/man.c (get_preprocessors_from_file): Skip over as many blocks
+	ending with an .lf macro as there are prefixes.
+	(get_preprocessors): Pass the number of prefixes through to
+	get_preprocessors_from_file.
+	(make_roff_command): Take pp_string as an argument rather than
+	dbfilters; callers should now call get_preprocessors themselves.
+	(display): Rename seq_ncmds to prefixes.  Call get_preprocessors before
+	calling make_roff_command.
+
+2017-07-10  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Automake 1.15.1.
+
+2017-07-10  Colin Watson  <cjwatson@debian.org>
+
+	Handle \(en escapes in NAME section
+
+	* src/lexgrog.l (MAN_NAME): Treat "\(en" as another synonym for "\-",
+	and thus as a separator.
+
+2017-04-08  Volkan Gezer  <volkangezer@gmail.com>
+
+	Update Turkish translation
+
+	* po/tr.po: Update from Translation Project.
+
+2017-04-04  Volkan Gezer  <volkangezer@gmail.com>
+
+	Add Turkish translation
+
+	* po/tr.po: New from Translation Project.
+	* po/LINGUAS: Add tr.
+	* man/THANKS: Add translator credit.
+
+2017-01-29  Felipe Castro  <fefcas@gmail.com>
+
+	Update Esperanto translation
+
+	* po/eo.po: Update from Translation Project.
+
+2017-01-07  Sebastian Rasmussen  <sebras@gmail.com>
+
+	Update Swedish translation
+
+	* po/sv.po: Update from Translation Project.
+
+2017-01-04  Colin Watson  <cjwatson@debian.org>
+
+	Add Brazilian Portuguese manual page translation
+
+	* man/po4a/po/pt_BR.po: New from Translation Project (thanks, Rafael
+	Fontenelle).
+	* configure.ac (AC_CONFIG_FILES): Add man/pt_BR/Makefile.
+	* man/LINGUAS.po4a: Add pt_BR.
+	* man/Makefile.am (DIST_SUBDIRS): Add pt_BR.
+	* man/pt_BR/Makefile.am, man/pt_BR/translator.add: New files.
+	* man/po4a/Makefile.am (POFILES): Add po/pt_BR.po.
+	* man/po4a/po4a.cfg (po4a_langs): Add pt_BR.
+	* man/THANKS: Add translator credit.
+	* .gitignore: Add man/pt_BR/man1, man/pt_BR/man5, and man/pt_BR/man8.
+
+2016-12-28  Sebastian Rasmussen  <sebras@gmail.com>
+
+	Update Swedish manual page translation
+
+	* man/po4a/po/sv.po: Update from Translation Project.
+
+2016-12-23  David Prévot  <david@tilapin.org>
+
+	Update French manual page translation
+
+	* man/po4a/po/fr.po: Update from Translation Project.
+
+2016-12-23  David Prévot  <david@tilapin.org>
+
+	Update French translation
+
+	* po/fr.po: Update from Translation Project.
+
+2016-12-22  Robert Luberda  <robert@debian.org>
+
+	Update Polish manual page translation
+
+	* man/po4a/po/pl.po: Update from Translation Project.
+
+2016-12-22  Robert Luberda  <robert@debian.org>
+
+	Update Polish translation
+
+	* po/pl.po: Update from Translation Project.
+
+2016-12-19  Colin Watson  <cjwatson@debian.org>
+
+	Add Serbian manual page translation
+
+	* man/po4a/po/sr.po: New from Translation Project (thanks, Мирослав
+	Николић).
+	* configure.ac (AC_CONFIG_FILES): Add man/sr/Makefile.
+	* man/LINGUAS.po4a: Add sr.
+	* man/Makefile.am (DIST_SUBDIRS): Add sr.
+	* man/sr/Makefile.am, man/sr/translator.add: New files.
+	* man/po4a/Makefile.am (POFILES): Add po/sr.po.
+	* man/po4a/po4a.cfg (po4a_langs): Add sr.
+	* man/THANKS: Add translator credit.
+	* .gitignore: Add man/sr/man1, man/sr/man5, and man/sr/man8.
+
+2016-12-19  Мирослав Николић  <miroslavnikolic@rocketmail.com>
+
+	Update Serbian translation
+
+	* po/sr.po: Update from Translation Project.
+
+2016-12-13  Joe Hansen  <joedalton2@yahoo.dk>
+
+	Update Danish manual page translation
+
+	* man/po4a/po/da.po: Update from Translation Project.
+
+2016-12-13  Colin Watson  <cjwatson@debian.org>
+
+	Generate tmpfiles snippet based on cache owner
+
+	man-db.conf should honour --enable-cache-owner rather than hardcoding
+	"man".
+
+	* init/systemd/man-db.conf: Rename to ...
+	* init/systemd/man-db.conf.in: ... this.  Replace "man" with
+	"@man_owner@".
+	* init/systemd/Makefile.am: Generate man-db.conf at build time.
+	* .gitignore: Add init/systemd/man-db.conf.
+
+2016-12-13  Colin Watson  <cjwatson@debian.org>
+
+	Fix locale macro loading for Chinese
+
+	The intent was always that we should load the macro file corresponding
+	to just the language part of the page's locale, and the debug output
+	agreed with this, but the actual implementation did not.  Fix this.
+
+	See: https://savannah.gnu.org/bugs/?44941
+
+	* src/man.c (display): Pass bits.language rather than page_lang to
+	locale_macros.  Adjust memory allocation.
+
+2016-12-13  Colin Watson  <cjwatson@debian.org>
+
+	Rename SECURE_MAN_UID to MAN_OWNER
+
+	The latter had always been defined to the former anyway, and now that
+	the cache owner can be changed without actually installing setuid the
+	latter is more descriptive.
+
+	* m4/man-arg-cache-owner.m4: Define MAN_OWNER rather than
+	SECURE_MAN_UID.  Update all users.
+	* include/manconfig.h.in (MAN_OWNER): Remove definition.
+
+2016-12-13  Colin Watson  <cjwatson@debian.org>
+
+	Mark some parts of .TH sections as untranslatable
+
+	* man/po4a/Locale/Po4a/Manext.pm (translate): Don't translate anything
+	matching /^%.*%$/ or /^[A-Z]+$/ in .TH sections.
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update.
+
+2016-12-13  Tianze Wang  <zwpwjwtz@126.com>
+
+	Update Simplified Chinese manual page translation
+
+	* man/po4a/po/zh_CN.po: Update from Translation Project.
+	* man/THANKS: Update.
+
+2016-12-13  Trần Ngọc Quân  <vnwildman@gmail.com>
+
+	Update Vietnamese translation
+
+	* po/vi.po: Update from Translation Project.
+
+2016-12-13  Colin Watson  <cjwatson@debian.org>
+
+	Correct syntax of Danish manual page translation
+
+	* man/po4a/po/da.po: Fix a couple of font specifications.
+
+2016-12-13  Rafael Fontenelle  <rffontenelle@gmail.com>
+
+	Update Brazilian Portuguese translation
+
+	* po/pt_BR.po: Update from Translation Project.
+	* man/THANKS: Update.
+
+2016-12-13  Joe Hansen  <joedalton2@yahoo.dk>
+
+	Update Danish manual page translation
+
+	* man/po4a/po/da.po: Update from Translation Project.
+
+2016-12-12  Joe Hansen  <joedalton2@yahoo.dk>
+
+	Update Danish translation
+
+	* po/da.po: Update from Translation Project.
+
+2016-12-12  Mario Blättermann  <mario.blaettermann@gmail.com>
+
+	Update German manual page translation
+
+	* man/po4a/po/de.po: Update from Translation Project.
+
+2016-12-12  Mario Blättermann  <mario.blaettermann@gmail.com>
+
+	Update German translation
+
+	* po/de.po: Update from Translation Project.
+	* man/THANKS: Update.
+
+2016-12-12  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.6.1.
+
+2016-12-12  Colin Watson  <cjwatson@debian.org>
+
+	Correct installation of Swedish manual pages
+
+	* man/sv/Makefile.am (LINGUA): Set to sv, not nl.
+	* NEWS: Document this.
+
+2016-12-12  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Document previous change.
+
+2016-12-12  Colin Watson  <cjwatson@debian.org>
+
+	Don't chmod CACHEDIR.TAG if it doesn't exist
+
+	The containing directory might reasonably not exist.  Fixes Debian
+	bug #847810.
+
+	* src/mandb.c (mandb): Only chown/chmod CACHEDIR.TAG if it exists.
+
+2016-12-11  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.6.
+
+2016-12-11  Colin Watson  <cjwatson@debian.org>
+
+	Fix systemd tmpfiles group/perms of /var/cache/man
+
+	* init/systemd/man-db.conf: Change mode to 0755 and group to man.
+
+2016-12-11  Colin Watson  <cjwatson@debian.org>
+
+	Fix Polish mandb(8) "cannot adjust line" warnings
+
+	* man/man8/mandb.man8 (DATABASE CACHES): Set a width of 20em for the
+	"Type" column.
+
+2016-12-11  Colin Watson  <cjwatson@debian.org>
+
+	Drop documentation of gdbm < 1.6
+
+	gdbm 1.6 was released in 1993; it's no longer necessary to document
+	mandb's behaviour with older versions.
+
+	* man/man8/mandb.man8 (DATABASE CACHES): Remove "GNU gdbm v < 1.6" row.
+	Simplify "GNU gdbm v >= 1.6" to "GNU gdbm".  Update all translations.
+
+2016-12-11  Colin Watson  <cjwatson@debian.org>
+
+	Fix table rendering with po4a 0.47
+
+	* man/po4a/Locale/Po4a/Manext.pm (initialize): Drop unused assignment.
+	(shiftline, pushline): Pass through to superclass if po4a version >=
+	0.47.
+	(translate): With po4a >= 0.47, don't process text blocks since po4a now
+	does that, but handle @-separation of columns and remove trailing
+	newlines from translatable strings.
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update (line
+	numbers only).
+	* NEWS: Document this.
+
+2016-12-11  Colin Watson  <cjwatson@debian.org>
+
+	Fix distcheck following cache-owner/setuid changes
+
+	We previously ignored chown failures on "make install", but that's not
+	really correct.  Instead, configure with --disable-setuid during
+	distcheck.
+
+	* Makefile.am (AM_DISTCHECK_CONFIGURE_FLAGS): Add --disable-setuid.
+
+2016-12-11  Colin Watson  <cjwatson@debian.org>
+
+	Update translation files
+
+	* po/man-db.pot, po/*.po: Update.
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update.
+
+2016-12-11  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Document changes since 2.7.5.
+
+2016-12-11  Mihail Konev  <k.mvc@ya.ru>
+
+	src/tests: Use /tmp for temporary directories
+
+	Reduces disk reads/writes made by 'make check -C src'.
+
+	Fall back to ./tmp-* if 'mktemp -d' fails.
+
+2016-12-10  Colin Watson  <cjwatson@debian.org>
+
+	Eliminate dangerous setgid-root directories
+
+	man-db has created its cache directories as setgid root for nearly 20
+	years.  This seems to have originated in https://bugs.debian.org/26002.
+	However, this has some dangerous consequences, such as:
+
+	  http://www.halfdog.net/Security/2015/SetgidDirectoryPrivilegeEscalation/
+
+	It seems best to arrange for cache files and directories to be man:man
+	rather than man:root.  To do this reliably, as well as adjusting various
+	chown and chmod calls, we make man and mandb be setgid man as well as
+	setuid man (except in the --disable-setuid case).  This is a much
+	simpler and safer solution to the original problem, and doesn't
+	introduce any interesting new privilege since the man group's only real
+	purpose is to be the man user's primary group and nothing in cache
+	directories is group-writeable.
+
+	* configure.ac (AC_CHECK_FUNCS): Add lchown.
+	* lib/security.c (init_security): Record initial real and effective
+	group IDs as well as user IDs.
+	(drop_effective_privs, regain_effective_privs): Update gid.
+	* lib/xchown.c (xlchown) [HAVE_LCHOWN]: New function.
+	* lib/xchown.c (xlchown) [HAVE_LCHOWN]: Add prototype.
+	* m4/man-arg-setuid.m4: Set man_mode to 6755 rather than 4755 in the
+	--enable-setuid case.
+	* src/Makefile.am (install-exec-hook): Check for man_mode being 6755
+	rather than 4755.  Set the group of man and mandb as well as their
+	owner.
+	* src/check_mandirs.c (chown_if_possible): New function.  This is
+	somewhat more careful than previous implementations, changes the group
+	as well as the user if possible, and prefers lchown if it is available.
+	(mkcatdirs): Drop S_ISGID from cat directories.  Use chown_if_possible.
+	(fix_permissions, fix_permissions_tree): New functions to remove setgid
+	bit from existing cat directories.
+	(testmandirs): Call fix_permissions_tree.
+	* src/check_mandirs.h (chown_if_possible): Add prototype.
+	* src/man.c (commit_tmp_cat): Set cat file group as well as owner.
+	* src/mandb.c (check_chown): Remove.
+	(do_chown): Stop taking a uid parameter.  Use chown_if_possible.
+	(mandb): Use chown_if_possible for CACHEDIR.TAG.  Set ownership and
+	permissions of CACHEDIR.TAG even if it already exists.
+	(process_manpath): Set ownership of database files even if they have not
+	been changed.
+
+2016-12-10  Colin Watson  <cjwatson@debian.org>
+
+	Make --disable-cache-owner imply --disable-setuid
+
+	* m4/man-arg-setuid.m4: Set man_mode="755" if --disable-cache-owner was
+	given and neither --enable-setuid nor --disable-setuid was given.
+
+2016-12-10  Colin Watson  <cjwatson@debian.org>
+
+	Update manual for cache-owner/setuid changes
+
+	* manual/intro.me (Arguments to configure): Add --enable-cache-owner and
+	--disable-cache-owner.  Remove --enable-setuid[=ARG].  Adjust
+	description of --disable-setuid.
+	* manual/misc.me (Modes of operation): Add --disable-cache-owner to the
+	non-setuid modes.  Mention --enable-setuid rather than
+	--enable-setuid=USER.
+	* README (Non-generic arguments to configure): Update.
+
+2016-12-10  Colin Watson  <cjwatson@debian.org>
+
+	Allocate dbpaths on the heap rather than the stack
+
+	process_manpath's stack may have gone out of scope by the time cleanup
+	functions are called.
+
+	* src/mandb.c (cleanup): Free dbpaths.
+	(process_manpath): Allocate dbpaths on the heap.
+
+2016-12-10  Colin Watson  <cjwatson@debian.org>
+
+	Handle cleanup stack more safely
+
+	If push_cleanup was called unexpectedly between a
+	push_cleanup/pop_cleanup pair, then the pop_cleanup would remove the
+	wrong cleanup function and chaos could ensue.  Avoid this by being more
+	precise about which cleanup function should be popped.
+
+	* lib/cleanup.c (pop_cleanup): Take "fun" and "arg" arguments.  Pop the
+	topmost matching function from the stack, rather than just the topmost
+	function.  Update all callers and prototypes.
+
+2016-12-09  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade config.guess/config.sub
+
+	* build-aux/config.guess: Upgrade to 2016-10-02.
+	* build-aux/config.sub: Upgrade to 2016-11-04.
+
+2016-12-09  Colin Watson  <cjwatson@debian.org>
+
+	Separate cache owner from --enable-setuid option
+
+	It's useful to have a notion of the cache owner even when man is not
+	installed setuid.  --enable-setuid no longer takes an argument, and the
+	owner is now set by the --enable-cache-owner option instead.
+
+	* m4/man-arg-cache-owner.m4: New file.
+	* m4/man-arg-setuid.m4: Stop accepting an argument.  Only set man_mode,
+	not man_owner.
+	* configure.ac: Call MAN_ARG_CACHE_OWNER.
+	* src/Makefile.am (install-exec-hook): Only chown man and mandb if
+	man_mode is 4755 (as well as the existing test for man_owner being
+	non-empty).
+
+2016-11-21  Colin Watson  <cjwatson@debian.org>
+
+	Restore ylwrap to distribution
+
+	* Makefile.in (am__DIST_COMMON): Regenerate to add build-aux/ylwrap back
+	again, since it mysteriously went missing in the last regeneration.
+
+2016-11-21  Colin Watson  <cjwatson@debian.org>
+
+	Update translation files
+
+	* po/man-db.pot, po/*.po: Update.
+
+2016-11-21  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Libtool 2.4.6-2 (from Debian)
+
+2016-11-21  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade config.guess/config.sub
+
+	* build-aux/config.guess: Upgrade to 2016-04-02.
+	* build-aux/config.sub: Upgrade to 2016-03-30.
+
+2016-11-20  Mihail Konev  <k.mvc@ya.ru>
+
+	src/tests: Fix testsuite
+
+	* src/tests/man-9: Set MANPATH.
+
+2016-11-20  Mihail Konev  <k.mvc@ya.ru>
+
+	man(1): Fix gcc warnings
+
+	* lib/xchown.c: New file.
+	* lib/xchown.h: New file.
+	* lib/Makefile.am (libman_la_SOURCES): Add xchown.c and xchown.h.
+	* po/POTFILES.in: Add lib/xchown.c.
+	* src/check_mandirs.c (mkcatdirs): Call xchown instead of chown.
+	* src/man.c (format_display): Ignore errors from chdir ("/").
+
+2016-11-20  Colin Watson  <cjwatson@debian.org>
+
+	Make split_page_name allocate its own memory
+
+	* src/man.c (split_page_name): Allocate *ret_name and *ret_section here.
+	Simplify using xstrdup and xstrndup.
+	(man): Remove allocation of page_name and page_section.
+
+2016-11-20  Mihail Konev  <k.mvc@ya.ru>
+
+	man(1): add .N names
+
+	`man chmod.2` is now the same as `man 2 chmod`
+
+	* src/man.c (split_page_name): New function.
+	(locate_page_in_manpath): New function.
+	(man): Factor out common locate_page loop into locate_page_in_manpath.
+	Add name/section splitting logic.
+	* src/tests/man-11: New file.
+	* src/tests/Makefile.am (ALL_TESTS): Add man-11.
+	* man/man1/man.man1 (SYNOPSIS): Document <page>.<section> form.
+	(EXAMPLES): Likewise.
+
+2016-10-04  Colin Watson  <cjwatson@debian.org>
+
+	Fix formatting error in Swedish translation
+
+	* man/po4a/po/sv.po: Translate "\\(rq" as itself rather than as "\\(".
+
+2016-10-04  Colin Watson  <cjwatson@debian.org>
+
+	Rename some anomalous x* functions
+
+	The usual (though not universal) pattern in gnulib is for xfoo to mean
+	"foo or exit".  Rename x* to check_* so that they don't conflict with
+	this.
+
+	* src/mandb.c (xremove): Rename to ...
+	(check_remove): ... this.
+	(xrename): Rename to ...
+	(check_rename): ... this.
+	(xchmod): Rename to ...
+	(check_chmod): ... this.
+	(xchown): Rename to ...
+	(check_chown): ... this.
+
+2016-05-16  Colin Watson  <cjwatson@debian.org>
+
+	man(1): Fix incorrect font
+
+	* man/man1/man.man1 (SYNOPSIS): Make "--regex" bold.  Thanks to Paul
+	Townsend.
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update; unfuzzy all
+	translations.
+
+2016-05-16  Colin Watson  <cjwatson@debian.org>
+
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update.
+
+2016-02-04  Colin Watson  <cjwatson@debian.org>
+
+	Note caveat with "man -K"
+
+	* man/man1/man.man1 (Main modes of operation): Note that -K searches
+	page source.  Fixes Debian bug #813665.
+
+2016-01-02  Sebastian Rasmussen  <sebras@gmail.com>
+
+	* po/sv.po: Add missing translator credit comment.
+
+2016-01-02  Colin Watson  <cjwatson@debian.org>
+
+	Fix warnings with Perl 5.22
+
+	* man/po4a/Locale/Po4a/Manext.pm (shiftline, translate): Escape braces
+	in regular expressions.
+
+2016-01-02  Colin Watson  <cjwatson@debian.org>
+
+	Add Swedish manual page translation
+
+	* man/po4a/po/sv.po: New from Translation Project (thanks, Sebastian
+	Rasmussen).
+	* configure.ac (AC_CONFIG_FILES): Add man/sv/Makefile.
+	* man/LINGUAS.po4a: Add sv.
+	* man/Makefile.am (DIST_SUBDIRS): Add sv.
+	* man/sv/Makefile.am, man/sv/translator.add: New files.
+	* man/po4a/Makefile.am (POFILES): Add po/sv.po.
+	* man/po4a/po4a.cfg (po4a_langs): Add sv.
+	* man/THANKS: Add translator credit.
+	* .gitignore: Add man/sv/man1, man/sv/man5, and man/sv/man8.
+
+2015-12-31  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to pkg-config 0.29.
+
+2015-12-26  Sebastian Rasmussen  <sebras@gmail.com>
+
+	Update Swedish translation
+
+	* po/sv.po: Update from Translation Project.
+	* man/THANKS: Add translator credit.
+
+2015-12-07  Colin Watson  <cjwatson@debian.org>
+
+	Simplify database path handling in mandb
+
+	* src/mandb.c (struct dbpaths): Unconstify xtmpfile.
+	(finish_up): Free dbpaths->xtmpfile.
+	(cleanup): Update header comment.  Remove unnecessary checks before
+	frees.  Free all database paths for all database types, not just
+	GDBM.  Free dbpaths->xtmpfile.
+	(mandb): Copy content of database to dbpaths->xtmpfile rather than
+	just copying the pointer.
+
+2015-12-07  Colin Watson  <cjwatson@debian.org>
+
+	Move some database paths out of global variables
+
+	* src/mandb.c (struct dbpaths): New structure.
+	(finish_up, do_chown, cleanup_sigsafe, cleanup, mandb): Take dbpaths
+	argument.
+	(process_manpath): Allocate dbpaths on the stack, zero it, and pass
+	it to functions that need it.
+
+2015-12-07  Colin Watson  <cjwatson@debian.org>
+
+	Remove lots of unnecessary inline qualifiers
+
+	It's 2015.  The compiler almost certainly knows better than we do.
+
+	* lib/security.c (gripe_set_euid): Remove inline qualifier.
+	* libdb/db_btree.c (btree_findkey): Likewise.
+	* libdb/mydbm.h (gdbm_exists): Likewise.
+	* src/catman.c (catman): Remove obsolete comment.
+	(add_arg, check_access): Remove inline qualifier.
+	* src/check_mandirs.c (add_dir_entries): Likewise.
+	* src/man.c (gripe_system, gripe_no_man, manopt_to_env, escape_less,
+	is_section, do_prompt, gripe_converting_name): Likewise.
+	* src/mandb.c (xremove, xrename, xchmod, finish_up, xchown,
+	do_chown, update_db_wrapper): Likewise.
+	* src/manp.c (gripe_reading_mp_config, gripe_stat_file,
+	gripe_not_directory, has_mandir, fsstnd): Likewise.
+	* src/whatis.c (do_whatis_section): Likewise.
+
+2015-11-06  Colin Watson  <cjwatson@debian.org>
+
+	Belatedly update NEWS date.
+
+	* Version: 2.7.5.
+
+	* NEWS: Document changes since 2.7.4.
+
+2015-11-06  Colin Watson  <cjwatson@debian.org>
+
+	Build text manual with LC_ALL=C
+
+	nroff's UTF-8 output is a bit wonky in this case, but ASCII will do
+	fine.
+
+	* manual/Makefile.am (.pp.cat): Set LC_ALL=C.
+
+2015-11-05  Colin Watson  <cjwatson@debian.org>
+
+	Disable roff input insertion with --recode
+
+	Reported by Bjarni Ingi Gislason.  Fixes Debian bug #751795.
+
+	* src/man.c (display): Don't insert roff input for --no-hyphenation,
+	--no-justification, or locale macros when the --recode option is used.
+
+2015-11-05  Colin Watson  <cjwatson@debian.org>
+
+	Adjust line number when inserting extra roff input
+
+	Reported by Bjarni Ingi Gislason.  Fixes Debian bug #789219.
+
+	* src/man.c (heirloom_line_length, disable_hyphenation,
+	disable_justification, locale_macros): Emit ".lf 1" after inserted roff
+	input.
+	* src/zsoelim.l: Accept .lf without a file name argument.
+
+2015-10-19  Colin Watson  <cjwatson@debian.org>
+
+	Make a mandb error message clearer
+
+	* src/mandb.c (xcopy): Say which file name we failed to fopen.
+
+2015-10-08  Colin Watson  <cjwatson@debian.org>
+
+	Fix Plural-Forms header in Catalan translation
+
+	* po/ca.po (Plural-Forms): Add missing semicolon.
+
+2015-10-08  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.4.
+
+2015-10-08  Colin Watson  <cjwatson@debian.org>
+
+	man: Honour MANWIDTH in conjunction with -Z
+
+	* src/man.c (get_roff_line_length): Also consider line_length if
+	ditroff is set.
+	(make_roff_command): Try add_roff_line_length regardless of troff.
+	The line length is passed to the macro package, not to the output
+	device, although get_roff_line_length will still sometimes not use
+	it (e.g. if using the "ps" device).  Fixes Debian bug #801241.
+	* NEWS: Document this.
+
+2015-10-08  Colin Watson  <cjwatson@debian.org>
+
+	man: Exit 3 if formatter exits non-zero
+
+	* src/man.c (format_display): Keep track of exit statuses from both
+	format_cmd and disp_cmd, and exit CHILD_FAIL if either is non-zero
+	and non-SIGPIPE.  Fixes Debian bug #801261.
+	* NEWS: Document this.
+
+2015-09-22  Colin Watson  <cjwatson@debian.org>
+
+	Fix replace.sed prerequisite syntax
+
+	Suffix rules may not have prerequisites.  Thanks to Nikola Forró; fixes
+	Fedora bug #1263930.
+
+	* man/Rules.man: Declare dependency of $(MANS) on replace.sed
+	separately rather than trying to do so in suffix rules.
+	* NEWS: Document this.
+
+2015-09-22  Colin Watson  <cjwatson@debian.org>
+
+	Fix crash in manpath deduplication
+
+	* src/manp.c (create_pathlist): Handle NULL return from
+	canonicalize_file_name.
+	* NEWS: Document this.
+
+2015-09-22  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade config.guess/config.sub
+
+	* build-aux/config.guess, build-aux/config.sub: Upgrade to
+	2015-08-20.
+
+2015-09-21  Nikola Forró  <nforro@redhat.com>
+
+	Fix typos in italian manpath man page
+
+2015-09-16  zwpwjwtz  <zwpwjwtz@126.com>
+
+	Update Simplified Chinese manual page translation
+
+	* man/po4a/po/zh_CN.po: Update from Translation Project.
+	* man/THANKS: Add translator credit.
+
+2015-09-09  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.3.
+
+2015-09-09  Colin Watson  <cjwatson@debian.org>
+
+	Pacify gcc -Wlogical-not-parentheses
+
+	* src/man.c (find_cat_file): Add extra parentheses around
+	logical-not on the LHS of a comparison.
+	* lib/util.c (is_changed): Likewise in header comment.
+
+2015-09-09  OGAWA Hirofumi  <hirofumi@mail.parknet.co.jp>
+
+	Restore the ability to use 'man -a' noninteractively
+
+	Fixes Debian bug #798094.
+
+	* src/man.c (do_prompt): Return 0 immediately (i.e. view) if neither
+	stdin nor stdout is a tty.
+	* NEWS: Document this.
+
+2015-09-09  Mike Frysinger  <vapier@gentoo.org>
+
+	Fix crash when current directory is unreadable
+
+	Fixes Savannah bug #45861.
+
+	* src/man.c (make_display_command): Check have_cwd before trying to
+	use cwd.
+	* NEWS: Document this.
+
+2015-09-09  Colin Watson  <cjwatson@debian.org>
+
+	Document squeeze-blank-lines fix
+
+	* NEWS: Document Rafael's squeeze-blank-lines fix.
+
+2015-09-09  Colin Watson  <cjwatson@debian.org>
+
+	Fix use-after-free in ult_src
+
+	Reported by Hanno Boeck.  Fixes Savannah bug #45854.
+
+	* src/ult_src.c (ult_src): Take a copy of base when recursing rather
+	than passing it directly as the new name argument, since it may be
+	freed by the recursive call.
+	* NEWS: Document this.
+
+2015-09-09  Colin Watson  <cjwatson@debian.org>
+
+	Remove unnecessary check before free
+
+	* src/ult_src.c (ult_src): Don't check whether base is non-NULL
+	before freeing it.
+
+2015-08-30  Rafael Kitover  <rkitover@gmail.com>
+
+	Squeeze blank lines internally instead of pager -s
+
+	Add a pipecmd in make_display_command to combine multiple blank lines in
+	the output into one, which is what e.g. less -s does.
+
+	Stop automatically appending -s to pager command in configure.
+
+	Fixes Debian bug #796584.
+
+	* configure.ac: Stop automatically appending -s to pager command.
+	* src/man.c (squeeze_blank_lines): New function.
+	(make_display_command): Add squeeze_blank_lines to display pipeline.
+
+2015-08-29  Colin Watson  <cjwatson@debian.org>
+
+	Make sure CACHEDIR.TAG has correct ownership
+
+	* src/mandb.c (mandb): Change CACHEDIR.TAG's owner to
+	man_owner->pw_uid when running as root in global manpaths.
+	(process_manpath): Pass global_manpath to mandb.
+
+2015-08-29  Colin Watson  <cjwatson@debian.org>
+
+	Rewrite CACHEDIR.TAG and databases if they cannot be read
+
+	Fixes Debian bug #797019.
+
+	* src/mandb.c (mandb): Rewrite CACHEDIR.TAG and databases if they
+	cannot be read (probably due to incorrect ownership).
+	* NEWS: Document this.
+
+2015-08-22  Colin Watson  <cjwatson@debian.org>
+
+	Try to get terminal width from /dev/tty
+
+	If man is running within something like lesspipe, then there may be
+	a current tty that neither stdin nor stdout points to.  Try to get
+	hold of it using /dev/tty.  Fixes Fedora bug #1255930.
+
+	* lib/linelength.c (get_line_length): Try /dev/tty before either
+	stdout or stdin.
+	* NEWS: Document this.
+
+2015-08-16  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.2.
+
+2015-08-16  Jordi Mallach  <jordi@gnu.org>
+
+	* po/ca.po: Update from Translation Project.
+
+2015-08-16  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Automake 1:1.15-3 (from Debian).
+
+	* NEWS: Document a couple more changes since 2.7.1.
+
+2015-08-02  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Automake 1.15.
+
+2015-08-02  Colin Watson  <cjwatson@debian.org>
+
+	Fix inaccurate description of "man -f"
+
+	It's equivalent to "whatis", not "whatis -r".  Fixes Fedora
+	bug #1249377.
+
+	* man/man1/man.man1 (EXAMPLES): "man -k" and "man -f" are equivalent to
+	"apropos" and "whatis" respectively, not "apropos -r" and "whatis -r".
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update; unfuzzy all
+	translations.
+
+2015-08-02  Lauri Nurmi  <lanurmi@iki.fi>
+
+	* po/fi.po: Update from Translation Project.
+
+2015-04-08  Colin Watson  <cjwatson@debian.org>
+
+	Allow using GDBM's NDBM compatibility layer
+
+	This isn't very useful in practice since anyone using this could just
+	use GDBM directly instead, but it's helpful for testing.
+
+	* configure.ac: Check for gdbm-ndbm.h and libgdbm_compat.
+
+2015-04-08  Colin Watson  <cjwatson@debian.org>
+
+	Clean up freeing of datum structures
+
+	* libdb/mydbm.h (MYDBM_FREE): Remove.
+	(MYDBM_FREE_DPTR): New macro.  This zeros the data pointer to avoid
+	double-free problems.
+	* libdb/db_delete.c (dbdelete): Use MYDBM_FREE_DPTR.
+	* libdb/db_gdbm.c (man_gdbm_open_wrapper, sortkey_hashtable_free):
+	Likewise.
+	* libdb/db_lookup.c (dblookup, dblookup_pattern): Likewise.
+	* libdb/db_store.c (dbstore): Likewise.
+	* libdb/db_ver.c (dbver_rd, dbver_wr): Likewise.
+	* src/accessdb.c (main): Likewise.
+	* src/catman.c (parse_for_sec): Likewise.
+	* src/check_mandirs.c (sanity_check_db, purge_pointers, purge_missing):
+	Likewise.
+	* src/whatis.c (do_apropos): Likewise.
+
+2015-04-08  Colin Watson  <cjwatson@debian.org>
+
+	Stop storing the database handle in a global variable
+
+	Fixes Ubuntu bug #1304261.
+
+	* libdb/db_delete.c (dbdelete): Take a dbf parameter.  Update all
+	callers and prototypes.
+	* libdb/db_lookup.c (dblookup, dblookup_all, dblookup_exact,
+	dblookup_pattern): Likewise.
+	* libdb/db_store.c (replace_if_necessary, dbstore): Likewise.
+	* src/check_mandirs.c (test_manfile, add_dir_entries, sanity_check_db,
+	purge_pointers, purge_normal, purge_whatis): Likewise.
+	* src/descriptions_store.c (store_descriptions): Likewise.
+	* src/straycats.c (check_for_stray, open_catdir): Likewise.
+	* src/whatis.c (resolve_pointers, display, do_whatis_section, do_whatis,
+	do_apropos): Likewise.
+
+	* src/accessdb.c (main): Declare dbf here rather than at file scope.
+	* src/catman.c (parse_for_sec): Likewise.
+	* src/check_mandirs.c (testmandirs, update_db_time, update_db,
+	purge_missing): Likewise.
+	* src/man.c (dbdelete_wrapper, try_db): Likewise.
+	* src/mandb.c (update_one_file): Likewise.
+	* src/straycats.c (straycats): Likewise.
+	* src/whatis.c (search): Likewise.
+
+	* libdb/mydbm.h (dbf): Remove.
+	* src/catman.c (dbf): Rename to ...
+	(dbf_close_post_fork): ... this.
+	(rdopen_db): Merge into ...
+	(parse_for_sec): ... here.
+
+2015-03-05  Colin Watson  <cjwatson@debian.org>
+
+	man: Avoid dubious use of freopen to reopen base streams
+
+	freopen doesn't actually work properly when base streams have been
+	closed (at least with glibc), and it seems better to simply refuse to
+	operate in such a non-conforming environment.
+
+	* src/man.c (check_standard_fds): New function.
+	(main): Call it rather than using freopen.
+
+2014-11-16  Colin Watson  <cjwatson@debian.org>
+
+	Allow building from git without gnulib-tool
+
+	Since we don't want to keep Gnulib translations in revision control,
+	we need gnulib-tool on $PATH when generating the build system in
+	order to fetch them, but it's unnecessarily awkward to require
+	everyone to have this just in order to build man-db from git.  Allow
+	building without this, although it is still required for "make
+	dist".
+
+	* configure.ac: No longer issue an error if gnulib/po/Makefile.in.in
+	is missing.  Instead, set the Automake conditional HAVE_GNULIB_PO to
+	true if and only if gnulib/po/POTFILES.in exists, and only create
+	gnulib/po/Makefile.in if gnulib/po/Makefile.in.in exists.
+	* Makefile.am (SUBDIRS): Only include gnulib/po if HAVE_GNULIB_PO is
+	true.
+
+2014-11-14  Colin Watson  <cjwatson@debian.org>
+
+	apropos/whatis: Don't truncate names if long output was requested
+
+	* src/whatis.c (display): Leave page_name intact if long_output is
+	true.  Reported by Calle Erlandsson.
+
+2014-11-11  David Prévot  <david@tilapin.org>
+
+	* man/po4a/po/fr.po: Update from Translation Project.
+
+2014-11-08  Colin Watson  <cjwatson@debian.org>
+
+	Pass -l through to apropos/whatis
+
+	Fixes Fedora bug #1161747.
+
+	* src/man.c (do_extern): Pass the -l option through.
+
+2014-11-07  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.1.
+
+2014-10-27  Colin Watson  <cjwatson@debian.org>
+
+	Send 'man -a' prompts to /dev/tty
+
+	Fixes Debian bug #766113.
+
+	* src/man.c (locale_macros): Write prompts to and read replies from
+	/dev/tty, rather than stderr and stdin respectively.
+	* NEWS: Document this.
+
+2014-10-27  Colin Watson  <cjwatson@debian.org>
+
+	Make man run correctly from a deleted directory
+
+	Fixes Debian bug #764384.
+
+	* gnulib: Import save-cwd module.
+	* src/man.c (make_display_command): Use pipecmd_fchdir rather than
+	pipecmd_chdir if the working directory was saved using a file
+	descriptor.
+	(format_display, main): Save current working directory using
+	save_cwd rather than xgetcwd.
+	(format_display, local_man_loop, main): Restore previous working
+	directory using restore_cwd rather than chdir.
+	* src/tests/man-10: New file.
+	* src/tests/Makefile.am (TESTS_ENVIRONMENT): Insert the parent
+	directory into $PATH using an absolute path rather than a relative
+	one.  Export abs_top_builddir rather than top_builddir.
+	(ALL_TESTS): Add man-10.
+	* src/tests/testlib.sh (init): Set abstmpdir.  Adjust tests to use
+	this where applicable.
+	(run): Call libtool using an absolute path.
+	(skip): Remove abstmpdir.
+	(finish): Remove abstmpdir rather than tmpdir.
+	* configure.ac: Require libpipeline >= 1.4.0.
+	* NEWS: Document this.
+
+2014-10-23  Colin Watson  <cjwatson@debian.org>
+
+	NEWS: Document recent Solaris portability changes
+
+2014-10-23  Colin Watson  <cjwatson@debian.org>
+
+	Fix linking of fspause on Solaris
+
+	* src/tests/fspause.c (main): Set program_name.  Patch by Peter Bray.
+
+2014-10-23  Colin Watson  <cjwatson@debian.org>
+
+	autogen.sh: Avoid "export VARIABLE=value" syntax
+
+	Older Solaris shells do not support this.  Patch by Peter Bray.
+
+2014-10-23  Colin Watson  <cjwatson@debian.org>
+
+	gnulib: Import strcasestr module.
+
+	Suggested by Peter Bray.
+
+2014-10-05  Joe Hansen  <joedalton2@yahoo.dk>
+
+	* man/po4a/po/da.po: Update from Translation Project.
+
+2014-09-28  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.0.2.
+
+2014-09-28  Colin Watson  <cjwatson@debian.org>
+
+	Work around lack of UTIME_* on GNU/Hurd
+
+	* gnulib/fdutimens-hurd.patch: New file.
+	* autogen.sh: Apply gnulib/fdutimens-hurd.patch.
+	* NEWS: Document this.
+
+2014-09-27  Colin Watson  <cjwatson@debian.org>
+
+	Avoid using or double-closing closed database handles
+
+	Thanks to Andreas Radke and Bruce Dubbs for reporting, and to
+	Andreas Radke for testing.
+
+	* src/check_mandirs.c (testmandirs): Close dbf if necessary before
+	(re-)opening it.  Zero out dbf after closing it.
+	(update_db_time, purge_missing): Zero out dbf after closing it.
+	* src/man.c (dbdelete_wrapper, try_db): Likewise.
+	* src/mandb.c (update_one_file): Likewise.
+	* src/straycats.c (straycats): Likewise.
+	* src/whatis.c (search): Likewise.
+	* NEWS: Document this.
+
+2014-09-24  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.0.1.
+
+	* Makefile.am (EXTRA_DIST): Add gnulib/m4/sockpfaf.m4.
+
+2014-09-24  Colin Watson  <cjwatson@debian.org>
+
+	Fix tests when build fs does not support high-precision timestamps
+
+	* gnulib: Import nanosleep module.
+	* configure.ac: Remove STAT_HAS_NSEC substitution.
+	* src/tests/Makefile.am (TESTS_ENVIRONMENT): Stop exporting
+	STAT_HAS_NSEC.
+	(AM_CPPFLAGS, AM_CFLAGS, check_PROGRAMS, fspause_SOURCES,
+	fspause_LDADD): Add.
+	* src/tests/fspause.c: New file.
+	* src/tests/mandb-2, src/tests/mandb-3, src/tests/mandb-4,
+	src/tests/mandb-5: Call ./fspause rather than next_second.
+	* src/tests/testlib.sh (next_second): Remove.
+	* .gitignore: Add src/tests/.deps and src/tests/fspause.
+	* NEWS: Document this.
+
+2014-09-22  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.0.
+
+2014-09-19  Yuri Kozlov  <yuray@komyakino.ru>
+
+	* man/po4a/po/ru.po: Update from Translation Project.
+
+2014-09-18  Mario Blättermann  <mario.blaettermann@gmail.com>
+
+	* man/po4a/po/de.po: Update from Translation Project.
+
+2014-09-18  Robert Luberda  <robert@debian.org>
+
+	* man/po4a/po/pl.po: Update from Translation Project.
+
+2014-09-18  Colin Watson  <cjwatson@debian.org>
+
+	Move zsoelim to pkglibexecdir
+
+	This avoids clashes with other packages; for example, Slackware's groff
+	package installs zsoelim as a symlink to soelim.
+
+	* src/Makefile.am (bin_PROGRAMS): Move zsoelim to ...
+	(pkglibexec_PROGRAMS): ... here.
+	(AM_CPPFLAGS): Adjust ZSOELIM definition to match.
+	* NEWS: Document this.
+
+2014-09-18  Colin Watson  <cjwatson@debian.org>
+
+	Rename SOELIM definition to ZSOELIM for clarity
+
+	* src/Makefile.am (AM_CPPFLAGS): Define ZSOELIM rather than SOELIM.
+	* src/man.c (make_roff_command): Use ZSOELIM rather than SOELIM.
+
+2014-09-17  Colin Watson  <cjwatson@debian.org>
+
+	Make sure that generated shared libraries have no undefined symbols
+
+	Based on a change found in
+	https://github.com/Alexpux/MSYS2-packages/tree/master/man-db.
+
+	* lib/Makefile.am (libman_la_LDFLAGS): Add -no-undefined.
+	* libdb/Makefile.am (libmandb_la_LDFLAGS): Add -no-undefined.
+
+2014-09-17  Colin Watson  <cjwatson@debian.org>
+
+	Correct a couple of comments in m4/man-arg-*.m4
+
+	* m4/man-arg-automatic-update.m4: Correct header comment.
+	* m4/man-arg-systemdtmpfilesdir.m4: Likewise.
+
+2014-09-17  Colin Watson  <cjwatson@debian.org>
+
+	Fix "cannot adjust line" warning when formatting db.me
+
+	* manual/db.me (Contents of an index database): Insert several
+	zero-width break points in descriptions of entry formats.
+
+2014-09-17  Colin Watson  <cjwatson@debian.org>
+
+	Show a better error message if no browser is configured
+
+	Fixes Savannah bug #37814.
+
+	* src/man.c (format_display): Adjust error message if html_pager is
+	NULL or the empty string.
+	* NEWS: Document this.
+
+2014-09-17  Colin Watson  <cjwatson@debian.org>
+
+	Don't store canonicalised versions of manpath elements
+
+	We still compare canonicalised versions, but don't store them.
+	Storing them results in looking up the wrong catpath in the case
+	where one of the configured MANDB_MAP entries is a symlink.
+
+	Broken by commit 01e5a4febfc7b6cd53991455315ae7744c8f31dd; fixes
+	Fedora bug #1043401.
+
+	* src/manp.c (create_pathlist): Compare canonicalised versions of
+	manpath elements, but don't store them.
+	* NEWS: Document this.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Don't use pointed-to name as title for database-located pages
+
+	For a pointer record, the pointed-from name is a legitimate alias
+	for the located page, and is likely to be closer to the name that
+	the user requested.
+
+	Fixes Debian bug #709405.
+
+	* src/man.c (display_database): Don't use the pointed-to name to
+	construct the title for display.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.7.0-pre1.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Fix distcheck following addition of systemd tmpfiles snippet
+
+	* Makefile.am (AM_DISTCHECK_CONFIGURE_FLAGS): Add
+	--with-systemdtmpfilesdir=\$${prefix}/lib/tmpfiles.d.
+
+2014-09-16  Bjarni Ingi Gislason  <bjarniig@rhi.hi.is>
+
+	Formatting improvements to man(1)
+
+	Fixes Debian bug #726266.
+
+	* man/man1/man.man1: Protect "." at beginning or end of strings with
+	"\&".  Start sentences on new lines.  Insert italic corrections
+	between adjacent italic and roman characters.  Use double quotation
+	marks around arguments rather than placing "\ " between strings.
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Prioritise COLUMNS above TIOCGWINSZ
+
+	Fixes Ubuntu bug #1315282.
+
+	* lib/linelength.c (get_line_length): Prioritise COLUMNS above
+	TIOCGWINSZ.
+	* man/man1/apropos.man1 (DESCRIPTION): Describe new terminal width
+	priorities.
+	* man/man1/man.man1 (DESCRIPTION): Likewise.
+	* man/man1/whatis.man1 (DESCRIPTION): Likewise.
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update.
+	* NEWS: Document this.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Use xnrealloc rather than xrealloc in a few more places
+
+	* src/catman.c (parse_opt): Use xnrealloc rather than xrealloc.
+	* src/globbing.c (update_directory_cache): Likewise.
+	* src/ult_src.c (ult_trace): Likewise.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Order files by first physical extent before reading
+
+	Inspired by a similar change in dpkg.  This takes 'mandb -c' from
+	104 to 32 seconds in a test installation, and 'man -K' from 74 to 38
+	seconds.  On non-Linux systems where FIEMAP is not available, use
+	posix_fadvise instead to preload files.
+
+	Fixes Debian bug #574410.
+
+	* gnulib: Import nonblocking and openat modules.
+	* configure.ac: Check for <linux/fiemap.h> and posix_fadvise.
+	* lib/orderfiles.c: New file.
+	* lib/orderfiles.h: New file.
+	* lib/Makefile.am (libman_la_SOURCES): Add orderfiles.c and
+	orderfiles.h.
+	* src/check_mandirs.c (add_dir_entries): Order files before reading
+	them.
+	* src/man.c (try_section, do_global_apropos_section): Likewise.
+	* src/straycats.c (check_for_stray): Likewise.
+	* NEWS: Document this.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Document a couple more changes since 2.6.7.1.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Merge convert_name into man.c
+
+	* src/convert_name.c (gripe_converting_name): Move to ...
+	* src/man.c (gripe_converting_name): ... here.
+	* src/convert_name.c (convert_name): Move to ...
+	* src/man.c (convert_name): ... here.  Make static.
+	* src/convert_name.h: Remove.
+	* src/Makefile.am (man_SOURCES): Remove convert_name.c and
+	convert_name.h.
+	* po/POTFILES.in: Remove src/convert_name.c.
+	* po/man-db.pot, po/*.po: Update.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	* tools/README: Update heading to reflect moves to build-aux.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Make a few libdb functions static
+
+	* libdb/db_lookup.c (copy_if_set, split_data): Make static.
+	(make_content): Move to ...
+	* libdb/db_store.c (make_content): ... here.  Make static.
+	* libdb/db_storage.h (split_data, make_content, copy_if_set): Remove
+	prototypes.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Make various functions static
+
+	These functions are only used within the same compilation unit, so
+	have no need for external linkage.
+
+	* src/check_mandirs.c (sanity_check_db): Make static.
+	* src/mandb.c (is_lang_dir, tried_catdirs_free, purge_catdir,
+	purge_catsubdirs, purge_catdirs): Likewise.
+	* src/zsoelim.l (try_compressed): Likewise.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Remove unused code in lexgrog
+
+	* src/lexgrog.l (rule_profile): Remove unused function and
+	associated global declarations.
+
+2014-09-16  Colin Watson  <cjwatson@debian.org>
+
+	Reorder functions in man to remove need for header file
+
+	man.h was only needed because of some poor function ordering in man.c.
+	Reorder functions so that definition comes before use, except in one
+	case of mutual recursion.
+
+	* src/man.c (main): Move to end of file.
+	(local_man_loop): Move to immediately before man.
+	(man): Add a prototype declaration just before local_man_loop, to
+	cope with mutual recursion.
+	(do_prompt): Move to immediately above display.
+	* src/man.h: Remove.
+	* src/Makefile.am (man_SOURCES): Remove man.h.
+
+2014-09-15  Colin Watson  <cjwatson@debian.org>
+
+	Move argument handling out of configure to new MAN_ARG_* macros
+
+	* m4/man-arg-automatic-create.m4, m4/man-arg-automatic-update.m4,
+	m4/man-arg-cats.m4, m4/man-arg-config-file.m4, m4/man-arg-db.m4,
+	m4/man-arg-device.m4, m4/man-arg-mandirs.m4,
+	m4/man-arg-override-dir.m4, m4/man-arg-sections.m4,
+	m4/man-arg-setuid.m4, m4/man-arg-systemdtmpfilesdir.m4,
+	m4/man-arg-undoc.m4: New files.
+	* configure.ac: Call new macros rather than inlining argument
+	handling.
+
+2014-09-15  Colin Watson  <cjwatson@debian.org>
+
+	* build-aux/config.sub: Upgrade to 2014-09-11.
+
+2014-09-13  Colin Watson  <cjwatson@debian.org>
+
+	Simplify <dirent.h> handling using Gnulib
+
+	* gnulib: Import dirent module.
+	* configure.ac: Remove obsolescent AC_HEADER_DIRENT macro.
+	* src/check_mandirs.c: Simplify a large conditional block to
+	"#include <dirent.h>".
+	* src/straycats.c: Likewise.
+	* src/ult_src.c: Likewise.
+
+2014-09-13  Colin Watson  <cjwatson@debian.org>
+
+	Remove old and broken FAST_BTREE code
+
+	This was marked as experimental and broken when I took over man-db
+	13 years ago, and I've hardly touched it.  There's no point in
+	keeping it around.
+
+	* include/manconfig.h.in (FAST_BTREE): Remove commented definition.
+	* libdb/db_btree.c (test_insert, gripe_get, dbstore, dblookup):
+	Remove.
+	(btree_flopen): Expand B_FLAGS macro.
+	(btree_replace): Remove FAST_BTREE case.
+	* libdb/db_lookup.c (dblookup): Define unconditionally.
+	* libdb/db_store.c (dbstore): Likewise.
+
+2014-09-11  Colin Watson  <cjwatson@debian.org>
+
+	Speed up the test suite if we have high-precision file timestamps
+
+	* configure.ac: Substitute STAT_HAS_NSEC as "yes" or "no" depending
+	on whether high-precision file timestamps are available.
+	* src/tests/Makefile.am (TESTS_ENVIRONMENT): Export STAT_HAS_NSEC to
+	tests.
+	* src/tests/testlib.sh (next_second): Do nothing if STAT_HAS_NSEC is
+	"yes".
+
+2014-09-11  Colin Watson  <cjwatson@debian.org>
+
+	Use high-precision timestamps for manual pages
+
+	* lib/util.c (is_changed): Compare high-precision timestamps.
+	* libdb/db_storage.h (FIELDS): Increment to 10.
+	(struct mandata): Change "time_t _st_mtime" to "struct timespec
+	mtime".
+	* libdb/db_lookup.c (dbprintf): Update mtime display.
+	(split_content): Store two fields for the mtime (seconds and
+	nanoseconds).
+	(make_content): Expect two fields for the mtime.
+	* libdb/db_store.c (replace_if_necessary): Compare high-precision
+	timestamps.
+	* src/check_mandirs.c (test_manfile): Likewise.
+	* src/man.c (maybe_update_file): Likewise.
+	* src/straycats.c (check_for_stray): Update initialisation of struct
+	mandata.
+	* src/tests/testlib.sh (accessdb_filter): Adjust for new format.
+	* manual/db.me (Contents of an index database): Describe new format.
+	(Example database): Update example output.
+	* NEWS: Document this.
+
+2014-09-10  Colin Watson  <cjwatson@debian.org>
+
+	Move database mtime out of the database into file metadata
+
+	This makes the database reproducible between installations, as long
+	as the underlying database has predictable behaviour and the set of
+	installed manual pages (including their timestamps) remains
+	identical.  As a bonus, we now use high-precision times in several
+	places.
+
+	Fixes Debian bug #760895.
+
+	* gnulib: Import futimens and timespec modules.
+	* libdb/db_btree.c (btree_get_time, btree_set_time): New functions.
+	* libdb/db_gdbm.c (man_gdbm_get_time, man_gdbm_set_time): New
+	functions.
+	* libdb/db_ndbm.c (ndbm_get_time, ndbm_set_time): New functions.
+	* libdb/mydbm.h (man_gdbm_get_time, man_gdbm_set_time,
+	ndbm_get_time, ndbm_set_time, btree_get_time, btree_set_time): Add
+	prototypes.
+	(MYDBM_GET_TIME, MYDBM_SET_TIME): New macros.
+	* src/check_mandirs.c (testmandirs, create_db, count_glob_matches,
+	purge_normal, purge_whatis, purge_missing): Use high-precision
+	times.
+	(update_db_time): Set file modification times rather than updating a
+	database row.
+	(create_db, purge_missing): Get database file modification times
+	rather than fetching a database row.
+	(purge_missing): If the new will_run_mandb argument is true, reset
+	the database mtime to its value before purging; this ensures that
+	mandb will still run as expected afterwards.
+	* src/check_mandirs.h (purge_missing): Update prototype.
+	* src/mandb.c (xcopy): Copy access and modification times.
+	(process_manpath): Work out in advance of purging whether we will
+	need to run mandb, and pass that to purge_missing.
+	* include/manconfig.h.in (VER_ID): Bump to 2.5.0.
+	(KEY): Remove.
+
+	* man/man8/accessdb.man8 (DESCRIPTION), man/it/man8/accessdb.man8
+	(DESCRIZIONE): Remove sample output, as it is of limited usefulness
+	compared to how awkward it is to maintain, especially in text
+	intended for translation.
+	* man/po4a/po/man-db-manpages.pot, man/po4a/po/*.po: Update.
+	* manual/db.me (Contents of an index database): Remove mention of
+	$mtime$.
+	(Example database): Remove $mtime$.  Update $version.
+
+	* NEWS: Document this.  Bump version to 2.7.0 to correspond to the
+	database version change.
+
+2014-09-09  Colin Watson  <cjwatson@debian.org>
+
+	Make update_db_time static
+
+	* src/check_mandirs.c (update_db_time): Make this static; its only
+	uses are within the same file.
+	* src/check_mandirs.h (update_db_time): Remove prototype.
+
+2014-09-09  Colin Watson  <cjwatson@debian.org>
+
+	Remove unused reset_db_mtime function
+
+	* src/check_mandirs.c (reset_db_mtime): Remove.  This function has
+	been unused since man-db 2.4.2.
+	* src/check_mandirs.h (reset_db_mtime): Remove prototype.
+	* src/man.c: Stop including "check_mandirs.h".
+
+2014-09-09  Colin Watson  <cjwatson@debian.org>
+
+	Don't purge entries from databases that fail sanity checks
+
+	* src/check_mandirs.c (purge_missing): Return early if
+	sanity_check_db fails, for instance in the case of a version
+	mismatch.
+
+2014-09-09  Colin Watson  <cjwatson@debian.org>
+
+	Switch away from obsolescent utime function
+
+	POSIX.1-2008 marks utime as obsolescent.  Switch to variants of the
+	futimens/utimensat family instead, via Gnulib.  Use higher-precision
+	times for cat pages.
+
+	* gnulib: Import stat-time and utimens modules.
+	* src/man.c (man_modtime): Change type to struct timespec.
+	(commit_tmp_cat): Use utimens rather than utime.
+	(display): Store a higher-precision modification timestamp for
+	man_file.
+
+2014-09-09  Colin Watson  <cjwatson@debian.org>
+
+	catman: Honour program name transformations
+
+	* src/catman.c (parse_for_sec): Execute MAN rather than "man".
+
+2014-09-09  Colin Watson  <cjwatson@debian.org>
+
+	* man/po4a/po/da.po: Fix po4a syntax error.
+
+2014-09-09  Colin Watson  <cjwatson@debian.org>
+
+	Various autotools upgrades
+
+	* aclocal.m4: Upgrade to pkg-config 0.28.
+	* build-aux/config.guess: Upgrade to 2014-03-23.
+	* build-aux/config.sub: Upgrade to 2014-05-01.
+	* build-aux/ltmain.sh: Upgrade to Libtool 2.4.2-1.10 (from Debian).
+
+2014-08-30  Joe Hansen  <joedalton2@yahoo.dk>
+
+	* man/po4a/po/da.po: Update from Translation Project.
+
+2014-08-12  Arif E. Nugroho  <arif_endro@yahoo.com>
+
+	* man/po4a/po/id.po: Update from Translation Project.
+
+2014-08-11  Arif E. Nugroho  <arif_endro@yahoo.com>
+
+	* po/id.po: Update from Translation Project.
+
+2014-06-18  Colin Watson  <cjwatson@debian.org>
+
+	Fix cat page parsing (Debian bug #751934)
+
+	* src/lexgrog.l (find_name): Run "col -b -p -x" over cat pages if
+	possible before parsing them.
+
+2014-06-17  Colin Watson  <cjwatson@debian.org>
+
+	Add systemd tmpfiles snippet to clean up old cat files after a week
+
+	Fixes Fedora bug #1110274.
+
+	* configure.ac: Accept --with-systemdtmpfilesdir option.
+	(AC_CONFIG_FILES): Add init/Makefile and init/systemd/Makefile.
+	* Makefile.am (SUBDIRS): Add init.
+	* init/Makefile.am: New file.
+	* init/systemd/Makefile.am: New file.
+	* init/systemd/man-db.conf: New file.
+	* .gitignore: Add init/Makefile and init/systemd/Makefile.
+
+2014-06-17  Colin Watson  <cjwatson@debian.org>
+
+	Squash false positive from -Wmaybe-uninitialized
+
+	* src/globbing.c: Initialise pattern_start.
+
+2014-04-10  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.6.7.1.
+
+2014-04-10  Colin Watson  <cjwatson@debian.org>
+
+	Remove test suite dependency on realpath(1)
+
+	* src/tests/mandb-7: Prepend "$(pwd -P)/" to $tmpdir in
+	configuration files rather than calling realpath.
+	* NEWS: Document this.
+
+2014-04-10  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.6.7.
+
+	* Makefile.am (EXTRA_DIST): Add gnulib/argp-domain.patch.
+
+2014-04-10  Peter Schiffer  <pschiffe@redhat.com>
+
+	Only create a cache directory tag if catpath != manpath
+
+	* src/mandb.c (mandb): Don't create CACHEDIR.TAG if the catpath is
+	equal to the manpath.
+	* src/tests/mandb-7: New file.
+	* src/tests/Makefile.am (ALL_TESTS): Add mandb-7.
+	* NEWS: Document this.
+
+2014-04-10  Colin Watson  <cjwatson@debian.org>
+
+	Make cache directory tag creation more readable
+
+	* src/mandb.c (mandb): Move cache directory tag string to ...
+	(CACHEDIR_TAG): ... here (new macro).
+
+2014-03-26  Colin Watson  <cjwatson@debian.org>
+
+	Run the pager in man's original working directory
+
+	Reported by Peng Yu.
+
+	* src/man.c (make_display_command): Set pager_cmd's working
+	directory to man's original working directory.
+	* configure.ac: Require libpipeline >= 1.3.0.
+	* NEWS: Document this.
+
+2014-03-26  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Automake 1:1.14.1-3 (from Debian).
+
+2014-03-20  Mario Blättermann  <mario.blaettermann@gmail.com>
+
+	Update German manual page translation
+
+	* man/po4a/po/de.po: Update from Translation Project.
+	* man/THANKS: Add translator credit.
+
+2014-03-17  Robert Luberda  <robert@debian.org>
+
+	* man/po4a/po/pl.po: Update from Translation Project.
+
+2014-02-20  Colin Watson  <cjwatson@debian.org>
+
+	Move Autotools auxiliary build files from tools to build-aux.
+
+	This keeps man-db's own tools separate, reducing confusion, and
+	"build-aux" is a more conventional location for the Autotools files.
+
+2014-02-18  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Gnulib 20140202 and Libtool 2.4.2-1.7 (from Debian).
+
+	* lib/appendstr.c (appendstr): Use size_t type for string lengths.
+
+2014-01-23  Colin Watson  <cjwatson@debian.org>
+
+	Improve compatibility with archaic shells
+
+	* src/tests/man-5: Assign and export shell variables in two steps,
+	for improved compatibility with some archaic shells.
+	* src/tests/man-7: Likewise.
+	* src/tests/man-8: Likewise.
+	* src/tests/zsoelim-1: Likewise.
+
+2014-01-23  Colin Watson  <cjwatson@debian.org>
+
+	Fix test failure with --enable-undoc
+
+	* src/man.c (gripe_no_man): Don't print "See ... for help" message
+	when MAN_TEST_DISABLE_UNDOCUMENTED is set in the environment.
+	* src/tests/man-7: Export MAN_TEST_DISABLE_UNDOCUMENTED=1.
+	* NEWS: Document this.
+
+2014-01-23  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.6.6.
+
+	* man/po4a/Makefile.am (all-local): Make staging files writeable.
+
+	* README: Update copyright to 2014.
+
+2014-01-23  Colin Watson  <cjwatson@debian.org>
+
+	Tidy up override directory support slightly
+
+	* src/manp.c (insert_override_dir): Drop braces.
+	(get_manpath_from_path): Standardise whitespace.
+	* src/tests/Makefile.am (TESTS_ENVIRONMENT): Use Automake-generated
+	substitution rather than substituting @override_dir@ again.
+
+2014-01-23  Peter Schiffer  <pschiffe@redhat.com>
+
+	Add support for override directory in search path
+
+	* configure.ac: Add --with-override-dir option.
+	* include/manconfig.h.in (OVERRIDE_DIR): New definition.
+	* src/manp.c (insert_override_dir): New function.
+	(get_manpath_from_path): Call it before add_dir_to_list.
+	* src/tests/man-9: New file.
+	* src/tests/Makefile.am (TESTS_ENVIRONMENT): Set and export
+	OVERRIDE_DIR.
+	(ALL_TESTS): Add man-9.
+	* NEWS: Document this.
+
+2014-01-23  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Automake 1.14.1 and Libtool 2.4.2-1.6 (from Debian).
+
+2014-01-19  Akihiro Sagawa  <sagawa.aki@gmail.com>
+
+	Fix macro and hyphenation language handling
+
+	* src/man.c (display): Don't free page_lang if it's going to be used
+	by locale_macros.
+	* src/tests/man-8: New file.
+	* src/tests/Makefile.am (ALL_TESTS): Add man-8.
+	* NEWS: Document this.
+
+2014-01-19  David Prévot  <david@tilapin.org>
+
+	* man/po4a/po/fr.po: Update from Translation Project.
+
+2014-01-18  Joe Hansen  <joedalton2@yahoo.dk>
+
+	* man/po4a/po/da.po: Update from Translation Project.
+
+2014-01-16  Yuri Kozlov  <yuray@komyakino.ru>
+
+	* man/po4a/po/ru.po: Update from Translation Project.
+
+2014-01-16  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.6.6-pre2.
+
+2014-01-16  Мирослав Николић  <miroslavnikolic@rocketmail.com>
+
+	Add Serbian translation
+
+	* po/sr.po: New from Translation Project.
+	* po/LINGUAS: Add sr.
+	* man/THANKS: Add translator credit.
+
+2014-01-15  Colin Watson  <cjwatson@debian.org>
+
+	* man/po4a/po: Update.
+
+2014-01-15  Peter Schiffer  <pschiffe@redhat.com>
+
+	Synchronise manual pages with usage messages
+
+	* man/man1/apropos.man1 (SYNOPSIS): Replace -h with -?.
+	(OPTIONS): Likewise.  Add --usage.
+	* man/man1/lexgrog.man1 (SYNOPSIS): Add -d.  Replace -h with -?.
+	(OPTIONS): Likewise.  Add --usage.
+	* man/man1/man.man1 (SYNOPSIS): Replace -h with -?.
+	(OPTIONS): Likewise.  Add --path (alias for -w).  Add --usage.
+	* man/man1/manpath.man1 (SYNOPSIS): Replace -h with -?.
+	(OPTIONS): Likewise.  Add --usage.
+	* man/man1/whatis.man1 (SYNOPSIS): Replace -h with -?.
+	(OPTIONS): Likewise.  Add --usage.
+	* man/man8/accessdb.man8 (SYNOPSIS): Add -d.  Replace -h with -?.
+	(OPTIONS): Likewise.  Add --usage.
+	* man/man8/catman.man8 (SYNOPSIS): Replace -h with -?.
+	(OPTIONS): Likewise.  Add --usage.
+	* man/man8/mandb.man8 (SYNOPSIS): Replace -h with -?.
+	(OPTIONS): Likewise.  Add --usage.
+
+2014-01-15  Colin Watson  <cjwatson@debian.org>
+
+	Fix memory leaks related to make_filename
+
+	* src/check_mandirs.c (test_manfile): Remove now-redundant stat.
+	Free abs_filename.
+	* src/man.c (display_filesystem): Consolidate return paths.
+	Consistently free filename.
+	(display_database): Free file after using it.
+	(maybe_update_file): Likewise.
+
+2014-01-15  Peter Schiffer  <pschiffe@redhat.com>
+
+	Silence error messages for stale database entries (Fedora bug #841431)
+
+	* src/filenames.c (make_filename): Return NULL if the resulting file
+	is not readable.  Update all callers to handle NULL returns.
+	* src/tests/man-7: New file.
+	* src/tests/Makefile.am (ALL_TESTS): Add man-7.
+	* NEWS: Document this.
+
+2014-01-15  Colin Watson  <cjwatson@debian.org>
+
+	* src/tests/man-5, src/tests/man-6: Mark executable.
+
+2014-01-13  Robert Luberda  <robert@debian.org>
+
+	* man/po4a/po/pl.po: Update from Translation Project.
+
+2014-01-13  Colin Watson  <cjwatson@debian.org>
+
+	Fix domain handling in argp
+
+	* gnulib/argp-domain.patch: New file.
+	* autogen.sh: Apply gnulib/argp-domain.patch.
+	* NEWS: Document this.
+
+2014-01-12  Trần Ngọc Quân  <vnwildman@gmail.com>
+
+	* po/vi.po: Update from Translation Project.
+
+2014-01-11  David Prévot  <david@tilapin.org>
+
+	* man/po4a/po/fr.po: Update from Translation Project.
+
+2014-01-11  Yuri Kozlov  <yuray@komyakino.ru>
+
+	* man/po4a/po/ru.po: Update from Translation Project.
+
+2014-01-10  Colin Watson  <cjwatson@debian.org>
+
+	* Version: 2.6.6-pre1.
+
+2014-01-10  Colin Watson  <cjwatson@debian.org>
+
+	Don't update man/po4a/po/ when nothing has changed
+
+	* man/po4a/Makefile.am (DOMAIN): New variable.
+	(EXTRA_DIST): Use $(DOMAIN).
+	(STAGING): New variable.
+	(PO4A_ARGS): Set new "podir" variable.
+	(RUN_PO4A): New variable.
+	(all-local): Abbreviate using RUN_PO4A.  Copy POT/PO files to
+	$(STAGING) before running po4a, to avoid updating the master files.
+	(update-po): Move to ...
+	(update-po-real): ... here.  Abbreviate using RUN_PO4A.  Add
+	--force, since this target is only called when we really want to
+	update.  Copy POT/PO files to $(STAGING) before running po4a, and
+	only copy them back if the POT file has changed by more than just
+	the POT-Creation-Date.
+	(update-po): New rule.  Call update-po-real if and only if srcdir =
+	builddir.
+	(clean-local): New rule.  Remove $(STAGING).
+	* man/po4a/po4a.cfg (po4a_paths): Refer to $(podir) rather than
+	$(srcdir)/po4a/po.
+	* release.sh: Stop removing man/po4a/po/man-db-manpages.pot; this
+	should no longer be necessary.
+
+2014-01-03  victory  <victory.deb@gmail.com>
+
+	* po/ja.po: Update from Translation Project.
+
+2013-12-09  Colin Watson  <cjwatson@debian.org>
+
+	Make it easier to prove that catman option parsing is safe
+
+	* src/catman.c (parse_opt): Check sections before assigning to
+	  sections[i].  (Already always safe, but this makes it easier to
+	  prove.)
+
+2013-12-09  Colin Watson  <cjwatson@debian.org>
+
+	Update documentation for git.
+
+	* docs/HACKING (Sending patches): Suggest 'git diff'.
+	  (Revision control): Update for git.  Remove comment about
+	  ChangeLog handling for branches.
+	* NEWS: Document switch to git.
+
+2013-12-09  Colin Watson  <cjwatson@debian.org>
+
+	gnulib: Import gnupload module.
+
+2013-12-09  Colin Watson  <cjwatson@debian.org>
+
+	Automatically generate ChangeLog from git
+
+	* ChangeLog: Move to ...
+	* ChangeLog-2013: ... here.
+	* Makefile.am (EXTRA_DIST): Add ChangeLog-2013.
+	  (dist-hook): Add gen-ChangeLog.
+	  (gen-ChangeLog): New rule, based on that in coreutils.
+	* gnulib: Import gitlog-to-changelog module.

@@ -1,0 +1,34 @@
+.\" Man page for accessdb
+.\"
+.\" Copyright (c) 1998 Fabrizio Polacco <fpolacco@debian.org
+.\"
+.\" Traduzione di Bortolozzo Giovanni <borto@pluto.linux.it>
+.\" Agosto 1999
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Tue, 24 Feb 1998 18:18:36 +0200
+.\" 
+.TH ACCESSDB 8 "%date%" "%version%" "Utility per le Pagine di Manuale"
+.SH NAME
+accessdb \- mostra il contenuto di una base di dati man-db in un
+formato comprensibile. 
+.SH SINTASSI
+.B /usr/sbin/accessdb 
+.RI [ <file-index> ]
+.SH DESCRIZIONE
+.B accessdb 
+mostretà i dati contenuti all'interno di una base di dati di man-db in
+un formato comprensibile (all'uomo :).  Di default, mosterà i dati di
+.B /var/cache/man/index.<tipo-db>,
+dove <tipo-db> dipende dalla libreria di basi di dati in uso.
+
+Fornendo un argomento ad accessdb di modificherà questo comportamento predefinito.
+.SH AUTORE
+Wilf. (G.Wilford@ee.surrey.ac.uk)
+.br
+Fabrizio Polacco (fpolacco@debian.org).
+.br
+Traduzione di Giovanni Bortolozzo (borto@pluto.linux.it)

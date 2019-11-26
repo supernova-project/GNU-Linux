@@ -1,0 +1,110 @@
+.\" Man page for format of the manpath.config data file
+.\"
+.\" Copyright (C), 1994, 1995, Graeme W. Wilford. (Wilf.)
+.\"
+.\" Traduzione di Bortolozzo Giovanni <borto@pluto.linux.it>
+.\" Febbraio 1997
+.\" 1° Revisione Marzo 1997
+.\" 2° Revisione Agosto 1999
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Sat Oct 29 13:09:31 GMT 1994  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.\"" for hilit19
+.TH MANPATH 5 "%date%" "%version%" "%manpath_config_file%"
+.SH NOME
+manpath \- formato del file %manpath_config_file%
+.SH DESCRIZIONE
+Il file di configurazione dei percorsi man è usato dalle utility per
+le pagine di manuale per stabilire in esecuzione i percorsi man
+dell'utente, per indicare quali gerarchie di pagine di manuale
+(percorsi man) devono essere trattati come globali e per assegnare a
+quest'ultimi delle directory da usare per salvare i cat file.
+
+Se la variabile d'ambiente
+.RB $ MANPATH
+è già settata, le informazioni contenute all'interno di
+%manpath_config_file% non la ridefiniranno.
+.SH FORMATO
+Attualmente sono riconosciuti i seguenti tipi di campi:
+.TP
+.BI # \ commento
+Righe vuote o che iniziano con un
+.B #
+saranno trattate come commenti ed ignorate.
+.TP
+.BI MANDATORY_MANPATH \ elemento_percorso_man
+Righe di questo tipo indicano percorsi man che ogni
+.RB $ MANPATH
+generato automaticamente dovrebbe contenere. Tipicamente include
+.IR /usr/man .
+.TP
+.BI MANPATH_MAP \ elemento_percorso\ elemento_percorso_man
+Righe di questo tipo definiscono la mappatura da 
+.RB $ PATH 
+a
+.RB $ MANPATH .
+Per ognuno degli
+.I elemento_percorso
+trovati nella variabile
+.RB $ PATH 
+dell'utente, 
+.I elemento_percorso_man
+sarà aggiunto a
+.RB $ MANPATH . 
+.TP
+\fBMANDB_MAP \fIelemento_percorso_man \fR\|[\|\fIelemento_percorso_cat\fR \|]
+Righe di questo tipo indicano quali percorsi man devono essere
+trattati come globali e opzionalmente, dove dovrebbero essere salvati
+i loro file cat. Questo campo è particolarmente importante se
+.B man 
+è un programma setuid, in quanto indica a quali gerarchie di pagine di
+manuale accedere come utente setuid e a quali come l'utente invocante.
+
+Le gerarchie di pagine di manuale sono solitamente quelle
+immagazzinate sotto a
+.I /usr
+come, ad esempio,
+.IR /usr/man , 
+.I /usr/local/man
+e
+.IR /usr/X11R6/man .
+
+Se le pagine cat di un particolare
+.I elemento_percorso_man
+non devono essere salvate o sono salvate nelle posizione tradizionale,
+.I elemento_percorso_cat
+può essere omesso.
+
+Posizioni cat tradizionali potrebbero essere impossibili per gerarchie
+di pagine di manuale montate in sola lettura e a causa di ciò è
+impossibile specificare una valida gerarchia di directory per il loro
+salvataggio. Per osservare il
+.B Linux FSSTND
+la parola chiave
+.RB ` FSSTND ' 
+può essere usata al posto di una reale directory.
+
+Sfortunatamente, è necessario specificare
+.B tutti
+i percorsi man globali, inclusi i percorsi di sistema alternativi come
+.I /usr/man/sun
+o qualsiasi percorso
+.B NLS locale
+come
+.IR /usr/man/it_IT .
+
+Poiché le informazioni sono analizzate riga per riga nell'ordine in cui
+sono scritte, è necessario che ognuno dei percorsi man che sia una
+sotto gerarchia di un'altra gerarchia sia elencato prima, altrimenti
+sarà fatta una corrispondenza non corretta. Ad esempio
+.I /usr/man/it_IT
+deve venire prima di
+.IR /usr/man .
+.SH PROBLEMI
+Finché le suddette regole non sono seguite e osservate precisamente,
+le utility per le pagine di manuale non funzioneranno correttamente. Le
+regole sono eccessivamente complicate.

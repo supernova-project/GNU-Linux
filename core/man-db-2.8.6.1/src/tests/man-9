@@ -1,0 +1,46 @@
+#! /bin/sh
+
+# Testing override dir. This test covers both use cases - when override dir is
+# enabled and when it's not.
+#
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MAN=man}
+
+if [ -n "$OVERRIDE_DIR" ]; then
+	OVERRIDE=$OVERRIDE_DIR
+else
+	OVERRIDE="override"
+fi
+
+init
+fake_config /usr/share/man
+mkdir -p "${tmpdir}/usr/share/man/${OVERRIDE}/man1"
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+
+
+write_page abc 1 "${tmpdir}/usr/share/man/man1/abc.1" \
+	UTF-8 '' '' 'abc \- top-level test page'
+write_page abc 1 "${tmpdir}/usr/share/man/${OVERRIDE}/man1/abc.1" \
+	UTF-8 '' '' 'abc \- modified test page'
+
+if [ -n "$OVERRIDE_DIR" ]; then
+cat >"$tmpdir/1.exp" <<EOF
+$abstmpdir/usr/share/man/${OVERRIDE}/man1/abc.1
+$abstmpdir/usr/share/man/man1/abc.1
+EOF
+else
+cat >"$tmpdir/1.exp" <<EOF
+$abstmpdir/usr/share/man/man1/abc.1
+EOF
+fi
+
+
+run $MAN -C "$tmpdir/manpath.config" -aw abc >"$tmpdir/1.out"
+expect_pass 'testing override dir' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+finish

@@ -1,0 +1,76 @@
+#! /bin/sh
+
+# Copyright (C) 1995 Graeme W. Wilford. (Wilf.)
+#
+# This file is part of man-db.
+#
+# man-db is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# man-db is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with man-db; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+# script to weed out duplicated manual pages across hierarchies.
+#
+# Use argument to pass manpaths to the utils, else the system manpath
+# is used.
+#
+# e.g. invoke as `check /usr/man:/usr/local/man'
+
+if test $# -ne 0
+then
+	manpath=$1
+else
+	manpath=`manpath -q`
+fi
+
+echo "Search for duplicates under:" >&2
+echo $manpath >&2
+
+dups=`whatis -w -M $manpath "*" | sed -e 's/\([^(]*\) (\([^)]*\)).*/\2#\1/' | \
+      sort | uniq -d`
+
+for i in $dups
+do
+
+# split up the dup into the section/name components
+
+	args=`echo $i |tr '#' ' '`
+
+# We only cater for two dups. Others will have to be fixed on a later run.
+# Find the locations of the dup'd files
+
+	file1=
+	file2=
+	
+	for file in `man -aw -M $manpath $args |sed -e 's/\([^ ]*\).*/\1/'`
+	do
+		if test "$file1"
+		then
+			file2=$file
+			break 
+		else
+			file1=$file
+		fi
+	done
+
+# See which is newer and echo
+
+	if test "$file1" -nt "$file2"
+	then
+		echo "$file1 is newer than $file2" >&2
+		echo "$file2" 
+	elif test "$file2" -nt "$file1"
+	then
+		echo "$file2 is newer than $file1" >&2
+		echo "$file1"
+	fi
+done

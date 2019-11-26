@@ -1,0 +1,50 @@
+.\" Copyright (C), 1995, Graeme W. Wilford. (Wilf.)
+.\" Copyright (c) 2002 Colin Watson.
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Thu Sep 21 19:22:47 BST 1995  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.ip "manual page"
+A file containing descriptions related to the use of a function or program
+or the structure of a file.
+The name of the file is formed from the title of
+the manual page followed by a period followed by the name of the section
+that it resides in, optionally followed by an extension.
+The format of the file is \*N and may be compressed,
+having a suitable compression extension appended.
+.ip "cat page"
+A formatted manual page suitable for viewing on a vt100-type terminal.
+.ip "stray cat page"
+A cat page that does not have a relative manual page on the system, i.e. only
+the cat page was supplied or the manual page was removed after the cat page
+had been created.
+.ip section
+Each manual page or cat page hierarchy is divided into sections, each
+section having its own directory.
+Manual page hierarchy section names
+begin with \(oqman\(cq and cat page sections with \(oqcat\(cq.
+.ip extension
+A package may provide manual pages with filenames ending in a
+package-specific extension name.
+This allows manual pages with the same
+title to coexist in the same manual page hierarchy and section without
+sharing the same filename.
+It also provides a further mechanism for man
+to select the correct manual page.
+.ip "manual page hierarchy"
+A directory tree divided into manual page sections, each containing a
+collection of manual pages.
+.ip "cat page hierarchy"
+A directory tree divided into cat page sections, each containing a
+collection of cat pages.
+.ip "traditional cat page hierarchy"
+The same location as the manual page hierarchy.
+.ip "alternate cat page hierarchy"
+A separate location to that of the traditional cat page hierarchy.
+.ip "traditional cat page"
+A cat page located in a traditional cat page hierarchy.
+.ip "alternate cat page"
+A cat page located in an alternate cat page hierarchy.

@@ -1,0 +1,31 @@
+#! /bin/sh
+
+# Test for:
+#   https://bugs.debian.org/163347
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MAN=man}
+
+init
+fake_config /usr/local/man /usr/share/man
+MANPATH="$tmpdir/usr/local/man:$tmpdir/usr/share/man"
+export MANPATH
+
+write_page md5sum 1 "$tmpdir/usr/share/man/man1/md5sum.1.gz" \
+	UTF-8 gz '' 'md5sum \- Debian md5sum manual page'
+write_page md5sum 1 "$tmpdir/usr/share/man/man1/md5sum.textutils.1.gz" \
+	UTF-8 gz '' 'md5sum \- coreutils md5sum manual page'
+mkdir -p "$tmpdir/usr/local/man/man1"
+ln -s ../../../share/man/man1/md5sum.textutils.1.gz \
+	"$tmpdir/usr/local/man/man1/md5sum.1.gz"
+cat >"$tmpdir/1.exp" <<EOF
+$abstmpdir/usr/share/man/man1/md5sum.textutils.1.gz
+$abstmpdir/usr/share/man/man1/md5sum.1.gz
+EOF
+run $MAN -C "$tmpdir/manpath.config" -aw md5sum >"$tmpdir/1.out"
+expect_pass 'symlinks with matching names win' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+finish

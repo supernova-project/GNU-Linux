@@ -1,0 +1,96 @@
+.\" Copyright (C), 1995, Graeme W. Wilford. (Wilf.)
+.\" Copyright (c) 2002, 2007 Colin Watson.
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Thu Sep 21 19:22:47 BST 1995  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.BS 1 "Compression"
+.BS 2 "Compressed manual pages"
+.lp
+It is possible to maintain a system of compressed manual pages.
+This imposes a small overhead on the formatting process, but is nevertheless
+usually reasonable in order to avoid unnecessary consumption of disk space.
+.lp
+Presently, the compression extension/decompressor pairs must be known at
+compile time although any number may be defined and used.
+The following structure is predefined in \*M:
+
+.TS
+center box tab(@);
+l | l .
+Extension@Decompressor
+_
+gz@gzip \-dc
+z@gzip \-dc
+Z@compress \-dc
+.TE
+
+It is a relatively easy operation to include further pairs in this
+structure.
+See
+.i include/comp_src.h
+for details and an example.
+.lp
+Support for compressed manual pages is compiled into the \*M utilities by
+default.
+To completely disable this support, edit
+.i config.h
+and comment out the following line
+.lp
+#define COMP_SRC 1
+.lp
+This will enable a minor speed increase, but note that support for stray cats
+with any compression extension other than the default will also be disabled.
+.BS 2 "Compressed cat pages"
+.lp
+\*M compresses cat files by default.
+During configuration,
+.b configure
+will try to find
+.b gzip
+and, if found, all cat files produced by
+.b man
+will be compressed with
+.ip
+.b "gzip \-7c"
+.lp
+and have a
+.b .gz
+extension appended.
+If
+.b gzip
+is not found,
+.ip
+.b "compress \-c"
+.lp
+is used as the compressor and the extension
+.b .Z
+is appended.
+.lp
+To store cat files in an uncompressed state and to disable compressed
+extension processing completely, edit
+.i config.h
+and comment out the following line
+.lp
+#define COMP_CAT 1
+.lp
+.BS 3 "Stray cats"
+.lp
+Normally,
+.b man
+will only look for cat files with the default compression extension.
+The default compression extension is dependent on the default compressor
+and may be an empty string if the support for compressed cats is disabled.
+.lp
+It is possible for a system to be supplied with stray cat files located in the
+traditional cat page hierarchy.
+To make matters worse, they may have
+compression extensions other than the default and reside on read-only media.
+In such circumstances, stray cat files will be accepted with any compression
+extension that is also supported for manual pages.
+.lp
+This special treatment of stray cat pages is removed if
+support for compressed manual pages is turned off or not available.

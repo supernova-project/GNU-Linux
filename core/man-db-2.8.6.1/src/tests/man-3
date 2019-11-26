@@ -1,0 +1,41 @@
+#! /bin/sh
+
+# Test for:
+#   https://bugzilla.redhat.com/show_bug.cgi?id=684977
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+case $MANDIR_LAYOUT in
+	""|GNU)
+		;;
+	*)
+		skip "only applicable to GNU layout"
+		;;
+esac
+
+: ${MAN=man}
+
+init
+fake_config /usr/share/man
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+
+# Force default section order.
+cat >>"$tmpdir/manpath.config" <<EOF
+SECTION 1 n l 8 3 0 2 5 4 9 6 7
+EOF
+
+write_page md5sum 3pm "$tmpdir/usr/share/man/man3/open.3pm.gz" \
+	UTF-8 gz '' 'open \- section 3pm'
+write_page md5sum 3p "$tmpdir/usr/share/man/man3p/open.3p.gz" \
+	UTF-8 gz '' 'open \- section 3p'
+cat >"$tmpdir/1.exp" <<EOF
+$abstmpdir/usr/share/man/man3p/open.3p.gz
+$abstmpdir/usr/share/man/man3/open.3pm.gz
+EOF
+run $MAN -C "$tmpdir/manpath.config" -aw 3p open >"$tmpdir/1.out"
+expect_pass 'exact section matches win' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+finish

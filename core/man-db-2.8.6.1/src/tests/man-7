@@ -1,0 +1,31 @@
+#! /bin/sh
+
+# Test for invalid DB entry.
+#   https://bugzilla.redhat.com/show_bug.cgi?id=841431
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MAN=man}
+: ${MANDB=mandb}
+
+init
+fake_config /usr/share/man
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+
+MAN_TEST_DISABLE_UNDOCUMENTED=1
+export MAN_TEST_DISABLE_UNDOCUMENTED
+
+write_page test 1 "$tmpdir/usr/share/man/man1/test.1" \
+	UTF-8 '' '' 'test \- top-level test page'
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+
+rm -f "$tmpdir/usr/share/man/man1/test.1"
+
+echo "No manual entry for test" > "$tmpdir/1.exp"
+LC_ALL=C run $MAN -C "$tmpdir/manpath.config" test 2> "$tmpdir/1.out"
+expect_pass 'invalid DB entry' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+finish

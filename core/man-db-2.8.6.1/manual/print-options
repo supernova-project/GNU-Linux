@@ -1,0 +1,14 @@
+#! /bin/sh
+LC_ALL=C LANGUAGE= nroff -c -me options-only.me | col -bpx | perl -ne '
+    $match = /^MAN-OPTIONS-BEGIN/ ... /^MAN-OPTIONS-END/;
+    if ($match > 1 and $match !~ /E0/) {
+	# Trim leading and trailing blank lines.
+	if (/^$/) {
+	    $diversion .= $_ if $start;
+	} else {
+	    print $diversion;
+	    $diversion = "";
+	    print;
+	    $start = 1;
+	}
+    }'

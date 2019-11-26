@@ -1,0 +1,28 @@
+#! /bin/sh
+
+# Testing empty locales on systems without /usr/share/i18n/SUPPORTED file.
+#   https://bugzilla.redhat.com/show_bug.cgi?id=657409
+#
+# File /usr/share/i18n/SUPPORTED must be missing for this test to be effective.
+#
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MAN=man}
+
+init
+fake_config /usr/share/man
+
+write_page test 1 "$tmpdir/usr/share/man/man1/test.1" \
+	UTF-8 '' '' 'test \- top-level test page'
+
+LANG=
+LC_CTYPE=
+LC_ALL=
+run $MAN -C "$tmpdir/manpath.config" -E UTF-8 test > /dev/null
+# $? is deliberately expanded here.
+expect_pass 'missing locales' "test $? -eq 0"
+
+finish
+

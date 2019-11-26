@@ -1,0 +1,25 @@
+s,%cat%,@cat@,g
+s,%pager%,@pager@,g
+s,%troff%,@troff@,g
+s,%date%,@date@,g
+s,%sections%,@sections@,g
+s,%version%,@VERSION@,g
+s,%zsoelim%,@TRANS_ZSOELIM@,g
+s,%man%,@TRANS_MAN@,g
+s,%mandb%,@TRANS_MANDB@,g
+s,%manpath%,@TRANS_MANPATH@,g
+s,%catman%,@TRANS_CATMAN@,g
+s,%apropos%,@TRANS_APROPOS@,g
+s,%whatis%,@TRANS_WHATIS@,g
+s,%manconv%,@TRANS_MANCONV@,g
+s,%thzsoelim%,@TRANS_ZSOELIM_UPPER@,g
+s,%thman%,@TRANS_MAN_UPPER@,g
+s,%thmandb%,@TRANS_MANDB_UPPER@,g
+s,%thmanpath%,@TRANS_MANPATH_UPPER@,g
+s,%thcatman%,@TRANS_CATMAN_UPPER@,g
+s,%thapropos%,@TRANS_APROPOS_UPPER@,g
+s,%thwhatis%,@TRANS_WHATIS_UPPER@,g
+s,%thmanconv%,@TRANS_MANCONV_UPPER@,g
+s,%manpath_config_file%,%REPLACE_CONFIG_FILE%,g
+s,^l lx\.$,l l@TBL_X_FORMAT@.,
+s,^\.if !'po4a'hide' ,,

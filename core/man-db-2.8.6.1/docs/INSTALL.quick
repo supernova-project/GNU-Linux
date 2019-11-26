@@ -1,0 +1,45 @@
+Full installation details are included in ../README.  If you are simply
+upgrading an old version of man-db and know that all of the defaults
+are correct (your config file will NOT be overwritten), you may follow
+the Quick install below.
+
+man-db requires several external packages:
+
+	* libpipeline >= 1.5.0 (https://nongnu.org/libpipeline/)
+	* flex >= 2.5.30 (http://flex.sf.net/)
+	* a database library, one of:
+	  GDBM (https://www.gnu.org.ua/software/gdbm/)
+	  Berkeley DB < 6
+	  NDBM
+
+and on systems without GNU libc:
+
+	* libiconv >= 1.8 (https://www.gnu.org/software/libiconv/)
+
+Some other packages are recommended and used if available:
+
+	* zlib (https://zlib.net/)
+	* libseccomp (https://github.com/seccomp/libseccomp)
+
+Quick INSTALL
+=============
+
+	* RUN `./configure <appropriate flags>'
+	* EDIT configuration files/headers if necessary 
+	* RUN `make <appropriate variable definitions>'
+	* RUN `make install <appropriate variable definitions>'
+
+Note (1): If you don't know what <appropriate flags> or <appropriate
+variable definitions> mean, you should be reading/following the install
+procedure in ../README instead.
+
+Note (2): You must not replace the `make install' step by copying the
+binaries to wherever you may want them.  Various paths are hard coded
+into the binaries during `make' and unless you know exactly what you
+are doing, it is likely that run time errors will occur.
+
+Note (3): If you run make with path/prefix/name_transformation variable
+definitions such as `make prefix=/tmp zsoelim=soelim', you must supply
+the same variable definitions to `make install'.  In general it is
+better to run `./configure' with the appropriate options rather than
+waiting until the make stage of the build.

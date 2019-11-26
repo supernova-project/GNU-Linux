@@ -1,0 +1,26 @@
+#! /bin/sh
+
+# Test multiple whatis definitions.
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${LEXGROG=lexgrog}
+
+init
+
+name_section="\
+lextest \\- one whatis definition
+.br
+lextest2 \\- another whatis definition"
+
+write_page lextest 1 "$tmpdir/usr/share/man/man1/lextest.1.gz" UTF-8 gz '' \
+	"$name_section"
+cat >"$tmpdir/2.exp" <<EOF
+$tmpdir/usr/share/man/man1/lextest.1.gz: "lextest - one whatis definition"
+$tmpdir/usr/share/man/man1/lextest.1.gz: "lextest2 - another whatis definition"
+EOF
+run $LEXGROG "$tmpdir/usr/share/man/man1/lextest.1.gz" >"$tmpdir/2.out"
+expect_pass 'multiple whatis definitions' 'diff -u "$tmpdir/2.exp" "$tmpdir/2.out"'
+
+finish

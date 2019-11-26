@@ -1,0 +1,67 @@
+#! /bin/sh
+
+# What happens when a manual page changes from a regular file to a symbolic
+# link and back?
+#   https://bugs.debian.org/490582
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MANDB=mandb}
+: ${ACCESSDB=accessdb}
+
+init
+fake_config /usr/share/man
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+db_ext="$(db_ext)"
+
+write_page fs 5 "$tmpdir/usr/share/man/man5/fs.5.gz" \
+	UTF-8 gz t 'fs \- fs(5)'
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+cat >"$tmpdir/1.exp" <<EOF
+fs -> "- 5 5 MTIME A - - gz fs(5)"
+EOF
+accessdb_filter "$tmpdir/usr/share/man/index$db_ext" >"$tmpdir/1.out"
+expect_pass 'fs(5) setup' 'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+./fspause
+write_page filesystems 5 "$tmpdir/usr/share/man/man5/filesystems.5.gz" \
+	UTF-8 gz t 'filesystems \- filesystems(5)'
+ln -sf filesystems.5.gz "$tmpdir/usr/share/man/man5/fs.5.gz"
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+cat >"$tmpdir/2.exp" <<EOF
+filesystems -> "- 5 5 MTIME A - - gz filesystems(5)"
+fs -> "- 5 5 MTIME B - - gz filesystems(5)"
+EOF
+accessdb_filter "$tmpdir/usr/share/man/index$db_ext" >"$tmpdir/2.out"
+expect_pass 'mandb notices regular file -> symlink' \
+	'diff -u "$tmpdir/2.exp" "$tmpdir/2.out"'
+
+./fspause
+ln -sf fs.5.gz "$tmpdir/usr/share/man/man5/fs2.5.gz"
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+cat >"$tmpdir/3.exp" <<EOF
+filesystems -> "- 5 5 MTIME A - - gz filesystems(5)"
+fs -> "- 5 5 MTIME B - - gz filesystems(5)"
+fs2 -> "- 5 5 MTIME B - - gz filesystems(5)"
+EOF
+accessdb_filter "$tmpdir/usr/share/man/index$db_ext" >"$tmpdir/3.out"
+expect_pass 'mandb notices two-level symlink' \
+	'diff -u "$tmpdir/3.exp" "$tmpdir/3.out"'
+
+./fspause
+rm -f "$tmpdir/usr/share/man/man5/fs.5.gz"
+write_page fs 5 "$tmpdir/usr/share/man/man5/fs.5.gz" \
+	UTF-8 gz t 'fs \- new fs(5)'
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+cat >"$tmpdir/4.exp" <<EOF
+filesystems -> "- 5 5 MTIME A - - gz filesystems(5)"
+fs -> "- 5 5 MTIME A - - gz new fs(5)"
+fs2 -> "- 5 5 MTIME B - - gz filesystems(5)"
+EOF
+accessdb_filter "$tmpdir/usr/share/man/index$db_ext" >"$tmpdir/4.out"
+expect_pass 'mandb notices symlink -> regular file' \
+	'diff -u "$tmpdir/4.exp" "$tmpdir/4.out"'
+
+finish

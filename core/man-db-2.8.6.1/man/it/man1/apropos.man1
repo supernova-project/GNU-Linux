@@ -1,0 +1,209 @@
+.\" Man page for %apropos%
+.\"
+.\" Copyright (C), 1994, 1995, Graeme W. Wilford. (Wilf.)
+.\"
+.\" Traduzione di Giuseppe Sacco <eppesuig@debian.org>
+.\" Prima traduzione di Bortolozzo Giovanni <borto@pluto.linux.it>
+.\" Febbraio 1997
+.\" 1^ Revisione Marzo 1997
+.\" 2^ Revisione Agosto 1999
+.\" 3^ Revisione e aggiornamento Settembre 1999
+.\" 4^ Revisione e aggiornamento Aprile 2003
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the 
+.\" man-db distribution.
+.\"
+.\" Sat Oct 29 13:09:31 GMT 1994  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.\"" for hilit19
+.pc
+.TH %thapropos% 1 "%date%" "%version%" "Utility per le pagine di manuale"
+.SH NOME
+%apropos% \- ricerca nei nomi e nelle descrizioni delle pagine di manuale
+.SH SINTASSI
+.B %apropos% 
+.RB [\| \-dhV  \|] 
+.RB [\| \-e \||\| \-w \||\| \-r\c
+\|]
+.RB [\| \-m
+.IR sistema \|[\|,.\|.\|.\|]\|]
+.RB [ \-M
+.IR percorso \|]
+.RB [\| \-C
+.IR file \|]
+.I parola_chiave
+\&.\|.\|.
+.SH DESCRIZIONE
+Ogni pagina di manuale ha disponibile al suo interno una breve
+descrizione. 
+.B %apropos%
+ricerca nelle descrizioni le istanze di
+.IR parola_chiave .
+
+.I parola_chiave
+è solitamente una espressione regolare, come se fosse usata l'opzione
+.RB ( \-r ) 
+oppure può contenere wildcard ("caratteri jolly")
+.RB ( \-w ),
+o corrispondere esattamente ad una parola
+.RB ( \-e ).
+Usando queste opzioni, potrebbe essere necessario racchiudere tra
+virgolette (') la 
+.I parola_chiave
+o far precedere da backslash (\\) i caratteri speciali per evitare che
+la shell provi a interpretarla(i).
+
+Le regole di corrispondenza predefinite permettono la ricerca della
+corrispondenza sia nel nome della pagina che in parole complete nella
+descrizione. 
+.SH OPZIONI
+.TP
+.B \-d, \-\-debug
+Mostra informazioni utili al debug.
+.TP
+.B \-v, \-\-verbose
+Stampa messaggi di errore dettagliati.
+.TP
+.B \-r, \-\-regex
+Interpreta ogni parola chiave come un'espressione regolare. Questo è
+il comportamento predefinito. Di ogni parola chiave sarà cercata la
+corrispondenza fra i nomi delle pagine e le descrizioni
+indipendentemente. Può corrispondere ad una parte qualsiasi di
+entrambe.
+La corrispondenza non è limitata a parole intere.
+.TP
+.B \-w, \-\-wildcard
+Interpreta ogni parola chiave come un modello (pattern) contenente
+wildcard nello stile della shell. Di ogni parola chiave sarà cercata
+la corrispondenza fra i nomi delle pagine e le descrizioni
+indipendentemente.
+Se anche
+.B \-\-exact
+è usato, allora è trovata una corrispondenza solo se la parola
+chiave espansa corrisponde ad un'intera descrizione o nome di pagina.
+In alternativa è anche permesso che la corrispondenza sia su una parte
+della descrizione che contenga parole intere.
+.TP
+.B \-e, \-\-exact
+Di ogni parola chiave sarà cercata la corrispondenza esatta tra i nomi
+delle pagine e le descrizioni.
+.\"
+.\" Due to the rather silly limit of 6 args per request in some `native'
+.\" *roff compilers, we have do the following to get the two-line
+.\" hanging tag on one line. .PP to begin a new paragraph, then the
+.\" tag, then .RS (start relative indent), the text, finally .RE
+.\" (end relative indent).
+.\""
+.PP
+.B \-m 
+.I sistema\c 
+.RB \|[\|,.\|.\|.\|]\| ,
+.BI \-\-systems= sistema\c 
+\|[\|,.\|.\|.\|]
+.RS
+Se il sistema ha accesso alle descrizioni delle pagine di manuale di
+altri sistemi operativi, usando questa opzione può essere fatta una
+ricerca anche in tali descrizioni. Per ricercare nelle descrizioni
+delle pagine di manuale di NewOS, usare l'opzione
+.B \-m
+.BR NewOS .
+
+Il
+.I sistema
+specificato può essere una combinazione qualsiasi di nomi di sistemi
+operativi separati da virgole. Per includere una ricerca nelle
+descrizioni 
+.B whatis
+del sistema operativo nativo, si includa il nome di sistema 
+.B man 
+nella stringa argomento.
+Usando questa opzione verrà ignorata la variabile d'ambiente
+.RB $ SYSTEM .
+.RE
+.TP
+.BI \-M\  percorso ,\ \-\-manpath= percorso
+Specifica un'insieme di ricerca alternativo di gerarchie di percorsi
+di pagine di manuale separate da `:'. Di default,
+.B %apropos%
+usa la variabile d'ambiente
+.RB $ MANPATH
+finché questa non è vuota o non definita, nel qual caso determinerà
+un'appropriato percorso basato sulla propria variabile d'ambiente 
+.RB $ PATH .
+Usando questa opzione verrà ignorato il contenuto di
+.RB $ MANPATH .
+.TP
+.BI \-C\  file ,\ \-\-config\-file= file
+Usa il file di configurazione specificato piuttosto che quello predefinito,
+cioè
+.IR ~/.manpath .
+.TP
+.B \-h, \-\-help
+Mostra un messaggio d'aiuto ed esce.
+.TP
+.B \-V, \-\-version
+Mostra informazioni sulla versione e sull'autore.
+.SH "STATI D'USCITA"
+.TP
+.B 0
+L'esecuzione del programma ha avuto successo.
+.TP
+.B 1
+Errore d'uso, di sintassi o nel file di configurazione.
+.TP
+.B 2
+Errore operativo.
+.TP
+.B 16
+Non è stato trovato niente che corrisponde al criterio specificato.
+.SH "VARIABILI D'AMBIENTE"
+.TP
+.B SYSTEM
+Se
+.RB $ SYSTEM
+è impostata, il suo valore avrà lo stesso effetto che fosse
+specificato come argomento dell'opzione
+.BR \-m .
+.TP
+.B MANPATH
+Se
+.RB $ MANPATH
+è impostata, il suo valore è interpretato come una lista di percorsi di
+ricerca, separati da `:', di gerarchie di pagine di manuale da usare.
+.TP
+.B POSIXLY_CORRECT
+Se
+.RB $ POSIXLY_CORRECT
+è impostata, anche ad un valore nullo, il metodo di ricerca
+predefinito di 
+.B %apropos% 
+sarà considerare la parola chiave come una espressione regolare
+estesa
+.RB ( \-r ) \ .
+Questo è ormai il comportamento predefinito.
+.SH FILE
+.TP
+.I /usr/share/man/index.(bt|db|dir|pag)
+Un
+.I indice
+della cache della base di dati globale.
+.TP
+.I /var/cache/man/index.(bt|db|dir|pag)
+Un
+.I indice
+alternativo e conforme con FHS.
+.TP
+.I /usr/share/man/\|.\|.\|.\|/whatis
+Una tradizionale base di dati 
+.BR whatis .
+.SH "VEDERE ANCHE"
+.BR %whatis% (1),
+.BR %man% (1).
+.SH AUTORI
+.nf
+Wilf. (G.Wilford@ee.surrey.ac.uk).
+Fabrizio Polacco (fpolacco@debian.org).
+.br
+Traduzione attuale di Giuseppe Sacco (eppesuig@debian.org)
+Prima traduzione di Bortolozzo Giovanni (borto@pluto.linux.it)

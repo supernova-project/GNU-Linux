@@ -1,0 +1,58 @@
+#! /bin/sh
+
+# Test additional language-specific requests for localized man pages.
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MAN=man}
+
+init
+fake_config /usr/share/man
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+
+cat >"$tmpdir/fake-program" <<EOF
+#! /bin/sh
+exec cat
+EOF
+chmod +x "$tmpdir/fake-program"
+PATH="$abstmpdir:$PATH"
+export PATH
+
+cat >>"$tmpdir/manpath.config" <<EOF
+DEFINE tbl fake-program
+DEFINE nroff fake-program
+EOF
+
+write_page test 1 "$tmpdir/usr/share/man/man1/test.1" \
+	UTF-8 '' '' 'test \- top-level test page'
+
+write_page test 1 "$tmpdir/usr/share/man/xyzzy/man1/test.1" \
+	UTF-8 '' '' 'test \- xyzzy language page for test'
+
+write_page xyz 1 "$tmpdir/usr/share/man/man1/xyz.1" \
+	UTF-8 '' '' 'test \- top-level xyz page'
+
+cat >"$tmpdir/1.exp" <<'EOF'
+.    mso xyzzy.tmac
+.hla xyzzy
+test \- xyzzy language page for test
+EOF
+
+cat >"$tmpdir/2.exp" <<'EOF'
+.TH xyz 1
+test \- top-level xyz page
+EOF
+
+run $MAN -L xyzzy_foo.bar -C "$tmpdir/manpath.config" test |\
+	grep 'xyzzy' >"$tmpdir/1.out"
+expect_pass 'language-specific requests for localized man page' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+run $MAN -L xyzzy_foo.bar -C "$tmpdir/manpath.config" xyz |\
+	grep 'xyz' >"$tmpdir/2.out"
+expect_pass 'no language-specific requests for top-level man page' \
+	'diff -u "$tmpdir/2.exp" "$tmpdir/2.out"'
+
+finish

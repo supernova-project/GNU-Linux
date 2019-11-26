@@ -1,0 +1,28 @@
+#! /bin/sh
+
+# Don't create CACHEDIR.TAG in manpath
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MANDB=mandb}
+
+init
+fake_config /usr/share/man
+mkdir -p "$tmpdir/usr/share/man"
+mkdir -p "$tmpdir/usr/dir/man"
+mkdir -p "$tmpdir/var/cache/man"
+echo "MANDATORY_MANPATH	$abstmpdir/usr/share/man" > "$tmpdir/manpath.config"
+echo "MANDATORY_MANPATH	$abstmpdir/usr/dir/man" >> "$tmpdir/manpath.config"
+echo "MANDB_MAP $abstmpdir/usr/share/man $abstmpdir/var/cache/man" >> "$tmpdir/manpath.config"
+
+write_page test 1 "$tmpdir/usr/share/man/man1/test.1" UTF-8 '' '' \
+	'test \- simple mandb test'
+write_page test2 1 "$tmpdir/usr/dir/man/man1/test2.1" UTF-8 '' '' \
+	'test2 \- simple mandb test'
+run $MANDB -C "$tmpdir/manpath.config" -q "$tmpdir/usr/share/man:$tmpdir/usr/dir/man"
+expect_pass "CACHEDIR.TAG exists" "[ -e $tmpdir/var/cache/man/CACHEDIR.TAG ]"
+expect_pass "CACHEDIR.TAG doesn't exist 01" "[ ! -e $tmpdir/usr/share/man/CACHEDIR.TAG ]"
+expect_pass "CACHEDIR.TAG doesn't exist 02" "[ ! -e $tmpdir/usr/dir/man/CACHEDIR.TAG ]"
+
+finish

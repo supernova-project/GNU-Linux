@@ -1,0 +1,90 @@
+#! /bin/sh
+
+# Test for relative .so links between man pages in the same section (e.g. ".so bar.1").
+#   https://bugzilla.redhat.com/show_bug.cgi?id=693458
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MAN=man}
+
+init
+fake_config /usr/share/man
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+
+cat >"$tmpdir/fake-program" <<EOF
+#! /bin/sh
+exec cat
+EOF
+chmod +x "$tmpdir/fake-program"
+PATH="$abstmpdir:$PATH"
+export PATH
+
+cat >>"$tmpdir/manpath.config" <<EOF
+DEFINE tbl fake-program
+DEFINE nroff fake-program
+EOF
+
+# There are 2 kind of tests. First, when destination is not gzipped, what means
+# that .so link contains full filename and second, when the destination is
+# gzipped, and .so link doesn't contain the file suffix.
+
+write_page test 1 "$tmpdir/usr/share/man/man1/test.1" \
+	UTF-8 '' '' 'test \- top-level test page'
+echo '.so man1/test.1' >"$tmpdir/usr/share/man/man1/test-fullso.1"
+echo '.so test.1' >"$tmpdir/usr/share/man/man1/test-relso.1"
+
+write_page testb 1 "$tmpdir/usr/share/man/man1/testb.1.gz" \
+	UTF-8 'gz' '' 'testb \- top-level test page'
+echo '.so man1/testb.1' >"$tmpdir/usr/share/man/man1/test-fullsob.1"
+echo '.so testb.1' >"$tmpdir/usr/share/man/man1/test-relsob.1"
+
+cat >"$tmpdir/1.exp" <<'EOF'
+.TH test 1
+.SH NAME
+test \- top-level test page
+.SH DESCRIPTION
+test
+EOF
+
+cat >"$tmpdir/2.exp" <<'EOF'
+.TH testb 1
+.SH NAME
+testb \- top-level test page
+.SH DESCRIPTION
+test
+EOF
+
+run $MAN -C "$tmpdir/manpath.config" test | \
+	grep -v '^\.l[flt] ' >"$tmpdir/1.out"
+expect_pass 'test(1) without .so link' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+run $MAN -C "$tmpdir/manpath.config" test-fullso | \
+	grep -v '^\.l[flt] ' >"$tmpdir/2.out"
+expect_pass 'test-fullso(1) .so link with section' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/2.out"'
+
+run $MAN -C "$tmpdir/manpath.config" test-relso | \
+	grep -v '^\.l[flt] ' >"$tmpdir/3.out"
+expect_pass 'test-relso(1) .so link without section' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/3.out"'
+
+
+run $MAN -C "$tmpdir/manpath.config" testb | \
+	grep -v '^\.l[flt] ' >"$tmpdir/4.out"
+expect_pass 'testb(1) without .so link; gzipped' \
+	'diff -u "$tmpdir/2.exp" "$tmpdir/4.out"'
+
+run $MAN -C "$tmpdir/manpath.config" test-fullsob | \
+	grep -v '^\.l[flt] ' >"$tmpdir/5.out"
+expect_pass 'test-fullsob(1) .so link with section; gzipped' \
+	'diff -u "$tmpdir/2.exp" "$tmpdir/5.out"'
+
+run $MAN -C "$tmpdir/manpath.config" test-relsob | \
+	grep -v '^\.l[flt] ' >"$tmpdir/6.out"
+expect_pass 'test-relsob(1) .so link without section; gzipped' \
+	'diff -u "$tmpdir/2.exp" "$tmpdir/6.out"'
+
+finish

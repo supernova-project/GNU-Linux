@@ -1,0 +1,136 @@
+.\" Copyright (C), 1995, Graeme W. Wilford. (Wilf.)
+.\" Copyright (c) 2002, 2007 Colin Watson.
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Thu Sep 21 19:22:47 BST 1995  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.BS 1 "The specifics of Sections"
+.BS 2 "Package specific manual page sections"
+.lp
+The use of package specific manual page
+sections is discouraged as packages large enough to warrant their own
+section probably contain manual pages that span other sections.
+An example might be package
+.b foo
+that has its own section
+.ip
+.i /usr/share/man/manfoo
+.lp
+which contains manual pages
+describing its programs, the library routines it offers and the format of
+several of its configuration files.
+These pages would normally be allocated to sections
+.b 1 ,
+.b 3
+and
+.b 5
+respectively and thus combining them all under section
+.b foo
+is misleading.
+Subtle problems will arise if there are any
+base name-space clashes with standard manual pages, e.g.
+.b exit (3),
+.b exit (foo)
+and the order in which they should be shown.
+.lp
+There are two standard solutions to this problem.
+.np
+Create a separate manual page hierarchy for the package's manual pages such as
+.(l
+.i /usr/local/packages/foo/man
+.)l
+.np
+Install the pages in their relevant sections, with a unique extension
+appended to the filename such that
+.(l
+.i /usr/share/man/manfoo/exit.foo
+.)l
+would instead be installed as
+.(l
+.i /usr/share/man/man1/exit.1foo
+.)l
+.lp
+Only (2) offers a complete
+solution to manual page ordering problems and
+allows users to access the desired page directly.
+.BS 2 "Selecting a section type"
+.BS 3 "Specifying a section"
+.lp
+This is done via use of the section argument to man
+.ip
+.bx "man 1 exit"
+.lp
+will look for
+.i exit.1*
+in section
+.b 1
+of the manual.
+If
+.i exit.1
+exists, it will be displayed in preference to
+.i exit.1foo
+.ip
+.bx "man 1foo exit"
+.lp
+will look for
+.i exit.1foo*
+in section
+.b 1
+of the manual.
+The asterisk (*) represents a wild-card of any type or length,
+including length zero.
+.lp
+For an argument to be interpreted as a section name rather than a page name, it
+must either begin with a digit, or be included in the standard section list.
+The default section list is defined in
+.i include/manconfig.h
+to be
+.b 1 ,
+.b n ,
+.b l ,
+.b 8 ,
+.b 3 ,
+.b 2 ,
+.b 5 ,
+.b 4 ,
+.b 9 ,
+.b 6
+and
+.b 7 .
+This should be modified in order and content to meet the local conventions.
+It may be altered at run-time using the
+.b SECTION
+directive in the \*M configuration file.
+.lp
+Every subdirectory section name in the entire system must be in the list,
+including sections found in imported manual page hierarchies.
+It is not necessary to list sections with extensions unless a special
+ordering for those extensions is desired.
+The order is important because in normal operation,
+.b man
+will only display the first manual page it finds that meets the search
+criteria. Using the
+.b \-\-all
+argument will cause
+.b man
+to attempt to display all manual pages that meet the criteria. See
+.b man (1)
+for further information.
+.lp
+Having an excess of sections listed will not slow
+.b man
+down.
+.BS 3 "Specifying an extension"
+.lp
+If the section is unknown, but the package extension is,
+it is possible to use the extension argument
+.ip
+.bx "man \-e foo exit"
+.lp
+to search in all sections for manual pages named
+.i exit
+from package
+.i foo .

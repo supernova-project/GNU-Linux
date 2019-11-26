@@ -1,0 +1,28 @@
+Begin4
+Title:		man-db
+Version:	2.8.6.1
+Entered-date:	2019-08-05
+Description:	This package provides the man command. This utility is
+		the primary way of examining the on-line help files
+		(manual pages).  Other utilities provided include the
+		whatis and apropos commands for searching the manual
+		page database, the manpath utility for determining the
+		manual page search path, and the maintenance utilities
+		mandb, catman, and zsoelim. This package uses the groff
+		suite of programs to format and display the manual
+		pages.
+Keywords:	man, mandb, manpath, apropos, whatis, manpath.conf,
+		manual pager browser, zsoelim, manconv, accessdb, lexgrog.
+Author:		jwe@che.utexas.edu (John W Eaton)
+		G.Wilford@ee.surrey.ac.uk (Graeme Wilford)
+		fpolacco@debian.org (Fabrizio Polacco)
+		cjwatson@debian.org (Colin Watson)
+Maintained-by:	cjwatson@debian.org (Colin Watson)
+Primary-site:	https://savannah.nongnu.org/download/man-db/
+		1.8M man-db-2.8.6.1.tar.xz
+Alternate-site:	http://ftp.debian.org/debian/pool/main/m/man-db/
+Platforms:	Requires GNU groff 1.16.
+		Optionally uses GDBM or Berkeley DB (any version with 1.85
+		compatibility).
+Copying-policy: GPL
+End

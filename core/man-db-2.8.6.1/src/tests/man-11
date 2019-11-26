@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# Test for:
+#   man chmod.2 => man 2 chmod
+#   man chmod.2p => man 2p chmod
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MAN=man}
+
+init
+fake_config /usr/share/man
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+
+page_name="chmod"
+
+write_page "$page_name" 1 "$tmpdir/usr/share/man/man1/${page_name}.1.gz" \
+        UTF-8 gz '' "$page_name \- coreutils $page_name manual page"
+write_page "$page_name" 2 "$tmpdir/usr/share/man/man2/${page_name}.2.gz" \
+        UTF-8 gz '' "$page_name \- $page_name() syscall manual page"
+
+cat >"$tmpdir/2.exp" <<EOF
+$abstmpdir/usr/share/man/man2/${page_name}.2.gz
+EOF
+
+run $MAN -C "$tmpdir/manpath.config" -aw "$page_name".2 >"$tmpdir/2.out"
+expect_pass '"man name.2" is the same as "man 2 name"' \
+        'diff -u "$tmpdir/2.exp" "$tmpdir/2.out"'
+
+(
+        cd "$tmpdir/usr/share/man/man2/"
+        mv "${page_name}.2.gz" "${page_name}.2p.gz"
+)
+
+cat >"$tmpdir/2p.exp" <<EOF
+$abstmpdir/usr/share/man/man2/${page_name}.2p.gz
+EOF
+
+run $MAN -C "$tmpdir/manpath.config" -aw "$page_name".2p >"$tmpdir/2p.out"
+expect_pass '"man name.2p" is the same as "man 2p name"' \
+        'diff -u "$tmpdir/2p.exp" "$tmpdir/2p.out"'
+
+finish

@@ -1,0 +1,123 @@
+#! /bin/sh
+#
+# Copyright (C) 1995 Graeme Wilford.
+#
+# This file is part of man-db.
+#
+# man-db is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# man-db is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with man-db; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+#
+# Mon Mar 13 17:46:22 GMT 1995 Wilf. (G.Wilford@ee.surrey.ac.uk):
+
+#PATH=.:/usr/local/bin:/usr/bin:/bin
+
+progname=`basename $0`
+here=`pwd`
+test_only=
+
+# sort out the command line options
+
+if test "$1" = "-t" || test "$1" = "--test"
+then
+	test_only=yes
+else 
+	if test "$1" && test "$2" && test "$3"
+	then
+		test_only=no
+		owner=$1
+		group=$2
+		mode=$3
+	fi
+fi
+
+( test "$1" = "-h" || test "$1" = "--help" ) && help=yes || help=
+
+if test "$help" || test -z "$test_only" 
+then
+	cat << EOF
+usage: $progname -h | -t | owner group mode
+                 -h --help             this usage message
+                 -t --test             don't create anything
+
+This utility will use the information supplied in your manpath
+configuration file to determine which cat directories you require.  It
+will then create them as the supplied <owner> and <group> and with
+access permissions of <mode>.  <mode> can be any mode accepted by chmod.
+
+A mode of 0755 is recommended in most cases.
+
+The man-db package must be _installed_ for this script to work.
+EOF
+	exit 0
+fi
+
+for manpath in `manpath -qg | tr ':' ' '`
+do
+	echo "Manual page hierarchy:	$manpath"
+	catdir=`MANPATH=$manpath manpath -qc 2>/dev/null`
+	cd $manpath
+
+	subdirs=
+	for subdir in `echo man?*`
+	do
+		test -d "$subdir" &&
+		subdirs="$subdirs `echo ${subdir} | sed -e 's,man,cat,'`"
+	done
+	
+	echo "Cat page hierarchy:	$catdir"
+	echo "Cat sections:		$subdirs"
+
+	if test -d "$catdir" 
+	then
+	  subs_needed=
+	  subs_ok=
+	  for subdir in $subdirs
+	  do
+		cd $catdir
+	 	test -d "$subdir" &&
+		subs_ok="$subs_ok $subdir" || 
+		subs_needed="$subs_needed $subdir"
+	  done
+
+	  echo "  already present:	$subs_ok"
+	  echo "  need to be created:	$subs_needed"
+	
+	  catdirs=
+	  for subdir in $subs_needed
+	  do
+		catdirs="$catdirs ${catdir}/${subdir}"
+	  done
+	else
+	  echo "  Cat directory not present, no subdirectories will be created"
+	  catdirs=
+	fi
+ 
+	cd $here
+	if test "$test_only" = "no" && test "$catdirs"
+	then
+		echo " "
+		echo "mkinstalldirs $catdirs" &&
+		mkinstalldirs $catdirs &&
+		echo "chown $owner $catdirs" &&
+		chown $owner $catdirs &&
+		echo "chgrp $group $catdirs" &&
+		chgrp $group $catdirs &&
+		echo "chmod $mode $catdirs" &&
+		chmod $mode $catdirs ||
+		exit $?
+	fi
+
+	echo " "
+done
+

@@ -1,0 +1,3776 @@
+# Serbian translation for man-db manual pages
+# Copyright (C) 2016 Colin Watson (msgids)
+# This file is distributed under the same license as the man-db package.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2014—2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: man-db-manpages 2.7.6.1\n"
+"POT-Creation-Date: 2018-01-22 10:13+0000\n"
+"PO-Revision-Date: 2016-12-18 07:08+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <(nothing)>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
+
+#. type: TH
+#: ../../man/man1/apropos.man1:12 ../../man/man1/lexgrog.man1:9
+#: ../../man/man1/man.man1:15 ../../man/man1/manconv.man1:9
+#: ../../man/man1/manpath.man1:12 ../../man/man1/whatis.man1:12
+#: ../../man/man1/zsoelim.man1:12 ../../man/man8/accessdb.man8:12
+#: ../../man/man8/catman.man8:12 ../../man/man8/mandb.man8:13
+#, no-wrap
+msgid "Manual pager utils"
+msgstr "Помагало страничара упутства"
+
+#. type: SH
+#: ../../man/man1/apropos.man1:13 ../../man/man1/lexgrog.man1:10
+#: ../../man/man1/man.man1:16 ../../man/man1/manconv.man1:10
+#: ../../man/man1/manpath.man1:13 ../../man/man1/whatis.man1:13
+#: ../../man/man1/zsoelim.man1:13 ../../man/man5/manpath.man5:14
+#: ../../man/man8/accessdb.man8:13 ../../man/man8/catman.man8:13
+#: ../../man/man8/mandb.man8:14
+#, no-wrap
+msgid "NAME"
+msgstr "НАЗИВ"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:15
+msgid "%apropos% - search the manual page names and descriptions"
+msgstr "%apropos% - тражи називе и описе страница упутства"
+
+#. type: SH
+#: ../../man/man1/apropos.man1:15 ../../man/man1/lexgrog.man1:12
+#: ../../man/man1/man.man1:18 ../../man/man1/manconv.man1:12
+#: ../../man/man1/manpath.man1:15 ../../man/man1/whatis.man1:15
+#: ../../man/man1/zsoelim.man1:15 ../../man/man8/accessdb.man8:16
+#: ../../man/man8/catman.man8:15 ../../man/man8/mandb.man8:16
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr "УВОД"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:32
+msgid ""
+"B<%apropos%> [\\|B<-dalv?V>\\|] [\\|B<-e>\\||\\|B<-w>\\||\\|B<-r>\\|] [\\|B<-"
+"s> I<list>\\|] [\\|B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<path>"
+"\\|] [\\|B<-L> I<locale>\\|] [\\|B<-C> I<file>\\|] I<keyword> \\&.\\|.\\|."
+msgstr ""
+"B<%apropos%> [\\|B<-dalv?V>\\|] [\\|B<-e>\\||\\|B<-w>\\||\\|B<-r>\\|] [\\|B<-"
+"s> I<списак>\\|] [\\|B<-m> I<систем>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> "
+"I<путања>\\|] [\\|B<-L> I<језик>\\|] [\\|B<-C> I<датотека>\\|] I<кључна_реч> "
+"\\&.\\|.\\|."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:32 ../../man/man1/lexgrog.man1:20
+#: ../../man/man1/man.man1:150 ../../man/man1/manconv.man1:20
+#: ../../man/man1/manpath.man1:22 ../../man/man1/whatis.man1:32
+#: ../../man/man1/zsoelim.man1:20 ../../man/man5/manpath.man5:16
+#: ../../man/man8/accessdb.man8:20 ../../man/man8/catman.man8:24
+#: ../../man/man8/mandb.man8:29
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "ОПИС"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:37
+msgid ""
+"Each manual page has a short description available within it.  B<%apropos%> "
+"searches the descriptions for instances of I<keyword>."
+msgstr ""
+"Свака страница упутства садржи кратак опис.  B<%apropos%> претражује описе "
+"за примерке I<кључне_речи>."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:50
+msgid ""
+"I<keyword> is usually a regular expression, as if (B<-r>)  was used, or may "
+"contain wildcards (B<-w>), or match the exact keyword (B<-e>).  Using these "
+"options, it may be necessary to quote the I<keyword> or escape (\\e) the "
+"special characters to stop the shell from interpreting them."
+msgstr ""
+"I<кључна_реч> је обично регуларни израз, ако се користи (B<-r>), или може "
+"садржати џокере (B<-w>), или да одговара тачној кључној речи (B<-e>).  "
+"Коришћењем ових опције, може бити неопходно ставити под наводнике "
+"I<кључну_реч> или додати знак новог реда (\\e) како би конзола престала да "
+"их тумачи."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:53
+msgid ""
+"The standard matching rules allow matches to be made against the page name "
+"and word boundaries in the description."
+msgstr ""
+"Стандард који одговара правилима омогућава обављање поклапања наспрам назива "
+"странице и граница речи у опису."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:61
+msgid ""
+"The database searched by B<%apropos%> is updated by the B<%mandb%> program.  "
+"Depending on your installation, this may be run by a periodic cron job, or "
+"may need to be run manually after new manual pages have been installed."
+msgstr ""
+"База података претражена B<%apropos%> је ажурирана програмом B<%мандб%>.  У "
+"зависности од ваше инсталације, ово може бити покренуто повременим послом "
+"крона, или можда треба бити покренуто ручно након инсталације нових страница "
+"упутства."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:61 ../../man/man1/lexgrog.man1:45
+#: ../../man/man1/man.man1:558 ../../man/man1/manconv.man1:50
+#: ../../man/man1/manpath.man1:37 ../../man/man1/whatis.man1:71
+#: ../../man/man1/zsoelim.man1:55 ../../man/man8/accessdb.man8:29
+#: ../../man/man8/catman.man8:55 ../../man/man8/mandb.man8:80
+#, no-wrap
+msgid "OPTIONS"
+msgstr "ОПЦИЈЕ"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:65 ../../man/man1/lexgrog.man1:49
+#: ../../man/man1/man.man1:572 ../../man/man1/manconv.man1:66
+#: ../../man/man1/manpath.man1:44 ../../man/man1/whatis.man1:75
+#: ../../man/man8/accessdb.man8:33 ../../man/man8/catman.man8:59
+#: ../../man/man8/mandb.man8:84
+msgid "Print debugging information."
+msgstr "Исписује податке прочишћавања."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:68 ../../man/man1/whatis.man1:78
+msgid "Print verbose warning messages."
+msgstr "Исписује опширне поруке упозорења."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:76
+msgid ""
+"Interpret each keyword as a regular expression.  This is the default "
+"behaviour.  Each keyword will be matched against the page names and the "
+"descriptions independently.  It can match any part of either.  The match is "
+"not limited to word boundaries."
+msgstr ""
+"Тумачи сваку кључну реч као регуларни израз.  Ово је основно понашање.  "
+"Свака кључна реч ће независно бити поређена са називима страница и описима.  "
+"Може одговарати било ком делу.  Поклапање није ограничено на границе речи."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:88
+msgid ""
+"Interpret each keyword as a pattern containing shell style wildcards.  Each "
+"keyword will be matched against the page names and the descriptions "
+"independently.  If B<--exact> is also used, a match will only be found if an "
+"expanded keyword matches an entire description or page name.  Otherwise the "
+"keyword is also allowed to match on word boundaries in the description."
+msgstr ""
+"Тумачи сваку кључну реч као образац који садржи џокере у стилу љуске. Свака "
+"кључна реч ће независно бити поређена са називима страница и описима.  Ако "
+"се такође користи и B<--exact>, поклапање ће бити пронађено само ако "
+"проширена кључна реч одговара читавом опису или називу странице.  У "
+"супротном дозвољено је да кључна реч одговара границама речи у опису."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:92
+msgid ""
+"Each keyword will be exactly matched against the page names and the "
+"descriptions."
+msgstr ""
+"Свака кључна реч ће бити тачно поређена са називима страница и описима."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:96
+msgid ""
+"Only display items that match all the supplied keywords.  The default is to "
+"display items that match any keyword."
+msgstr ""
+"Приказује само ставке које одговарају свим приложеним кључним речима.  "
+"Основно је приказивање ставки које одговарају било којој кључној речи."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:103 ../../man/man1/whatis.man1:107
+msgid ""
+"Do not trim output to the terminal width.  Normally, output will be "
+"truncated to the terminal width to avoid ugly results from poorly-written "
+"B<NAME> sections."
+msgstr ""
+"Не крати излаз на ширину терминала.  Обично, излаз ће бити скраћен на ширину "
+"терминала како би се избегли ружни резултати из лоше написаних одељака "
+"B<НАЗИВА>."
+
+#. type: TP
+#: ../../man/man1/apropos.man1:103 ../../man/man1/whatis.man1:107
+#, no-wrap
+msgid "B<-s> I<list>, B<--sections> I<list>, B<--section> I<list>"
+msgstr "B<-s> I<списак>, B<--sections> I<списак>, B<--section> I<списак>"
+
+#
+#.  Due to the rather silly limit of 6 args per request in some `native'
+#.  *roff compilers, we have do the following to get the two-line
+#.  hanging tag on one line. .PP to begin a new paragraph, then the
+#.  tag, then .RS (start relative indent), the text, finally .RE
+#.  (end relative indent).
+#. type: Plain text
+#: ../../man/man1/apropos.man1:123 ../../man/man1/whatis.man1:127
+msgid ""
+"Search only the given manual sections.  I<list> is a colon- or comma-"
+"separated list of sections.  If an entry in I<list> is a simple section, for "
+"example \"3\", then the displayed list of descriptions will include pages in "
+"sections \"3\", \"3perl\", \"3x\", and so on; while if an entry in I<list> "
+"has an extension, for example \"3perl\", then the list will only include "
+"pages in that exact part of the manual section."
+msgstr ""
+"Тражи само дате одељке упутства.  I<списак> је списак одељака раздвојен "
+"двотачком или зарезом.  Ако неки унос у I<списку> јесте једноставан одељак, "
+"на пример „3“, онда ће приказани списак описа садржати странице у одељку "
+"„3“, „3perl“, „3x“, и тако редом; а ако неки унос у I<списку> има проширење, "
+"на пример „3perl“, тада ће списак садржати само странице у том делу одељка "
+"упутства."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:129 ../../man/man1/man.man1:701
+#: ../../man/man1/manpath.man1:66 ../../man/man1/whatis.man1:133
+msgid ""
+"B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|, B<--systems=>I<system>\\|[\\|,.\\|."
+"\\|.\\|]"
+msgstr ""
+"B<-m> I<систем>\\|[\\|,.\\|.\\|.\\|]\\|, B<--systems=>I<систем>\\|[\\|,.\\|."
+"\\|.\\|]"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:135
+msgid ""
+"If this system has access to other operating system's manual page "
+"descriptions, they can be searched using this option.  To search NewOS's "
+"manual page descriptions, use the option B<-m> B<NewOS>."
+msgstr ""
+"Ако овај систем има приступ описима страница упутства других оперативних "
+"система, они могу бити претраживани употребом ове опције.  За претраживање "
+"описа страница упутства НовихОС-ова, користите опцију „B<-m> B<НовиОС>“."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:147
+msgid ""
+"The I<system> specified can be a combination of comma-delimited operating "
+"system names.  To include a search of the native operating system's "
+"B<whatis> descriptions, include the system name B<man> in the argument "
+"string.  This option will override the $B<SYSTEM> environment variable."
+msgstr ""
+"Наведени I<систем> може бити комбинација назива оператвиних система "
+"раздвојених зарезом.  За укључивање претраге B<шта-је> описа изворног "
+"оперативног система, укључите B<ман> назив система у ниску аргумента.  Ова "
+"опција ће преписати променљиву система $B<СИСТЕМ>."
+
+#. type: TP
+#: ../../man/man1/apropos.man1:148 ../../man/man1/man.man1:720
+#: ../../man/man1/whatis.man1:152 ../../man/man8/catman.man8:59
+#, no-wrap
+msgid "B<-M\\ >I<path>,\\ B<--manpath=>I<path>"
+msgstr "B<-M\\ >I<путања>,\\ B<--manpath=>I<путања>"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:162 ../../man/man1/whatis.man1:166
+msgid ""
+"Specify an alternate set of colon-delimited manual page hierarchies to "
+"search.  By default, B<%program%> uses the $B<MANPATH> environment variable, "
+"unless it is empty or unset, in which case it will determine an appropriate "
+"manpath based on your $B<PATH> environment variable.  This option overrides "
+"the contents of $B<MANPATH>."
+msgstr ""
+"Наводи заменски скуп хијерархија страница упутства за претрагу раздвојен "
+"двотачком.  По основи, B<%program%> користи променљиву окружења $B<MANPATH>, "
+"осим ако је празно или није подешено, у том случају ће одредити одговарајућу "
+"ман путању на основу ваше променљиве окружења $B<PATH>.  Ова опција "
+"преписује садржај $B<MANPATH>."
+
+#. type: TP
+#: ../../man/man1/apropos.man1:162 ../../man/man1/man.man1:671
+#: ../../man/man1/whatis.man1:166
+#, no-wrap
+msgid "B<-L\\ >I<locale>,\\ B<--locale=>I<locale>"
+msgstr "B<-L\\ >I<језик>,\\ B<--locale=>I<језик>"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:179 ../../man/man1/man.man1:695
+#: ../../man/man1/whatis.man1:183
+msgid ""
+"B<%program%> will normally determine your current locale by a call to the C "
+"function B<setlocale>(3)  which interrogates various environment variables, "
+"possibly including $B<LC_MESSAGES> and $B<LANG>.  To temporarily override "
+"the determined value, use this option to supply a I<locale> string directly "
+"to B<%program%>.  Note that it will not take effect until the search for "
+"pages actually begins.  Output such as the help message will always be "
+"displayed in the initially determined locale."
+msgstr ""
+"B<%program%> ће обично одредити ваш текући језик позивајући Ц функцију "
+"„B<setlocale>(3)“  која испитује разне променљиве окружења, по могућству "
+"укључујући $B<LC_MESSAGES> и $B<LANG>.  Да привремено препишете одређену "
+"вредност, користите ову опцију да доставите ниску I<језик> непосредно у B<"
+"%program%>.  Знајте да ово неће ступити у дејство све док стварно не започне "
+"претрага за страницама.  Излаз као што је порука помоћи ће увек бити "
+"приказан у почетном одређеном језику."
+
+#. type: TP
+#: ../../man/man1/apropos.man1:179 ../../man/man1/man.man1:565
+#: ../../man/man1/manpath.man1:85 ../../man/man1/whatis.man1:183
+#: ../../man/man8/catman.man8:64 ../../man/man8/mandb.man8:131
+#, no-wrap
+msgid "B<-C\\ >I<file>,\\ B<--config-file=>I<file>"
+msgstr "B<-C\\ >I<датотека>,\\ B<--config-file=>I<датотека>"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:183 ../../man/man1/man.man1:569
+#: ../../man/man1/manpath.man1:89 ../../man/man1/whatis.man1:187
+#: ../../man/man8/catman.man8:68 ../../man/man8/mandb.man8:135
+msgid ""
+"Use this user configuration file rather than the default of I<~/.manpath>."
+msgstr ""
+"Користи ову корисничку датотеку подешавања радије него основну „I<~/."
+"manpath>“."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:186 ../../man/man1/lexgrog.man1:89
+#: ../../man/man1/man.man1:1179 ../../man/man1/manconv.man1:69
+#: ../../man/man1/manpath.man1:92 ../../man/man1/whatis.man1:190
+#: ../../man/man1/zsoelim.man1:67 ../../man/man8/accessdb.man8:36
+#: ../../man/man8/catman.man8:71
+msgid "Print a help message and exit."
+msgstr "Исписује поруку помоћи и излази."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:189 ../../man/man1/lexgrog.man1:92
+#: ../../man/man1/man.man1:1182 ../../man/man1/manpath.man1:95
+#: ../../man/man1/whatis.man1:193 ../../man/man8/accessdb.man8:39
+#: ../../man/man8/catman.man8:74 ../../man/man8/mandb.man8:141
+msgid "Print a short usage message and exit."
+msgstr "Исписује кратку поруку о коришћењу и излази."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:192 ../../man/man1/lexgrog.man1:95
+#: ../../man/man1/man.man1:1185 ../../man/man1/manconv.man1:72
+#: ../../man/man1/manpath.man1:98 ../../man/man1/whatis.man1:196
+#: ../../man/man1/zsoelim.man1:70 ../../man/man8/accessdb.man8:42
+#: ../../man/man8/catman.man8:77
+msgid "Display version information."
+msgstr "Исписује податке о издању."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:192 ../../man/man1/lexgrog.man1:95
+#: ../../man/man1/man.man1:1185 ../../man/man1/whatis.man1:196
+#: ../../man/man8/mandb.man8:144
+#, no-wrap
+msgid "EXIT STATUS"
+msgstr "СТАЊЕ ИЗЛАЗА"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:196 ../../man/man1/lexgrog.man1:99
+#: ../../man/man1/man.man1:1189 ../../man/man1/whatis.man1:200
+#: ../../man/man8/mandb.man8:148
+msgid "Successful program execution."
+msgstr "Успешно извршавање програма."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:199 ../../man/man1/man.man1:1192
+#: ../../man/man1/whatis.man1:203
+msgid "Usage, syntax or configuration file error."
+msgstr "Грешка коришћења, садржаја или датотеке подешавања."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:202 ../../man/man1/man.man1:1195
+#: ../../man/man1/whatis.man1:206 ../../man/man8/mandb.man8:154
+msgid "Operational error."
+msgstr "Грешка у раду."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:205 ../../man/man1/whatis.man1:209
+msgid "Nothing was found that matched the criteria specified."
+msgstr "Нисам пронашао ништа што одговара наведеном мерилу."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:205 ../../man/man1/man.man1:1201
+#: ../../man/man1/manpath.man1:98 ../../man/man1/whatis.man1:209
+#: ../../man/man8/catman.man8:77
+#, no-wrap
+msgid "ENVIRONMENT"
+msgstr "ОКРУЖЕЊЕ"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:214 ../../man/man1/man.man1:1302
+#: ../../man/man1/manpath.man1:124 ../../man/man1/whatis.man1:218
+msgid ""
+"If $B<SYSTEM> is set, it will have the same effect as if it had been "
+"specified as the argument to the B<-m> option."
+msgstr ""
+"Ако је подешено $B<SYSTEM>, имаће исто дејство као да је наведено као "
+"аргумент опције „B<-m>“."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:220 ../../man/man1/whatis.man1:224
+#: ../../man/man8/catman.man8:94
+msgid ""
+"If $B<MANPATH> is set, its value is interpreted as the colon-delimited "
+"manual page hierarchy search path to use."
+msgstr ""
+"Ако је подешено $B<MANPATH>, његова вредност се тумачи као путања претраге "
+"хијерархије странице упутства раздвојена двотачком за коришћење."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:232 ../../man/man1/whatis.man1:236
+msgid ""
+"If $B<MANWIDTH> is set, its value is used as the terminal width (see the B<--"
+"long> option).  If it is not set, the terminal width will be calculated "
+"using the value of $B<COLUMNS>, an B<ioctl>(2)  if available, or falling "
+"back to 80 characters if all else fails."
+msgstr ""
+"Ако је подешено $B<MANWIDTH>, његова вредност се користи као ширина "
+"терминала (погледајте опцију „B<--long>“).  Ако није подешено, за рачунање "
+"ширине терминала ће се користити вредност $B<КОЛОНА>, „$B<ioctl>(2)“  ако је "
+"доступно, или ће користити 80 знакова ако ништа друго не успе."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:241
+msgid ""
+"If $B<POSIXLY_CORRECT> is set, even to a null value, the default B<%apropos"
+"%> search will be as an extended regex (B<-r>).  Nowadays, this is the "
+"default behaviour anyway."
+msgstr ""
+"Ако је подешено $B<POSIXLY_CORRECT>“, чак и за ништавну вредност, основна B<"
+"%apropos%>“ претрага ће бити као проширени регуларни израз (B<-r>).  До "
+"сада, ово је основно понашање."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:241 ../../man/man1/man.man1:1367
+#: ../../man/man1/manpath.man1:124 ../../man/man1/whatis.man1:236
+#: ../../man/man8/catman.man8:94 ../../man/man8/mandb.man8:191
+#, no-wrap
+msgid "FILES"
+msgstr "ДАТОТЕКЕ"
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:247 ../../man/man1/man.man1:1379
+#: ../../man/man1/whatis.man1:242 ../../man/man8/catman.man8:103
+#: ../../man/man8/mandb.man8:207
+msgid "A traditional global I<index> database cache."
+msgstr "Традиционална остава базе података општег I<пописа>."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:253 ../../man/man1/man.man1:1385
+#: ../../man/man1/whatis.man1:248 ../../man/man8/mandb.man8:200
+msgid "An FHS compliant global I<index> database cache."
+msgstr "ФХС сагласна остава базе података општег I<пописа>."
+
+#. type: Plain text
+#: ../../man/man1/apropos.man1:258 ../../man/man1/whatis.man1:253
+msgid "A traditional B<whatis> text database."
+msgstr "Традиционална B<шта-је> текстуална база података."
+
+#. type: SH
+#: ../../man/man1/apropos.man1:258 ../../man/man1/lexgrog.man1:197
+#: ../../man/man1/man.man1:1385 ../../man/man1/manconv.man1:72
+#: ../../man/man1/manpath.man1:128 ../../man/man1/whatis.man1:253
+#: ../../man/man1/zsoelim.man1:70 ../../man/man8/catman.man8:109
+#: ../../man/man8/mandb.man8:213
+#, no-wrap
+msgid "SEE ALSO"
+msgstr "ВИДЕТИ ТАКОЂЕ"
+
+#. type: SH
+#: ../../man/man1/apropos.man1:262 ../../man/man1/lexgrog.man1:207
+#: ../../man/man1/manconv.man1:75 ../../man/man1/manpath.man1:132
+#: ../../man/man1/whatis.man1:257 ../../man/man1/zsoelim.man1:75
+#: ../../man/man8/accessdb.man8:42 ../../man/man8/catman.man8:113
+#: ../../man/man8/mandb.man8:223
+#, no-wrap
+msgid "AUTHOR"
+msgstr "АУТОР"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:12
+msgid "lexgrog - parse header information in man pages"
+msgstr "lexgrog - обрађује податке заглавља у страницама упутства"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:20
+msgid ""
+"B<lexgrog> [\\|B<-m>\\||\\|B<-c>\\|] [\\|B<-dfw?V>\\|] [\\|B<-E> I<encoding>"
+"\\|] I<file> \\&.\\|.\\|."
+msgstr ""
+"B<lexgrog> [\\|B<-m>\\||\\|B<-c>\\|] [\\|B<-dfw?V>\\|] [\\|B<-E> I<кодирање>"
+"\\|] I<датотека> \\&.\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:36
+msgid ""
+"B<lexgrog> is an implementation of the traditional \\(lqgroff guess\\(rq "
+"utility in B<lex>.  It reads the list of files on its command line as either "
+"man page source files or preformatted \\(lqcat\\(rq pages, and displays "
+"their name and description as used by B<apropos> and B<whatis>, the list of "
+"preprocessing filters required by the man page before it is passed to "
+"B<nroff> or B<troff>, or both."
+msgstr ""
+"B<лексгрог> је примена традиционалног помагала „groff guess“ у B<лексу>.  "
+"Чита списак датотека на својој линији наредби или као изворне датотеке "
+"страница упутства или као унапред обликоване „cat“ странице, и приказује "
+"њихове називе и описе као што их користе B<apropos> и B<whatis>, списак "
+"пропусника предобраде које захтева страница упутства пре прослеђивања у "
+"B<нрофф> или B<трофф> или у оба."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:45
+msgid ""
+"If its input is badly formatted, B<lexgrog> will print \\(lqparse failed"
+"\\(rq; this may be useful for external programs that need to check man pages "
+"for correctness.  If one of B<lexgrog>'s input files is \\(lq-\\(rq, it will "
+"read from standard input; if any input file is compressed, a decompressed "
+"version will be read automatically."
+msgstr ""
+"Ако је његов улаз лоше обликован, B<лексгрог> ће исписати „parse "
+"failed“ (обрада није успела); што може бити корисно спољним програмима који "
+"треба да провере странице упутства за тачношћу.  Ако једна улазна датотека "
+"B<лексгрог>а јесте „-“, читаће са стандардног улаза; ако је било која улазна "
+"датотека запакована, распаковано издање ће бити читано."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:57
+msgid ""
+"Parse input as man page source files.  This is the default if neither B<--"
+"man> nor B<--cat> is given."
+msgstr ""
+"Обрађује улаз као изворне датотеке страница упутства.  Ово је основно ако "
+"није дато ни „B<--man>“ ни „B<--cat>“."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:64
+msgid ""
+"Parse input as preformatted man pages (\\(lqcat pages\\(rq).  B<--man> and "
+"B<--cat> may not be given simultaneously."
+msgstr ""
+"Обрађује улаз као предобликоване странице упутства („cat pages“).  „B<--"
+"man>“ и „B<--cat>“ не могу бити дати истовремено."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:75
+msgid ""
+"Display the name and description from the man page's header, as used by "
+"B<apropos> and B<whatis>.  This is the default if neither B<--whatis> nor "
+"B<--filters> is given."
+msgstr ""
+"Приказује назив и опис из заглавља странице упутства, као што користе "
+"B<apropos> и B<whatis>.  Ово је основно ако није дато ни „B<--whatis>“ ни "
+"„B<--filters>“."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:82
+msgid ""
+"Display the list of filters needed to preprocess the man page before "
+"formatting with B<nroff> or B<troff>."
+msgstr ""
+"Приказује списак пропусника потребних за предобраду странице упутства пре "
+"обликовања B<нрофф>-ом или B<трофф>-ом."
+
+#. type: TP
+#: ../../man/man1/lexgrog.man1:82
+#, no-wrap
+msgid "B<-E> I<encoding>, B<--encoding> I<encoding>"
+msgstr "B<-E> I<кодирање>, B<--encoding> I<кодирање>"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:86
+msgid "Override the guessed character set for the page to I<encoding>."
+msgstr "Пребацује откривени скуп знакова за страницу на I<кодирање>."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:102
+msgid "Usage error."
+msgstr "Грешка коришћења."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:106
+msgid "B<lexgrog> failed to parse one or more of its input files."
+msgstr ""
+"„B<лексгрог>“ није успео да обради једну или више својих улазних датотека."
+
+#. type: SH
+#: ../../man/man1/lexgrog.man1:106 ../../man/man1/man.man1:280
+#, no-wrap
+msgid "EXAMPLES"
+msgstr "ПРИМЕРИ"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:116
+#, no-wrap
+msgid ""
+"  $ lexgrog man.1\n"
+"  man.1: \"man - an interface to the on-line reference manuals\"\n"
+"  $ lexgrog -fw man.1\n"
+"  man.1 (t): \"man - an interface to the on-line reference manuals\"\n"
+"  $ lexgrog -c whatis.cat1 \n"
+"  whatis.cat1: \"whatis - display manual page descriptions\"\n"
+"  $ lexgrog broken.1\n"
+"  broken.1: parse failed\n"
+msgstr ""
+"  $ lexgrog man.1\n"
+"  man.1: „man - сучеље за упутства упута на мрежи“\n"
+"  $ lexgrog -fw man.1\n"
+"  man.1 (t): „man - сучеље за упутства упута на мрежи“\n"
+"  $ lexgrog -c whatis.cat1 \n"
+"  whatis.cat1: „whatis - приказује описе страница упутства“\n"
+"  $ lexgrog broken.1\n"
+"  broken.1: обрада није успела\n"
+
+#. type: SH
+#: ../../man/man1/lexgrog.man1:117
+#, no-wrap
+msgid "WHATIS PARSING"
+msgstr "ШТА-ЈЕ ОБРАДА"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:128
+msgid ""
+"B<%mandb%> (which uses the same code as B<lexgrog>)  parses the B<NAME> "
+"section at the top of each manual page looking for names and descriptions of "
+"the features documented in each.  While the parser is quite tolerant, as it "
+"has to cope with a number of different forms that have historically been "
+"used, it may sometimes fail to extract the required information."
+msgstr ""
+"B<%мандб%> (који користи исти код као и B<лексгрог>)  обрађује одељак "
+"B<НАЗИВ> на врху сваке странице упутства тражећи називе и описе функција "
+"које су документоване у свакој.  Док је обрађивач поприлично толерантан, јер "
+"мора да се бори са бројним различитим облицима који су коришћени кроз "
+"историју, може понекад и да не успе да извуче затражене податке."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:134
+msgid ""
+"When using the traditional I<man> macro set, a correct B<NAME> section looks "
+"something like this:"
+msgstr ""
+"Приликом коришћења традиционалног макро скупа I<ман>-а, исправан одељак "
+"B<НАЗИВ> личи на овако нешто:"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:140
+#, no-wrap
+msgid ""
+"CW<\\&.SH NAME\n"
+"foo \\e- program to do something>\n"
+msgstr ""
+"CW<\\&.SH НАЗИВ\n"
+"foo \\e- програм који ће да уради нешто>\n"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:148
+msgid ""
+"Some manual pagers require the \\(oq\\e-\\(cq to be exactly as shown; B<"
+"%mandb%> is more tolerant, but for compatibility with other systems it is "
+"nevertheless a good idea to retain the backslash."
+msgstr ""
+"Неки страничари упутства захтевају „\\e-“ да би били тачно као што је "
+"приказано; B<%мандб%>“ је толерантнији, али због сагласности са другим "
+"системима ипак је добра идеја задржати контра косу црту."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:158
+msgid ""
+"On the left-hand side, there may be several names, separated by commas.  "
+"Names containing whitespace will be ignored to avoid pathological behaviour "
+"on certain ill-formed B<NAME> sections.  The text on the right-hand side is "
+"free-form, and may be spread over multiple lines.  If several features with "
+"different descriptions are being documented in the same manual page, the "
+"following form is therefore used:"
+msgstr ""
+"На левој страни, може постојати неколико назива, раздвијених зарезима.  "
+"Називи који садрже празнину биће занемарени да би се избегло патолошко "
+"понашање на одређеним лоше обликованим одељцима B<НАЗИВ>.  Текст на десној "
+"страни је слободан образац, и може бити раширен преко неколико редова.  Ако "
+"је документовано неколико функција са различитим описима на истој страници "
+"упутства, онда се користи следећи образац:"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:166
+#, no-wrap
+msgid ""
+"CW<\\&.SH NAME\n"
+"foo, bar \\e- programs to do something\n"
+"\\&.br\n"
+"baz \\e- program to do nothing>\n"
+msgstr ""
+"CW<\\&.SH НАЗИВ\n"
+"foo, bar \\e- програми који ће урадити нешто\n"
+"\\&.br\n"
+"baz \\e- програм који неће ништа да ради>\n"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:172
+msgid ""
+"(A macro which starts a new paragraph, like CW<.PP>, may be used instead of "
+"the break macro CW<.br>.)"
+msgstr ""
+"(Макро који започиње нови пасус, као „CW<.PP>“, може бити коришћен уместо "
+"макроа прекида „CW<.br>“.)"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:178
+msgid ""
+"When using the BSD-derived I<mdoc> macro set, a correct B<NAME> section "
+"looks something like this:"
+msgstr ""
+"Приликом коришћења I<мдоц> макро скупа произашлог из БСД-а, исправан одељак "
+"B<НАЗИВ> личи на овако нешто:"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:185
+#, no-wrap
+msgid ""
+"CW<\\&.Sh NAME\n"
+"\\&.Nm foo\n"
+"\\&.Nd program to do something>\n"
+msgstr ""
+"CW<\\&.SH НАЗИВ\n"
+"\\&.Nm foo\n"
+"\\&.Nd програм који ће нешто да уради>\n"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:197
+msgid ""
+"There are several common reasons why whatis parsing fails.  Sometimes "
+"authors of manual pages replace \\(oq.SH NAME\\(cq with \\(oq.SH MYPROGRAM"
+"\\(cq, and then B<%mandb%> cannot find the section from which to extract the "
+"information it needs.  Sometimes authors include a NAME section, but place "
+"free-form text there rather than \\(oqname \\e- description\\(cq.  However, "
+"any syntax resembling the above should be accepted."
+msgstr ""
+"Има неколико општих разлога зашто не успе шта-је обрада.  Понекад аутори "
+"страница упутства замене „.SH НАЗИВ“ са „.SH МОЈПРОГРАМ“, и тада B<%мандб%> "
+"не може да пронађе одељак из ког да извуче податке које требује.  Понекад "
+"аутори укључе одељак НАЗИВ, али ту ставе текст у слободном облику уместо "
+"„name \\e- description“.  Међутим, било која синтакса налик на горњу би "
+"требала бити прихваћена."
+
+#. type: SH
+#: ../../man/man1/lexgrog.man1:202
+#, no-wrap
+msgid "NOTES"
+msgstr "НАПОМЕНЕ"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:207
+msgid ""
+"B<lexgrog> attempts to parse files containing .so requests, but will only be "
+"able to do so correctly if the files are properly installed in a manual page "
+"hierarchy."
+msgstr ""
+"B<лексгрог> покушава да обради датотеке које садрже „.so“ захтеве, али ће "
+"бити у стању да то уради тачно само ако су датотеке исправно инсталиране у "
+"хијерархији странице упутства."
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:211
+msgid "The code used by B<lexgrog> to scan man pages was written by:"
+msgstr "Код који користи „B<лексгрог>“ да прегледа ман странице је написао:"
+
+#. type: Plain text
+#: ../../man/man1/lexgrog.man1:219
+msgid ""
+"Colin Watson wrote the current incarnation of the command-line front-end, as "
+"well as this man page."
+msgstr ""
+"Колин Вотсон је написао текуће отелотворење челника линије наредби, као и "
+"ову страницу упутства."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:18
+msgid "%man% - an interface to the on-line reference manuals"
+msgstr "%man% - сучеље за упутства упута на мрежи"
+
+#.  The general command line
+#.  The apropos command line
+#. type: Plain text
+#: ../../man/man1/man.man1:67
+msgid ""
+"B<%man%> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--warnings>"
+"\\|[\\|=I<warnings>\\|]\\|] [\\|B<-R> I<encoding>\\|] [\\|B<-L> I<locale>"
+"\\|] [\\|B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<path>\\|] [\\|"
+"B<-S> I<list>\\|] [\\|B<-e> I<extension>\\|] [\\|B<-i>\\||\\|B<-I>\\|] [\\|"
+"B<--regex>\\||\\|B<--wildcard>\\|] [\\|B<--names-only>\\|] [\\|B<-a>\\|] [\\|"
+"B<-u>\\|] [\\|B<--no-subpages>\\|] [\\|B<-P> I<pager>\\|] [\\|B<-r> I<prompt>"
+"\\|] [\\|B<-7>\\|] [\\|B<-E> I<encoding>\\|] [\\|B<--no-hyphenation>\\|] [\\|"
+"B<--no-justification>\\|] [\\|B<-p> I<string>\\|] [\\|B<-t>\\|] [\\|B<-T>\\|"
+"[\\|I<device>\\|]\\|] [\\|B<-H>\\|[\\|I<browser>\\|]\\|] [\\|B<-X>\\|[\\|"
+"I<dpi>\\|]\\|] [\\|B<-Z>\\|] [\\|[\\|I<section>\\|] I<page>[.\\|I<section>"
+"\\|]\\ \\|.\\|.\\|.\\|]\\ .\\|.\\|.\\&"
+msgstr ""
+"B<%man%> [\\|B<-C> I<датотека>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--"
+"warnings>\\|[\\|=I<упозорења>\\|]\\|] [\\|B<-R> I<кодирање>\\|] [\\|B<-L> "
+"I<језик>\\|] [\\|B<-m> I<систем>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<путања>"
+"\\|] [\\|B<-S> I<списак>\\|] [\\|B<-e> I<проширење>\\|] [\\|B<-i>\\||\\|B<-I>"
+"\\|] [\\|B<--regex>\\||\\|B<--wildcard>\\|] [\\|B<--names-only>\\|] [\\|B<-a>"
+"\\|] [\\|B<-u>\\|] [\\|B<--no-subpages>\\|] [\\|B<-P> I<страничар>\\|] [\\|"
+"B<-r> I<упит>\\|] [\\|B<-7>\\|] [\\|B<-E> I<кодирање>\\|] [\\|B<--no-"
+"hyphenation>\\|] [\\|B<--no-justification>\\|] [\\|B<-p> I<ниска>\\|] [\\|B<-"
+"t>\\|] [\\|B<-T>\\|[\\|I<уређај>\\|]\\|] [\\|B<-H>\\|[\\|I<прегледник>"
+"\\|]\\|] [\\|B<-X>\\|[\\|I<тпи>\\|]\\|] [\\|B<-Z>\\|] [\\|[\\|I<одељак>\\|] "
+"I<страница>[.\\|I<одељак>\\|]\\ \\|.\\|.\\|.\\|]\\ .\\|.\\|.\\&"
+
+#.  The --global-apropos command line
+#. type: Plain text
+#: ../../man/man1/man.man1:75
+msgid "B<%man%> B<-k> [\\|I<apropos> I<options>\\|] I<regexp> \\&.\\|.\\|.\\&"
+msgstr ""
+"B<%man%> B<-k> [\\|I<apropos> I<опције>\\|] I<регуларни_израз> \\&.\\|.\\|."
+"\\&"
+
+#.  The whatis command line
+#. type: Plain text
+#: ../../man/man1/man.man1:86
+msgid ""
+"B<%man%> B<-K> [\\|B<-w>\\||\\|B<-W>\\|] [\\|B<-S> I<list>\\|] [\\|B<-i>\\||"
+"\\|B<-I>\\|] [\\|B<--regex>\\|] [\\|I<section>\\|] I<term>\\ .\\|.\\|.\\&"
+msgstr ""
+"B<%man%> B<-K> [\\|B<-w>\\||\\|B<-W>\\|] [\\|B<-S> I<списак>\\|] [\\|B<-i>"
+"\\||\\|B<-I>\\|] [\\|I<--regex>\\|] [\\|I<одељак>\\|] I<појам>\\ .\\|.\\|.\\&"
+
+#.  The --local command line
+#. type: Plain text
+#: ../../man/man1/man.man1:94
+msgid "B<%man%> B<-f> [\\|I<whatis> I<options>\\|] I<page> \\&.\\|.\\|.\\&"
+msgstr "B<%man%> B<-f> [\\|I<шта-је> I<опције>\\|] I<страница> \\&.\\|.\\|.\\&"
+
+#.  The --where/--where-cat command line
+#. type: Plain text
+#: ../../man/man1/man.man1:127
+msgid ""
+"B<%man%> B<-l> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--"
+"warnings>\\|[\\|=I<warnings>\\|]\\|] [\\|B<-R> I<encoding>\\|] [\\|B<-L> "
+"I<locale>\\|] [\\|B<-P> I<pager>\\|] [\\|B<-r> I<prompt>\\|] [\\|B<-7>\\|] "
+"[\\|B<-E> I<encoding>\\|] [\\|B<-p> I<string>\\|] [\\|B<-t>\\|] [\\|B<-T>\\|"
+"[\\|I<device>\\|]\\|] [\\|B<-H>\\|[\\|I<browser>\\|]\\|] [\\|B<-X>\\|[\\|"
+"I<dpi>\\|]\\|] [\\|B<-Z>\\|] I<file> \\&.\\|.\\|.\\&"
+msgstr ""
+"B<%man%> B<-l> [\\|B<-C> I<датотека>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] [\\|B<--"
+"warnings>\\|[\\|=I<упозорења>\\|]\\|] [\\|B<-R> I<кодирање>\\|] [\\|B<-L> "
+"I<језик>\\|] [\\|B<-P> I<страничар>\\|] [\\|B<-r> I<упит>\\|] [\\|B<-7>\\|] "
+"[\\|B<-E> I<кодирање>\\|] [\\|B<-p> I<ниска>\\|] [\\|B<-t>\\|] [\\|B<-T>\\|"
+"[\\|I<уређај>\\|]\\|] [\\|B<-H>\\|[\\|I<прегледник>\\|]\\|] [\\|B<-X>\\|[\\|"
+"I<тпи>\\|]\\|] [\\|B<-Z>\\|] I<датотека> \\&.\\|.\\|.\\&"
+
+#.  The --catman command line
+#. type: Plain text
+#: ../../man/man1/man.man1:137
+msgid ""
+"B<%man%> B<-w>\\||\\|B<-W> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] "
+"I<page> \\&.\\|.\\|.\\&"
+msgstr ""
+"B<%man%> B<-w>\\||\\|B<-W> [\\|B<-C> I<датотека>\\|] [\\|B<-d>\\|] [\\|B<-D>"
+"\\|] I<страница> \\&.\\|.\\|.\\&"
+
+#.  --help and --version
+#. type: Plain text
+#: ../../man/man1/man.man1:147
+msgid ""
+"B<%man%> B<-c> [\\|B<-C> I<file>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] I<page> \\&."
+"\\|.\\|.\\&"
+msgstr ""
+"B<%man%> B<-c> [\\|B<-C> I<датотека>\\|] [\\|B<-d>\\|] [\\|B<-D>\\|] "
+"I<страница> \\&.\\|.\\|.\\&"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:150
+msgid "B<%man%> [\\|B<-?V>\\|]"
+msgstr "B<%man%> [\\|B<-?V>\\|]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:181
+msgid ""
+"B<%man%> is the system's manual pager.  Each I<page> argument given to B<%man"
+"%> is normally the name of a program, utility or function.  The I<manual "
+"page> associated with each of these arguments is then found and displayed.  "
+"A I<section>, if provided, will direct B<%man%> to look only in that "
+"I<section> of the manual.  The default action is to search in all of the "
+"available I<sections> following a pre-defined order (\"%sections%\" by "
+"default, unless overridden by the B<SECTION> directive in I<"
+"%manpath_config_file%>), and to show only the first I<page> found, even if "
+"I<page> exists in several I<sections>."
+msgstr ""
+"B<%ман%> јесте системски страничар упутства.  Сваки аргумент I<странице> дат "
+"B<%ман%>у је обично назив програма, помагала или функције.  I<Страница "
+"упутства> придружена сваком од ових аргумената онда бива пронађена и "
+"приказана.  I<одељак>, ако је достављен, ће усмерити B<%ман%>а да тражи само "
+"у том I<одељку> упутства.  Основна радња је претрага у свим доступним "
+"I<одељцима> пратећи унапред одређен редослед („%sections%“ као прво, осим "
+"ако није преписано смерницом B<ОДЕЉАК> у I<%manpath_config_file%>), и "
+"приказивање само прве пронађене I<странице>, чак и ако I<страница> постоји у "
+"неколико I<одељака>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:185
+msgid ""
+"The table below shows the I<section> numbers of the manual followed by the "
+"types of pages they contain."
+msgstr ""
+"Табела испод показује бројеве I<одељака> упутства за којима следе врсте "
+"страница које садрже."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:191
+#, no-wrap
+msgid "Executable programs or shell commands"
+msgstr "Извршни програми или наредбе конзоле"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:194
+#, no-wrap
+msgid "System calls (functions provided by the kernel)"
+msgstr "Системски позиви (функције које обезбеђује језгро)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:197
+#, no-wrap
+msgid "Library calls (functions within program libraries)"
+msgstr "Позиви библиотека (функције у библиотекама програма)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:200
+#, no-wrap
+msgid "Special files (usually found in I</dev\\/>)"
+msgstr "Посебне датотеке (обично се налазе у „I</dev\\/>“)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:203
+#, no-wrap
+msgid "File formats and conventions eg I</etc/passwd>"
+msgstr "Записи датотека и одредбе нпр. „I</etc/passwd>“"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:206
+#, no-wrap
+msgid "Games"
+msgstr "Игре"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:210
+#, no-wrap
+msgid ""
+"Miscellaneous (including macro packages and conventions),\n"
+"e.g.\\& B<man>(7), B<groff>(7)"
+msgstr ""
+"Разно (укључујући макро пакете и одредбе),\n"
+"нпр.\\& B<man>(7), B<groff>(7)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:213
+#, no-wrap
+msgid "System administration commands (usually only for root)"
+msgstr "Наредбе администрирања система (обично само за администратора)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:216
+#, no-wrap
+msgid "Kernel routines [\\|Non standard\\|]"
+msgstr "Рутине језгра [\\|не стандардно\\|]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:222
+msgid "A manual I<page> consists of several sections."
+msgstr "I<Страница> упутства се састоји од неколико одељака."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:242
+msgid ""
+"Conventional section names include B<NAME>, B<SYNOPSIS>, B<CONFIGURATION>, "
+"B<DESCRIPTION>, B<OPTIONS>, B<EXIT\\ STATUS>, B<RETURN\\ VALUE>, B<ERRORS>, "
+"B<ENVIRONMENT>, B<FILES>, B<VERSIONS>, B<CONFORMING\\ TO>, B<NOTES>, "
+"B<BUGS>, B<EXAMPLE>, B<AUTHORS>, and B<SEE\\ ALSO>."
+msgstr ""
+"У споразумне називе одељака спадају B<НАЗИВ>, B<СИЖЕ>, B<ПОДЕШАВАЊА>, "
+"B<ОПИС>, B<ОПЦИЈЕ>, B<СТАЊЕ ИЗЛАЗА>, B<ПОВРАТНА ВРЕДНОСТ>, B<ГРЕШКЕ>, "
+"B<ОКРУЖЕЊЕ>, B<ДАТОТЕКЕ>, B<ИЗДАЊА>, B<САГЛАСНО СА>, B<НАПОМЕНЕ>, B<ГРЕШКЕ>, "
+"B<ПРИМЕР>, B<АУТОРИ>, и B<ВИДИТЕ ТАКОЂЕ>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:246
+msgid ""
+"The following conventions apply to the B<SYNOPSIS> section and can be used "
+"as a guide in other sections."
+msgstr ""
+"Следеће одредбе се примењују на одељак B<СИЖЕ> и могу бити коришћене као "
+"водиље у другим одељцима."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:250
+#, no-wrap
+msgid "B<bold text>"
+msgstr "B<подебљани текст>"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:252
+#, no-wrap
+msgid "type exactly as shown."
+msgstr "куцајте тачно као што пише."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:253
+#, no-wrap
+msgid "I<italic text>"
+msgstr "I<искошени текст>"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:255
+#, no-wrap
+msgid "replace with appropriate argument."
+msgstr "замените одговарајућим аргументом."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:256
+#, no-wrap
+msgid "[\\|B<-abc>\\|]"
+msgstr "[\\|B<-abc>\\|]"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:258
+#, no-wrap
+msgid "any or all arguments within [ ] are optional."
+msgstr "било који или сви аргументи унутар [ ] су изборни."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:259
+#, no-wrap
+msgid "B<-a\\|>|\\|B<-b>"
+msgstr "B<-a\\|>|\\|B<-b>"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:261
+#, no-wrap
+msgid "options delimited by | cannot be used together."
+msgstr "опције раздвојене спојком „|“ не могу бити коришћене заједно."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:262
+#, no-wrap
+msgid "I<argument> .\\|.\\|."
+msgstr "I<аргумент> .\\|.\\|."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:264
+#, no-wrap
+msgid "I<argument> is repeatable."
+msgstr "I<аргумент> се понавља."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:265
+#, no-wrap
+msgid "[\\|I<expression>\\|] .\\|.\\|."
+msgstr "[\\|I<израз>\\|] .\\|.\\|."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:267
+#, no-wrap
+msgid "entire I<expression>\\ within [ ] is repeatable."
+msgstr "читав I<израз>\\ у угластој загради „[ ]“ се понавља."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:273
+msgid ""
+"Exact rendering may vary depending on the output device.  For instance, man "
+"will usually not be able to render italics when running in a terminal, and "
+"will typically use underlined or coloured text instead."
+msgstr ""
+"Тачно исписивање може да се разликује у зависности од излазног уређаја.  На "
+"пример, ман углавном неће бити у могућности да исписује искошеним словима "
+"када је покренут у терминалу, и уместо тога ће користити подвучени или "
+"обојени текст."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:280
+msgid ""
+"The command or function illustration is a pattern that should match all "
+"possible invocations.  In some cases it is advisable to illustrate several "
+"exclusive invocations as is shown in the B<SYNOPSIS> section of this manual "
+"page."
+msgstr ""
+"Наредба или илустрација функције је образац који треба да одговара свим "
+"могућим призивима.  У неким случајевима се саветује илустровање неколико "
+"нарочитих призива као што је показано у одељку B<СИЖЕ> ове странице упутства."
+
+#. type: TP
+#: ../../man/man1/man.man1:281
+#, no-wrap
+msgid "B<%man%>I<\\ ls>"
+msgstr "B<%man%>I<\\ ls>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:287
+msgid "Display the manual page for the I<item> (program)  I<ls>."
+msgstr "Приказује страницу упутства за I<ставку> (програм)  I<ls>."
+
+#. type: TP
+#: ../../man/man1/man.man1:287
+#, no-wrap
+msgid "B<%man% >I<man>.I<7>"
+msgstr "B<%man% >I<man>.I<7>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:292
+msgid "Display the manual page for macro package I<man> from section I<7>."
+msgstr "Приказује страницу упутства за макро пакет I<ман> из одељка I<7>."
+
+#. type: TP
+#: ../../man/man1/man.man1:292
+#, no-wrap
+msgid "B<%man%\\ -a>I<\\ intro>"
+msgstr "B<%man%\\ -a>I<\\ увод>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:298
+msgid ""
+"Display, in succession, all of the available I<intro> manual pages contained "
+"within the manual.  It is possible to quit between successive displays or "
+"skip any of them."
+msgstr ""
+"Приказује, у наставку, све доступне I<уводе> страница упутства које се "
+"налазе унутар упутства.  Могуће је изаћи између наредних приказа или "
+"прескочити било који од њих."
+
+#. type: TP
+#: ../../man/man1/man.man1:298
+#, no-wrap
+msgid "B<%man% -t >I<alias >|I< lpr -Pps>"
+msgstr "B<%man% -t >I<алијас >|I< lpr -Pps>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:315
+msgid ""
+"Format the manual page referenced by `I<alias>', usually a shell manual "
+"page, into the default B<troff> or B<groff> format and pipe it to the "
+"printer named I<ps>.  The default output for B<groff> is usually "
+"PostScript.  B<%man% --help> should advise as to which processor is bound to "
+"the B<-t> option."
+msgstr ""
+"Обликује страницу упутства на коју упућује I<алијас>, обично страница "
+"упутства конзоле, у основни запис B<трофф>-а или B<грофф>-а и спаја је на "
+"штампач под називом I<ps>.  Основни излаз B<грофф>-а је обично Пост скрипт.  "
+"„B<%man% --help>“ треба да упозори који процесор је повезан са опцијом „B<-"
+"t>“."
+
+#. type: TP
+#: ../../man/man1/man.man1:315
+#, no-wrap
+msgid "B<%man% -l -T>I<dvi ./foo.1x.gz>B< E<gt> >I<./foo.1x.dvi>"
+msgstr "B<%man% -l -T>I<dvi ./foo.1x.gz>B< E<gt> >I<./foo.1x.dvi>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:331
+msgid ""
+"This command will decompress and format the nroff source manual page I<./"
+"foo.1x.gz> into a B<device independent (dvi)> file.  The redirection is "
+"necessary as the B<-T> flag causes output to be directed to B<stdout> with "
+"no pager.  The output could be viewed with a program such as B<xdvi> or "
+"further processed into PostScript using a program such as B<dvips.>"
+msgstr ""
+"Ова наредба ће распаковати и обликовати изворну страницу упутства нрофф-а "
+"I<./foo.1x.gz> у датотеку B<независну од уређаја (dvi — device "
+"independent)>.  Преусмеравање је неопходно јер опција B<-T> доводи до тога "
+"да излаз бива усмерен на B<стандардни излаз> без страничара.  Излаз се може "
+"видети програмом као што је „B<xdvi>“ или даље обрађен у Пост скрипт "
+"употребом програма као што је „B<dvips>“."
+
+#. type: TP
+#: ../../man/man1/man.man1:331
+#, no-wrap
+msgid "B<%man%\\ -k>I<\\ printf>"
+msgstr "B<%man%\\ -k>I<\\ printf>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:339
+msgid ""
+"Search the short descriptions and manual page names for the keyword "
+"I<printf> as regular expression.  Print out any matches.  Equivalent to B<"
+"%apropos%>I<\\ printf>B<.>"
+msgstr ""
+"Тражи кратке описе и називе страница упутства за кључну реч I<printf> као "
+"регуларан израз.  Испсиује било које поклапање.  Исто што и „B<%apropos%>I<"
+"\\ printf>B<.>“"
+
+#. type: TP
+#: ../../man/man1/man.man1:339
+#, no-wrap
+msgid "B<%man%\\ -f>I<\\ smail>"
+msgstr "B<%man%\\ -f>I<\\ smail>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:346
+msgid ""
+"Lookup the manual pages referenced by I<smail> and print out the short "
+"descriptions of any found.  Equivalent to B<%whatis%>I<\\ smail>B<.>"
+msgstr ""
+"Тражи странице упутства на које упућује „I<smail>“ и испсиује кратке описе "
+"било које нађене.  Исто што и „B<%whatis%>I<\\ smail>B<.>“"
+
+#. type: SH
+#: ../../man/man1/man.man1:346
+#, no-wrap
+msgid "OVERVIEW"
+msgstr "ПРЕГЛЕД"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:352
+msgid ""
+"Many options are available to B<%man%> in order to give as much flexibility "
+"as possible to the user.  Changes can be made to the search path, section "
+"order, output processor, and other behaviours and operations detailed below."
+msgstr ""
+"Многе опције су доступне B<%ман%>у како би кориснику дао што више "
+"прилагодљивости.  Измене могу бити начињене у путањи претраге, редоследу "
+"одељака, обрађивачу излаза, и другим понашањима и радњама наведеним испод."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:374
+msgid ""
+"If set, various environment variables are interrogated to determine the "
+"operation of B<%man%>.  It is possible to set the `catch all' variable "
+"$B<MANOPT> to any string in command line format with the exception that any "
+"spaces used as part of an option's argument must be escaped (preceded by a "
+"backslash).  B<%man%> will parse $B<MANOPT> prior to parsing its own command "
+"line.  Those options requiring an argument will be overridden by the same "
+"options found on the command line.  To reset all of the options set in "
+"$B<MANOPT>, B<-D> can be specified as the initial command line option.  This "
+"will allow %man% to `forget' about the options specified in $B<MANOPT> "
+"although they must still have been valid."
+msgstr ""
+"Ако је подешено, разне променљиве окружења се пропитују да би се одредила "
+"радња B<%ман%>а.  Могуће је подесити променљиву „catch all“ $B<MANOPT> било "
+"којој ниски у запису линије наредби са изузетком да сви размаци коришћени "
+"као део аргумента опције морају бити означени као прелом реда (постављањем "
+"контра косе црте испред њих).  B<%ман%> ће обрадити $B<MANOPT> пре обраде "
+"сопствене линије наредби.  Те опције које захтевају аргумент ће бити "
+"преписане истим опцијама нађеним на линији наредби.  За поништавање свих "
+"опција подешених у $B<MANOPT>, B<-D> може бити наведено као почетна опција "
+"линије наредби.  То ће допустити B<%ман%>у да „заборави“ опције наведене у "
+"$B<MANOPT> иако морају још увек бити важеће."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:395
+msgid ""
+"The manual pager utilities packaged as B<man-db> make extensive use of "
+"B<index> database caches.  These caches contain information such as where "
+"each manual page can be found on the filesystem and what its I<whatis> "
+"(short one line description of the man page) contains, and allow B<%man%> to "
+"run faster than if it had to search the filesystem each time to find the "
+"appropriate manual page.  If requested using the B<-u> option, B<man> will "
+"ensure that the caches remain consistent, which can obviate the need to "
+"manually run software to update traditional I<whatis> text databases."
+msgstr ""
+"Помагало страничара упутства упаковано као B<ман-дб> користи повећано "
+"коришћење остава базе података B<пописа>.  Ове оставе садрже податке о томе "
+"где свака страница упутства може бити пронађена на систему датотека и шта "
+"садржи њено I<шта-је> (кратак опис странице упутства на мрежи), и допушта B<"
+"%ман%>у да ради брже него када би морао да претражује систем датотека сваки "
+"пут да би нашао одговарајућу страницу упутства.  Ако је затражено коришћење "
+"опције B<-u>, B<ман> ће осигурати да оставе остану доследне, што може "
+"довести до потребе за ручним покретањем програма да би се освежиле "
+"традиционалне текстуалне I<шта-је> базе података."
+
+#. `User' manual page hierarchies will have
+#. .B index
+#. caches created `on the fly'.
+#. type: Plain text
+#: ../../man/man1/man.man1:417
+msgid ""
+"If B<%man%> cannot find a B<%mandb%> initiated B<index> database for a "
+"particular manual page hierarchy, it will still search for the requested "
+"manual pages, although file globbing will be necessary to search within that "
+"hierarchy.  If B<%whatis%> or B<%apropos%> fails to find an B<index> it will "
+"try to extract information from a traditional I<whatis> database instead."
+msgstr ""
+"Ако B<%ман%> не може да пронађе B<%мандб%>-ом започету базу података "
+"B<пописа> за посебном хијерархијом странице упутства, још увек ће тражити "
+"захтеване странице упутства, иако ће уопштавање датотека бити неопходно "
+"зарад претраживања унутар те хијерархије.  Ако B<%шта-је%> или B<%apropos%> "
+"не успеју да пронађу B<попис> покушаће да извуче податке из традиционалне "
+"базе података I<шта-је>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:437
+msgid ""
+"These utilities support compressed source nroff files having, by default, "
+"the extensions of B<.Z>, B<.z> and B<.gz>.  It is possible to deal with any "
+"compression extension, but this information must be known at compile time.  "
+"Also, by default, any cat pages produced are compressed using B<gzip>.  Each "
+"`global' manual page hierarchy such as I</usr/share/man> or I</usr/X11R6/"
+"man> may have any directory as its cat page hierarchy.  Traditionally the "
+"cat pages are stored under the same hierarchy as the man pages, but for "
+"reasons such as those specified in the B<File Hierarchy Standard (FHS)>, it "
+"may be better to store them elsewhere.  For details on how to do this, "
+"please read B<manpath>(5).  For details on why to do this, read the standard."
+msgstr ""
+"Ова помагала подржавају сажете изворне нрофф датотеке које имају, по основи, "
+"проширења B<.Z>, B<.z> и B<.gz>.  Могуће је руковати са било којим "
+"проширењем сажимања, али тај податак мора бити познат у време превођења.  "
+"Такође, по основи, сваки добијени кат пакет је сажет употребом B<gzip>-а.  "
+"Свака „општа“ хијерархија странице упутства као што је „I</usr/share/man>“ "
+"или „I</usr/X11R6/man>“ може имати сваки директоријум као хијерархију своје "
+"кат странице.  По обичају кат странице су смештене под истом хијерархијом "
+"као и странице упутства, али због разлога наведених у B<Стандарду "
+"хијерархије датотека (FHS)>, може бити боље ускладишти их негде другде.  За "
+"појединости како ово да урадите, прочитајте B<manpath>(5).  За појединости "
+"због чега да урадите ово, прочитајте стандард."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:450
+msgid ""
+"International support is available with this package.  Native language "
+"manual pages are accessible (if available on your system)  via use of "
+"I<locale> functions.  To activate such support, it is necessary to set "
+"either $B<LC_MESSAGES>, $B<LANG> or another system dependent environment "
+"variable to your language locale, usually specified in the B<POSIX 1003.1> "
+"based format:"
+msgstr ""
+"Међународна подршка је доступна с овим пакетом.  Страницама упутства на "
+"матерњем језику можете приступити (ако су доступне на вашем систему)  путем "
+"функција I<језика>.  Да покренете такву подршку, неопходно је да подесите "
+"променљиву окружења $B<LC_MESSAGES>, $B<LANG> или неку другу зависно од "
+"система на локалитет вашег језика, обично наведеном у запису заснованом на "
+"B<ПОСИКС-у 1003.1>:"
+
+#
+#.  Need a \c to make sure we don't get a space where we don't want one
+#. type: Plain text
+#: ../../man/man1/man.man1:461
+msgid ""
+"E<lt>I<language>E<gt>[\\|B<_>E<lt>I<territory>E<gt>\\|[\\|B<."
+">E<lt>I<character-set>E<gt>\\|[\\|B<,>E<lt>I<version>E<gt>\\|]\\|]\\|]"
+msgstr ""
+"E<lt>I<језик>E<gt>[\\|B<_>E<lt>I<област>E<gt>\\|[\\|B<.>E<lt>I<кодни-"
+"распоред>E<gt>\\|[\\|B<,>E<lt>I<издање>E<gt>\\|]\\|]\\|]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:466
+msgid ""
+"If the desired page is available in your I<locale>, it will be displayed in "
+"lieu of the standard (usually American English) page."
+msgstr ""
+"Ако је жељена страница доступна на I<српском>, биће приказана уместо "
+"стандардне странице (обично амерички енглески)."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:473
+msgid ""
+"Support for international message catalogues is also featured in this "
+"package and can be activated in the same way, again if available.  If you "
+"find that the manual pages and message catalogues supplied with this package "
+"are not available in your native language and you would like to supply them, "
+"please contact the maintainer who will be coordinating such activity."
+msgstr ""
+"Подршка за међанародне каталоге порука је такође присутна у овом пакету и "
+"може бити покренута на исти начин, само ако је доступна.  Ако увидите да "
+"странице упутства и каталози порука достављени уз овај пакет нису доступни "
+"на српском језику а желели бисте да их доставите, обратите се одржаваоцу "
+"који ће руководити том делатношћу."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:476
+msgid ""
+"For information regarding other features and extensions available with this "
+"manual pager, please read the documents supplied with the package."
+msgstr ""
+"За податке који се односе на друге функције и проширења доступна с овим "
+"страничаром упутства, прочитајте документа која иду уз пакет."
+
+#. type: SH
+#: ../../man/man1/man.man1:476
+#, no-wrap
+msgid "DEFAULTS"
+msgstr "ОСНОВНО"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:496
+msgid ""
+"B<%man%> will search for the desired manual pages within the I<index> "
+"database caches. If the B<-u> option is given, a cache consistency check is "
+"performed to ensure the databases accurately reflect the filesystem.  If "
+"this option is always given, it is not generally necessary to run B<%mandb%> "
+"after the caches are initially created, unless a cache becomes corrupt.  "
+"However, the cache consistency check can be slow on systems with many manual "
+"pages installed, so it is not performed by default, and system "
+"administrators may wish to run B<%mandb%> every week or so to keep the "
+"database caches fresh.  To forestall problems caused by outdated caches, B<"
+"%man%> will fall back to file globbing if a cache lookup fails, just as it "
+"would if no cache was present."
+msgstr ""
+"B<%ман%> ће тражити жељене странице упутства унутар остава база података "
+"I<пописа>. Ако је дата опција B<-u>, обавља се провера доследности оставе да "
+"би се осигурало да базе података тачно осликавају систем датотека.  Ако је "
+"ова опција увек дата, обично није потребно покренути B<%мандб%> након што су "
+"оставе направљене, осим ако се остава не оштети.  Међутим, провера "
+"доследности оставе може бити спора на системима са великим бројем "
+"инсталираних страница упутства, тако да се не обавља по основи, а "
+"администратори ситема могу пожелети да покрену B<%мандб%> једном недељно "
+"како би одржали свежину остава база података.  Зарад спречавања проблема "
+"изазваних застарелим оставама, B<%ман%> ће се пребацити на уопштавање "
+"датотеке ако претрага оставе не успе, баш као што би урадио ако остава не би "
+"била присутна."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:508
+msgid ""
+"Once a manual page has been located, a check is performed to find out if a "
+"relative preformatted `cat' file already exists and is newer than the nroff "
+"file.  If it does and is, this preformatted file is (usually) decompressed "
+"and then displayed, via use of a pager.  The pager can be specified in a "
+"number of ways, or else will fall back to a default is used (see option B<-"
+"P> for details).  If no cat is found or is older than the nroff file, the "
+"nroff is filtered through various programs and is shown immediately."
+msgstr ""
+"Након проналажења странице упутства, обавља се провера како би се сазнало да "
+"ли већ постоји односна предобликована „кат“ датотека и да ли је новија од "
+"нрофф датотеке.  Ако постоји и ако јесте, та предобликована датотека се "
+"(обично) распакује и затим приказује, употребом страничара.  Страничник може "
+"бити наведен на бројне начине, или ће се у супротном пребацити на основни "
+"коришћени (погледајте опцију B<-P> за појединости).  Ако се не пронађе "
+"ниједна кат или је старија од нрофф датотеке, нрофф се пропушта кроз разне "
+"програме и одмах се приказује."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:513
+msgid ""
+"If a cat file can be produced (a relative cat directory exists and has "
+"appropriate permissions), B<%man%> will compress and store the cat file in "
+"the background."
+msgstr ""
+"Ако кат датотека може бити створена (ако постоји потребан кат директоријум и "
+"ако има одговарајућа овлашћења), B<%ман%> ће у позадини сажети и "
+"ускладиштити кат датотеку."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:525
+msgid ""
+"The filters are deciphered by a number of means.  Firstly, the command line "
+"option B<-p> or the environment variable $B<MANROFFSEQ> is interrogated.  If "
+"B<-p> was not used and the environment variable was not set, the initial "
+"line of the nroff file is parsed for a preprocessor string.  To contain a "
+"valid preprocessor string, the first line must resemble"
+msgstr ""
+"Пропусници се дешифрују на бројне начине.  Као прво, испистује се опција "
+"линије наредби B<-p> или променљива окружења $B<MANROFFSEQ>.  Ако B<-p> није "
+"коришћено а променљива окружења није подешена, почетни ред нрофф датотеке се "
+"обрађује за ниском предобрађивача.  Да би садржао исправну ниску "
+"предобрађивача, први ред мора да изгледа као"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:528
+msgid "B<'\\e\"> E<lt>B<string>E<gt>"
+msgstr "B<'\\e\"> E<lt>B<ниска>E<gt>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:534
+msgid ""
+"where B<string> can be any combination of letters described by option B<-p> "
+"below."
+msgstr ""
+"где B<ниска> може бити било која комбинација слова описаних опцијом B<-p> "
+"испод."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:537
+msgid ""
+"If none of the above methods provide any filter information, a default set "
+"is used."
+msgstr ""
+"Ако ниједан од горњих поступака не обезбеди никакав податак пропусника, "
+"користи се основни скуп."
+
+#.  ********************************************************************
+#. type: Plain text
+#: ../../man/man1/man.man1:558
+msgid ""
+"A formatting pipeline is formed from the filters and the primary formatter "
+"(B<nroff> or [B<tg>]B<roff> with B<-t>)  and executed.  Alternatively, if an "
+"executable program I<mandb_nfmt> (or I<mandb_tfmt> with B<-t>)  exists in "
+"the man tree root, it is executed instead.  It gets passed the manual source "
+"file, the preprocessor string, and optionally the device specified with B<-"
+"T> or B<-E> as arguments."
+msgstr ""
+"Спојка обликовања је сачињена од пропусника и главног обликовача (B<nroff> "
+"или [B<tg>]B<roff> са B<-t>)  и извршена.  У супротном, ако постоји извршни "
+"програм „mandb_nfmt“ (или „mandb_tfmt“ са B<-t>)  у корену ман стабла, онда "
+"се он извршава.  Бивају му прослеђени изворна датотека упутства, ниска "
+"предобрађивача, и по могућству уређај наведен помоћу B<-T> или B<-E> као "
+"аргументи."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:564
+msgid ""
+"Non argument options that are duplicated either on the command line, in "
+"$B<MANOPT>, or both, are not harmful.  For options that require an argument, "
+"each duplication will override the previous argument value."
+msgstr ""
+"Ниједна опција аргумента која је удвостручена било на линији наредби, у "
+"$B<MANOPT>, или у  оба, није штетна.  За опције које захтевају аргумент, "
+"свако удвостручавање ће преписати претходну вредност аргумента."
+
+#. type: SS
+#: ../../man/man1/man.man1:564
+#, no-wrap
+msgid "General options"
+msgstr "Опште опције"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:582
+msgid ""
+"This option is normally issued as the very first option and resets B<%man"
+"%'s> behaviour to its default.  Its use is to reset those options that may "
+"have been set in $B<MANOPT>.  Any options that follow B<-D> will have their "
+"usual effect."
+msgstr ""
+"Ова опција се обично користи као прва опција и поново подешава понашање B<"
+"%ман%>а на његово основно.  Користи се за поништавање оних опција које су "
+"можда подешене у $B<MANOPT>.  Свака опција која долази након B<-D> ће имати "
+"своје уобичајено дејство."
+
+#. type: TP
+#: ../../man/man1/man.man1:582
+#, no-wrap
+msgid "B<--warnings>[=I<warnings\\/>]"
+msgstr "B<--warnings>[=I<упозорења\\/>]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:594
+msgid ""
+"Enable warnings from I<groff>.  This may be used to perform sanity checks on "
+"the source text of manual pages.  I<warnings> is a comma-separated list of "
+"warning names; if it is not supplied, the default is \"mac\".  See the "
+"\\(lqWarnings\\(rq node in B<info groff> for a list of available warning "
+"names."
+msgstr ""
+"Укључује упозорења из I<грофф>-а.  Ово може бити коришћено за обављање "
+"провера исправности над изворним текстом страница упутства.  I<упозорења> је "
+"зарезом раздвојени списак назива упозорења; ако није достављен, подразумева "
+"се „mac“.  Погледајте чвор „Warnings“ у B<info groff>у за списак достуних "
+"назива упозорења."
+
+#. type: SS
+#: ../../man/man1/man.man1:594
+#, no-wrap
+msgid "Main modes of operation"
+msgstr "Главни режими рада"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:603
+msgid ""
+"Equivalent to B<%whatis%>.  Display a short description from the manual "
+"page, if available.  See B<%whatis%>(1)  for details."
+msgstr ""
+"Исто што и B<%whatis%>.  Приказује кратак опис из странице упутства, ако је "
+"доступан.  Погледајте B<%whatis%>(1)  за појединости."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:612
+msgid ""
+"Equivalent to B<%apropos%>.  Search the short manual page descriptions for "
+"keywords and display any matches.  See B<%apropos%>(1)  for details."
+msgstr ""
+"Исто што и B<%apropos%>.  Претражује кратке описе страница упутства за "
+"кључним речима и приказује сва поклапања.  Погледајте B<%apropos%>(1)  за "
+"појединости."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:622
+msgid ""
+"Search for text in all manual pages.  This is a brute-force search, and is "
+"likely to take some time; if you can, you should specify a section to reduce "
+"the number of pages that need to be searched.  Search terms may be simple "
+"strings (the default), or regular expressions if the B<--regex> option is "
+"used."
+msgstr ""
+"Тражи текст у свим страницама упутства.  Ово је насилна претрага, и траје "
+"мало дуже; ако можете, требали бисте да наведете одељак да смањите број "
+"страница које треба претражити.  Појмови претраге могу бити једноставне "
+"ниске (основно), или регуларни изрази ако се користи опција B<--regex>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:628
+msgid ""
+"Note that this searches the I<sources> of the manual pages, not the rendered "
+"text, and so may include false positives due to things like comments in "
+"source files.  Searching the rendered text would be much slower."
+msgstr ""
+"Знајте да ово претражује I<изворе> страница упутства, а не исписани текст, "
+"тако да може да обухвати лажне резултате услед напомена у датотекама "
+"извора.  Претраживање исписаног текста би било много спорије."
+
+#.  Compressed nroff source files with a supported compression
+#.  extension will be decompressed by man prior to being displaying via the
+#.  usual filters.
+#. type: Plain text
+#: ../../man/man1/man.man1:644
+msgid ""
+"Activate `local' mode.  Format and display local manual files instead of "
+"searching through the system's manual collection.  Each manual page argument "
+"will be interpreted as an nroff source file in the correct format.  No cat "
+"file is produced.  If '-' is listed as one of the arguments, input will be "
+"taken from stdin.  When this option is not used, and man fails to find the "
+"page required, before displaying the error message, it attempts to act as if "
+"this option was supplied, using the name as a filename and looking for an "
+"exact match."
+msgstr ""
+"Покреће режим „local“.  Обликује и приказује месне датотеке упутства уместо "
+"да тражи кроз збирку упутства система.  Сваки аргумент странице упутства ће "
+"бити протумачен као нрофф изворна датотека у исправном запису.  Не стварају "
+"се кат датотеке.  Ако је „-“ наведено као један од аргумената, улаз ће бити "
+"узет са стандардног улаза.  Када се не користи ова опција, а ман не успе да "
+"пронађе захтевану страницу, пре него ли прикаже поруку грешке, покушаће да "
+"делује као да је достављена та опција, користећи назив као назив датотеке и "
+"тражећи за одговарајућим поклапањем."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:648
+msgid ""
+"Don't actually display the manual pages, but do print the location(s) of the "
+"source nroff files that would be formatted."
+msgstr ""
+"Заправо не приказује странице упутства, али исписује место(а) изворних нрофф "
+"датотека које ће бити обликоване."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:653
+msgid ""
+"Don't actually display the manual pages, but do print the location(s) of the "
+"cat files that would be displayed.  If -w and -W are both specified, print "
+"both separated by a space."
+msgstr ""
+"Заправо не приказује странице упутства, али исписује место(а) кат датотека "
+"које ће бити приказане.  Ако су наведене и „-w“ и „-W“, исписује обе "
+"одвојене размаком."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:658
+msgid ""
+"This option is not for general use and should only be used by the B<%catman"
+"%> program."
+msgstr ""
+"Ова опција није за општу употребу и треба да је користи само програм B<"
+"%catman%>."
+
+#. type: TP
+#: ../../man/man1/man.man1:658
+#, no-wrap
+msgid "B<-R\\ >I<encoding>,\\ B<--recode>=I<encoding>"
+msgstr "B<-R\\ >I<кодирање>,\\ B<--recode>=I<кодирање>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:670
+msgid ""
+"Instead of formatting the manual page in the usual way, output its source "
+"converted to the specified I<encoding>.  If you already know the encoding of "
+"the source file, you can also use B<%manconv%>(1)  directly.  However, this "
+"option allows you to convert several manual pages to a single encoding "
+"without having to explicitly state the encoding of each, provided that they "
+"were already installed in a structure similar to a manual page hierarchy."
+msgstr ""
+"Уместо да обликује страницу упутства на уобичајени начин, шаље њен извор "
+"претворен у наведено I<кодирање>.  Ако већ знате кодирање изворне датотеке, "
+"такође можете непосредно да користите B<%manconv%>(1).  Међутим, ова опција "
+"вам омогућава да претворите неколико страница упутства у једно кодирање а да "
+"не морате изричито да наводите кодирање за сваку, које је достављено како су "
+"већ инсталиране у структури сличној хијерархији странице упутства."
+
+#. type: SS
+#: ../../man/man1/man.man1:670
+#, no-wrap
+msgid "Finding manual pages"
+msgstr "Проналажење страница упутства"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:708
+msgid ""
+"If this system has access to other operating system's manual pages, they can "
+"be accessed using this option.  To search for a manual page from NewOS's "
+"manual page collection, use the option B<-m> B<NewOS>."
+msgstr ""
+"Ако овај систем има приступ страницама упутства других оперативних система, "
+"могуће им је приступити употребом ове опције.  Да потражите страницу "
+"упутства у збирци страница упутства НовихОС-ова, користите опцију „B<-m> "
+"B<НовиОС>“."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:719
+msgid ""
+"The I<system> specified can be a combination of comma delimited operating "
+"system names.  To include a search of the native operating system's manual "
+"pages, include the system name B<man> in the argument string.  This option "
+"will override the $B<SYSTEM> environment variable."
+msgstr ""
+"Наведени I<систем> може бити комбинација назива оператвиних система "
+"раздвојених зарезом.  Да укључите претрагу страница упутства изворног "
+"оперативног система, укључите B<ман> назив система у ниску аргумента.  Ова "
+"опција ће преписати променљиву система $B<СИСТЕМ>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:733
+msgid ""
+"Specify an alternate manpath to use.  By default, B<%man%> uses B<%manpath%> "
+"derived code to determine the path to search.  This option overrides the "
+"$B<MANPATH> environment variable and causes option B<-m> to be ignored."
+msgstr ""
+"Наводи резервну ман-путању за коришћење.  По основи, B<%ман%> користи B<"
+"%manpath%> произашли код да одреди путању за претрагу.  Ова опција преписује "
+"$B<MANPATH> променљиву окружења и доводи до занемаривања опције B<-m>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:740
+msgid ""
+"A path specified as a manpath must be the root of a manual page hierarchy "
+"structured into sections as described in the man-db manual (under \"The "
+"manual page system\").  To view manual pages outside such hierarchies, see "
+"the B<-l> option."
+msgstr ""
+"Путања наведена као ман путања мора бити корен хијерархије странице упутства "
+"структурисан по одељцима као што је описано у ман-дб упутству (под „Систем "
+"страница упутства“).  Да видите странице упутства ван такве хијерархије, "
+"погледајте опцију B<-l>."
+
+#. type: TP
+#: ../../man/man1/man.man1:740
+#, no-wrap
+msgid "B<-S\\ >I<list>,\\ B<-s\\ >I<list>,\\ B<--sections=>I<list>"
+msgstr "B<-S\\ >I<списак>,\\ B<-s\\ >I<списак>,\\ B<--sections=>I<списак>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:750
+msgid ""
+"List is a colon- or comma-separated list of `order specific' manual sections "
+"to search.  This option overrides the $B<MANSECT> environment variable.  "
+"(The B<-s> spelling is for compatibility with System V.)"
+msgstr ""
+"Списак је двотачком или зарезом раздвојени списак „посебног поретка“ одељака "
+"упутства за претрагу.  Ова опција преписује $B<MANSECT> променљиву "
+"окружења.  („B<-s>“ је овде због сагласности са Системом V.)"
+
+#. type: TP
+#: ../../man/man1/man.man1:750
+#, no-wrap
+msgid "B<-e\\ >I<sub-extension>,\\ B<--extension=>I<sub-extension>"
+msgstr "B<-e\\ >I<под-проширење>,\\ B<--extension=>I<под-проширење>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:784
+msgid ""
+"Some systems incorporate large packages of manual pages, such as those that "
+"accompany the B<Tcl> package, into the main manual page hierarchy.  To get "
+"around the problem of having two manual pages with the same name such as "
+"B<exit>(3), the B<Tcl> pages were usually all assigned to section B<l>.  As "
+"this is unfortunate, it is now possible to put the pages in the correct "
+"section, and to assign a specific `extension' to them, in this case, "
+"B<exit>(3tcl).  Under normal operation, B<%man%> will display B<exit>(3)  in "
+"preference to B<exit>(3tcl).  To negotiate this situation and to avoid "
+"having to know which section the page you require resides in, it is now "
+"possible to give B<%man%> a I<sub-extension> string indicating which package "
+"the page must belong to.  Using the above example, supplying the option B<-e"
+"\\ tcl> to B<%man%> will restrict the search to pages having an extension of "
+"B<*tcl>."
+msgstr ""
+"Неки системи уграђују велике пакете страница упутства, као што су они који "
+"прате пакет B<Tcl>, у главну хијерархију страница упутства.  Да избегнете "
+"проблем имања две странице упутства са истим називом као што је B<exit>(3), "
+"B<Tcl> странице се углавном све додељују одељку B<l>.  Зато што је то "
+"непогодно, сада је могуће ставити странице у одговарајући одељак, и доделити "
+"им посебно „проширење“, у овом случају, B<exit>(3tcl).  Под нормалним "
+"радњама, B<%ман%> ће приказати B<exit>(3) у поставкама за B<exit>(3tcl).  Да "
+"решите ову ситуацију и да небисте морали да знате у ком одељку се налази "
+"страница коју сте затражили, сада је могуће дати B<%ман%>у ниску I<под-"
+"проширења> која назначава ком пакету мора да припада страница.  Употребом "
+"горњег примера, достављањем опције B<-e\\ tcl> B<%ман%>у биће сужена "
+"претрага на странице које имају проширење B<*tcl>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:788
+msgid "Ignore case when searching for manual pages.  This is the default."
+msgstr ""
+"Занемарује величину слова приликом тражења страница упутства.  Ово је "
+"основно."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:791
+msgid "Search for manual pages case-sensitively."
+msgstr "Тражи странице упутства обазирући се на величину слова."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:801
+msgid ""
+"Show all pages with any part of either their names or their descriptions "
+"matching each I<page> argument as a regular expression, as with "
+"B<apropos>(1).  Since there is usually no reasonable way to pick a \"best\" "
+"page when searching for a regular expression, this option implies B<-a>."
+msgstr ""
+"Показује све странице чији неки део било њихових назива или њихових описа "
+"одговара аргументу сваке I<странице> као регуларни израз, као са "
+"B<apropos>(1).  Како обично не постоји разумљив начин за бирање „најбоље“ "
+"странице приликом тражења регуларног израза, ова опција подразумева B<-a>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:816
+msgid ""
+"Show all pages with any part of either their names or their descriptions "
+"matching each I<page> argument using shell-style wildcards, as with "
+"B<apropos>(1)  B<--wildcard>.  The I<page> argument must match the entire "
+"name or description, or match on word boundaries in the description.  Since "
+"there is usually no reasonable way to pick a \"best\" page when searching "
+"for a wildcard, this option implies B<-a>."
+msgstr ""
+"Показује све странице чији неки део било њихових назива или њихових описа "
+"одговара аргументу сваке I<странице> употребом џокера у стили конзоле, као "
+"са B<apropos>(1)  B<--wildcard>.  Аргумент I<странице> мора да одговара "
+"читавом називу или опису, или да одговара границама речи у опису.  Како "
+"обично не постоји разумљив начин за бирање „најбоље“ странице приликом "
+"тражења џокера, ова опција подразумева B<-a>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:825
+msgid ""
+"If the B<--regex> or B<--wildcard> option is used, match only page names, "
+"not page descriptions, as with B<whatis>(1).  Otherwise, no effect."
+msgstr ""
+"Ако се користи B<--regex> или B<--wildcard>, поклапа само називе страница, а "
+"не и описе, као са B<whatis>(1).  У супротном, нема дејства."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:833
+msgid ""
+"By default, B<%man%> will exit after displaying the most suitable manual "
+"page it finds.  Using this option forces B<%man%> to display all the manual "
+"pages with names that match the search criteria."
+msgstr ""
+"По основи, B<%ман%> ће изаћи након што прикаже страницу упутства која "
+"највише задовољава. Употреба ове опције приморава B<%ман%>а да прикаже све "
+"странице упутства са називима који одговарају мерилу претраге."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:842
+msgid ""
+"This option causes B<%man%> to perform an `inode level' consistency check on "
+"its database caches to ensure that they are an accurate representation of "
+"the filesystem.  It will only have a useful effect if B<%man%> is installed "
+"with the setuid bit set."
+msgstr ""
+"Ова опција доводи до тога да B<%ман%> изврши проверу доследности „иноде "
+"нивоа“ над својим оставама базе података да би се уверио да су тачна "
+"представа система датотека.  Имаће корисно дејство само ако је B<%ман%> "
+"инсталиран са подешеним битом сетјиб-а."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:854
+msgid ""
+"By default, B<%man%> will try to interpret pairs of manual page names given "
+"on the command line as equivalent to a single manual page name containing a "
+"hyphen or an underscore.  This supports the common pattern of programs that "
+"implement a number of subcommands, allowing them to provide manual pages for "
+"each that can be accessed using similar syntax as would be used to invoke "
+"the subcommands themselves.  For example:"
+msgstr ""
+"По основи, B<%ман%> ће покушати да протумачи парове назива странице упутства "
+"датих на линији наредби као еквивалент једном називу странице упутства који "
+"садржи цртицу или подвлаку.  Ово подржава општи образац програма који "
+"примењују бројне поднаредбе, допуштајући им да обезбеде странице упутства за "
+"сваку којој се може приступити употребом сличне реченице као кад би била "
+"коришћена за призивање самих поднаредби.  На пример:"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:863
+msgid "To disable this behaviour, use the B<--no-subpages> option."
+msgstr "Да искључите ово понашање, користите опцију B<--no-subpages>."
+
+#. type: SS
+#: ../../man/man1/man.man1:870
+#, no-wrap
+msgid "Controlling formatted output"
+msgstr "Управљање обликованим излазом"
+
+#. type: TP
+#: ../../man/man1/man.man1:871
+#, no-wrap
+msgid "B<-P\\ >I<pager>,\\ B<--pager=>I<pager>"
+msgstr "B<-P\\ >I<страничар>,\\ B<--pager=>I<страничар>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:892
+#, fuzzy
+#| msgid ""
+#| "Specify which output pager to use.  By default, B<%man%> uses B<%pager"
+#| "%>.  This option overrides the $B<MANPAGER> environment variable, which "
+#| "in turn overrides the $B<PAGER> environment variable.  It is not used in "
+#| "conjunction with B<-f> or B<-k>."
+msgid ""
+"Specify which output pager to use.  By default, B<%man%> uses B<%pager%>, "
+"falling back to B<%cat%> if B<%pager%> is not found or is not executable.  "
+"This option overrides the $B<MANPAGER> environment variable, which in turn "
+"overrides the $B<PAGER> environment variable.  It is not used in conjunction "
+"with B<-f> or B<-k>."
+msgstr ""
+"Наводи страничара излаза за коришћење.  По основи, B<%ман%> користи B<%pager"
+"%>.  Ова опција преписује променљиву окружења $B<MANPAGER>, која преписује "
+"променљиву окружења $B<PAGER>.  Не користи се у свези са B<-f> или B<-k>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:898 ../../man/man1/man.man1:1259
+msgid ""
+"The value may be a simple command name or a command with arguments, and may "
+"use shell quoting (backslashes, single quotes, or double quotes).  It may "
+"not use pipes to connect multiple commands; if you need that, use a wrapper "
+"script, which may take the file to display either as an argument or on "
+"standard input."
+msgstr ""
+"Вредност може бити назив једне наредбе или наредба са аргументима, и може "
+"користити цитирање љуске (контра косе црте, једноструке или двоструке "
+"наводнике).  Не може користити спојке за спајање више наредби; ако вам треба "
+"то, користите спис омотача, који може узети датотеку да је прикаже било као "
+"аргумент или на стандардном улазу."
+
+#. type: TP
+#: ../../man/man1/man.man1:898
+#, no-wrap
+msgid "B<-r\\ >I<prompt>,\\ B<--prompt=>I<prompt>"
+msgstr "B<-r\\ >I<упит>,\\ B<--prompt=>I<упит>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:906
+msgid ""
+"If a recent version of B<less> is used as the pager, B<%man%> will attempt "
+"to set its prompt and some sensible options.  The default prompt looks like"
+msgstr ""
+"Ако се за страничара користи најновије издање програма B<less>, B<%ман%> ће "
+"покушати да подеси свој упит и неке осетљиве опције.  Основни упит изгледа "
+"као"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:910
+msgid "B<\\ Manual page>I<\\ name>B<(>I<sec>B<)>B<\\ line>I<\\ x>"
+msgstr "B<\\ Страница упутства>I<\\ назив>B<(>I<одељак>B<)>I<\\ x.>B<\\ ред>"
+
+#. The default options are
+#. .BR \-six8 .
+#. The actual default will depend on your chosen
+#. .BR locale .
+#. type: Plain text
+#: ../../man/man1/man.man1:925
+msgid ""
+"where I<name> denotes the manual page name, I<sec> denotes the section it "
+"was found under and I<x> the current line number.  This is achieved by using "
+"the $B<LESS> environment variable."
+msgstr ""
+"где I<назив> означава назив странице упутства, I<одељак> означава одељак под "
+"којим је пронађена а I<x> означава број текућег реда.  Ово се постиже "
+"употребом променљиве окружења $B<LESS>."
+
+#. You may need to do this if your
+#. version of
+#. .B less
+#. rejects the default options or if you prefer a different prompt.
+#. type: Plain text
+#: ../../man/man1/man.man1:938
+msgid ""
+"Supplying B<-r> with a string will override this default.  The string may "
+"contain the text B<$MAN_PN> which will be expanded to the name of the "
+"current manual page and its section name surrounded by `(' and `)'.  The "
+"string used to produce the default could be expressed as"
+msgstr ""
+"Достављајући B<-r> ниском ће преписати ову основност.  Ниска може да садржи "
+"текст B<$MAN_PN> који ће бити проширен на назив текуће странице упутства и "
+"назив њеног одељка ограђен ().  Ниска коришћена за стварање основности може "
+"бити изражена као"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:940
+msgid "B<\\e\\ Manual\\e\\ page\\e\\ \\e$MAN_PN\\e\\ ?ltline\\e\\ %lt?L/%L.:>"
+msgstr ""
+"B<\\e\\ Страница\\e\\ упутства\\e\\ \\e$MAN_PN\\e\\ ?ltред\\e\\ %lt?L/%L.:>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:942
+msgid "B<byte\\e\\ %bB?s/%s..?\\e\\ (END):?pB\\e\\ %pB\\e\\e%..>"
+msgstr "B<бајт\\e\\ %bB?s/%s..?\\e\\ (КРАЈ):?pB\\e\\ %pB\\e\\e%..>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:944
+msgid "B<(press h for help or q to quit)>"
+msgstr "B<(притисните „h“ за помоћ или „q“ да изађете)>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:959
+msgid ""
+"It is broken into three lines here for the sake of readability only.  For "
+"its meaning see the B<less>(1)  manual page.  The prompt string is first "
+"evaluated by the shell.  All double quotes, back-quotes and backslashes in "
+"the prompt must be escaped by a preceding backslash.  The prompt string may "
+"end in an escaped $ which may be followed by further options for less.  By "
+"default B<%man%> sets the B<-ix8> options."
+msgstr ""
+"Преломљена је у три реда само због прегледности.  За њено значење погледајте "
+"страницу упутства B<less>(1).  Ниска упита је прва коју процењује конзола.  "
+"Сви двоструки наводници, обрнути наводници и контра косе црте у упиту морају "
+"бити окончани на реду претходећом контра косом цртом.  Ниска упита се може "
+"завршити окончаним $ за којим могу да следе даљне опције за „less“.  По "
+"основи B<%ман%> подешава B<-ix8> опције."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:964
+msgid ""
+"The $B<MANLESS> environment variable described below may be used to set a "
+"default prompt string if none is supplied on the command line."
+msgstr ""
+"Променљива окружења $B<MANLESS> описана испод може бити коришћена за "
+"постављање основне ниске упита ако ништа није дато на линији наредби."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:990
+msgid ""
+"When viewing a pure I<ascii>(7)  manual page on a 7 bit terminal or terminal "
+"emulator, some characters may not display correctly when using the "
+"I<latin1>(7)  device description with B<GNU> B<nroff>.  This option allows "
+"pure I<ascii> manual pages to be displayed in I<ascii> with the I<latin1> "
+"device.  It will not translate any I<latin1> text.  The following table "
+"shows the translations performed: some parts of it may only be displayed "
+"properly when using B<GNU> B<nroff>'s I<latin1>(7)  device."
+msgstr ""
+"Када прегледате чисту I<аскри>(7) страницу упутства на 7-битном терминалу "
+"или на опонашавачу терминала, неки знаци можда неће бити исправно приказани "
+"када се користи опис уређаја I<латин1>(7) са B<ГНУ> B<нрофф>ом.  Ова опција "
+"допушта чистим I<аскри> страницама упутства да буду приказане у I<аскри>ју "
+"са I<латин1> уређајем.  Неће превести никакав I<латин1> текст.  Следећа "
+"табела приказује обављене преводе: неки њени делови могу бити приказани "
+"исправно само када се користи B<ГНУ> B<нрофф>ов I<латин1>(7) уређај."
+
+#. type: tbl table
+#: ../../man/man1/man.man1:999
+#, no-wrap
+msgid "Description"
+msgstr "Опис"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:999
+#, no-wrap
+msgid "Octal"
+msgstr "Октални"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:1003
+#, no-wrap
+msgid "continuation hyphen"
+msgstr "цртица наставка"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:1006
+#, no-wrap
+msgid "bullet (middle dot)"
+msgstr "тачка (кружић)"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:1009
+#, no-wrap
+msgid "acute accent"
+msgstr "дугоузлазни нагласак"
+
+#. type: tbl table
+#: ../../man/man1/man.man1:1012
+#, no-wrap
+msgid "multiplication sign"
+msgstr "знак множења"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1034
+msgid ""
+"If the I<latin1> column displays correctly, your terminal may be set up for "
+"I<latin1> characters and this option is not necessary.  If the I<latin1> and "
+"I<ascii> columns are identical, you are reading this page using this option "
+"or B<%man%> did not format this page using the I<latin1> device "
+"description.  If the I<latin1> column is missing or corrupt, you may need to "
+"view manual pages with this option."
+msgstr ""
+"Ако стубац I<латин1> исправно приказује, ваш терминал може бити подешен за "
+"I<латин1> знакове и ова опција није неопходна.  Ако су ступци I<латин1> и "
+"I<аскри> истоветни, ви читате ову страницу користећи ову опцију или B<%ман%> "
+"није обликовао ову страницу користећи опис I<латин1> уређаја.  Ако недостаје "
+"стубац I<латин1> или је оштећен, мораћете да прегледате странице упутства са "
+"овом опцијом."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1045
+msgid ""
+"This option is ignored when using options B<-t>, B<-H>, B<-T>, or B<-Z> and "
+"may be useless for B<nroff> other than B<GNU's>."
+msgstr ""
+"Ова опција се занемарује приликом употребе опција B<-t>, B<-H>, B<-T>, или "
+"B<-Z> и може бити некорисна B<нрофф>у као и B<ГНУ>у."
+
+#. type: TP
+#: ../../man/man1/man.man1:1045
+#, no-wrap
+msgid "B<-E\\ >I<encoding>,\\ B<--encoding>=I<encoding>"
+msgstr "B<-E\\ >I<кодирање>,\\ B<--encoding>=I<кодирање>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1056
+msgid ""
+"Generate output for a character encoding other than the default.  For "
+"backward compatibility, I<encoding> may be an B<nroff> device such as "
+"B<ascii>, B<latin1>, or B<utf8> as well as a true character encoding such as "
+"B<UTF-8>."
+msgstr ""
+"Ствара излаз за кодирање знакова поред основног.  Зарад повратне "
+"сагласности, I<кодирање> може бити B<нрофф> уређај као што је B<аскри>, "
+"B<латин1>, или B<утф8> као и право кодирање знакова као што је B<УТФ-8>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1065
+msgid ""
+"Normally, B<nroff> will automatically hyphenate text at line breaks even in "
+"words that do not contain hyphens, if it is necessary to do so to lay out "
+"words on a line without excessive spacing.  This option disables automatic "
+"hyphenation, so words will only be hyphenated if they already contain "
+"hyphens."
+msgstr ""
+"Обично, B<нрофф> ће сам поставити цртице у тексту на прелому реда чак и у "
+"речима које не садрже цртице, ако је неопходно да се уради ово да би се "
+"поређале речи у реду без претераних размака.  Ова опција искључује "
+"самостално цртичарење, тако да ће речи добити цртицу само ако већ садрже "
+"исте."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1074
+msgid ""
+"If you are writing a manual page and simply want to prevent B<nroff> from "
+"hyphenating a word at an inappropriate point, do not use this option, but "
+"consult the B<nroff> documentation instead; for instance, you can put \"\\e%"
+"\" inside a word to indicate that it may be hyphenated at that point, or put "
+"\"\\e%\" at the start of a word to prevent it from being hyphenated."
+msgstr ""
+"Ако пишете страницу упутства и једноставно не желите да B<нрофф> постави "
+"цртицу у речи на неодговарајућем месту, немојте користити ову опцију, већ "
+"погледајте документацију B<нрофф>а; на пример, можете да ставите „\\e%“ "
+"унутар речи да назначите да ту може доћи цртица за прелом реда, или да "
+"ставите „\\e%“ на почетку речи како бисте избегли прекидање речи."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1081
+msgid ""
+"Normally, B<nroff> will automatically justify text to both margins.  This "
+"option disables full justification, leaving justified only to the left "
+"margin, sometimes called \"ragged-right\" text."
+msgstr ""
+"Обично, B<нрофф> ће сам поравнати текст на обема крајњостима.  Ова опција "
+"искључује потпуно поравнавање, остављајући поравнање само на левој страни, "
+"понекад звано као „десно-недотерани“ текст."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1088
+msgid ""
+"If you are writing a manual page and simply want to prevent B<nroff> from "
+"justifying certain paragraphs, do not use this option, but consult the "
+"B<nroff> documentation instead; for instance, you can use the \".na\", \".nf"
+"\", \".fi\", and \".ad\" requests to temporarily disable adjusting and "
+"filling."
+msgstr ""
+"Ако пишете страницу упутства и једноставно не желите да B<нрофф> поравна "
+"одређене пасусе, немојте користити ову опцију, већ погледајте документацију "
+"B<нрофф>а; на пример, можете да користите „.na“, „.nf“, „.fi“, и „.ad“ "
+"захтеве да привремено искључите дотеривање и попуњавање."
+
+#. type: TP
+#: ../../man/man1/man.man1:1088
+#, no-wrap
+msgid "B<-p\\ >I<string>,\\ B<--preprocessor=>I<string>"
+msgstr "B<-p\\ >I<ниска>,\\ B<--preprocessor=>I<ниска>"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1107
+msgid ""
+"Specify the sequence of preprocessors to run before B<nroff> or B<troff>/"
+"B<groff>.  Not all installations will have a full set of preprocessors.  "
+"Some of the preprocessors and the letters used to designate them are: B<eqn> "
+"(B<e>), B<grap> (B<g>), B<pic> (B<p>), B<tbl> (B<t>), B<vgrind> (B<v>), "
+"B<refer> (B<r>).  This option overrides the $B<MANROFFSEQ> environment "
+"variable.  B<%zsoelim%> is always run as the very first preprocessor."
+msgstr ""
+"Наводи низ предобрађивача за покретање пре B<нрофф>а или B<трофф>/"
+"B<грофф>а.  Неће све инсталације имати читав скуп предобрађивача.  Неки од "
+"препроцесора и слова коришћена за њихово означавање су: B<eqn> (B<e>), "
+"B<grap> (B<g>), B<pic> (B<p>), B<tbl> (B<t>), B<vgrind> (B<v>), B<refer> "
+"(B<r>).  Ова опција преписује променљиву окружења $B<MANROFFSEQ>.  B<%zsoelim"
+"%> се увек покреће као први предобрађивач."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1117
+msgid ""
+"Use I<%troff%> to format the manual page to stdout.  This option is not "
+"required in conjunction with B<-H>, B<-T>, or B<-Z>."
+msgstr ""
+"Користи I<%трофф%>а да обликује страницу упутства на стандардном излазу.  "
+"Ова опција се не захтева у свези са B<-H>, B<-T>, или B<-Z>."
+
+#. type: TP
+#: ../../man/man1/man.man1:1117
+#, no-wrap
+msgid "B<-T>[I<device\\/>], B<--troff-device>[=I<device\\/>]"
+msgstr "B<-T>[I<уређај\\/>], B<--troff-device>[=I<уређај\\/>]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1129
+msgid ""
+"This option is used to change B<groff> (or possibly B<troff's>)  output to "
+"be suitable for a device other than the default.  It implies B<-t>.  "
+"Examples (provided with Groff-1.17) include B<dvi>, B<latin1>, B<ps>, "
+"B<utf8>, B<X75> and B<X100>."
+msgstr ""
+"Ова опција се користи за промену излаза B<грофф>а (или по могућству "
+"B<трофф>а) како би био погодан и за друге уређаје осим основног.  "
+"Подразумева B<-t>.  Примери (достављени са Грофф-ом 1.17) обухватају B<дви>, "
+"B<латин1>, B<пс>, B<утф8>, B<Икс75> и B<Икс100>."
+
+#. type: TP
+#: ../../man/man1/man.man1:1129
+#, no-wrap
+msgid "B<-H>[I<browser\\/>], B<--html>[=I<browser\\/>]"
+msgstr "B<-H>[I<прегледник\\/>], B<--html>[=I<прегледник\\/>]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1145
+msgid ""
+"This option will cause B<groff> to produce HTML output, and will display "
+"that output in a web browser.  The choice of browser is determined by the "
+"optional I<browser> argument if one is provided, by the $B<BROWSER> "
+"environment variable, or by a compile-time default if that is unset (usually "
+"B<lynx>).  This option implies B<-t>, and will only work with B<GNU> "
+"B<troff>."
+msgstr ""
+"Ова опција ће довести до тога да B<грофф> произведе ХТМЛ излаз, и приказаће "
+"тај излаз у веб прегледнику.  Избор прегледника је одређен изборним "
+"аргументом I<прегледник> ако је достављен, променљивом окружења $B<BROWSER>, "
+"или основним у време превођења ако тај није постављен (обично је то "
+"B<линкс>).  Ова опција подразумева B<-t>, и радиће само уз B<ГНУ> B<трофф>а."
+
+#. type: TP
+#: ../../man/man1/man.man1:1145
+#, no-wrap
+msgid "B<-X>[I<dpi\\/>], B<--gxditview>[=I<dpi\\/>]"
+msgstr "B<-X>[I<тпи\\/>], B<--gxditview>[=I<тпи\\/>]"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1159
+msgid ""
+"This option displays the output of B<groff> in a graphical window using the "
+"B<gxditview> program.  The I<dpi> (dots per inch) may be 75, 75-12, 100, or "
+"100-12, defaulting to 75; the -12 variants use a 12-point base font.  This "
+"option implies B<-T> with the X75, X75-12, X100, or X100-12 device "
+"respectively."
+msgstr ""
+"Ова опција приказује излаз B<грофф>а у графичком прозору користећи програм "
+"„B<gxditview>“.  I<тпи> (тачака по инчу) може бити 75, 75-12, 100, или "
+"100-12, подразумевајући 75; варијанта -12 користи словни лик 12-тачака.  Ова "
+"опција подразумева B<-T> са X75, X75-12, X100, или X100-12 уређајем."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1175
+msgid ""
+"B<groff> will run B<troff> and then use an appropriate post-processor to "
+"produce output suitable for the chosen device.  If I<%troff%> is B<groff>, "
+"this option is passed to B<groff> and will suppress the use of a post-"
+"processor.  It implies B<-t>."
+msgstr ""
+"B<грофф> ће покренути B<трофф>а а затим користити одговарајући пост-"
+"обрађивач да би створио излаз погодан за изабрани уређај.  Ако I<%трофф%> "
+"јесте B<грофф>, ова опција се прослеђује B<грофф>у и потиснуће употребу пост-"
+"обрађивача.  Подразумева B<-t>."
+
+#. type: SS
+#: ../../man/man1/man.man1:1175
+#, no-wrap
+msgid "Getting help"
+msgstr "Добијање помоћи"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1198
+msgid "A child process returned a non-zero exit status."
+msgstr "Подпроцес је вратио не-нулто излазно стање."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1201
+msgid ""
+"At least one of the pages/files/keywords didn't exist or wasn't matched."
+msgstr ""
+"Најмање једна страница/датотека/кључна реч не постоји или није пронађена."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1208
+msgid ""
+"If $B<MANPATH> is set, its value is used as the path to search for manual "
+"pages."
+msgstr ""
+"Ако је постављено $B<MANPATH>, његова вредност се користи као путања "
+"запретрагу страница упутстава."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1219
+msgid ""
+"The contents of $B<MANROFFOPT> are added to the command line every time "
+"B<man> invokes the formatter (B<nroff>, B<troff>, or B<groff>)."
+msgstr ""
+"Садржаји $B<MANROFFOPT>а се додају на линију наредби сваки пут када B<ман> "
+"призове обликовача (B<нрофф>а, B<трофф>а, или B<грофф>а)."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1226
+msgid ""
+"If $B<MANROFFSEQ> is set, its value is used to determine the set of "
+"preprocessors to pass each manual page through.  The default preprocessor "
+"list is system dependent."
+msgstr ""
+"Ако је постављено $B<MANROFFSEQ>, његова вредност се користи за одређивање "
+"скупа предобрађивача кроз који бивају прослеђене све странице упутства.  "
+"Основни списак предобрађивача зависи од система."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1236 ../../man/man8/catman.man8:88
+msgid ""
+"If $B<MANSECT> is set, its value is a colon-delimited list of sections and "
+"it is used to determine which manual sections to search and in what order.  "
+"The default is \"%sections%\", unless overridden by the B<SECTION> directive "
+"in I<%manpath_config_file%>."
+msgstr ""
+"Ако је постављено $B<MANSECT>, његова вредност јесте списак одељака "
+"раздвојених двотачком и користи се да се одреди који одељци упутства ће бити "
+"претраживани и којим редом.  Основно је „%sections%“, осим ако није "
+"преписано смерницом B<ОДЕЉАК> у I<%manpath_config_file%>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1253
+#, fuzzy
+#| msgid ""
+#| "If $B<MANPAGER> or $B<PAGER> is set ($B<MANPAGER> is used in preference), "
+#| "its value is used as the name of the program used to display the manual "
+#| "page.  By default, B<%pager%> is used."
+msgid ""
+"If $B<MANPAGER> or $B<PAGER> is set ($B<MANPAGER> is used in preference), "
+"its value is used as the name of the program used to display the manual "
+"page.  By default, B<%pager%> is used, falling back to B<%cat%> if B<%pager"
+"%> is not found or is not executable."
+msgstr ""
+"Ако је постављено $B<MANPAGER> или $B<PAGER> ($B<MANPAGER> се користи у "
+"поставкама), његова вредност се користи као назив програма за приказивање "
+"странице упутства.  По основи, користи се B<%pager%>."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1278
+msgid ""
+"If $B<MANLESS> is set, its value will be used as the default prompt string "
+"for the B<less> pager, as if it had been passed using the B<-r> option (so "
+"any occurrences of the text B<$MAN_PN> will be expanded in the same way).  "
+"For example, if you want to set the prompt string unconditionally to \\(lqmy "
+"prompt string\\(rq, set $B<MANLESS> to \\(oqB<-Psmy\\ prompt\\ string>"
+"\\(cq.  Using the B<-r> option overrides this environment variable."
+msgstr ""
+"Ако је постављено $B<MANLESS>, његова вредност се користи као основна ниска "
+"упита за страничара B<less>, као да је прослеђен коришћењем опције B<-r> "
+"(тако да ће сва појављивања текста B<$MAN_PN> бити проширена на исти "
+"начин).  На пример, ако желите да подесите ниску упита безусловно на „моја "
+"ниска упита“, поставите $B<MANLESS> на „B<-Psмоја ниска упита>“.  Употреба "
+"опције B<-r> преписује ову променљиву окружења."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1294
+msgid ""
+"If $B<BROWSER> is set, its value is a colon-delimited list of commands, each "
+"of which in turn is used to try to start a web browser for B<man> B<--"
+"html>.  In each command, I<%s> is replaced by a filename containing the HTML "
+"output from B<groff>, I<%%> is replaced by a single percent sign (%), and I<"
+"%c> is replaced by a colon (:)."
+msgstr ""
+"Ако је постављено $B<BROWSER>, његова вредност је списак наредби раздвојених "
+"двотачком, свака од њих се на смену користи у покушају покретања веб "
+"прегледника за „B<man> B<--html>“.  У свакој наредби, I<%s> се замењује "
+"називом датотеке која садржи ХТМЛ излаз из B<грофф>а, I<%%> се замењује "
+"једним знаком процента (%), а I<%c> се замењује двотачком (:)."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1317
+msgid ""
+"If $B<MANOPT> is set, it will be parsed prior to B<%man%'s> command line and "
+"is expected to be in a similar format.  As all of the other B<%man%> "
+"specific environment variables can be expressed as command line options, and "
+"are thus candidates for being included in $B<MANOPT> it is expected that "
+"they will become obsolete.  N.B.  All spaces that should be interpreted as "
+"part of an option's argument must be escaped."
+msgstr ""
+"Ако је постављено $B<MANOPT>, биће обрађен пре B<%ман%>ове линије наредби и "
+"очекује се да буде у сличном запису.  Како све остале B<%ман%>ом одређене "
+"променљиве окружења могу бити изражене као опције линије наредби, и такви су "
+"кандидати за укључивање у $B<MANOPT> очекује се да постану застареле.  Сви "
+"размаци који требају бити протумачени као део аргумента опције морају имати "
+"знак за прелом реда."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1331
+msgid ""
+"If $B<MANWIDTH> is set, its value is used as the line length for which "
+"manual pages should be formatted.  If it is not set, manual pages will be "
+"formatted with a line length appropriate to the current terminal (using the "
+"value of $B<COLUMNS>, an B<ioctl>(2)  if available, or falling back to 80 "
+"characters if neither is available).  Cat pages will only be saved when the "
+"default formatting can be used, that is when the terminal line length is "
+"between 66 and 80 characters."
+msgstr ""
+"Ако је постављено $B<MANWIDTH>, његова вредност се користи као дужина реда "
+"на коју странице упутства треба да буду обликоване (користећи вредност "
+"$B<КОЛОНЕ>, B<ioctl>(2) ако је доступно, или се пребацује на 80 знакова ако "
+"ништа није доступно).  Кат странице ће бити сачуване само када основно "
+"обликовање може бити коришћено, то је када је дужина реда терминала између "
+"66 и 80 знакова."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1342
+msgid ""
+"Normally, when output is not being directed to a terminal (such as to a file "
+"or a pipe), formatting characters are discarded to make it easier to read "
+"the result without special tools.  However, if $B<MAN_KEEP_FORMATTING> is "
+"set to any non-empty value, these formatting characters are retained.  This "
+"may be useful for wrappers around B<%man%> that can interpret formatting "
+"characters."
+msgstr ""
+"Обично, када излаз није усмерен на терминал (рецимо у датотеку или на "
+"спојку), знаци обликовања се одбацују да би се олакшало читање резултата без "
+"нарочитих алата.  Међутим, ако је $B<MAN_KEEP_FORMATTING> постављено на било "
+"коју не-празну вредност, ти знаци обликовања се задржавају.  Ово може бити "
+"корисно омотачима око B<%ман%>а који могу да протумаче знаке обликовања."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1355
+msgid ""
+"Normally, when output is being directed to a terminal (usually to a pager), "
+"any error output from the command used to produce formatted versions of "
+"manual pages is discarded to avoid interfering with the pager's display.  "
+"Programs such as B<groff> often produce relatively minor error messages "
+"about typographical problems such as poor alignment, which are unsightly and "
+"generally confusing when displayed along with the manual page.  However, "
+"some users want to see them anyway, so, if $B<MAN_KEEP_STDERR> is set to any "
+"non-empty value, error output will be displayed as usual."
+msgstr ""
+"Обично, када је излаз усмерен на терминал (уобичајено је страничару), сваки "
+"излаз грешке из наредбе коришћене за стварање обликованог издања страница "
+"упутства се одбацује да би се избегло мешање са приказом страничара.  "
+"Програми као B<грофф> често стварају релативно мање поруке грешке о "
+"штампарским проблемима као што је слабо поравнање, који су наочито и "
+"уопштено збуњујући када су приказани уз страницу упутства.  Међутим, неки "
+"корисници ипак желе да их виде, тако да, ако је $B<MAN_KEEP_STDERR> "
+"постављено на неку не-празну вредност, излаз грешке ће бити приказан као што "
+"је уобичајено."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1367
+msgid ""
+"Depending on system and implementation, either or both of $B<LANG> and "
+"$B<LC_MESSAGES> will be interrogated for the current message locale.  B<%man"
+"%> will display its messages in that locale (if available).  See "
+"B<setlocale>(3)  for precise details."
+msgstr ""
+"Зависно од система и примене, једно или и $B<LANG> и $B<LC_MESSAGES> ће бити "
+"пропитани за текућим језиком поруке.  B<%ман%> ће приказати своје поруке на "
+"том језику (ако је доступан).  Погледајте B<setlocale>(3) за тачније "
+"појединости."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1371 ../../man/man1/manpath.man1:128
+#: ../../man/man8/catman.man8:98 ../../man/man8/mandb.man8:195
+msgid "man-db configuration file."
+msgstr "Датотека подешавања ман-дб-а."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1374
+msgid "A global manual page hierarchy."
+msgstr "Општа хијерархија странице упутства."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1403
+msgid "the man-db package manual, B<FSSTND>"
+msgstr "упутство пакета ман-дб, B<FSSTND>"
+
+#. type: SH
+#: ../../man/man1/man.man1:1403
+#, no-wrap
+msgid "HISTORY"
+msgstr "ИСТОРИЈАТ"
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1405
+msgid ""
+"1990, 1991 \\(en Originally written by John W.\\& Eaton (jwe@che.utexas.edu)."
+msgstr ""
+"1990, 1991 \\(en Први га је написао Џон В.\\& Итон (jwe@che.utexas.edu)."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1408
+msgid ""
+"Dec 23 1992: Rik Faith (faith@cs.unc.edu) applied bug fixes supplied by "
+"Willem Kasdorp (wkasdo@nikhefk.nikef.nl)."
+msgstr ""
+"23. децембар 1992.: Рик Фејт (faith@cs.unc.edu) је применио исправке грешака "
+"које је доставио Виљем Касдорп (wkasdo@nikhefk.nikef.nl)."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1412
+msgid ""
+"30th April 1994 \\(en 23rd February 2000: Wilf. (G.Wilford@ee.surrey.ac.uk)  "
+"has been developing and maintaining this package with the help of a few "
+"dedicated people."
+msgstr ""
+"30. април 1994. \\(en 23. фебруар 2000.: Вилф. (G.Wilford@ee.surrey.ac.uk)  "
+"је развијао и одржавао овај пакет уз помоћ неколико људи."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1416
+msgid ""
+"30th October 1996 \\(en 30th March 2001: Fabrizio Polacco "
+"E<lt>fpolacco@debian.orgE<gt> maintained and enhanced this package for the "
+"Debian project, with the help of all the community."
+msgstr ""
+"30. октобар 1996. \\(en 30. март 2001.: Фабрицио Плако E<lt>fpolacco@debian."
+"orgE<gt> је одржавао и побољшао овај пакет за пројекат Дебијана, уз помоћ "
+"читаве заједнице."
+
+#. type: Plain text
+#: ../../man/man1/man.man1:1418
+msgid ""
+"31st March 2001 \\(en present day: Colin Watson E<lt>cjwatson@debian."
+"orgE<gt> is now developing and maintaining man-db."
+msgstr ""
+"31. март 2001. \\(en данашњи дан: Колин Вотсон E<lt>cjwatson@debian.orgE<gt> "
+"сада развија и одржава мад-бп."
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:12
+msgid "%manconv% - convert manual page from one encoding to another"
+msgstr "%manconv% - претвара страницу упутства из једног кодирања у друго"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:20
+msgid ""
+"B<%manconv%> B<-f> I<from-code>\\|[:I<from-code>\\|.\\|.\\|.] B<-t> I<to-"
+"code> [\\|B<-dqhV>\\|] [\\|I<filename>\\|]"
+msgstr ""
+"B<%manconv%> B<-f> I<из-кода>\\|[:I<из-кода>\\|.\\|.\\|.] B<-t> I<у-код> [\\|"
+"B<-dqhV>\\|] [\\|I<назив_датотеке>\\|]"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:30
+msgid ""
+"B<%manconv%> converts a manual page from one encoding to another, like "
+"B<iconv>.  Unlike B<iconv>, it can try multiple possible input encodings in "
+"sequence.  This is useful for manual pages installed in directories without "
+"an explicit encoding declaration, since they may be in UTF-8 or in a legacy "
+"character set."
+msgstr ""
+"B<%манконв%> претвара страницу упутства из једног кодирања у друго, као "
+"B<иконв>.  Насупрот B<иконв>-у, може у низу да испроба више могућих улазних "
+"кодирања.  Ово је корисно за странице упутства инсталиране у директоријумима "
+"без изричите објаве кодирања, како оне могу бити у УТФ-8 или у застарелом "
+"скупу знакова."
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:36
+msgid ""
+"If an encoding declaration is found on the first line of the manual page, "
+"that declaration overrides any input encodings specified on B<%manconv%>'s "
+"command line.  Encoding declarations have the following form:"
+msgstr ""
+"Ако је пронађена објава кодирања у првом реду странице упутства, та објава "
+"преписује свако улазно кодирање наведено на линији наредби B<%манконв%>-а.  "
+"Објаве кодирања имају следећи облик:"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:44
+msgid "or (if manual page preprocessors are also to be declared):"
+msgstr "или (ако предобрађивачи странице упутства такође треба да се објаве):"
+
+#. type: TP
+#: ../../man/man1/manconv.man1:51
+#, no-wrap
+msgid "B<-f> I<encodings>, B<--from-code> I<encodings>"
+msgstr "B<-f> I<кодирања>, B<--from-code> I<кодирања>"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:56
+msgid ""
+"Try each of I<encodings> (a colon-separated list) in sequence as the input "
+"encoding."
+msgstr ""
+"Проба свако од I<кодирања> (списак одвојен двотачком) у низу као улазно "
+"кодирање."
+
+#. type: TP
+#: ../../man/man1/manconv.man1:56
+#, no-wrap
+msgid "B<-t> I<encoding>, B<--to-code> I<encoding>"
+msgstr "B<-t> I<кодирање>, B<--to-code> I<кодирање>"
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:60
+msgid "Convert the manual page to I<encoding>."
+msgstr "Претвара страницу упутства у I<кодирање>."
+
+#. type: Plain text
+#: ../../man/man1/manconv.man1:63
+msgid "Do not issue error messages when the page cannot be converted."
+msgstr "Не даје поруке грешке када страница не може бити претворено."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:15
+msgid "%manpath% - determine search path for manual pages"
+msgstr "%manpath% - одређује путању претраге за странице упутства"
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:22
+msgid ""
+"B<%manpath%> [\\|B<-qgdc?V>\\|] [\\|B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|] "
+"[\\|B<-C> I<file>\\|]"
+msgstr ""
+"B<%manpath%> [\\|B<-qgdc?V>\\|] [\\|B<-m> I<систем>\\|[\\|,.\\|.\\|.\\|]\\|] "
+"[\\|B<-C> I<датотека>\\|]"
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:32
+msgid ""
+"If $B<MANPATH> is set, B<%manpath%> will simply display its contents and "
+"issue a warning.  If not, B<%manpath%> will determine a suitable manual page "
+"hierarchy search path and display the results."
+msgstr ""
+"Ако је постављено $B<MANPATH>, B<%manpath%> ће једноставно приказати њене "
+"садржаје и дати упозорење.  Ако није, B<%manpath%> ће одредити пригодну "
+"путању претраге хијерархије странице упутства и приказати резултате."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:37
+msgid ""
+"The colon-delimited path is determined using information gained from the man-"
+"db configuration file - (I<%manpath_config_file%>)  and the user's "
+"environment."
+msgstr ""
+"Путања ограничена двотачком је одређена коришћењем података добијених у "
+"датотеци подешавања ман-дб-а — (I<%manpath_config_file%>) и корисничког "
+"окружења."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:41
+msgid "Do not issue warnings."
+msgstr "Не користи упозорења."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:49
+msgid ""
+"Produce a catpath as opposed to a manpath.  Once the manpath is determined, "
+"each path element is converted to its relative catpath."
+msgstr ""
+"Ствара кат-путању као наспрамну ман-путањи.  Када се одреди ман-путања, "
+"сваки састојак путање се претвара у одговарајућу кат-путању."
+
+#
+#.  Due to the rather silly limit of 6 args per request in some `native'
+#.  *roff compilers, we have do the following to get the two-line
+#.  hanging tag on one line. .PP to begin a new paragraph, then the
+#.  tag, then .RS (start relative indent), the text, finally .RE
+#.  (end relative indent).
+#. type: Plain text
+#: ../../man/man1/manpath.man1:60
+msgid ""
+"Produce a manpath consisting of all paths named as `global' within the man-"
+"db configuration file."
+msgstr ""
+"Ствара ман-путању која се састоји од свих путања именованих као „опште“ "
+"унутар датотеке подешавања ман-дб-а."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:73
+msgid ""
+"If this system has access to other operating system's manual hierarchies, "
+"this option can be used to include them in the output of B<%manpath%>.  To "
+"include NewOS's manual page hierarchies use the option B<-m> B<NewOS>."
+msgstr ""
+"Ако овај систем има приступ до хијерархија упутства других оперативних "
+"система, ова опција може бити коришћена за њихово укључивање у излаз B<"
+"%manpath%>а.  Да укључите хијерархије странице упутства НовихОС-ова "
+"користите опцију B<-m> B<NewOS>."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:84
+msgid ""
+"The I<system> specified can be a combination of comma delimited operating "
+"system names.  To include the native operating system's manual page "
+"hierarchies, the system name B<man> must be included in the argument "
+"string.  This option will override the $B<SYSTEM> environment variable."
+msgstr ""
+"Наведени I<систем> може бити комбинација назива оператвиних система "
+"раздвојених зарезом.  Да укључите хијерархије страница упутства изворног "
+"оперативног система, мора бити укључен B<ман> назив система у ниску "
+"аргумента.  Ова опција ће преписати променљиву система $B<СИСТЕМ>."
+
+#. type: Plain text
+#: ../../man/man1/manpath.man1:116
+msgid ""
+"If $B<MANPATH> is set, B<%manpath%> displays its value rather than "
+"determining it on the fly.  If $B<MANPATH> is prefixed by a colon, then the "
+"value of the variable is appended to the list determined from the content of "
+"the configuration files.  If the colon comes at the end of the value in the "
+"variable, then the determined list is appended to the content of the "
+"variable.  If the value of the variable contains a double colon (B<::>), "
+"then the determined list is inserted in the middle of the value, between the "
+"two colons."
+msgstr ""
+"Ако је постављено $B<MANPATH>, B<%manpath%> приказује његову вредност уместо "
+"да је одређује у лету.  Ако испред $B<MANPATH> стоји двотачка, тада се "
+"вредност променљиве придодаје на списак одређен из садржаја датотека "
+"подешавања.  Ако двотачка долази на крај вредности у променљивој, тада се "
+"одређени списак придодаје на садржај променљиве.  Ако вредност променљиве "
+"садржи двоструку двотачку (B<::>), тада се одређени списак умеће у средину "
+"вредности, између две двотачке."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:15
+msgid "%whatis% - display one-line manual page descriptions"
+msgstr "%whatis% - приказује описе страница упутства у једном реду"
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:32
+msgid ""
+"B<%whatis%> [\\|B<-dlv?V>\\|] [\\|B<-r>\\||\\|B<-w>\\|] [\\|B<-s> I<list>"
+"\\|] [\\|B<-m> I<system>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<path>\\|] [\\|"
+"B<-L> I<locale>\\|] [\\|B<-C> I<file>\\|] I<name> \\&.\\|.\\|."
+msgstr ""
+"B<%whatis%> [\\|B<-dlv?V>\\|] [\\|B<-r>\\||\\|B<-w>\\|] [\\|B<-s> I<списак>"
+"\\|] [\\|B<-m> I<систем>\\|[\\|,.\\|.\\|.\\|]\\|] [\\|B<-M> I<путања>\\|] "
+"[\\|B<-L> I<језик>\\|] [\\|B<-C> I<датотека>\\|] I<назив> \\&.\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:39
+msgid ""
+"Each manual page has a short description available within it.  B<%whatis%> "
+"searches the manual page names and displays the manual page descriptions of "
+"any I<name> matched."
+msgstr ""
+"Свака страница упутства има кратак опис који иде уз њу.  B<%шта-је%> "
+"претражује називе страница упутства и приказује описе страница упутства за "
+"сваки пронађени I<назив>."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:49
+msgid ""
+"I<name> may contain wildcards (B<-w>)  or be a regular expression (B<-r>).  "
+"Using these options, it may be necessary to quote the I<name> or escape "
+"(\\e) the special characters to stop the shell from interpreting them."
+msgstr ""
+"I<назив> може да садржи џокере (B<-w>) или да буде регуларни израз (B<-r>).  "
+"Употребом ових опција, може бити неопходно ставити под наводнике I<назив> "
+"или поставити знак за крај реда (\\e) код посебних знакова како би конзола "
+"престала да их тумачи."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:61
+msgid ""
+"B<index> databases are used during the search, and are updated by the B<"
+"%mandb%> program.  Depending on your installation, this may be run by a "
+"periodic cron job, or may need to be run manually after new manual pages "
+"have been installed.  To produce an old style text B<whatis> database from "
+"the relative B<index> database, issue the command:"
+msgstr ""
+"Базе података B<попис>а се користе у току претраге, а освежава их програм B<"
+"%мандб%>.  Зависно од ваше инсталације, ово може бити покретано повременим "
+"послом крона, или може бити потребно ручно покретање након инсталације нових "
+"страница упутстава.  Да створите текст старог стила B<шта-је> базе података "
+"из односне базе података B<попис>а, задајте наредбу:"
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:66
+msgid "B<%whatis% -M> I<manpath> B<-w '*' | sort E<gt>> I<manpath/whatis>"
+msgstr ""
+"B<%whatis% -M> I<ман_путања> B<-w '*' | sort E<gt>> I<ман_путања/шта-је>"
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:71
+msgid "where I<manpath> is a manual page hierarchy such as I</usr/man>."
+msgstr ""
+"где је I<ман_путања> хијерархија странице упутства као рецимо I</usr/man>."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:89
+msgid ""
+"Interpret each I<name> as a regular expression.  If a I<name> matches any "
+"part of a page name, a match will be made.  This option causes B<%whatis%> "
+"to be somewhat slower due to the nature of database searches."
+msgstr ""
+"Тумачи сваки I<назив> као регуларан израз.  Ако I<назив> одговара неком делу "
+"назива странице, поклапање ће бити учињено.  Ова опција доводи до тога да B<"
+"%шта-је%> буде некако спорији услед природе претрага базе података."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:100
+msgid ""
+"Interpret each I<name> as a pattern containing shell style wildcards.  For a "
+"match to be made, an expanded I<name> must match the entire page name.  This "
+"option causes B<%whatis%> to be somewhat slower due to the nature of "
+"database searches."
+msgstr ""
+"Тумачи сваки I<назив> као образац који садржи џокере у стилу конзоле.  Да би "
+"поређење било урађено, проширени I<назив> мора да одговара читавом називу "
+"странице.  Ова опција доводи до тога да B<%шта-је%> буде некако спорији "
+"услед природе претрага базе података."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:140
+msgid ""
+"If this system has access to other operating system's manual page names, "
+"they can be accessed using this option.  To search NewOS's manual page "
+"names, use the option B<-m> B<NewOS>."
+msgstr ""
+"Ако овај систем има приступ називима страница упутства других оперативних "
+"система, може им се приступити употребом ове опције.  За претраживање назива "
+"страница упутства НовихОС-ова, користите опцију „B<-m> B<НовиОС>“."
+
+#. type: Plain text
+#: ../../man/man1/whatis.man1:151
+msgid ""
+"The I<system> specified can be a combination of comma delimited operating "
+"system names.  To include a search of the native operating system's manual "
+"page names, include the system name B<man> in the argument string.  This "
+"option will override the $B<SYSTEM> environment variable."
+msgstr ""
+"Наведени I<систем> може бити комбинација назива оператвиних система "
+"раздвојених зарезом.  Да укључите претрагу назива страница упутства изворног "
+"оперативног система, укључите B<ман> назив система у ниску аргумента.  Ова "
+"опција ће преписати променљиву система $B<СИСТЕМ>."
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:15
+msgid "%zsoelim% - satisfy .so requests in roff input"
+msgstr "%zsoelim% - задовољава „.so“ захтеве у улазу роффа"
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:20
+msgid "B<%zsoelim%> [\\|B<-CVh>\\|] [\\|I<file> \\&.\\|.\\|.\\|]"
+msgstr "B<%zsoelim%> [\\|B<-CVh>\\|] [\\|I<датотека> \\&.\\|.\\|.\\|]"
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:26
+msgid ""
+"B<%zsoelim%> parses I<file> arguments, or if none are specified, its "
+"standard input for lines of the form:"
+msgstr ""
+"B<%zsoelim%> обрађује аргументе I<датотеке>, или ако ниједан није наведен, "
+"њен стандардни улаз за редовима у облику:"
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:29
+msgid "B<.so> E<lt>\\|I<filename>\\|E<gt>"
+msgstr "B<.so> E<lt>\\|I<назив_датотеке>\\|E<gt>"
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:48
+msgid ""
+"These requests are replaced by the contents of the I<filename> specified.  "
+"If the request cannot be met, B<%zsoelim%> looks for I<filename.ext> where "
+"I<.ext> can be one of B<.gz>, B<.Z> or B<.z>.  Other extension types may be "
+"supported depending upon compile time options.  If the request can be met by "
+"a compressed file, this file is decompressed using an appropriate "
+"decompressor and its output is used to satisfy the request."
+msgstr ""
+"Захтеви се замењују садржајем наведеног I<назива_датотеке>.  Ако захтев не "
+"може бити задовољен, B<%zsoelim%> тражи I<назив_датотеке.ext> где I<.ext> "
+"може бити B<.gz>, B<.Z> или B<.z>.  Остале врсте проширења могу бити "
+"подржане зависно од опција за време превођења.  Ако захтев не може бити "
+"задовољен запакованом датотеком, ова датотека се распакује употребом "
+"одговарајућег распакивача а његов излаз се користи за задовољавање захтева."
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:55
+msgid ""
+"Traditionally, B<soelim> programs were used to allow roff preprocessors to "
+"be able to preprocess the files referred to by the requests.  This "
+"particular version was written to circumvent problems created by support for "
+"compressed manual pages."
+msgstr ""
+"По обичају, програми B<soelim> се користе да допусте рофф предобрађивачима "
+"да буду у могућству да предобраде датотеке на које упућују захтеви.  Ово "
+"нарочито издање је написано да заобиђе проблеме које ствара подршка за "
+"сажете странице упутства."
+
+#. type: Plain text
+#: ../../man/man1/zsoelim.man1:64
+msgid ""
+"This flag is available for compatibility with other B<soelim> programs.  Its "
+"use is to enable .so requests followed by something other than whitespace.  "
+"As this is already the default behaviour, it is ignored."
+msgstr ""
+"Ова опција је доступна због сагласности са другим B<soelim> програмима.  "
+"Користи се за укључивање „.so“ захтева за којима следи нешто друго осим "
+"празнине.  Како је ово већ основно понашање, занемарује се."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:16
+msgid "manpath - format of the %manpath_config_file% file"
+msgstr "manpath - запис датотеке %manpath_config_file%"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:21
+msgid ""
+"The manpath configuration file is used by the manual page utilities to "
+"assess users' manpaths at run time, to indicate which manual page "
+"hierarchies (manpaths) are to be treated as system hierarchies and to assign "
+"them directories to be used for storing cat files."
+msgstr ""
+"Датотека подешавања ман путање се користи помагалима странице упутства за "
+"приступање корисничким ман путањама у време покретања, да укаже које "
+"хијерархије страница упутства (ман путање) треба да се сматрају за "
+"хијерархије система и да им додели директоријуме који ће бити коришћени за "
+"складиштење кат датотека."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:26
+msgid ""
+"If the environment variable $B<MANPATH> is already set, the information "
+"contained within %manpath_config_file% will not override it."
+msgstr ""
+"Ако је променљива окружења $B<MANPATH> већ постављена, податак садржан "
+"унутар %manpath_config_file% је неће преписати."
+
+#. type: SH
+#: ../../man/man5/manpath.man5:26
+#, no-wrap
+msgid "FORMAT"
+msgstr "ЗАПИС"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:28
+msgid "The following field types are currently recognised:"
+msgstr "Следеће врсте поља су тренутно препознате:"
+
+#. type: TP
+#: ../../man/man5/manpath.man5:28
+#, no-wrap
+msgid "B<#>I<\\ comment>"
+msgstr "B<#>I<\\ напомена>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:33
+msgid ""
+"Blank lines or those beginning with a B<#> will be treated as comments and "
+"ignored."
+msgstr ""
+"Празни редови или они који почињу са B<#> ће се сматрати напоменама и биће "
+"занемарени."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:33
+#, no-wrap
+msgid "B<MANDATORY_MANPATH>I<\\ manpath_element>"
+msgstr "B<ОБАВЕЗНА_МАНПУТАЊА>I<\\ елемент_ман_путање>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:40
+msgid ""
+"Lines of this form indicate manpaths that every automatically generated "
+"$B<MANPATH> should contain.  This will typically include I</usr/man>."
+msgstr ""
+"Редови овог обрасца означавају ман путање које свака самостално створена "
+"$B<MANPATH> треба да садржи.  Ово ће обично укључити I</usr/man>."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:40
+#, no-wrap
+msgid "B<MANPATH_MAP>I<\\ path_element\\ manpath_element>"
+msgstr "B<МАПА_МАНПУТАЊЕ>I<\\ елемент_путање\\ елемент_ман_путање>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:54
+msgid ""
+"Lines of this form set up $B<PATH> to $B<MANPATH> mappings.  For each "
+"I<path_element> found in the user's $B<PATH>, I<manpath_element> will be "
+"added to the $B<MANPATH>."
+msgstr ""
+"Редови овог обрасца подешавају $B<ПУТАЊУ> на $B<MANPATH> мапирања.  За сваки "
+"I<елемент_путање> пронађен у корисничкој $B<ПУТАЊИ>, I<елемент_ман_путање> "
+"ће бити додат у $B<MANPATH>."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:54
+#, no-wrap
+msgid "B<MANDB_MAP >I<manpath_element >\\|[\\| I<catpath_element> \\|]"
+msgstr "B<МАПА_МАНБП >I<елемент_ман_путање >\\|[\\| I<елемент_кат_путање> \\|]"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:64
+msgid ""
+"Lines of this form indicate which manpaths are to be treated as system "
+"manpaths, and optionally where their cat files should be stored.  This field "
+"type is particularly important if B<man> is a setuid program, as (when in "
+"the system configuration file %manpath_config_file% rather than the per-user "
+"configuration file .manpath)  it indicates which manual page hierarchies to "
+"access as the setuid user and which as the invoking user."
+msgstr ""
+"Редови овог обрасца показују које ман путање ће се сматрати системским ман "
+"путањама, и по могућству где би требало да се ускладиште њихове кат "
+"датотеке.  Ова врста поља је нарочито важна ако је B<ман> сетјиб програм, "
+"као што (када у датотеци подешавања система %manpath_config_file% уместо у "
+"по кориснику датотеци подешавања „.manpath“) показује којим хијерархијама "
+"страница упутства приступити као сетјиб корисник а којим као призивајући "
+"корисник."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:72
+msgid ""
+"The system manual page hierarchies are usually those stored under I</usr> "
+"such as I</usr/man>, I</usr/local/man> and I</usr/X11R6/man>."
+msgstr ""
+"Системске хијерархије страница упутства су обично оне ускладиштене под I</"
+"usr> као што су I</usr/man>, I</usr/local/man> и I</usr/X11R6/man>."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:78
+msgid ""
+"If cat pages from a particular I<manpath_element> are not to be stored or "
+"are to be stored in the traditional location, I<catpath_element> may be "
+"omitted."
+msgstr ""
+"Ако кат странице из нарочитог I<елемент_ман_путање> неће бити смештене или "
+"ће бити смештене на уобичајено место, I<елемент_кат_путање> може бити "
+"изостављен."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:87
+msgid ""
+"Traditional cat placement would be impossible for read only mounted manual "
+"page hierarchies and because of this it is possible to specify any valid "
+"directory hierarchy for their storage.  To observe the B<Linux FSSTND> the "
+"keyword `B<FSSTND> can be used in place of an actual directory."
+msgstr ""
+"Уобичајени кат смештај ће бити немогућ за хијерархије страница упутства "
+"прикачених само за читање и због тога могуће је навести било коју исправну "
+"хијерархију директоријума за њихово складиштење.  Да би испоштовало B<Линукс "
+"ФССТНД> кључна реч `B<FSSTND> може бити коришћена уместо стварног "
+"директоријума."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:96
+msgid ""
+"Unfortunately, it is necessary to specify B<all> system man tree paths, "
+"including alternate operating system paths such as I</usr/man/sun> and any "
+"B<NLS locale> paths such as I</usr/man/de_DE.88591>."
+msgstr ""
+"Нажалост, неопходно је навести путање ман стабла B<читавог> система, "
+"укључујући заменске путање оперативног система као што је I</usr/man/sun> и "
+"било које путање B<НЛС језика> као што је I</usr/man/de_DE.88591>."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:104
+msgid ""
+"As the information is parsed line by line in the order written, it is "
+"necessary for any manpath that is a sub-hierarchy of another hierarchy to be "
+"listed first, otherwise an incorrect match will be made.  An example is that "
+"I</usr/man/de_DE.88591> must come before I</usr/man>."
+msgstr ""
+"Како се податак обрађује ред по ред по записаном редоследу, неопходно је за "
+"било коју ман путању која је под-хијерархија друге хијерархије да буде прва "
+"наведена, у супротном биће урађено нетачно поређење.  Један пример јесте да "
+"I</usr/man/de_DE.88591> мора доћи пре I</usr/man>."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:104
+#, no-wrap
+msgid "B<DEFINE>I<\\ key\\ value>"
+msgstr "B<ОДРЕЂУЈЕ>I<\\ кључ\\ вредност>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:114
+msgid ""
+"Lines of this form define miscellaneous configuration variables; see the "
+"default configuration file for those variables used by the manual pager "
+"utilities.  They include default paths to various programs (such as I<grep> "
+"and I<tbl>), and default sets of arguments to those programs."
+msgstr ""
+"Редови овог обрасца одређују разне променљиве подешавања; погледајте основну "
+"датотеку подешавања за оне променљиве коришћене помагалима страничара "
+"упутства.  Укључују основне путање до разних програма (као што су I<греп> и "
+"I<тбл>), и основне скупове аргумената до тих програма."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:114
+#, no-wrap
+msgid "B<SECTION> I<section> .\\|.\\|."
+msgstr "B<ОДЕЉАК> I<одељак> .\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:122
+msgid ""
+"Lines of this form define the order in which manual sections should be "
+"searched.  If there are no B<SECTION> directives in the configuration file, "
+"the default is:"
+msgstr ""
+"Редови овог обрасца одређују редослед по коме одељци упутства требају бити "
+"тражени.  Ако нема смерница B<ОДЕЉАК> у датотеци подешавања, основно је:"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:132
+msgid ""
+"If multiple B<SECTION> directives are given, their section lists will be "
+"concatenated."
+msgstr ""
+"Ако је дато више смерница B<ОДЕЉАК> њихови спискови одељака ће бити "
+"надовезани."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:139
+msgid ""
+"If a particular extension is not in this list (say, 1mh) it will be "
+"displayed with the rest of the section it belongs to.  The effect of this is "
+"that you only need to explicitly list extensions if you want to force a "
+"particular order.  Sections with extensions should usually be adjacent to "
+"their main section (e.g. \"1 1mh 8 ...\")."
+msgstr ""
+"Ако нарочито проширење није на списку (рецимо, 1mh) биће приказано са "
+"остатком одељка коме припада.  Ово доводи до тога да једино морате изричито "
+"да излистате проширења ако желите да приморате нарочити редослед.  Одељци са "
+"проширењима обично би требали бити близу њихових главних одељака (тј. „1 1mh "
+"8 ...“)."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:142
+msgid "B<SECTIONS> is accepted as an alternative name for this directive."
+msgstr "B<ОДЕЉЦИ> се прихвата као заменски назив за ову одредницу."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:143
+#, no-wrap
+msgid "B<MINCATWIDTH>I<\\ width>"
+msgstr "B<НАЈМАЊА_КАТ_ШИРИНА>I<\\ ширина>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:149
+msgid ""
+"If the terminal width is less than I<width>, cat pages will not be created "
+"(if missing) or displayed.  The default is 80."
+msgstr ""
+"Ако је ширина терминала мања од I<ширине>, кат странице неће бити створене "
+"(ако недостају) или приказане.  Основно је 80."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:149
+#, no-wrap
+msgid "B<MAXCATWIDTH>I<\\ width>"
+msgstr "B<НАЈВЕЋА_КАТ_ШИРИНА>I<\\ ширина>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:155
+msgid ""
+"If the terminal width is greater than I<width>, cat pages will not be "
+"created (if missing) or displayed.  The default is 80."
+msgstr ""
+"Ако је ширина терминала већа од I<ширине>, кат странице неће бити створене "
+"(ако недостају) или приказане.  Основно је 80."
+
+#. type: TP
+#: ../../man/man5/manpath.man5:155
+#, no-wrap
+msgid "B<CATWIDTH>I<\\ width>"
+msgstr "B<КАТ_ШИРИНА>I<\\ ширина>"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:165
+msgid ""
+"If I<width> is non-zero, cat pages will always be formatted for a terminal "
+"of the given width, regardless of the width of the terminal actually being "
+"used.  This should generally be within the range set by B<MINCATWIDTH> and "
+"B<MAXCATWIDTH>."
+msgstr ""
+"Ако I<ширина> није нула, кат странице ће увек бити обликоване за терминал "
+"дате ширине, без обзира на ширину терминала која се заправо користи.  Ово "
+"треба обично бити унутар скупа опсега B<НАЈМАЊА_КАТ_ШИРИНА> и "
+"B<НАЈВЕЋА_КАТ_ШИРИНА>."
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:170
+msgid "This flag prevents B<%man%>(1)  from creating cat pages automatically."
+msgstr "Ова опција спречава B<%ман%>(1) да самостално створи кат странице."
+
+#. type: SH
+#: ../../man/man5/manpath.man5:170
+#, no-wrap
+msgid "BUGS"
+msgstr "ГРЕШКЕ"
+
+#. type: Plain text
+#: ../../man/man5/manpath.man5:173
+msgid ""
+"Unless the rules above are followed and observed precisely, the manual pager "
+"utilities will not function as desired.  The rules are overly complicated."
+msgstr ""
+"Ако има одступања од горњих правила, помагала страничара упутства неће "
+"радити као што је замишљено.  Правила су превише сложена. "
+
+#. type: Plain text
+#: ../../man/man8/accessdb.man8:16
+msgid ""
+"accessdb - dumps the content of a man-db database in a human readable format"
+msgstr ""
+"accessdb - исписује садржај ман-дб базе података у запису који се може "
+"прочитати"
+
+#. type: Plain text
+#: ../../man/man8/accessdb.man8:20
+msgid "B</usr/sbin/accessdb> [\\|B<-d?V>\\|] [I<E<lt>index-fileE<gt>>]"
+msgstr "B</usr/sbin/accessdb> [\\|B<-d?V>\\|] [I<E<lt>датотека_пописаE<gt>>]"
+
+#. type: Plain text
+#: ../../man/man8/accessdb.man8:27
+msgid ""
+"B<accessdb> will output the data contained within a man-db database in a "
+"human readable form.  By default, it will dump the data from B</var/cache/"
+"man/index.E<lt>db-typeE<gt>,> where E<lt>db-typeE<gt> is dependent on the "
+"database library in use."
+msgstr ""
+"B<accessdb> ће исписати податке садржане унутар ман-дб базе података у "
+"запису погодном за читање.  По основи, избациће податке из B</var/cache/man/"
+"index.E<lt>врста-бпE<gt>,> где је E<lt>врста-бпE<gt> зависна од библиотеке "
+"базе података у употреби."
+
+#. type: Plain text
+#: ../../man/man8/accessdb.man8:29
+msgid "Supplying an argument to accessdb will override this default."
+msgstr "Прилагање аргумента уз „accessdb“ ће преписати ово понашање."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:15
+msgid "%catman% - create or update the pre-formatted manual pages"
+msgstr "%catman% - ствара или освежава предобликоване странице упутства"
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:24
+msgid ""
+"B<%catman%> [\\|B<-d?V>\\|] [\\|B<-M> I<path>\\|] [\\|B<-C> I<file>\\|] [\\|"
+"I<section>\\|] \\&.\\|.\\|."
+msgstr ""
+"B<%catman%> [\\|B<-d?V>\\|] [\\|B<-M> I<путања>\\|] [\\|B<-C> I<датотека>"
+"\\|] [\\|I<одељак>\\|] \\&.\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:32
+msgid ""
+"B<%catman%> is used to create an up to date set of pre-formatted manual "
+"pages known as cat pages.  Cat pages are generally much faster to display "
+"than the original manual pages, but require extra storage space.  The "
+"decision to support cat pages is that of the local administrator, who must "
+"provide suitable directories to contain them."
+msgstr ""
+"B<%катман%> се користи за стварање освеженог скупа унапред обликованих "
+"страница упутства познатих као кат странице.  Кат странице су углавном много "
+"брже за приказивање него изворне странице упутства, али захтевају додатни "
+"складишни простор.  Одлуку о подржавању доноси месни администратор, који "
+"мора да обезбеди погодне директоријуме који ће их садржати."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:49
+msgid ""
+"The options available to B<%catman%> are the manual page hierarchies and "
+"sections to pre-format.  The default hierarchies are those specified as "
+"system hierarchies in the man-db configuration file, and the default "
+"sections are either the colon-delimited contents of the environment variable "
+"$B<MANSECT> or the standard set compiled into B<%man%> if $B<MANSECT> is "
+"undefined.  Supplying B<%catman%> with a set of whitespace-delimited section "
+"names will override both of the above."
+msgstr ""
+"Опције доступне B<%катман%>у јесу хијерархије страница упутства и одељци за "
+"предобликовање.  Основне хијерархије су оне наведене као хијерархије система "
+"у датотеци подешавања ман-дба, а основни одељци су или садржаји променљиве "
+"окружења $B<MANSECT> одвојени двотачком или стандни скуп преведен у B<%ман%> "
+"ако није одређено $B<MANSECT>.  Придодавањем B<%катман%>у скупа назива "
+"одељака одвојених празнинама ће преписати оба."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:55
+msgid ""
+"B<%catman%> makes use of the B<index> database cache associated with each "
+"hierarchy to determine which files need to be formatted."
+msgstr ""
+"B<%катман> користи оставу B<пописа> базе података придружену свакој "
+"хијерархији да одреди које датотеке треба обликовати."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:64
+msgid ""
+"Specify an alternate colon-delimited manual page hierarchy search path.  By "
+"default, this is all paths indicated as system hierarchies in the man-db "
+"configuration file."
+msgstr ""
+"Наводи заменску путању претраге хијерархије странице упутства одвојену "
+"двотачком. По основи, то су све путање означене као хијерархије система у "
+"ман-дб датотеци подешавања."
+
+#. type: Plain text
+#: ../../man/man8/catman.man8:109 ../../man/man8/mandb.man8:213
+msgid "An alternate or FSSTND compliant global I<index> database cache."
+msgstr "Заменска или ФССТНД сагласна остава базе података општег I<пописа>."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:16
+msgid "%mandb% - create or update the manual page index caches"
+msgstr "%mandb% - ствара или освежава оставе пописа странице упутства"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:22
+msgid ""
+"B<%mandb%> [\\|B<-dqsucpt?V>\\|] [\\|B<-C> I<file>\\|] [\\|I<manpath>\\|]"
+msgstr ""
+"B<%mandb%> [\\|B<-dqsucpt?V>\\|] [\\|B<-C> I<датотека>\\|] [\\|I<ман_путања>"
+"\\|]"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:29
+msgid ""
+"B<%mandb%> [\\|B<-dqsut>\\|] [\\|B<-C> I<file>\\|] B<-f> I<filename>\\ .\\|."
+"\\|."
+msgstr ""
+"B<%mandb%> [\\|B<-dqsut>\\|] [\\|B<-C> I<датотека>\\|] B<-f> "
+"I<назив_датотеке>\\ .\\|.\\|."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:38
+msgid ""
+"B<%mandb%> is used to initialise or manually update B<index> database caches "
+"that are usually maintained by B<%man%>.  The caches contain information "
+"relevant to the current state of the manual page system and the information "
+"stored within them is used by the man-db utilities to enhance their speed "
+"and functionality."
+msgstr ""
+"B<%мандб%> се користи да покрене или да ручно освежи оставе B<пописа> базе "
+"података које углавном одржава B<%ман%>.  Оставе садрже податак који се "
+"односи на текуће стање система странице упутства а податак смештен у њима "
+"користе ман-дб помагала да побољшају брзину и делотворност."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:46
+msgid ""
+"When creating or updating an B<index>, B<%mandb%> will warn of bad ROFF .so "
+"requests, bogus manual page filenames and manual pages from which the "
+"B<whatis> cannot be parsed."
+msgstr ""
+"Приликом стварања или освежавања B<пописа>, B<%мандб%> ће упозорити о лошим "
+"РОФФ .so захтевима, нетачним називима датотека странице упутства из којих "
+"B<шта-је> не може бити обрађен."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:52
+msgid ""
+"Supplying B<%mandb%> with an optional colon-delimited path will override the "
+"internal system manual page hierarchy search path, determined from "
+"information found within the man-db configuration file."
+msgstr ""
+"Додавањем B<%мандб%>у изборне путање одвојене двотачком ће преписати путању "
+"претраге хијерархије унутрашњег система странице упутства, одређену из "
+"податка пронађеног у ман-дб датотеци подешавања."
+
+#. type: SH
+#: ../../man/man8/mandb.man8:52
+#, no-wrap
+msgid "DATABASE CACHES"
+msgstr "ОСТАВЕ БАЗЕ ПОДАТАКА"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:55
+msgid ""
+"B<%mandb%> can be compiled with support for any one of the following "
+"database types."
+msgstr ""
+"B<%мандб%> може бити преведен са подршком за сваку од следећих врста база "
+"података."
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:59
+#, no-wrap
+msgid "Name"
+msgstr "Назив"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:59
+#, no-wrap
+msgid "Type"
+msgstr "Врста"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:59
+#, no-wrap
+msgid "Async"
+msgstr "Неусаглашено"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:59
+#, no-wrap
+msgid "Filename"
+msgstr "Датотека"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:61
+#, no-wrap
+msgid "Berkeley db"
+msgstr "Берклијева бп"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:63
+#, no-wrap
+msgid "Binary tree"
+msgstr "Бинарно стабло"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:63 ../../man/man8/mandb.man8:66
+#, no-wrap
+msgid "Yes"
+msgstr "Да"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:63
+#, no-wrap
+msgid "I<index.bt>"
+msgstr "I<попис.bt>"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:64
+#, no-wrap
+msgid "GNU gdbm"
+msgstr "Гну гдбм"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:66 ../../man/man8/mandb.man8:69
+#, no-wrap
+msgid "Hashed"
+msgstr "Хеширано"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:66
+#, no-wrap
+msgid "I<index.db>"
+msgstr "I<попис.db>"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:67
+#, no-wrap
+msgid "UNIX ndbm"
+msgstr "ЈУНИКС нбпм"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:69
+#, no-wrap
+msgid "No"
+msgstr "Не"
+
+#. type: tbl table
+#: ../../man/man8/mandb.man8:69
+#, no-wrap
+msgid "I<index.(dir|pag)>"
+msgstr "I<попис.(dir|pag)>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:80
+msgid ""
+"Those database types that support asynchronous updates provide enhanced "
+"speed at the cost of possible corruption in the event of unusual "
+"termination.  In an unusual case where this has occurred, it may be "
+"necessary to rerun B<%mandb%> with the B<-c> option to re-create the "
+"databases from scratch."
+msgstr ""
+"Оне врсте база података које подржавају неусаглашена освежавања обезбеђују "
+"побољшану брзину уз цену могућег оштећења у случају неустаљеног завршетка.  "
+"У неустаљеном случају у коме је до тога дошло, може бити неопходно поново "
+"покренути B<%мандб%> са опцијом B<-c> зарад поновног стварање базе података "
+"од саме нуле."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:87
+msgid "Produce no warnings."
+msgstr "Не ствара упозорења."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:91
+msgid ""
+"Do not spend time looking for or adding information to the databases "
+"regarding stray cats."
+msgstr ""
+"Не троши време тражећи или додајући податке у базе података без обзира на "
+"залутале кат-се."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:95
+msgid ""
+"Do not spend time checking for deleted manual pages and purging them from "
+"the databases."
+msgstr ""
+"Не троши време на проверу за обрисаним страницама упутства и на њихово "
+"избацивање из база података."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:107
+msgid ""
+"By default, B<%mandb%> will try to update any previously created databases.  "
+"If a database does not exist, it will create it.  This option forces B<%mandb"
+"%> to delete previous databases and re-create them from scratch, and implies "
+"B<--no-purge.> This may be necessary if a database becomes corrupt or if a "
+"new database storage scheme is introduced in the future."
+msgstr ""
+"По основи, B<%мандб%> ће покушати да освежи сваку претходно створену базу "
+"подтаака.  Ако база података не постоји, направиће је.  Ова опција приморава "
+"B<%мандб%> да обрише претходне базе података и да их поново направи од нуле, "
+"и подразумева B<--no-purge.> Ово може бити неопходно ако база података "
+"постане оштећена или ако је касније уведена нова шема складиштења базе "
+"података."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:111
+msgid ""
+"Create user databases only, even with write permissions necessary to create "
+"system databases."
+msgstr ""
+"Ствара само корисничке базе података, чак и са овлашћењима за писање "
+"потребним за стварање системских база података."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:117
+msgid ""
+"Perform correctness checks on manual pages in the hierarchy search path.  "
+"With this option, B<%mandb%> will not alter existing databases."
+msgstr ""
+"Обавља провере исправности над страницама упутства у путањама претраге "
+"хијерархије.  Са овом опцијом, B<%мандб%> неће изменити постојеће базе "
+"података."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:131
+msgid ""
+"Update only the entries for the given filename.  This option is not for "
+"general use; it is used internally by B<%man%> when it has been compiled "
+"with the B<MAN_DB_UPDATES> option and finds that a page is out of date.  It "
+"implies B<-p> and disables B<-c> and B<-s>."
+msgstr ""
+"Освежава само уносе за дати назив датотеке.  Ова опција није за општу "
+"уптребу; коришћена је изнутра B<%ман%>ом када је преведен опцијом "
+"B<MAN_DB_UPDATES> и када је пронашао да је страница застарела.  Подразумева "
+"B<-p> а искључује B<-c> и B<-s>."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:138
+msgid "Show the usage message, then exit."
+msgstr "Приказује поруку коришћења, затим излази."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:144
+msgid "Show the version, then exit."
+msgstr "Приказује издање, затим излази."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:151
+msgid "Usage, syntax, or configuration file error."
+msgstr "Грешка коришћења, садржаја или датотеке подешавања."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:157
+msgid "A child process failed."
+msgstr "Подпроцес се није извршио успешно."
+
+#. type: SH
+#: ../../man/man8/mandb.man8:157
+#, no-wrap
+msgid "DIAGNOSTICS"
+msgstr "ДИЈАГНОСТИКА"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:159
+msgid "The following warning messages can be emitted during database building."
+msgstr ""
+"Следеће поруке упозорења могу бити изостављене за време изградње базе "
+"података."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:159
+#, no-wrap
+msgid "B<E<lt>filenameE<gt>: whatis parse for page(sec) failed>"
+msgstr "B<E<lt>назив_датотекеE<gt>: шта-је обрада за страницу(одељак) није успела>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:170
+msgid ""
+"An attempt to extract whatis line(s) from the given E<lt>filenameE<gt> "
+"failed.  This is usually due to a poorly written manual page, but if many "
+"such messages are emitted it is likely that the system contains non-standard "
+"manual pages which are incompatible with the man-db whatis parser.  See the "
+"B<WHATIS PARSING> section in B<lexgrog>(1)  for more information."
+msgstr ""
+"Покушај за извлачењем реда(ова) из датог E<lt>назива_датотекеE<gt> није "
+"успео.  Ово је углавном због лоше написане странице упутства, али ако је "
+"приказано много таквих порука највероватније да систем садржи нестандардне "
+"странице упутства које су несагласне са ман-дб шта-је обрађивачем.  "
+"Погледајте одељак B<WHATIS PARSING> у B<lexgrog>(1) за више података."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:170
+#, no-wrap
+msgid "B<E<lt>filenameE<gt>: is a dangling symlink>"
+msgstr "B<E<lt>filenameE<gt>: је апсолутна симболичка веза>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:175
+msgid ""
+"E<lt>filenameE<gt> does not exist but is referenced by a symbolic link.  "
+"Further diagnostics are usually emitted to identify the E<lt>filenameE<gt> "
+"of the offending link."
+msgstr ""
+"E<lt>filenameE<gt> не постоји али на њу упућује симболичка веза.  Наредне "
+"дијагнозе се обично приказују зарад препознавања E<lt>назива_датотекеE<gt> "
+"нетачне везе."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:175
+#, no-wrap
+msgid "B<E<lt>filenameE<gt>: bad symlink or ROFF `.so' request>"
+msgstr "B<E<lt>filenameE<gt>: лоша симболичка веза или РОФФ „.so“ захтев>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:179
+msgid ""
+"E<lt>filenameE<gt> is either a symbolic link to, or contains a ROFF include "
+"request to, a non existent file."
+msgstr ""
+"E<lt>filenameE<gt> је било симболичка веза до, или садржи РОФФ укључује "
+"захтев до, непостојеће датотеке."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:179
+#, no-wrap
+msgid "B<E<lt>filenameE<gt>: ignoring bogus filename>"
+msgstr "B<E<lt>filenameE<gt>: занемарује неисправан назив датотеке>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:185
+msgid ""
+"The E<lt>filenameE<gt> may or may not be a valid manual page but its name is "
+"invalid.  This is usually due to a manual page with sectional extension "
+"E<lt>xE<gt> being put in manual page section E<lt>yE<gt>."
+msgstr ""
+"E<lt>Назив_датотекеE<gt> може или не може бити исправна страница упутства "
+"већ је њен назив неисправан.  Ово је обично услед странице упутства са "
+"проширењем одељка E<lt>xE<gt> које је убачено у одељак странице упутства "
+"E<lt>yE<gt>."
+
+#. type: TP
+#: ../../man/man8/mandb.man8:185
+#, no-wrap
+msgid "B<E<lt>filename_maskE<gt>: competing extensions>"
+msgstr "B<E<lt>filename_maskE<gt>: конкурентна проширења>"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:191
+msgid ""
+"The wildcard E<lt>filename_maskE<gt> is not unique.  This is usually caused "
+"by the existence of both a compressed and uncompressed version of the same "
+"manual page.  All but the most recent are ignored."
+msgstr ""
+"Џокер E<lt>filename_maskE<gt> није јединствен.  До овога обично долази када "
+"постоје и сажето и несажето издање исте странице упутства.  Сва остала осим "
+"најновијег се занемарују."
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:202
+msgid "Older locations for the database cache included:"
+msgstr "Старија места за укључену оставу базе података:"
+
+#. type: Plain text
+#: ../../man/man8/mandb.man8:223
+msgid ""
+"The B<WHATIS PARSING> section formerly in this manual page is now part of "
+"B<lexgrog>(1)."
+msgstr ""
+"Одељак B<WHATIS PARSING> раније у овој страници упутства је сада део "
+"B<lexgrog>а(1)."
+
+#~ msgid "%thapropos%"
+#~ msgstr "%thapropos%"
+
+#~ msgid "%date%"
+#~ msgstr "%date%"
+
+#~ msgid "%version%"
+#~ msgstr "%version%"
+
+#~ msgid "LEXGROG"
+#~ msgstr "ЛЕКСГРОГ"
+
+#~ msgid "%thman%"
+#~ msgstr "%thman%"
+
+#~ msgid "%thmanconv%"
+#~ msgstr "%thmanconv%"
+
+#~ msgid "%thmanpath%"
+#~ msgstr "%thmanpath%"
+
+#~ msgid "%thwhatis%"
+#~ msgstr "%thwhatis%"
+
+#~ msgid "%thzsoelim%"
+#~ msgstr "%thzsoelim%"
+
+#~ msgid "MANPATH"
+#~ msgstr "МАНПУТАЊА"
+
+#~ msgid "%manpath_config_file%"
+#~ msgstr "%manpath_config_file%"
+
+#~ msgid "ACCESSDB"
+#~ msgstr "БППРИСТУП"
+
+#~ msgid "%thcatman%"
+#~ msgstr "%thcatman%"
+
+#~ msgid "%thmandb%"
+#~ msgstr "%thmandb%"
+
+#~ msgid ""
+#~ "$mtime$ -E<gt> \"795987034\"\n"
+#~ "$version$ -E<gt> \"2.3.1\"\n"
+#~ "apropos -E<gt> \"1 1 795981542 A - - search the manual page names and "
+#~ "descriptions\"\n"
+#~ "catman -E<gt> \"8 8 795981544 A - - create or update the pre-formatted "
+#~ "manual pages\"\n"
+#~ "man -E<gt> \"1 1 795981542 A - - an interface to the on-line reference "
+#~ "manuals\"\n"
+#~ "mandb -E<gt> \"8 8 795981544 A - - create or update the manual page index "
+#~ "caches\"\n"
+#~ "manpath -E<gt> \" 1 5\"\n"
+#~ "manpath~1 -E<gt> \"1 1 795981542 A - - determine search path for manual "
+#~ "pages\"\n"
+#~ "manpath~5 -E<gt> \"5 5 795981543 A - - format of the /etc/man_db.config "
+#~ "file\"\n"
+#~ "whatis -E<gt> \"1 1 795981543 A - - search the manual page names\"\n"
+#~ "zsoelim -E<gt> \"1 1 795981543 A - - satisfy .so requests in roff input"
+#~ "\"\n"
+#~ msgstr ""
+#~ "$mtime$ -E<gt> „795987034“\n"
+#~ "$version$ -E<gt> „2.3.1“\n"
+#~ "apropos -E<gt> „1 1 795981542 A - - тражи називе и описе страница "
+#~ "упутства“\n"
+#~ "catman -E<gt> „8 8 795981544 A - - ствара или освежава предобликоване "
+#~ "странице упутства“\n"
+#~ "man -E<gt> „1 1 795981542 A - - сучеље до упутних упутстава на мрежи“\n"
+#~ "mandb -E<gt> \"8 8 795981544 A - - ствара или освежава оставе пописа "
+#~ "странице упутства“\n"
+#~ "manpath -E<gt> „ 1 5“\n"
+#~ "manpath~1 -E<gt> „1 1 795981542 A - - одређује путању претраге за "
+#~ "странице упутства“\n"
+#~ "manpath~5 -E<gt> „5 5 795981543 A - - запис датотеке /etc/man_db.config“\n"
+#~ "whatis -E<gt> „1 1 795981543 A - - тражи називе страница упутства“\n"
+#~ "zsoelim -E<gt> „1 1 795981543 A - - задовољава .so захтеве у рофф улазу\n"
+
+#~ msgid "GNU gdbm v E<gt>= 1.6"
+#~ msgstr "ГНУ гбпм и E<gt>= 1.6"
+
+#~ msgid "GNU gdbm v E<lt>  1.6"
+#~ msgstr "ГНУ гбпм и E<lt>  1.6"

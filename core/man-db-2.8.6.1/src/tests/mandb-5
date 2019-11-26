@@ -1,0 +1,30 @@
+#! /bin/sh
+
+# Test handling of empty files.
+#   https://bugs.debian.org/622104
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MANDB=mandb}
+
+init
+fake_config /usr/share/man /usr/X11R6/man
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+db_ext="$(db_ext)"
+
+mkdir -p "$tmpdir/usr/share/man/man1"
+touch "$tmpdir/usr/share/man/man1/empty.1"
+gzip -9 "$tmpdir/usr/share/man/man1/empty.1"
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+# $? is deliberately expanded here.
+expect_pass 'empty page' "test $? -eq 0"
+
+./fspause
+ln -s empty.1.gz "$tmpdir/usr/share/man/man1/empty2.1.gz"
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+# $? is deliberately expanded here.
+expect_pass 'symlink to empty page' "test $? -eq 0"
+
+finish

@@ -1,0 +1,6 @@
+PO4A-HEADER:mode=after;position=^\.TH;beginboundary=FakePo4aBoundary
+.SH TŁUMACZENIE
+Wojciech Kotwica w 1999 roku przetłumaczył część stron podręcznika pakietu 
+man-db i udostępnił je w ramach Projektu Tłumaczenia Manuali. 
+.br
+Robert Luberda tłumaczenie zaktualizował i uzupełnił w roku 2008.

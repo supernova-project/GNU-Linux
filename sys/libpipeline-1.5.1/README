@@ -1,0 +1,114 @@
+libpipeline, a pipeline manipulation library
+============================================
+
+  http://libpipeline.nongnu.org/
+
+libpipeline is a C library for setting up and running pipelines of
+processes, without needing to involve shell command-line parsing which is
+often error-prone and insecure.  This alleviates programmers of the need to
+laboriously construct pipelines using lower-level primitives such as fork(2)
+and execve(2).
+
+Full programmers' documentation may be found using 'man libpipeline'.
+
+Installation
+------------
+
+If you need to install libpipeline starting from source code, then you will
+need these separate packages installed before configuring libpipeline in
+order to run its test suite:
+
+  pkg-config (http://www.freedesktop.org/wiki/Software/pkg-config)
+  check (http://check.sourceforge.net/)
+
+See the INSTALL file for general installation instructions.
+
+Building programs with libpipeline
+----------------------------------
+
+libpipeline supplies a pkg-config file which lists appropriate compiler and
+linker flags for building programs using it.  The output of 'pkg-config
+--cflags libpipeline' should be passed to the compiler (typically CFLAGS)
+and the output of 'pkg-config --libs libpipeline' should be passed to the
+linker (typically LDFLAGS).
+
+If your program uses the GNU Autotools, then you can put this in
+configure.ac:
+
+  PKG_CHECK_MODULES([libpipeline], [libpipeline])
+
+... and this in the appropriate Makefile.am (replacing 'program' with the
+Automake-canonicalised name for your program):
+
+  AM_CFLAGS = $(libpipeline_CFLAGS)
+  program_LDADD = $(libpipeline_LIBS)
+
+The details may vary for particular build systems, but this should be a
+reasonable start.
+
+When building with GCC, you should use at least the -Wformat option
+(included in -Wall) to ensure that the 'sentinel' function attribute is
+checked.  This means that your program will produce a warning if it calls
+any of the several libpipeline functions that require a trailing NULL
+without passing that trailing NULL.
+
+Copyright and licensing
+-----------------------
+
+Copyright (C) 1994 Markus Armbruster.
+Copyright (C) 1989, 1990, 1991, 1992, 2000, 2001, 2002, 2003, 2004, 2005,
+              2006, 2007, 2008, 2009, 2010
+              Free Software Foundation, Inc.
+Copyright (C) 2003-2017 Colin Watson.
+
+libpipeline is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+
+libpipeline is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with libpipeline; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
+USA.
+
+Note on GPL versions
+--------------------
+
+(This note is informative, and if it conflicts with the terms of the licence
+then the licence is correct.  See the full text of the licence in the
+COPYING file for precise details.)
+
+The core source code of libpipeline is licensed under GPL v2 or later.
+However, libpipeline incorporates parts of the Gnulib portability library,
+copyrighted by the Free Software Foundation and others, and much of Gnulib
+is distributed under GPL v3 or later.  This means that libpipeline as a
+whole falls under the terms of the GPL v3 or later.  Unless you take special
+pains to remove the GPL v3 portions, you must therefore follow the terms and
+conditions of the GPL v3 or later when distributing libpipeline itself, or
+distributing code linked against it.
+
+Note that this does not require that your own source code be licensed under
+the GPL v3, contrary to popular misunderstanding.  However, you must be
+prepared to distribute your work as a whole under the terms of the GPL v3 or
+later, which requires that your licence be compatible with the GPL v3.  See
+http://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses if you
+need advice on compatibility.
+
+The GPL mainly restricts distribution ("conveying", in the specific language
+of GPL v3), and is careful not to restrict private use.  Therefore, you may
+write programs for your own use that use libpipeline without needing to
+license them under GPL v3-compatible terms.  If you distribute these
+programs to others, then you must take care to use compatible licensing.
+
+Credits
+-------
+
+Thanks to Scott James Remnant for code review, Ian Jackson for an extensive
+design review, and Kees Cook and Matthias Klose for helpful conversations.
+
+ -- Colin Watson <cjwatson@debian.org>

@@ -1,0 +1,61 @@
+#! /bin/sh
+
+# Test for:
+#   https://bugs.debian.org/503472
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MAN=man}
+
+init
+fake_config /usr/local/man /usr/share/man
+MANPATH="$tmpdir/usr/local/man:$tmpdir/usr/share/man"
+export MANPATH
+
+cat >"$tmpdir/fake-program" <<EOF
+#! /bin/sh
+exec cat
+EOF
+chmod +x "$tmpdir/fake-program"
+PATH="$abstmpdir:$PATH"
+export PATH
+
+cat >>"$tmpdir/manpath.config" <<EOF
+DEFINE tbl fake-program
+DEFINE nroff fake-program
+EOF
+
+write_page test 1 "$tmpdir/usr/share/man/man1/test.1" \
+	UTF-8 '' '' 'test \- top-level test page'
+echo '.so man7/test2.7' >>"$tmpdir/usr/share/man/man1/test.1"
+write_page test2 7 "$tmpdir/usr/local/man/man7/test2.7" \
+	UTF-8 '' '' 'test2 \- second-level local test page'
+echo '.so test3.1' >>"$tmpdir/usr/local/man/man7/test2.7"
+write_page test3 1 "$tmpdir/usr/local/man/man1/test3.1" \
+	UTF-8 '' '' 'test3 \- third-level local test page'
+write_page test3 1 "$tmpdir/usr/share/man/man1/test3.1" \
+	UTF-8 '' '' 'test3 \- third-level test page'
+cat >"$tmpdir/1.exp" <<'EOF'
+.TH test 1
+.SH NAME
+test \- top-level test page
+.SH DESCRIPTION
+test
+.TH test2 7
+.SH NAME
+test2 \- second-level local test page
+.SH DESCRIPTION
+test
+.TH test3 1
+.SH NAME
+test3 \- third-level test page
+.SH DESCRIPTION
+test
+EOF
+run $MAN -C "$tmpdir/manpath.config" test | \
+	grep -v '^\.l[flt] ' >"$tmpdir/1.out"
+expect_pass 'test(1) expanded correctly' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+finish

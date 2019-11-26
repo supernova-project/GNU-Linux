@@ -1,0 +1,75 @@
+#! /bin/sh
+
+# Test manconv's handling of various odd encoding combinations.
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MANCONV=manconv}
+
+init
+
+(for x in $(seq 160 255); do
+	printf "\\$(printf %03o "$x")"
+done
+echo) >"$tmpdir/1.inp"
+
+iconv -f ISO-8859-1 -t UTF-8 <"$tmpdir/1.inp" >"$tmpdir/1.exp"
+run $MANCONV -f UTF-8:ISO-8859-1 -t UTF-8 <"$tmpdir/1.inp" >"$tmpdir/1.out"
+expect_pass '-f UTF-8:ISO-8859-1 -t UTF-8 on ISO-8859-1 input' \
+	'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+iconv -f ISO-8859-2 -t UTF-8 <"$tmpdir/1.inp" >"$tmpdir/1-latin2.exp"
+run $MANCONV -f UTF-8:ISO-8859-2 -t UTF-8 \
+	<"$tmpdir/1.inp" >"$tmpdir/1-latin2.out"
+expect_pass '-f UTF-8:ISO-8859-2 -t UTF-8 on ISO-8859-2 input' \
+	'diff -u "$tmpdir/1-latin2.exp" "$tmpdir/1-latin2.out"'
+
+(for x in $(seq 1 1000); do
+	printf '‐'
+done
+echo 'Б' | iconv -f UTF-8 -t KOI8-R
+echo '‐') >"$tmpdir/2.inp"
+iconv -f KOI8-R -t UTF-8 <"$tmpdir/2.inp" >"$tmpdir/2.exp"
+run $MANCONV -f UTF-8:KOI8-R -t UTF-8 <"$tmpdir/2.inp" >"$tmpdir/2.out"
+expect_pass '-f UTF-8:KOI8-R -t UTF-8 on KOI8-R input with UTF-8 prefix' \
+	'diff -u "$tmpdir/2.exp" "$tmpdir/2.out"'
+
+(for x in $(seq 160 255); do
+	printf "\\$(printf %03o "$x")"
+done
+echo) | iconv -f ISO-8859-1 -t UTF-8 >"$tmpdir/3.inp"
+run $MANCONV -f UTF-8:ISO-8859-1 -t UTF-8 <"$tmpdir/3.inp" >"$tmpdir/3.out"
+expect_pass '-f UTF-8:ISO-8859-1 -t UTF-8 preserves UTF-8 input' \
+	'diff -u "$tmpdir/3.inp" "$tmpdir/3.out"'
+
+# U+00B7 MIDDLE DOT is not representable in ISO-8859-2, and so should be
+# omitted. However, manconv should still recognise that the input was UTF-8
+# rather than falling back to ISO-8859-2.
+cat >"$tmpdir/4.inp" <<'EOF'
+š·ł
+EOF
+iconv -f UTF-8 -t ISO-8859-2 >"$tmpdir/4.exp" <<EOF
+šł
+EOF
+run $MANCONV -f UTF-8:ISO-8859-2 -t ISO-8859-2//IGNORE \
+	<"$tmpdir/4.inp" >"$tmpdir/4.out"
+expect_pass 'recognises input encoding and omits invalid output character' \
+	'diff -u "$tmpdir/4.exp" "$tmpdir/4.out"'
+
+# 0xAE does not exist in ISO-8859-7, so manconv won't be able to recode this
+# to UTF-8 without conversion errors. (In the original case where this was
+# seen in the wild, the coding: tag should actually have read ISO-8859-13.)
+iconv -f UTF-8 -t ISO-8859-13 >"$tmpdir/5.inp" <<'EOF'
+'\" -*- coding: ISO-8859-7
+REGISTERED SIGN: ®
+trailing data
+EOF
+iconv -f ISO-8859-7 -t UTF-8//IGNORE \
+	<"$tmpdir/5.inp" >"$tmpdir/5.exp" 2>/dev/null
+run $MANCONV -f UTF-8:ISO-8859-1 -t UTF-8//IGNORE \
+	<"$tmpdir/5.inp" >"$tmpdir/5.out"
+expect_pass 'copes with invalid input characters' \
+	'diff -u "$tmpdir/5.exp" "$tmpdir/5.out"'
+
+finish

@@ -1,0 +1,197 @@
+.\" Man page for whatis
+.\"
+.\" Copyright (C), 1994, 1995, Graeme W. Wilford. (Wilf.)
+.\"
+.\" Traduzione di Bortolozzo Giovanni <borto@pluto.linux.it>
+.\" Febbraio 1997
+.\" 1° Revisione Marzo 1997
+.\" 2° Revisione Agosto 1999
+.\" 3^ Revisione e aggionamento Settembre 1999
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Sat Oct 29 13:09:31 GMT 1994  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.\"" for hilit19
+.TH %thwhatis% 1 "%date%" "%version%" "Utility per le Pagine di Manuale"
+.SH NOME
+%whatis% \- mostra le descrizioni delle pagine di manuale
+.SH SINTASSI
+.B %whatis% 
+.RB [\| \-dhV \|] 
+.RB [\| \-r \||\| \-w\c 
+\|] 
+.RB [\| \-m
+.IR sistema \|[\|,.\|.\|.\|]\|]
+.RB [\| \-M 
+.IR percorso \|] 
+.I nome 
+\&.\|.\|.
+.SH DESCRIZIONE
+Ogni pagina di manuale ha disponibile al suo interno una breve
+descrizione. 
+.B %whatis%
+ricerca i nomi e le descrizioni delle pagine di manuale che
+corrispondono a 
+.IR nome .
+
+.I nome
+può contenere wildcard (caratteri jolly)
+.RB ( \-w )
+o essere un'espressione regolare
+.RB ( \-r ).
+Usando queste opzioni, potrebbe essere necessario racchiudere tra
+virgolette (') la 
+.I parola_chiave
+o far precedere da backslash (\\) i caratteri speciali per evitare che
+la shell provi a interpretarla(i).
+
+Durante la ricerca sono usate le basi di dati
+.BR index .
+Per generare dalla base di dati
+.B index
+la corrispondente base di dati vecchio stile
+.B %whatis% 
+in formato testo, si può usare il comando:
+
+.B %whatis% \-M 
+.I percorso_man 
+.B \-w  '*' | sort > 
+.I percorso_man/%whatis%
+
+dove
+.I percorso_man
+è una gerarchia di pagine di manuale come ad esempio
+.IR /usr/man .
+.SH OPZIONI
+.TP
+.B \-d, \-\-debug
+Mostra informazioni utili al debug.
+.TP
+.B \-r, \-\-regex
+Interpreta ogni
+.I nome 
+come un'espressione regolare.
+Verrà trovata una corrispondenza se
+.I nome
+corrisponde ad una parte qualsiasi del nome della pagina.
+Questa opzione fa sì che
+.B %whatis% 
+sia un po' più lento a causa della natura della ricerca nella base di dati.
+.TP
+.B \-w, \-\-wildcard
+Interpreta ogni
+.I nome 
+come un modello contenente wildcard nello stile della shell.
+Affinché ci sia una corrispondenza, un 
+.I nome
+espanso deve corrispondere al nome completo di una pagina di manuale.
+Questa opzione fa sì che
+.B %whatis% 
+sia un po' più lento a causa della natura della ricerca nella base di dati.
+.\"
+.\" Due to the rather silly limit of 6 args per request in some `native'
+.\" *roff compilers, we have do the following to get the two-line
+.\" hanging tag on one line. .PP to begin a new paragraph, then the
+.\" tag, then .RS (start relative indent), the text, finally .RE
+.\" (end relative indent).
+.\""
+.PP
+.B \-m 
+.I sistema\c 
+.RB \|[\|,.\|.\|.\|]\| ,
+.BI \-\-systems= sistema\c 
+\|[\|,.\|.\|.\|]
+.RS
+Se questo sistema ha accesso ai nomi delle pagine di manuale di altri
+sistemi operativi, può essere fatto un accesso a quest'ultimi usando
+questa opzione. Per effettuare una ricerca nei nomi delle pagine di
+manuale di NewOS, usare l'opzione
+.B \-m
+.BR NewOS .
+
+Il
+.I sistema 
+può essere una combinazione qualsiasi di nomi di sistemi
+operativi separati da virgole. Per includere la ricerca nei nomi delle
+pagine di manuale del sistema operativo nativo, si includa il nome di
+sistema 
+.B man
+nella stringa argomento.
+Usando questa opzione verrà ignorata la variabile d'ambiente
+.RB $ SYSTEM .
+.RE
+.TP
+.BI \-M\  percorso ,\ \-\-manpath= percorso
+Specifica un insieme alternativo di gerarchie di pagine di manuale,
+separate da `:', nelle quali fare la ricerca.
+Di default,
+.B %whatis%
+usa la variabile d'ambiente
+.RB $ MANPATH
+finché questa non è vuota o non impostata, nel qual caso determinerà un
+percorso man appropriato basandosi sulla variabile d'ambiente
+.RB $ PATH
+dell'utente. Usando questa opzione verrà ignorato il contenuto della
+variabile d'ambiente  
+.RB $ MANPATH .
+.TP
+.B \-h, \-\-help
+Mostra un messaggio d'aiuto ed esce.
+.TP
+.B \-V, \-\-version
+Mostra informazioni sulla versione e sull'autore.
+.SH "STATI D'USCITA"
+.TP
+.B 0
+L'esecuzione del programma ha avuto successo.
+.TP
+.B 1
+Errore d'uso, di sintassi o nel file di configurazione.
+.TP
+.B 2
+Errore operativo.
+.TP
+.B 16
+Non è stata trovata alcuna pagina di manuale che corrisponde al
+criterio specificato.
+.SH VARIABILI D'AMBIENTE
+.TP
+.B SYSTEM
+Se
+.RB $ SYSTEM
+è impostata, avrà lo stesso effetto che fosse specificata come argomento
+dell'opzione
+.BR \-m .
+.TP
+.B MANPATH
+Se
+.RB $ MANPATH
+è impostata, il suo valore è interpretato come una lista di percorsi,
+separati da `:', di gerarchie di pagine di manuale da usare nella ricerca.
+.SH FILE
+.TP
+.I /usr/share/man/index.(bt|db|dir|pag)
+Una cache della base di dati globale
+.I index
+tradizionale.
+.TP
+.I /var/cache/man/index.(bt|db|dir|pag)
+Una cache della base di dati globale
+.I index
+alternativa e conforme con FHS.
+.TP
+.I /usr/share/man/\|.\|.\|.\|/whatis
+Una tradizionale base di dati 
+.BR whatis .
+.SH "VEDERE ANCHE"
+.BR %apropos% (1),
+.BR %man% (1).
+.SH AUTORE
+Wilf. (G.Wilford@ee.surrey.ac.uk).
+.br
+Fabrizio Polacco (fpolacco@debian.org).
+.br
+Traduzione di Giovanni Bortolozzo (borto@pluto.linux.it)

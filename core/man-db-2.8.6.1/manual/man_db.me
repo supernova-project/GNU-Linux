@@ -1,0 +1,118 @@
+.\" Copyright (C), 1995, Graeme W. Wilford. (Wilf.)
+.\" Copyright (c) 2001, 2002, 2007 Colin Watson.
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Thu Sep 21 19:22:47 BST 1995  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\"
+.so version
+.ds U \s-1\fBUNIX\fR\s+1
+.ds N \s-1\fBNROFF\fR\s+1
+.ds T \s-1\fBTROFF\fR\s+1
+.ds G \s-1\fBGROFF\fR\s+1
+.ds GN \s-1\fBGNU\fR\s+1
+.ds R \s-1ROFF\s+1
+.ds F \s-1\fBFHS\fR\s+1
+.ds P PostScript
+.ds L Linux
+.ds M man\-db
+.\"
+.\" format an environment variable
+.\"
+.de EV
+.sz -1
+$\c
+.b \\$1
+.sz +1
+..
+.\" end
+.\"
+.\" Begin a new (sub)section, add to TOC
+.\"
+.de BS
+.if \\$1=1 \{   .\" Chapter
+.bp
+.sh \\$1 "\\$2"
+.(x c
+.sp 10p
+.)x _
+.(x c
+.in 0
+\\n($1.\ \ \\$2
+.)x 
+.br \} 
+.\"
+.if \\$1=2 \{   .\" Section
+.sh \\$1 "\\$2"
+.(x c
+.in \w'\0.\ \ 'u
+\\n($1.\\n($2\ \ \\$2
+.)x 
+.br \}
+.\"
+.if \\$1=3 \{   .\" Subsection
+.sh \\$1 "\\$2"
+.(x c
+.in \w'\0.\ \ \0.\0\ \ 'u
+\\n($1.\\n($2.\\n($3\ \ \\$2
+.)x 
+.br \}
+..
+.\" end
+.\"
+.if n \
+.ll 78n
+.tp
+.sp 2i
+.(l C
+.sz 16
+.b "\*M \- the database cached manual pager suite"
+.sz 12
+.sp 2
+.ul
+Graeme W. Wilford <eep2gw@ee.surrey.ac.uk>
+.br
+.ul
+Colin Watson <cjwatson@debian.org>
+.)l
+.sp 4
+.(l F
+This document describes the setup, maintenance and use of a generic online
+manual page system with special reference to the \*M package and its
+advanced features.
+.)l
+.\".he '\*M''\*(td'
+.\".fo ''%''
+.he '\*M'v\*V'\*(td'
+.bp
+.fo ''%''
+.\"
+.\" Start the manual
+.\"
+.so leader.me
+.bp 1
+.so intro.me
+.so sec.me
+.so files.me
+.so comp.me
+.so format.me
+.so db.me
+.so misc.me
+.\"
+.\" table of contents page
+.\"
+.he '''''' .\" no header 
+.fo ''%''  .\" pagenumber footer
+.bp 1      .\" reset pagenumber to 1
+.af % i    .\" set pagenumber register to roman numerals
+.ce
+Glossary
+.sp
+.so glossary.me
+.bp 1
+.ce
+Contents
+.sp
+.xp c

@@ -1,0 +1,19 @@
+Current:
+
+  GDBM_FILE gdbm_open (const char *file,
+    	               int block_size,
+	               int flags,
+  	               int mode,
+     	               void (*fatal_func) (const char *))
+
+Planned:
+  GDBM_FILE gdbm_open_X (const char *file, int flags);
+  GDBM_FILE gdbm_creat_X (const char *file, int flags, int block_size);
+
+  GDBM_FILE gdbm_open_Y (const char *file, int flags, ...);
+  enum {
+    GDBM_OPEN_FD,
+    GDBM_OPEN_BLOCK_SIZE,
+    GDBM_OPEN_CREAT_MODE,
+    GDBM_OPEN_FATAL_FUNC,
+  }

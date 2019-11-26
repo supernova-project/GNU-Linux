@@ -1,0 +1,112 @@
+.\" Man page for catman
+.\"
+.\" Copyright (C), 1994, 1995, Graeme W. Wilford. (Wilf.)
+.\"
+.\" Traduzione in Italiano di Bortolozzo Giovanni <borto@pluto.linux.it>
+.\" Febbraio 1997
+.\" 1° Revisione Marzo 1997
+.\" 2° Revisione Agosto 1999
+.\" 3^ Revisione e aggionamento Settembre 1999
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Sat Dec 10 14:17:29 GMT 1994  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.\"" for hilit19
+.TH %thcatman% 8 "%date%" "%version%" "Utility per le Pagine di Manuale"
+.SH NOME
+%catman% \- crea o aggiorna le pagine di manuale preformattate
+.SH SINTASSI
+.B %catman% 
+.RB [\| \-dhV \|] 
+.RB [\| \-M 
+.IR percorso \|] 
+.RI [\| sezione \|]
+\&.\|.\|.
+.SH DESCRIZIONE
+.B %catman%
+è usato per creare un insieme aggiornato di pagine di manuale
+preformattate dette anche 
+.BR "cat page" .
+Le cat page sono generalmente più veloci da visualizzare rispetto alle
+pagine di manuale originali, ma richiedono ulteriore spazio per essere
+memorizzate. La decisione di supportare le cat page è
+dell'amministratore locale, il quale deve fornire anche le directory
+adatte per contenerle.
+
+Le opzioni disponibili a 
+.B %catman%
+sono le gerarchie delle pagine di manuale e le sezioni da
+preformattare. Le gerarchie predefinite sono quelle specificate come
+globali nel file di configurazione di man-db e le sezioni predefinite
+sono gli elementi separati da `:' nella variabile d'ambiente
+.RB $ MANSECT
+oppure, se
+.RB $ MANSECT
+non è definita, un insieme predefinito in fase di compilazione all'interno di
+.BR %man% .
+Fornendo a 
+.B %catman% 
+un insieme di nomi di sezioni separati da spazi bianchi le due
+precedenti liste di sezioni verranno ignorate.
+
+.B %catman%
+fa uso della cache della base di dati
+.B index
+associata con ognuna delle gerarchie per determinare quali file hanno
+bisogno della formattazione. 
+.SH OPZIONI
+.TP
+.B \-d, \-\-debug
+Mostra informazioni utili al debug.
+.TP
+.BI \-M\  percorso ,\ \-\-manpath= percorso
+Specifica una lista alternativa di percorsi di ricerca separati da
+`:'. Di default, questi sono tutti i percorsi indicati come globali
+nel file di configurazione di man-db.
+.TP
+.B \-h, \-\-help
+Mostra un messaggio d'aiuto ed esce.
+.TP
+.B \-V, \-\-version
+Mostra informazioni sulla versione e sull'autore.
+.SH VARIABILI D'AMBIENTE
+.TP
+.B MANSECT
+Se
+.RB $ MANSECT
+è definita, il suo valore è una lista separata da `:' di sezioni ed è
+usato per determinare in quali sezioni di manuali fare la ricerca e in
+che ordine.
+.TP
+.B MANPATH
+Se
+.RB $ MANPATH
+è definita, il suo valore è interpretato come una lista di percorsi di
+ricerca separati da `:' di gerarchie di pagine di manuale.
+.SH FILE
+.TP
+.I %manpath_config_file%
+File di configurazione di man-db.
+.TP
+.I /usr/man/index.(bt|db|dir|pag)
+Una cache della base di dati globale
+.I index
+tradizionale.
+.TP
+.I /var/catman/index.(bt|db|dir|pag)
+Una cache della base di dati globale
+.I index
+alternativa e conforme con FSSTND.
+.SH "VEDERE ANCHE"
+.BR %man% (1),
+.BR manpath (5), 
+.BR %mandb% (8).
+.SH AUTORE
+Wilf. (G.Wilford@ee.surrey.ac.uk).
+.br
+Fabrizio Polacco (fpolacco@debian.org).
+.br
+Traduzione di Bortolozzo Giovanni (borto@pluto.linux.it)

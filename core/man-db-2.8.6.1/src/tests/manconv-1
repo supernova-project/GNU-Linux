@@ -1,0 +1,43 @@
+#! /bin/sh
+
+# Test manconv's support for Emacs-style coding: tags.
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MANCONV=manconv}
+
+init
+
+cat >"$tmpdir/1.exp" <<'EOF'
+'\" -*- coding: ISO-8859-1
+á
+EOF
+iconv -f UTF-8 -t ISO-8859-1 <"$tmpdir/1.exp" >"$tmpdir/1.inp"
+run $MANCONV -f UTF-8 -t UTF-8 <"$tmpdir/1.inp" >"$tmpdir/1.out"
+expect_pass 'simple coding tag' 'diff -u "$tmpdir/1.exp" "$tmpdir/1.out"'
+
+cat >"$tmpdir/2.exp" <<'EOF'
+'\" -*- mode: troff; coding: ISO-8859-1
+á
+EOF
+iconv -f UTF-8 -t ISO-8859-1 <"$tmpdir/2.exp" >"$tmpdir/2.inp"
+run $MANCONV -f UTF-8 -t UTF-8 <"$tmpdir/2.inp" >"$tmpdir/2.out"
+expect_pass 'mode and coding tags' 'diff -u "$tmpdir/2.exp" "$tmpdir/2.out"'
+
+cat >"$tmpdir/3.exp" <<'EOF'
+'\" -*- mode: troff; coding: ISO-LATIN-1
+á
+EOF
+iconv -f UTF-8 -t ISO-8859-1 <"$tmpdir/3.exp" >"$tmpdir/3.inp"
+run $MANCONV -f UTF-8 -t UTF-8 <"$tmpdir/3.inp" >"$tmpdir/3.out"
+expect_pass 'iso-latin-1 coding alias' 'diff -u "$tmpdir/3.exp" "$tmpdir/3.out"'
+
+cat >"$tmpdir/4.inp" <<'EOF'
+'\" -*- nroff -*-
+EOF
+run $MANCONV -f UTF-8 -t UTF-8 <"$tmpdir/4.inp" >"$tmpdir/4.out"
+expect_pass 'preprocessor comment but no coding tag' \
+	'diff -u "$tmpdir/4.inp" "$tmpdir/4.out"'
+
+finish

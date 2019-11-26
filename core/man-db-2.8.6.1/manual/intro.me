@@ -1,0 +1,324 @@
+.\" Copyright (C), 1995, Graeme W. Wilford. (Wilf.)
+.\" Copyright (c) 2001, 2002, 2003, 2007 Colin Watson.
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Thu Sep 21 19:22:47 BST 1995  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.\" chap1.me
+.BS 1 Introduction
+.BS 2 "\*M"
+.lp
+\*M is a package that is designed to provide users with online information
+in a fast and friendly manner while at the same time offering flexibility to
+the system administrator.
+.TS
+tab(@);
+l s s s
+l lfB l.
+It is made up of several user programs:
+.sp 6p
+.\" Leave the next line alone!
+      @\(bu man@\- an interface to the on-line reference manuals
+@\(bu whatis@\- search the manual page names
+@\(bu apropos@\- search the manual page names and descriptions
+@\(bu manpath@\- determine search path for manual pages
+@\(bu lexgrog@\- directly read header information in manual pages
+.T&
+l s s s
+l lfB l.
+.sp 6p 
+several maintenance programs:
+.sp 6p
+@\(bu mandb@\- create or update the manual page index caches
+@\(bu catman@\- create or update the pre-formatted manual pages
+.T&
+l s s s
+l lfB l.
+.sp 6p
+and a special pre-formatter that knows about compressed manual pages:
+.sp 6p
+@\(bu zsoelim@\- satisfy .so requests in roff input
+.TE
+
+In addition to these compiled programs, there are two shell scripts,
+.b mkcatdirs
+and
+.b checkman
+in the
+.i tools
+subdirectory.
+These scripts aid the creation of cat directories and
+check for duplicated manual pages, respectively.
+.lp
+The following manual pages are provided with this package to explain correct
+format and usage.
+.b man (1),
+.b whatis (1),
+.b apropos (1),
+.b manpath (1),
+.b lexgrog (1),
+.b manpath (5),
+.b mandb (8),
+.b catman (8)
+and
+.b zsoelim (1).
+.BS 3 "The concept"
+.lp
+\*M originally started out life as program suite man\-1.1B, written by John W.
+Eaton <jwe@che.utexas.edu> and maintained by Rik Faith <faith@cs.unc.edu>
+to which support proposed by the newly
+formed FSSTND committee regarding cat directories was added.
+.lp
+Since then, \*M's most innovative feature: the database cache scheme\**
+.(f
+\** originally conceived after observing the actions of the Perl-based
+manual pager suite, man-pl written by Tom Christiansen
+<tchrist@convex.com>
+.)f
+has been significantly developed. The basic idea was to reduce manual page
+search times to a minimum. The following piece of text is included from the
+man-db-2.2 distribution:
+.(q
+The theory: If you go to a library to take a book out, what do you do?
+.sp
+a) Go and look where it might be on a micro-fiche/terminal, take a look
+where it is supposed to be on the shelf, and then go look at the new
+arrivals if it's not where it's supposed to be?
+.sp
+OR
+.sp
+b) Start at one end of the ground floor, look along every bookshelf
+until you've completed that floor, then go up a level and start again
+until you've found what you're looking for?
+.)q
+.lp
+Since then the database
+.b index
+scheme has evolved greatly.
+Every manual page and stray cat page on the system is registered in an
+.b index
+database cache which stores various details about the file including the
+timestamp, the location and the whatis\**
+.(f
+\** one line description of the manual page
+.)f
+information.
+This information is kept up to date by regular runs of
+.b mandb .
+In some configurations
+.b man
+also looks for filesystem changes each time it is invoked and helps to
+keep the database cache current, but this imposes a penalty on manual page
+search times.
+.BS 2 "The manual page system"
+.lp
+The simplest manual page system will have a single manual page hierarchy.
+This will typically be
+.ip
+.i /usr/share/man
+.lp
+beneath which will be several subdirectories of the form
+.i man<sec>
+where
+.i <sec>
+is
+.b 1 ,
+.b 2 ,
+.b 3 ,
+.b 4 ,
+.b 5 ,
+.b 6 ,
+.b 7
+or
+.b 8 .
+These are referred to as
+.i sections
+of the
+manual.
+Others may exist and they are not restricted to single
+character names. eg.
+.ip
+.i /usr/share/man/manfoo
+.lp
+is a valid section subdirectory.
+Other common sections include
+.b 9 ,
+.b n ,
+.b l ,
+.b p
+and
+.b o .
+.lp
+Within these section subdirectories reside the manual pages themselves. Their
+filenames follow the pattern
+.ip
+.i /usr/share/man/man<sec>/<name>.<sec><ext>
+.lp
+where in most cases
+.i <ext>
+is an empty string.
+An example is manual page
+.b cp
+.ip
+.i /usr/share/man/man1/cp.1
+.lp
+which resides in
+.i section
+.b 1
+and has no special
+.i extension .
+.lp
+.BS 2 "Sections of the manual"
+.lp
+The manual is split up into sections to ease access and to cater for manual
+pages that share the same name.
+It is common for a program and function to share the same name.
+.b kill
+is a good example.
+This is both a program which can be used to send a process a signal and
+an operating system call with similar functionality.
+Their manual pages are stored under sections
+.b 1
+and
+.b 2
+respectively.
+Thus, sections are used to separate out the program manual pages from the
+function manual pages and so on.
+The table below shows the
+.i section
+numbers of the manual followed by the types of pages they contain.
+
+.TS
+center box tab (@);
+c  | c
+c  | l.
+Section@Section contents
+_
+1@user executable programs or shell commands
+2@system calls (functions provided by the kernel)
+3@library calls (functions within system libraries)
+4@special files (usually found in \fI/dev\fR)
+5@file formats and conventions eg. \fI/etc/passwd\fR
+6@games
+7@macro packages and conventions eg. \fBman\fR(7), \fBgroff\fR(7).
+8@system administration commands
+9@kernel routines [\|Non-standard\|]
+n@new [\|obsolete\|]
+l@local [\|obsolete\|]
+p@public [\|obsolete\|]
+o@old [\|obsolete\|]
+.TE
+
+.BS 2 "The format of manual pages"
+.lp
+The format in which manual pages are stored is \*N/\*T or more generally \*R.
+This is a typesetter style language\**
+.(f
+\** similar in some aspects to
+.b TeX
+.)f
+which requires formatting before being viewed.
+In fact some manual pages require pre-format processing to
+correctly format tables or equations.
+.lp
+If the page is to be viewed on screen in a text environment, \*N is
+used as the primary formatter. If the page is to be printed or displayed in a
+graphical environment, \*T is used. Traditionally, \*T formatted files for a
+.b C/A/T
+(Computer aided Typesetter) which is now obsolete.
+
+The \*(GN \*R (\*G\**)
+.(f
+\** Written by James Clark <jjc@jclark.com> and now maintained by
+Ted Harding <ted.harding@nessie.mcc.ac.uk> and Werner Lemberg <wl@gnu.org>
+.)f
+suite of programs offer a choice of output types
+including
+.b X ,
+.b dvi
+and
+.b postscript .
+When configuring \*M, the preference is
+to use \*G rather than \*T.
+.BS 2 "Arguments to configure"
+.lp
+To allow the configuration program,
+.b configure ,
+to be non-interactive, it can be passed various options to alter the
+default settings.
+Generic
+.b configure
+options are discussed in
+.i docs/INSTALL .
+Options that are specific to the \*M package are described below.
+.if r MAN-OPTIONS-ONLY \{
+.lp
+MAN\-OPTIONS\-BEGIN
+\}
+.lp
+.ip \-\-enable\-cache\-owner[=ARG]
+By default, system-wide cache files will be owned by user man.
+Use this option with an argument to change the cache file owner.
+.ip \-\-disable\-cache\-owner
+Use this option to leave the ownership of system-wide cache files
+unconstrained.
+Users will be allowed to modify them.
+.ip \-\-disable\-setuid
+By default,
+.b man
+will be installed as a setuid program to the user that owns the
+system-wide cache files.
+Use this option to install
+.b man
+as a non-setuid program instead.
+.ip \-\-enable\-mandirs=OS
+By default, \*M supports manual page directories in any of several layouts
+used by free and proprietary versions of \*U.
+However, in certain cases, this can cause \*M to find the wrong page by
+mistake, especially when the names of some manual pages on the system
+contain periods.
+Use this option with an argument of GNU, HPUX, IRIX, Solaris, or BSD
+(or more than one of these, separated by commas) to support only the layouts
+typically used on each of those systems.
+Note that \*M is not currently capable of writing cat pages in the proper
+BSD layout.
+.ip \-\-with\-device=DEVICE
+Use this flag to alter the default output device used by \*N. DEVICE is
+passed to \*N with the \-T option.
+.b configure
+will test that \*N will run with the supplied device argument.
+.ip \-\-with\-db=LIBRARY
+configure will look for database interface libraries in the order gdbm,
+Berkeley DB and finally ndbm and will #define appropriate variables relative
+to the first one found.
+To override the built-in order on platforms having a choice of interface
+library, use this option to specify which library to use.
+.ip \-\-enable\-automatic\-create
+If this flag is used,
+.b man
+will automatically create index databases for users' private manual page
+hierarchies.
+.ip \-\-disable\-automatic\-update
+Normally,
+.b man
+will update entries in index databases if it finds newly installed manual
+pages (if the
+.b \-\-update
+flag is used) or delete entries if manual pages are removed.
+This flag suppresses this behaviour.
+.ip \-\-disable\-cats
+Normally,
+.b man
+will automatically try to create cat files corresponding to manual files
+when a manual page is read.
+This flag suppresses this behaviour.
+.ip \-\-disable\-manual
+Don't build or install the \*M manual.
+This may be useful when cross-compiling, or to reduce the installation size.
+.if r MAN-OPTIONS-ONLY \{
+.lp
+MAN\-OPTIONS\-END
+\}

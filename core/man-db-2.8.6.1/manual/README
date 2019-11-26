@@ -1,0 +1,23 @@
+This directory contains the man-db manual sources.  They may be compiled into
+five different formats:
+
+	dvi:	device independent
+	ps:	PostScript
+	cat:	vt100-type terminal ie. ASCII with overstrike
+	tps:	PostScript with TeX fonts
+	html:	HyperText Markup Language
+
+All require soelim, tbl and the ROFF macro `e' (your site probably has it).
+cat requires nroff whereas the others require groff.  tps also requires an
+installation of TeX and dvips.  html requires a version of groff with the
+grohtml driver, and is currently disabled by default as the output is
+suboptimal.
+
+Issuing `make' or `make all' will produce the dvi, ps and cat versions.  To
+produce a single format simply run
+
+	make <format>
+or
+	make man_db.<format>
+
+where <format> can be any of the above.

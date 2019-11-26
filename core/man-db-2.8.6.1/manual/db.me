@@ -1,0 +1,317 @@
+.\" Copyright (C), 1995, Graeme W. Wilford. (Wilf.)
+.\" Copyright (c) 2002 Colin Watson.
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Thu Sep 21 19:22:47 BST 1995  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.BS 1 "The index database caches"
+.lp
+As mentioned in the introduction, \*M uses database lookups to search for
+manual page locations and information.
+When performing a manual page lookup or a basic
+.b whatis
+search, the databases are searched in
+.ip
+.i "key \(-> content"
+.lp
+mode and are as fast as the underlying databases can be.
+When performing
+.b apropos
+or special
+.b whatis
+searches, the databases are searched in a linear way, which, although far
+more expensive than
+.i keyed
+lookup, is no worse than traditional text based file searching.
+.BS 2 "index database location"
+.lp
+The databases are always located at the root of the cat page hierarchy,
+whether this is the same as the manual page hierarchy or not.
+As file locking mechanisms are employed to ensure that concurrent
+processes do not update a database simultaneously, it is almost imperative
+that the databases reside on a local filesystem since file locking across
+NFS filesystems may be unavailable or flaky.
+To avoid such problems,
+.b man
+can be compiled without database maintenance support.
+See the section titled "Modes of operation" for details.
+.BS 3 "Manual hierarchies with no index database"
+.lp
+It is possible for the \*M utilities to operate without aid from an index
+database.
+Under such circumstances, search methods will use only file
+globbing and whatis type searches are performed on any traditional whatis
+text databases that may exist.
+Only the traditional cat hierarchy is searched for cat files.
+.BS 3 "User manual page hierarchies"
+.lp
+A user may have any number of personal manual page hierarchies listed in
+their
+.EV MANPATH\c
+.r .
+.r
+By default,
+.b man
+will maintain
+.b mandb
+created databases at the root of user manual page
+hierarchies.
+The definition of a user manual hierarchy is that it
+does not have an entry in the \*M configuration file.
+See
+.b manpath (5)
+for details.
+.BS 2 "Contents of an index database"
+.lp
+There are four kinds of entry in an index database.
+.np
+A direct entry regarding a particular manual page.
+Manual pages that are unique in terms of name use just a single entry
+in the database and can be looked up by simply using the name as the key.
+.np
+A common name index entry that lists the extensions of all of the manual
+pages sharing the common index entry name.
+Manual pages that share common names but have differing extensions each
+have a single database entry, but this time they are looked up with a key
+comprised of their name and their extension.
+The entire set of common named
+pages also has an common name index entry that informs of the extensions
+available.
+.np
+An indirect entry that has a pointer to the real entry.
+Manual pages that are whatis references to a particular page do not
+physically exist so they have a pointer to the entry containing the location
+of the real manual page.
+.np
+Special identification entries.
+There is one special key name,
+.q $version$
+that identifies the database storage scheme version.
+.lp
+In order to support looking up manual pages in a case-insensitive fashion,
+keys are stored in lower case.
+If the name of the page was not already in lower case, its true case is also
+stored in the common name index entry.
+.lp
+In the following entries, the character
+.q |
+will be used to separate the fields. In reality a tab is used.
+Direct and indirect entries takes the form:
+.ip
+.i "<name> \(-> <realname>|\:<ext>|\:<sec>|\:<mtime.sec>|\:<mtime.nsec>|\:<ID>|\:<ref>|\:<filter>|\:<comp>|\:<whatis>"
+.lp
+Common name index entries take the form:
+.ip
+.i "<name> \(-> |<realname1>|\:<ext1>|\:<realname2>|\:<ext2>|\:<realname3>|\:<ext3>| .\|.\|. <realnamen>|\:<extn>"
+.lp
+and common name direct or indirect entries take the form:
+.ip
+.i "<name>|<ext> \(-> <realname>|\:<ext>|\:<sec>|\:<mtime.sec>|\:<mtime.nsec>|\:\:<ID>|\:<ref>|\:<filter>|\:<comp>|\:<whatis>"
+.lp
+where in each case the filename being represented is formed as
+.ip
+.i <manual_hierarchy>/man<sec>/<name>.<ext>.<comp>
+.lp
+in the case of a manual page, or
+.ip
+.i <cat_hierarchy>/cat<sec>/<name>.<ext>.<comp>
+.lp
+in the case of a stray cat.
+.lp
+If any of the fields would be empty, a single
+.q \-
+is stored in its place.
+.i <comp>
+represents the compression extension,
+.i <mtime.sec>
+is an integer representing the seconds part of the last modification
+time of the manual page,
+.i <mtime.nsec>
+is an integer representing the nanoseconds part of the last modification
+time of the manual page,
+.i <ref>
+points to the entry containing the location of the real page,
+.i <ID>
+is one of the following identification letters, and
+.i <filter>
+represents any preprocessors that are needed to display the page.
+
+.TS
+center box tab (@);
+l | l | l .
+ID@#define@Description
+_
+A@ULT_MAN@ultimate manual page, the full source nroff file
+B@SO_MAN@manual page containing a .so request to an ULT_MAN
+C@WHATIS_MAN@virtual whatis referenced page pointing to an ULT_MAN
+D@STRAY_CAT@cat page with no source manual page
+E@WHATIS_CAT@virtual whatis referenced page pointing to a STRAY_CAT
+.TE
+
+The
+.i ID
+illustrates the precedence.
+Some types of manual page can be referenced by
+several means, e.g. .so requested and whatis referred.
+In such a case, only one reference must be stored in the database,
+the precedence level decides which.
+.BS 3 "Favouring stray cats"
+.lp
+With the above rules of precedence, it is possible for a valid stray cat page
+to be replaced by a whatis referred page sharing identical name-space.
+.lp
+If you would like to see the stray cat page
+.b kill (1)
+instead of the
+.b bash_builtins (1)
+page referenced by
+.b kill (1),
+edit
+.i include/manconfig.h
+and un-comment the following line
+.lp
+/* #define FAVOUR_STRAYCATS */
+.BS 3 "Accessdb"
+.lp
+A simple program,
+.b accessdb
+is included with \*M.
+It will output the data contained within a \*M
+database in a human readable form.
+By default, it will
+.i dump
+the data from
+.i /var/cache/man/index.<db-type> ,
+where
+.i <db-type>
+is dependent on the database library in use.
+.lp
+Supplying an argument to
+.b accessdb
+will override this default.
+Tabs are replaced in the output by a tilde
+.q ~
+in the
+.i key
+field and a single space in the
+.i content
+field.
+.BS 3 "Example database"
+.lp
+As an example of both
+.b accessdb
+and the database storage method, the output of
+.ip
+.bx "src/accessdb man/index.bt"
+.lp
+after first running
+.ip
+.bx "src/mandb man"
+.lp
+from the top level build directory is included below.
+.lp
+.nf
+$version$ -> "2.5.0"
+accessdb -> "- 8 8 1410381979 324541691 A - - - dumps the content of a man-db database in a human readable format"
+apropos -> "- 1 1 1410381979 268541692 A - - - search the manual page names and descriptions"
+catman -> "- 8 8 1410381979 328541691 A - - - create or update the pre-formatted manual pages"
+lexgrog -> "- 1 1 1410381979 268541692 A - - - parse header information in man pages"
+man -> "- 1 1 1410381979 280541692 A - t - an interface to the on-line reference manuals"
+manconv -> "- 1 1 1410381979 272541692 A - - - convert manual page from one encoding to another"
+mandb -> "- 8 8 1410381979 324541691 A - t - create or update the manual page index caches"
+manpath -> " manpath 5 manpath 1"
+manpath~1 -> "- 1 1 1410381979 300541691 A - - - determine search path for manual pages"
+manpath~5 -> "- 5 5 1410381979 304541691 A - - - format of the /etc/manpath.config file"
+whatis -> "- 1 1 1410381979 300541691 A - - - display one-line manual page descriptions"
+zsoelim -> "- 1 1 1410381979 304541691 A - - - satisfy .so requests in roff input"
+.fi
+.BS 2 "Database types"
+.lp
+\*M has support for various low level database libraries commonly in use
+today.
+The interfaces to the libraries are known as
+.bu
+ndbm (\*U)
+.bu
+gdbm (\*(GN)
+.bu
+btree (Berkeley DB)
+.lp
+\*M currently does not hold more than one database open at any time, so
+.bu
+dbm (\*U)
+.lp
+support could be added in the future.
+.BS 2 "Limitations"
+.lp
+The general differences and limitations are best compared in a table.
+
+.TS
+center box tab(@);
+c | c | c | c  s | c | c .
+Name@Type@File@Content memory@Concurrent@Shareable
+\^@\^@\^@_@\^@\^
+.T&
+c | c | c | c | c | c | c
+l | l | l | l | l | l | l . 
+\^@\^@name@type@limit@access@\^
+_
+ndbm@hash@index\**@static@1Kb@none@no
+gdbm@hash@index.db@dynamic@\-@file locking@no
+btree@binary tree@index.bt@static@\-@none@yes
+.TE
+
+.(f
+\** ndbm databases are physically represented by two files,
+.i index.dir
+and
+.i index.pag ,
+but are referred to simply as
+.i index
+by the interface routines.
+.)f
+Those types that have no built in concurrent access strategy are provided
+with
+.b flock (2)
+based file locking by \*M.
+.lp
+Berkeley DB initializes its databases very quickly, so
+.b btree
+may have some performance advantages when doing
+.b man
+searches.
+However, it is quite heavyweight and its library SONAME and on-disk formats
+have changed a number of times to provide features considerably beyond what
+\*M needs, so the preferred library interface is now
+.b gdbm .
+.b configure
+will look for
+.b gdbm ,
+.b btree
+and then finally
+.b ndbm
+routines when configuring \*M.
+.BS 2 "Sharing databases in a heterogeneous environment"
+It may be necessary or advantageous to share databases across
+platforms, regardless of the potential file locking problems.
+.lp
+An example would be a user having a personal manual page hierarchy in an NFS
+based home directory environment, whereby the home directory is held on and
+mounted from a single machine in a heterogeneous network.
+.lp
+In this context, the database cache will have the same name and reside in
+the same place on all machines.
+There are at least two ways to deal with this problem.
+.bu
+Hack the
+.i include/manconfig.h
+file on each platform to provide a unique database name for each system.
+No databases will be shared.
+.bu
+Install and use the Berkeley DB database interface library on each platform.
+These databases can be shared across big-endian/little-endian platforms
+although a database created on a big-endian platform will suffer a small
+access penalty when used by a litle-endian machine and vice-versa.

@@ -1,0 +1,220 @@
+.\" Copyright (C), 1995, Graeme W. Wilford. (Wilf.)
+.\" Copyright (c) 2001, 2002 Colin Watson.
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Thu Sep 21 19:22:47 BST 1995  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.BS 1 "Miscellaneous"
+.BS 2 "Modes of operation"
+.lp
+The \*M utilities can operate in many different modes, allowing varying
+degrees of freedom, functionality and security.
+No mode requires that the manual page hierarchies be writable.
+.lp
+.ip "(1) Default mode"
+.b man
+is setuid to the user MAN_OWNER which is \(oqman\(cq by default and is
+changeable via options to
+.b configure .
+.b mandb ,
+if run by the superuser or MAN_OWNER, creates globally accessible index
+databases owned by MAN_OWNER.
+Once the databases are created,
+.b man
+will update entries in them if it finds newly installed
+manual pages (if the
+.b \-\-update
+flag is used) or delete entries if manual pages are removed.
+In this mode it is possible for a malicious
+.b man
+user to deliberately lock a database as a writer, thus denying read access to
+other users.
+.br
+If cat directories exist and have the correct permissions,
+.b man
+will take care of producing cat files.
+These will be owned by MAN_OWNER.
+The default permissions of both cat files and databases are 0644.
+.ip "(2) No man database updates"
+This mode also requires
+.b man
+to be setuid, but is favoured where databases must be shared in an
+environment unfriendly to kernel locking procedures, eg. NFS.
+It also prevents possible
+.q "denial of service"
+attacks by malicious
+.b man
+users as
+.b man
+never opens the databases as a writer in this mode.
+To replace the functionality lost by disallowing
+.b man
+write access to the databases,
+.b mandb
+should be rerun whenever new manual pages are installed.
+Otherwise,
+.b man
+will not be able to use the database to find and display the newly added
+manual pages, and will have to use the filesystem instead.
+Each index database may be owned by an arbitrary user who will have
+subsequent write access to the database.
+Cat files are created in the same way as for mode (1) above.
+.br
+To use the \*M utilities in this mode, give the option
+\(oq\-\-disable\-automatic\-update\(cq to
+.b configure .
+.ip "(3) No man database updates or cat production"
+.b man
+is installed not setuid.
+This mode of operation probably offers the highest level of security but
+it requires higher levels of maintenance than other modes due to the
+restrictions imposed upon
+.b man .
+Each database is owned by an arbitrary user as in mode (2).
+Each cat hierarchy is also owned by
+an arbitrary user who is responsible for creating cat files using
+.b catman
+whenever new manual files are installed.
+.b man
+will be completely passive in its action, i.e. no index databases will be
+written to and no cat files are ever produced.
+.br
+To use the \*M utilities in this mode, supply the options
+\(oq\-\-disable\-cache\-owner \-\-disable\-setuid
+\-\-disable\-automatic\-update \-\-disable\-cats\(cq to
+.b configure ,
+or build \*M as in mode (1) and install the binaries without the setuid
+bit set.
+.ip "(4) Wide open"
+.b man
+is installed not setuid.
+This mode is similar in operation to the majority of vendor supplied, non
+setuid, cat file supporting manual pager suites.
+It is not recommended.
+The databases are owned by an arbitrary user who maintains them using
+.b mandb .
+.b man
+does not update the databases.
+Cat files are produced and stored in world writable cat directories and have
+world write access themselves.
+.br
+To use the \*M utilities in this mode, supply the options
+\(oq\-\-disable\-cache\-owner \-\-disable\-setuid
+\-\-disable\-automatic\-update\(cq to
+.b configure ,
+edit
+.i include/manconfig.h
+and change the definition of CATMODE from 0644 to 0666.
+.lp
+Other variations can also be used.
+In fact it is possible for
+.b man
+to actually create index databases, usually the job of
+.b mandb ,
+for users' private manual page hierarchies.
+This is enabled by giving the option
+\(oq\-\-enable\-automatic\-create\(cq to
+.b configure .
+.lp
+In summary,
+.i include/manconfig.h
+contains definitions for
+.bu
+CATMODE
+.bu
+DBMODE
+.lp
+the setuid installation and operation of
+.b man
+is modified by supplying either of the following options to
+.b configure :
+.bu
+\-\-enable\-setuid
+.bu
+\-\-disable\-setuid
+.lp
+and other aspects of
+.b man 's
+behaviour are controlled by the following options to
+.b configure :
+.bu
+\-\-enable\-automatic\-create
+.bu
+\-\-disable\-automatic\-update
+.bu
+\-\-disable\-cats
+.BS 2 "NFS root squash"
+.lp
+If
+.b man
+is installed setuid to an arbitrary user and is run by root, instead of
+gaining the effective user id of the setuid user,
+.b man
+is run with both uid and euid as root.
+This is neccesary due to infelicities with the
+.b POSIX
+setuid() function call:  All users except root may change to and from the
+effective (setuid) user, however once root has setuid(user), there is no way
+back.
+.lp
+A side effect of this is that
+.b NFS
+mounted cat hierarchies or databases will be unwritable if the following
+conditions exist:
+.bu
+man/catman/mandb is run by root
+.bu
+The NFS mount has the root squash flag set
+.lp
+To get around this problem, the root user must first attain the ID of the
+cat hierarchy or database owner before running
+.b man/catman/mandb
+whenever the databases need updating or cat files are to be produced.
+.BS 2 "NLS message catalogues"
+.lp
+\*M has built in support for native language message catalogues.
+That is, it can issue messages in the locale of the user's choice.
+This will only occur if the locale's translation has been written.
+Before undertaking a translation, please contact the Translation Project
+(https://translationproject.org/) who are coordinating such activities.
+.BS 2 "Credits"
+.lp
+The authors would like to thank the following people for their time, effort,
+support, ideas and code which went into \*M:
+.(l
+Markus Armbruster <armbru@pond.sub.org>
+Lionel Cons & colleages <cons@dxcern.cern.ch>
+Carl Edman <cedman@princeton.edu>
+Caleb Epstein <epstein_caleb@jpmorgan.com>
+Lars Fenneberg <lf@gimli.comlink.de>
+Zoltan Hidvegi <hzoli@cs.elte.hu>
+Nils Magnus <magnus@unix-ag.uni-kl.de>
+Daniel Quinlan <quinlan@yggdrasil.com>
+Fabrizio Polacco <fpolacco@debian.org>
+Gordon Sadler <gbsadler1@lcisp.com>
+Colin Phipps <cph@cph.demon.co.uk>
+Paul Slootman <paul@wurtel.net>
+Jose Rodriguez <boriel@airtel.net>
+Eirik Fuller <eirik@hackrat.com>
+Matej Vela <vela@debian.org>
+Clint Adams <schizo@debian.org>
+Jeremy C. Reed <reed@reedmedia.net>
+Erik Andersen <andersen@codepoet.org>
+Giuseppe Sacco <eppesuig@debian.org>
+David Weinehall <tao@debian.org>
+Ralph Corderoy <ralph@inputplus.co.uk>
+Yuri Kozlov <kozlov.y@gmail.com>
+Henning Makholm <henning@makholm.net>
+Lars Wirzenius <liw@iki.fi>
+Nicolas Fran\(,cois <nicolas.francois@centraliens.net>
+Ivan Shmakov <oneingray@gmail.com>
+Peter Breitenlohner <peb@mppmu.mpg.de>
+Robert Luberda <robert@debian.org>
+Chusslove Illich <caslav.ilic@gmx.net>
+.)l
+and all those translators listed in the
+.b man/THANKS
+file.

@@ -1,0 +1,86 @@
+.\" Man page for zsoelim
+.\"
+.\" Copyright (C), 1994, 1995, Graeme W. Wilford. (Wilf.)
+.\"
+.\" Traduzione di Bortolozzo Giovanni <borto@pluto.linux.it>
+.\" Febbraio 1997
+.\" 1° Revisione Marzo 1997
+.\" 2° Revisione Agosto 1999
+.\" 3^ Revisione e aggionamento Settembre 1999
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\"
+.\" Sat Dec 10 19:33:32 GMT 1994  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\" 
+.\"" for hilit19
+.TH %thzsoelim% 1 "%date%" "%version%" "Utility per le Pagine di Manuale"
+.SH NOME
+%zsoelim% \- soddisfa le richieste .so nell'input roff
+.SH SINTASSI
+.B %zsoelim% 
+.RB [\| \-CVh \|]
+.RI [\| file
+\&.\|.\|.\|]
+.SH DESCRIZIONE
+.B %zsoelim% 
+analizza il 
+.I file
+argomento, o, se non ne è specificato nessuno, il suo standard input
+cercando righe del tipo:
+
+.B .so  
+.RI <\| nomefile \|>
+
+Queste richieste sono rimpiazzate dal contenuto del file
+.I nomefile
+specificato. Se la richiesta non può essere soddisfatta,
+.B %zsoelim%
+cerca il file
+.I nomefile.ext
+dove
+.I .ext
+può essere una tra
+.BR .gz ,
+.BR .Z
+o
+.BR .z .
+Altri tipi di estensioni possono essere supportate a seconda delle
+opzioni in fase di compilazione. Se la richiesta può essere accolta
+con un file compresso, questo file è decompresso usando un
+decompressore appropriato e il suo output è usato per soddisfare la
+richiesta. 
+
+Tradizionalmente, i programmi
+.B soelim 
+erano usati per permettere al preprocessore roff di essere in grado di
+preprocessare file riferiti tramite le richieste. Questa particolare
+versione è stata scritta per risolvere i problemi creati dal supporto
+per le pagine di manuale compresse.
+.SH OPZIONI
+.TP
+.B \-C
+Questo flag è disponibile per compatibilità con gli altri programmi
+.BR soelim .
+È usato per abilitare richieste .so seguite da qualcos'altro
+oltre uno spazio bianco. Poiché questo è già il comportamento
+standard, è ignorato.
+.TP
+.B \-h
+Mostra un messaggio d'aiuto ed esce.
+.TP
+.B \-V
+Mostra informazioni sulla versione e l'autore.
+.SH "VEDERE ANCHE"
+.BR nroff (1),
+.BR troff (1),
+.BR groff (1),
+.BR %man% (1).
+.SH AUTORE
+Wilf. (G.Wilford@ee.surrey.ac.uk).
+.br
+Fabrizio Polacco (fpolacco@debian.org).
+.br
+Traduzione di Bortolozzo Giovanni (borto@pluto.linux.it).
+

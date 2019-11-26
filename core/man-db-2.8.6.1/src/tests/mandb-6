@@ -1,0 +1,25 @@
+#! /bin/sh
+
+# Test for double free or corruption crash with bogus filename and symlink of man page.
+#   https://bugzilla.redhat.com/show_bug.cgi?id=702904
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MANDB=mandb}
+
+init
+fake_config /usr/share/man
+MANPATH="$tmpdir/usr/share/man"
+export MANPATH
+
+mkdir -p "$tmpdir/usr/share/man/man8"
+mkdir -p "$tmpdir/usr/lib/aa-bbb"
+write_page test1 8 "$tmpdir/usr/lib/aa-bbb/aa-test1.8.gz" UTF-8 gz t \
+	'test1 \- testing man page'
+ln -s "../../../lib/aa-bbb/aa-test1.8.gz" "$tmpdir/usr/share/man/man8/aa-test1.8.gz"
+run $MANDB -C "$tmpdir/manpath.config" -u -q "$tmpdir/usr/share/man"
+# $? is deliberately expanded here.
+expect_pass 'double free' "test $? -eq 0"
+
+finish

@@ -1,0 +1,135 @@
+.\" Man page for manpath
+.\"
+.\" Copyright (C), 1995, Graeme W. Wilford. (Wilf.)
+.\"
+.\" Traduzione di Bortolozzo Giovanni <borto@pluto.linux.it>
+.\" Febbraio 1997
+.\" 1° Revisione Marzo 1997
+.\" 2° Revisione Agosto 1999
+.\" 3^ Revisione e aggionamento Settembre 1999
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the COPYING file that comes with the
+.\" man-db distribution.  
+.\"
+.\" Sun Jan 22 22:15:17 GMT 1995 Wilf. (G.Wilford@ee.surrey.ac.uk)
+.\"
+.\"" for hilit19
+.TH %thmanpath% 1 "%date%" "%version%" "Utility per le Pagine di Manuale"
+.SH NOME
+%manpath% \- determina il percorso di ricerca delle pagine di manuale
+.SH SINTASSI
+.B %manpath%  
+.RB [\| \-qgdc \|] 
+.RB [\| \-m
+.IR sistema \|[\|,.\|.\|.\|]\|]
+.SH DESCRIZIONE
+Se
+.RB $ MANPATH
+è impostata,
+.B %manpath%
+ne mostrerà semplicemente il contenuto e genererà un avviso.
+Se non lo è,
+.B %manpath% 
+determinerà un percorso di ricerca di gerarchie di pagine di manuale
+adatto e mostrerà il risultato.
+
+I percorsi separati da `:' sono determinati usando le informazioni
+ottenute dal file di configurazione di man-db
+.RI ( "%manpath_config_file%" )
+e dall'ambiente degli utenti.
+.SH OPZIONI
+.TP
+.B \-q, \-\-quiet
+Non genera nessun avviso.
+.TP
+.B \-d, \-\-debug
+Produce informazioni utili al debug.
+.TP
+.B \-c, \-\-catpath
+Produce un percorso cat invece di uno man. Una volta che è determinato
+il percorso man, ogni elemento di percorso è convertito nel suo
+percorso cat relativo.
+.TP
+.B \-g, \-\-global
+Produce un percorso man constituito da tutti i percorsi denominati
+globali all'interno del file di configurazione di man-db.
+.\"
+.\" Due to the rather silly limit of 6 args per request in some `native'
+.\" *roff compilers, we have do the following to get the two-line
+.\" hanging tag on one line. .PP to begin a new paragraph, then the
+.\" tag, then .RS (start relative indent), the text, finally .RE
+.\" (end relative indent).
+.\""
+.PP
+.B \-m 
+.I sistema\c 
+.RB \|[\|,.\|.\|.\|]\| ,
+.BI \-\-systems= sistema\c 
+\|[\|,.\|.\|.\|]
+.RS
+Se questo sistema ha accesso alle gerarchie di pagine di manuale di
+altri sistemi operativi, questa opzione può essere usata per includerle
+nell'output di
+.BR %manpath% .
+Per includere le gerarchie di pagine di manuale di NewOS, usare
+l'opzione 
+.B \-m
+.BR NewOS .
+
+Il
+.I sistema
+specificato può essere una combinazione qualsiasi di nomi di sistemi
+operativi separati da virgole. Per includere le gerachie di pagine di
+manuale del sistema operativo nativo, si deve includere il nome di
+sistema  
+.B man 
+nella stringa argomento.
+Usando questa opzione verrà ignorata la variabile d'ambiente
+.RB $ SYSTEM .
+.RE
+.TP
+.B \-h, \-\-help
+Mostra un messaggio d'aiuto ed esce.
+.TP
+.B \-V, \-\-version
+Mostra informazioni sulla versione e sull'autore.
+.SH VARIABILI D'AMBIENTE
+.TP
+.B MANPATH
+Se
+.RB $ MANPATH
+è impostata,
+.B %manpath%
+ne mostra il valore invece che determinarlo al momento.  Se 
+.RB $ MANPATH
+inizia con un `due punti' (`:'), allora il valore della variabile è
+accodato all'elenco determinato dal contenuto dei file di
+configurazione.  Se i `due punti' sono alla fine del valore della
+variabile, allora è l'elenco determinato dai file di configurazione ad
+essere accodato al valore della variabile.  Se il valore della
+variabile contiene un doppio `due punti'
+.RB ( :: ),
+allora l'elenco determinato dai file di configurazione è inserito nel
+mezzo del valore, tra i due `due punti'.
+.TP
+.B SYSTEM
+Se
+.RB $ SYSTEM
+è impostata, avrà lo stesso effetto che fosse specificata come argomento
+dell'opzione
+.BR \-m .
+.SH FILE
+.TP \w'%manpath_config_file%'u+2n
+.I %manpath_config_file%
+File di configurazione di sistema.
+.SH "VEDERE ANCHE"
+.BR %apropos% (1),
+.BR %whatis% (1),
+.BR %man% (1).
+.SH AUTORE
+Wilf. (G.Wilford@ee.surrey.ac.uk)
+.br
+Fabrizio Polacco (fpolacco@debian.org).
+.br
+Traduzione di Bortolozzo Giovanni (borto@pluto.linux.it)

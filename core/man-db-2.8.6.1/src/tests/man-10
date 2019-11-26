@@ -1,0 +1,26 @@
+#! /bin/sh
+
+# Test that man can run from a deleted directory.
+#   https://bugs.debian.org/764384
+
+: ${srcdir=.}
+. "$srcdir/testlib.sh"
+
+: ${MAN=man}
+
+init
+echo "MANDATORY_MANPATH $abstmpdir/usr/share/man" >"$tmpdir/manpath.config"
+MANPATH="$abstmpdir/usr/share/man"
+export MANPATH
+
+write_page test 1 "$tmpdir/usr/share/man/man1/test.1" \
+	UTF-8 '' '' 'test \- test'
+mkdir "$tmpdir/zombie"
+cd "$tmpdir/zombie"
+rmdir "$abstmpdir/zombie" || \
+	skip "can't remove current working directory on this system"
+run $MAN -C "$abstmpdir/manpath.config" test >/dev/null
+code=$?
+expect_pass 'run from deleted directory' 'test "$code" = 0'
+
+finish

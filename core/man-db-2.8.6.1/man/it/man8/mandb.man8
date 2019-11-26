@@ -1,0 +1,162 @@
+'\" t
+.\" Man page for mandb
+.\"
+.\" Copyright (C), 1994, 1995, Graeme W. Wilford. (Wilf.)
+.\"
+.\" Traduzione in Italiano di Bortolozzo Giovanni <borto@pluto.linux.it>
+.\" Febbraio 1997
+.\" 1° Revisione Marzo 1997
+.\" 2° Revisione Agosto 1999
+.\" 3^ Revisione e aggionamento Settembre 1999
+.\"
+.\" You may distribute under the terms of the GNU General Public
+.\" License as specified in the file COPYING that comes with the
+.\" man-db distribution.
+.\" 
+.\" Tue Apr 26 12:56:44 BST 1994  Wilf. (G.Wilford@ee.surrey.ac.uk) 
+.\"
+.\"" for hilit19
+.TH %thmandb% 8 "%date%" "%version%" "Utility per le Pagine di Manuale"
+.SH NOME
+%mandb% \- crea o aggiorna le cache index delle pagine di manuale
+.SH SINTASSI
+.B %mandb%  
+.RB [\| \-dqsuc \||\| \-h \||\| \-V\c
+.RI "\|] [\|" percorso \|] 
+.SH DESCRIZIONE
+.B %mandb%
+è usato per inizializzare o aggiornare manualmente le cache delle basi
+di dati 
+.B index 
+solitamente mantenute da
+.BR %man% .
+Le cache contengono importanti informazioni sullo stato corrente del
+sistema di pagine di manuale e le informazioni immagazzinate al loro
+interno sono usate dalle utility man-db per aumentare la loro velocità
+e funzionalità.
+
+Quando crea o aggiorna un 
+.BR index ,
+.B %mandb%
+genererà un avviso nel caso di richieste ROFF .so errate, di nomi di
+pagine di manuale fasulli e di pagine di manuale dalle quali non può
+essere estratto il
+.BR whatis .
+
+Fornendo a
+.B %mandb% 
+una lista opzionale di percorsi separati da `:' verrà ignorata la
+gerarchia globale interna dei percorsi di ricerca, determinata dalle
+informazioni contenute nel file di configurazione di man-db.
+.SH "CACHE DELLE BASI DI DATI"
+.B %mandb%
+può essere compilato con il supporto per qualsiasi fra seguenti tipi
+di basi di dati.
+
+.TS
+tab (@);
+l l l l.
+Nome@Tipo@Asinc@NomeFile
+_
+Berkeley db@Binary tree@Sì@\fIindex.bt\fR
+GNU gdbm@Hashed@Sì@\fIindex.db\fR
+UNIX ndbm@Hashed@No@\fIindex.(dir|pag)\fR
+.TE
+
+Questi tipi di basi di dati supportano aggiornamenti asincroni
+privilegiando la velocità a spese di eventuali corruzioni nel caso di
+terminazioni inusuali.
+Nel caso che ciò succeda, potrebbe essere necessario rilanciare
+.B %mandb% 
+con l'opzione
+.B \-c
+per ricreare le nuove basi di dati.
+.SH OPZIONI
+.TP
+.B \-d, \-\-debug
+Produce informazioni utili al debug.
+.TP
+.B \-q, \-\-quiet
+Non produce nessun avviso.
+.TP
+.B \-s, \-\-no-straycats
+Non perde tempo a cercare o ad aggiungere informazioni ai database
+riguardanti le pagine di manuale delle quali non esiste il file
+sorgente. (N.d.T.: tali pagine di manuale sono dette in gergo 
+.I "stray cat"  
+page.)
+.TP
+.B \-c, \-\-create
+Di default,
+.B %mandb%
+proverà ad aggiornare le basi di dati precedentemente create. Se una
+base di dati non esiste, la creerà. Questa opzione forza
+.B %mandb%
+a cancellare le basi di dati precedenti e ricrearle. Ciò
+potrebbe essere necessario se una base di dati è rovinata o se un
+nuovo schema di immagazzinamento di dati verrà introdotto in futuro.
+.TP
+.B \-u, \-\-user-db
+Crea solo le basi di dati dell'utente, anche se ha i permessi per
+creare le basi di dati globali.
+.TP
+.B \-h, \-\-help
+Mostra un messaggio d'aiuto, poi esce.
+.TP
+.B \-V, \-\-version
+Mostra la versione, poi esce.
+.SH DIAGNOSTICI
+Durante la costruzione delle basi di dati possono essere emessi i
+seguenti messaggi di avviso: 
+.TP 
+.B <nomefile>: analisi whatis per pagina(sez) fallita
+Un tentativo di estrarre la riga o le righe whatis per il dato
+<nomefile> è fallita. Ciò solitamente è dovuto a una pagina di manuale
+scritta in modo scadente, ma se sono emessi molti di questi messaggi
+allora probabilmente il sistema contiene delle pagine di manuale non
+standard che sono incompatibili con l'analizzatore whatis di man-db.
+.TP
+.B <nomefile>: è un link simbolico penzolante
+<nomefile> non esiste ma è riferito con un link simbolico. Ulteriori
+messaggi diagnotici sono solitamente prodotti per identificare il
+<nomefile> del link violante.
+.TP
+.B <nomefile>: link simbolico o richiesta ROFF `.so' errata
+<nomefile> è o un link simbolico a, oppure contiene una richiesta di
+inclusione ROFF di un file non esistente.
+.TP
+.B <nomefile>: nomefile fasullo ignorato
+Il <nomefile> potrebbe o meno essere un valido nome di pagina di
+manuale ma il suo nome non è valido. Ciò solitamente è dovuto a una
+pagina di manuale con estensione di sezione <x> che è stata messa
+nella sezione <y> delle pagine di manuale.
+.TP
+.B <nomefile_mask>: estensioni in conflitto
+La wildcard <nomefile_mask> non è unica. Ciò è causato solitamente
+dall'esistenza della versione compressa e non compressa della stessa
+pagina di manuale. Sono ignorate tutte quante tranne la più recente.
+.SH FILE
+.TP
+.I %manpath_config_file%
+File di configurazione di man-db.
+.TP
+.I /usr/man/index.(bt|db|dir|pag)
+Una cache della base di dati globale
+.I index
+tradizionale.
+.TP
+.I /var/catman/index.(bt|db|dir|pag)
+Una cache della base di dati globale
+.I index
+alternativa e conforme con FSSTND.
+.SH "VEDERE ANCHE"
+.BR %man% (1),
+.BR manpath (5), 
+.BR %catman% (8).
+.SH AUTORE
+Wilf. (G.Wilford@ee.surrey.ac.uk).
+.br
+Fabrizio Polacco (fpolacco@debian.org).
+.br
+Traduzione di Bortolozzo Giovanni (borto@pluto.linux.it)
+

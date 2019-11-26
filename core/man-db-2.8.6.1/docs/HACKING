@@ -1,0 +1,182 @@
+Hacking on man-db
+=================
+
+man-db is not a large or particularly complicated project, but there is
+still plenty for an interested developer to contribute. Here's a very brief
+guide on how to get started.
+
+
+Directory layout
+----------------
+
+The source tree looks something like this, ignoring some directories added
+by autoconf, automake, gettext, and gnulib:
+
+  docs/
+    Assorted documentation.
+  man/
+    Man pages for man-db's programs.
+  manual/
+    The man-db manual, written in troff.
+  include/
+    Header files used throughout the package.
+  lib/
+    Basic library files, some of which supplement inadequate C libraries on
+    various systems and some of which implement utility functions used
+    throughout the package.
+  libdb/
+    The database access library. Code outside this directory should not know
+    about specific back-end database implementations.
+  src/
+    Source code to the man-db programs themselves.
+  tools/
+    Miscellaneous add-on scripts.
+  po/
+    Translations.
+
+
+Coding style
+------------
+
+Each indent is a single tab. Brace style is K&R. Each function name is
+separated from the following opening parenthesis by a single space. (All
+this is almost certainly controversial somewhere, but it's as close as
+you'll get to a prevailing style here.)
+
+Keep all code within 80 columns (counting tabs as 8). This can sometimes be
+a little tight with the deep indent; think of it as a useful discipline to
+stop indentation levels getting out of hand. :-) (This rule is currently
+broken for argp option declarations, for the sake of other kinds of
+readability. This may change.)
+
+If you're editing existing code and it differs from any of the above, stick
+with whatever the existing code does. Likewise, if in doubt, find similar
+code and use its style. Maintaining a consistent style is important for
+general readability, and is more important than any individual point. It's
+also the easiest way to avoid long and tedious debates about "correct"
+style.
+
+
+Facilities and portability
+--------------------------
+
+man-db uses Gnulib to provide portability support and utility functions
+common to many GNU packages (although man-db is not itself a GNU package),
+while the lib/ directory provides some other utility functions specific to
+man-db. Please make use of these facilities where available. In particular,
+there are various functions beginning with 'x' which check the return values
+from the system's memory allocation calls, which you should use instead of
+their non-'x' siblings.
+
+appendstr() provides manageable string concatenation. Use it where
+appropriate. Remember to terminate its argument list with a NULL. In many
+cases, xasprintf() from Gnulib may be more readable.
+
+If you're calling any of the is*() or to*() functions in <ctype.h>, please
+do so via the CTYPE() macro in include/manconfig.h to ensure that the
+argument type is correct.
+
+You may assume C89 (e.g. no need to support K&R-style function definitions),
+but please do not assume C99 (e.g. do not use nested functions or //
+comments).  However, it's OK to use C99 runtime facilities that are provided
+by Gnulib, such as <stdbool.h>.
+
+
+Testing
+-------
+
+There is a small test suite in src/tests/, as well as basic tests in man/ to
+ensure that man-db's own manual pages format without errors. Tests for new
+bug fixes are not *required*, but are generally a good idea.
+
+Various test library facilities are available in src/tests/testlib.sh. Feel
+free to extend this as necessary.
+
+
+Things to do
+------------
+
+docs/TODO has a number of outstanding projects. Things near the bottom are
+usually more detailed and accurate.
+
+The Debian bug tracking system has a number of outstanding reports on man-db
+at <https://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=man-db;ordering=upstream>.
+
+Much of the work needed on man-db is for maintainability. Patches that take
+difficult-to-understand code with hairy memory allocation and replace it
+with clean, obvious, and reliable code are most welcome, especially if they
+introduce new abstractions which are of more general use. The replacement of
+splitline() with the page_description interface is a good example of this.
+
+Work on porting to platforms other than GNU/Linux is welcome. It's been a
+while since serious effort in that direction has been invested in man-db.
+Most of the code should be quite portable, but the occasional teething
+problem would not be a surprise.
+
+
+Sending patches
+---------------
+
+Please send patches in unified diff format (use 'git diff', or GNU diff with
+the -u option) to man-db-devel@nongnu.org. See
+https://lists.nongnu.org/mailman/listinfo/man-db-devel for subscription
+instructions.
+
+
+Revision control
+----------------
+
+man-db is revision-controlled using git (https://git-scm.com/). The archive
+may be fetched from here using 'git clone':
+
+  https://git.savannah.gnu.org/git/man-db.git
+
+To browse changes or source code in a web browser, use this URL instead:
+
+  https://git.savannah.gnu.org/cgit/man-db.git
+
+Members of the man-db project on Savannah can commit directly by pushing to
+this URL:
+
+  ssh://git.sv.gnu.org/srv/git/man-db.git
+
+Otherwise, since git is a distributed revision control system, you are of
+course free to make and publish branches which can then be merged into the
+main tree. See the git documentation for further details.
+
+Generated files should be added to .gitignore and should not be committed to
+revision control.
+
+
+Release process
+---------------
+
+1. Update the AC_INIT version number in configure.ac to "x.y.z-pre1". Commit
+   and tag.
+
+2. Run ./release.sh to produce a preliminary tarball for translators. This
+   doesn't have to be particularly well-tested or even compile; it's only
+   there to provide context for po/man-db.pot. Send this to the Translation
+   Project robot.
+
+3. Wait a couple of weeks for a reasonable number of translation updates to
+   arrive. During this time, test until your eyeballs fall out, but try to
+   avoid changing any translated messages.
+
+4. Ensure that NEWS and docs/man-db.lsm are up to date. Commit.
+
+5. Update the AC_INIT version number and 'date' in configure.ac, but don't
+   commit yet.
+
+6. Run ./release.sh, which will spit out a tarball. Test it.
+
+7. Commit the changes from step 5.
+
+8. Tag everything.
+
+9. Run ./release.sh. This is the distribution tarball; test it as thoroughly
+   as you can.
+
+10. Upload the tarball to Savannah.
+
+11. Announce to wherever seems appropriate.
